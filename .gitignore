@@ -3,6 +3,10 @@
 #################
 
 *.pydevproject
+*.c
+*.id
+*.h
+*.exe
 .project
 .metadata
 bin/
