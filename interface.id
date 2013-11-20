@@ -47,19 +47,19 @@ parent-count: 1 insert: 13
 class-path: "C:\SmartEiffel\lib\sequencer\events\network_connection_occurred.e"
 class-name: NETWORK_CONNECTION_OCCURRED
 assertion-level: all
-parent-count: 1 inherit: 60
+parent-count: 1 inherit: 64
 #
 72 "CAN_READ_DATA_FROM_STREAM" l
 class-path: "C:\SmartEiffel\lib\sequencer\events\can_read_data_from_stream.e"
 class-name: CAN_READ_DATA_FROM_STREAM
 assertion-level: all
-parent-count: 1 inherit: 60
+parent-count: 1 inherit: 64
 #
-61 "CAN_WRITE_DATA_TO_STREAM" l
+65 "CAN_WRITE_DATA_TO_STREAM" l
 class-path: "C:\SmartEiffel\lib\sequencer\events\can_write_data_to_stream.e"
 class-name: CAN_WRITE_DATA_TO_STREAM
 assertion-level: all
-parent-count: 1 inherit: 60
+parent-count: 1 inherit: 64
 #
 |lib:string/loadpath.se:low_level/
 31 "STRING_HANDLER" l
@@ -106,17 +106,17 @@ assertion-level: all
 parent-count: 1 insert: 13 
 #
 |lib:io/loadpath.se:terminal/
-57 "TEXT_FILE_READ" l
+61 "TEXT_FILE_READ" l
 class-path: "C:\SmartEiffel\lib\io\terminal\text_file_read.e"
 class-name: TEXT_FILE_READ
 assertion-level: all
-parent-count: 3 inherit: 58 42 insert: 31 
-c-type: T57 reference: yes
+parent-count: 3 inherit: 62 42 insert: 31 
+c-type: T61 reference: yes
 ref-status: live id-field: yes 
 destination-graph-nodes: none
 run-time-set-count: 1
 run-time-set:
-	TEXT_FILE_READ (57)
+	TEXT_FILE_READ (61)
 #
 37 "STD_ERROR" l
 class-path: "C:\SmartEiffel\lib\io\terminal\std_error.e"
@@ -136,7 +136,7 @@ run-time-set-count: 1
 run-time-set:
 	STD_OUTPUT (47)
 #
-58 "FILE" l
+62 "FILE" l
 class-path: "C:\SmartEiffel\lib\io\terminal\file.e"
 class-name: FILE
 assertion-level: all
@@ -167,56 +167,56 @@ run-time-set:
 	STD_INPUT_OUTPUT (40)
 #
 |lib:storage/loadpath.se:collection/
-80 "FAST_ARRAY" l
+81 "FAST_ARRAY" l
 class-path: "C:\SmartEiffel\lib\storage\collection\fast_array.e"
 class-name: FAST_ARRAY
 assertion-level: all
-parent-count: 3 inherit: 63 insert: 68 67 
+parent-count: 3 inherit: 50 insert: 52 51 
 #
 102 "RING_ARRAY" l
 class-path: "C:\SmartEiffel\lib\storage\collection\ring_array.e"
 class-name: RING_ARRAY
 assertion-level: all
-parent-count: 3 inherit: 63 insert: 68 67 
+parent-count: 3 inherit: 50 insert: 52 51 
 #
 122 "ARRAY[STRING]" l
 #
-66 "ARRAY" l
+49 "ARRAY" l
 class-path: "C:\SmartEiffel\lib\storage\collection\array.e"
 class-name: ARRAY
 assertion-level: all
-parent-count: 3 inherit: 63 insert: 68 67 
+parent-count: 3 inherit: 50 insert: 52 51 
 #
 |lib:numeric/loadpath.se:internal/
-75 "INTEGER_GENERAL_NUMBER" l
+76 "INTEGER_GENERAL_NUMBER" l
 class-path: "C:\SmartEiffel\lib\numeric\internal\integer_general_number.e"
 class-name: INTEGER_GENERAL_NUMBER
 assertion-level: all
-parent-count: 1 inherit: 55
+parent-count: 1 inherit: 59
 #
-74 "INTEGER_64_NUMBER" l
+75 "INTEGER_64_NUMBER" l
 class-path: "C:\SmartEiffel\lib\numeric\internal\integer_64_number.e"
 class-name: INTEGER_64_NUMBER
 assertion-level: all
-parent-count: 1 inherit: 75
+parent-count: 1 inherit: 76
 #
-77 "FRACTION_WITH_BIG_INTEGER_NUMBER" l
+78 "FRACTION_WITH_BIG_INTEGER_NUMBER" l
 class-path: "C:\SmartEiffel\lib\numeric\internal\fraction_with_big_integer_number.e"
 class-name: FRACTION_WITH_BIG_INTEGER_NUMBER
 assertion-level: all
-parent-count: 1 inherit: 78
+parent-count: 1 inherit: 79
 #
-78 "FRACTION_GENERAL_NUMBER" l
+79 "FRACTION_GENERAL_NUMBER" l
 class-path: "C:\SmartEiffel\lib\numeric\internal\fraction_general_number.e"
 class-name: FRACTION_GENERAL_NUMBER
 assertion-level: all
-parent-count: 1 inherit: 55
+parent-count: 1 inherit: 59
 #
-79 "BIG_INTEGER_NUMBER" l
+80 "BIG_INTEGER_NUMBER" l
 class-path: "C:\SmartEiffel\lib\numeric\internal\big_integer_number.e"
 class-name: BIG_INTEGER_NUMBER
 assertion-level: all
-parent-count: 1 inherit: 75
+parent-count: 1 inherit: 76
 #
 |lib:kernel/
 14 "TUPLE" l
@@ -231,17 +231,17 @@ class-name: PLATFORM
 assertion-level: all
 parent-count: 1 insert: 13 
 #
-65 "ROUTINE" l
+68 "ROUTINE" l
 class-path: "C:\SmartEiffel\lib\kernel\routine.e"
 class-name: ROUTINE
 assertion-level: all
 parent-count: 1 insert: 13 
 #
-64 "FUNCTION" l
+67 "FUNCTION" l
 class-path: "C:\SmartEiffel\lib\kernel\function.e"
 class-name: FUNCTION
 assertion-level: all
-parent-count: 1 inherit: 65
+parent-count: 1 inherit: 68
 #
 6 "BOOLEAN" l
 class-path: "C:\SmartEiffel\lib\kernel\boolean.e"
@@ -327,7 +327,7 @@ class-name: REFERENCE
 assertion-level: all
 parent-count: 1 inherit: 13
 #
-51 "SAFE_EQUAL" l
+55 "SAFE_EQUAL" l
 class-path: "C:\SmartEiffel\lib\kernel\safe_equal.e"
 class-name: SAFE_EQUAL
 assertion-level: all
@@ -343,7 +343,7 @@ parent-count: 1 inherit: 23
 class-path: "C:\SmartEiffel\lib\kernel\procedure.e"
 class-name: PROCEDURE
 assertion-level: all
-parent-count: 1 inherit: 65
+parent-count: 1 inherit: 68
 #
 94 "MEMORY" l
 class-path: "C:\SmartEiffel\lib\kernel\memory.e"
@@ -352,7 +352,7 @@ assertion-level: all
 parent-count: 1 insert: 13 
 #
 |lib:iterator/loadpath.se:
-62 "ITERATOR" l
+66 "ITERATOR" l
 class-path: "C:\SmartEiffel\lib\iterator\iterator.e"
 class-name: ITERATOR
 assertion-level: all
@@ -382,33 +382,33 @@ parent-count: 1 insert: 13
 class-path: "C:\SmartEiffel\lib\numeric\real_32.e"
 class-name: REAL_32
 assertion-level: all
-parent-count: 1 insert: 54 
+parent-count: 1 insert: 58 
 #
 11 "INTEGER_64" l
 class-path: "C:\SmartEiffel\lib\numeric\integer_64.e"
 class-name: INTEGER_64
 assertion-level: all
-parent-count: 1 insert: 52 
+parent-count: 1 insert: 56 
 #
-55 "NUMBER" l
+59 "NUMBER" l
 class-path: "C:\SmartEiffel\lib\numeric\number.e"
 class-name: NUMBER
 assertion-level: all
-parent-count: 4 inherit: 35 34 53 insert: 36 
+parent-count: 4 inherit: 35 34 57 insert: 36 
 #
 5 "REAL_64" l
 class-path: "C:\SmartEiffel\lib\numeric\real_64.e"
 class-name: REAL_64
 assertion-level: all
-parent-count: 1 insert: 54 
+parent-count: 1 insert: 58 
 #
-52 "INTEGER_GENERAL" l
+56 "INTEGER_GENERAL" l
 class-path: "C:\SmartEiffel\lib\numeric\integer_general.e"
 class-name: INTEGER_GENERAL
 assertion-level: all
-parent-count: 3 inherit: 34 insert: 53 36 
+parent-count: 3 inherit: 34 insert: 57 36 
 #
-53 "NUMERIC" l
+57 "NUMERIC" l
 class-path: "C:\SmartEiffel\lib\numeric\numeric.e"
 class-name: NUMERIC
 assertion-level: all
@@ -418,7 +418,7 @@ parent-count: 1 inherit: 35
 class-path: "C:\SmartEiffel\lib\numeric\integer_8.e"
 class-name: INTEGER_8
 assertion-level: all
-parent-count: 1 insert: 52 
+parent-count: 1 insert: 56 
 #
 5 "REAL" l
 #
@@ -428,21 +428,21 @@ parent-count: 1 insert: 52
 class-path: "C:\SmartEiffel\lib\numeric\real_extended.e"
 class-name: REAL_EXTENDED
 assertion-level: all
-parent-count: 1 insert: 54 
+parent-count: 1 insert: 58 
 #
-54 "REAL_GENERAL" l
+58 "REAL_GENERAL" l
 class-path: "C:\SmartEiffel\lib\numeric\real_general.e"
 class-name: REAL_GENERAL
 assertion-level: all
-parent-count: 2 inherit: 53 34
+parent-count: 2 inherit: 57 34
 #
 10 "INTEGER_16" l
 class-path: "C:\SmartEiffel\lib\numeric\integer_16.e"
 class-name: INTEGER_16
 assertion-level: all
-parent-count: 1 insert: 52 
+parent-count: 1 insert: 56 
 #
-76 "MUTABLE_BIG_INTEGER" l
+77 "MUTABLE_BIG_INTEGER" l
 class-path: "C:\SmartEiffel\lib\numeric\mutable_big_integer.e"
 class-name: MUTABLE_BIG_INTEGER
 assertion-level: all
@@ -452,7 +452,7 @@ parent-count: 3 inherit: 35 34 insert: 36
 class-path: "C:\SmartEiffel\lib\numeric\integer_32.e"
 class-name: INTEGER_32
 assertion-level: all
-parent-count: 1 insert: 52 
+parent-count: 1 insert: 56 
 #
 |lib:io/loadpath.se:low_level/
 105 "BASIC_DIRECTORY" l
@@ -542,20 +542,20 @@ assertion-level: all
 parent-count: 1 inherit: 106
 #
 |lib:storage/loadpath.se:internal/
-68 "ARRAYED_COLLECTION" l
+52 "ARRAYED_COLLECTION" l
 class-path: "C:\SmartEiffel\lib\storage\internal\arrayed_collection.e"
 class-name: ARRAYED_COLLECTION
 assertion-level: all
-parent-count: 1 insert: 63 
+parent-count: 1 insert: 50 
 #
 |lib:sequencer/loadpath.se:
-60 "EVENT_DESCRIPTOR" l
+64 "EVENT_DESCRIPTOR" l
 class-path: "C:\SmartEiffel\lib\sequencer\event_descriptor.e"
 class-name: EVENT_DESCRIPTOR
 assertion-level: all
 parent-count: 1 insert: 13 
 #
-82 "EVENTS_SET" l
+83 "EVENTS_SET" l
 class-path: "C:\SmartEiffel\lib\sequencer\events_set.e"
 class-name: EVENTS_SET
 assertion-level: all
@@ -581,7 +581,7 @@ assertion-level: all
 parent-count: 2 insert: 35 34 
 #
 |lib:kernel/internal/
-67 "NATIVE_ARRAY_COLLECTOR" l
+51 "NATIVE_ARRAY_COLLECTOR" l
 class-path: "C:\SmartEiffel\lib\kernel\internal\native_array_collector.e"
 class-name: NATIVE_ARRAY_COLLECTOR
 assertion-level: all
@@ -624,7 +624,7 @@ class-name: STRING
 assertion-level: all
 parent-count: 7 inherit: 13 35 34 33 32 insert: 36 28 
 #
-56 "UNICODE_STRING" l
+60 "UNICODE_STRING" l
 class-path: "C:\SmartEiffel\lib\string\unicode_string.e"
 class-name: UNICODE_STRING
 assertion-level: all
@@ -656,12 +656,12 @@ class-name: TERMINAL_INPUT_OUTPUT_STREAM
 assertion-level: all
 parent-count: 3 inherit: 42 38 29
 #
-59 "FILTER_OUTPUT_STREAM" l
+63 "FILTER_OUTPUT_STREAM" l
 class-path: "C:\SmartEiffel\lib\io\filter_output_stream.e"
 class-name: FILTER_OUTPUT_STREAM
 assertion-level: all
-parent-count: 2 inherit: 26 insert: 49 
-c-type: T59 reference: yes
+parent-count: 2 inherit: 26 insert: 53 
+c-type: T63 reference: yes
 ref-status: dead 
 destination-graph-nodes: none
 run-time-set-count: 0
@@ -672,7 +672,7 @@ class-name: TERMINAL_OUTPUT_STREAM
 assertion-level: all
 parent-count: 1 inherit: 26
 #
-49 "FILTER" l
+53 "FILTER" l
 class-path: "C:\SmartEiffel\lib\io\filter.e"
 class-name: FILTER
 assertion-level: all
@@ -682,7 +682,7 @@ parent-count: 1 insert: 13
 class-path: "C:\SmartEiffel\lib\io\filter_input_stream.e"
 class-name: FILTER_INPUT_STREAM
 assertion-level: all
-parent-count: 2 inherit: 43 insert: 49 
+parent-count: 2 inherit: 43 insert: 53 
 #
 26 "OUTPUT_STREAM" l
 class-path: "C:\SmartEiffel\lib\io\output_stream.e"
@@ -719,23 +719,23 @@ assertion-level: all
 parent-count: 3 inherit: 27 insert: 44 29 
 #
 |lib:iterator/loadpath.se:internal/
-81 "ITERATOR_ON_UNICODE_STRING" l
+82 "ITERATOR_ON_UNICODE_STRING" l
 class-path: "C:\SmartEiffel\lib\iterator\internal\iterator_on_unicode_string.e"
 class-name: ITERATOR_ON_UNICODE_STRING
 assertion-level: all
-parent-count: 1 inherit: 62
+parent-count: 1 inherit: 66
 #
 70 "ITERATOR_ON_STRING" l
 class-path: "C:\SmartEiffel\lib\iterator\internal\iterator_on_string.e"
 class-name: ITERATOR_ON_STRING
 assertion-level: all
-parent-count: 1 inherit: 62
+parent-count: 1 inherit: 66
 #
-83 "ITERATOR_ON_TRAVERSABLE" l
+74 "ITERATOR_ON_TRAVERSABLE" l
 class-path: "C:\SmartEiffel\lib\iterator\internal\iterator_on_traversable.e"
 class-name: ITERATOR_ON_TRAVERSABLE
 assertion-level: all
-parent-count: 1 inherit: 62
+parent-count: 1 inherit: 66
 #
 |lib:io/loadpath.se:internal/
 115 "UNIXISH_PATH_NAME" l
@@ -757,9 +757,9 @@ assertion-level: all
 parent-count: 1 insert: 13 
 #
 |Local Cluster
-25 "APPLICATION" l
-class-path: "C:\Users\SEB\Documents\GitHub\GLOEiffelProject\application.e"
-class-name: APPLICATION
+25 "INTERFACE" l
+class-path: "C:\Users\SEB\Documents\GitHub\GLOEiffelProject\interface.e"
+class-name: INTERFACE
 assertion-level: all
 parent-count: 1 insert: 13 
 c-type: T25 reference: yes
@@ -767,21 +767,21 @@ ref-status: live id-field: yes
 destination-graph-nodes: none
 run-time-set-count: 1
 run-time-set:
-	APPLICATION (25)
+	INTERFACE (25)
 #
 |lib:storage/loadpath.se:
-63 "COLLECTION" l
+50 "COLLECTION" l
 class-path: "C:\SmartEiffel\lib\storage\collection.e"
 class-name: COLLECTION
 assertion-level: all
 parent-count: 3 inherit: 13 33 32
 #
 |lib:storage/loadpath.se:low_level/
-50 "NATIVE_ARRAY" l
+54 "NATIVE_ARRAY" l
 class-path: "C:\SmartEiffel\lib\storage\low_level\native_array.e"
 class-name: NATIVE_ARRAY
 assertion-level: all
-parent-count: 1 insert: 51 
+parent-count: 1 insert: 55 
 #
 93 "RECYCLING_POOL" l
 class-path: "C:\SmartEiffel\lib\storage\low_level\recycling_pool.e"
