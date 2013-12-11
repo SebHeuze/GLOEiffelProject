@@ -1,12 +1,9 @@
 -- Classe abstraite représentant un média.
 -- La classe qui implémentera devra à priori utiliser le mot clé effective, Cf tutoriel eiffel sur madoc
 indexing
-	description:"Simple media representation"
+	description:"Classe abstraite représentant un média"
 
 deferred class IMEDIA
-	
-creation {ANY}
-	init
 
 feature {}
 	titre: STRING
@@ -59,10 +56,14 @@ feature {ANY}
 		Result := annee
 	end
 	
+	-- =====================================
+	-- Modifie l'année d'édition du média
+	-- =====================================
 	set_annee(iannee : INTEGER) is
-	require
-		annee_correcte: iannee > 2013
-end
+	do
+		annee := iannee
+	end
 
 invariant
 	nb_exemplaires: nombre_disponible >= 0
+end

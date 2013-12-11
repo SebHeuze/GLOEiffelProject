@@ -14,15 +14,15 @@ creation {ANY}
 	main
 
 feature {}
-	liste_dvd : ARRAY[STRING]
-	liste_livres : ARRAY[STRING]
-	liste_utilisateurs : ARRAY[STRING]
+	liste_dvd : ARRAY[DVD]
+	liste_livres : ARRAY[LIVRE]
+	liste_utilisateurs : ARRAY[UTILISATEUR]
 
 feature {ANY}
 	main is
 		do
 			io.put_string("Main.%N")
-			initialisation()
+			initialisation
 		end
 
 	initialisation is
