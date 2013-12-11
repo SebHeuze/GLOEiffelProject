@@ -3,41 +3,52 @@ indexing
 	description:"Implémentation de IMedia pour un DVD"
 
 class DVD inherit IMEDIA
-	
+
 creation {ANY}
 	dvd
 
 feature {}
-	realisateur : STRING
+	realisateurs : ARRAY[STRING]
 	acteurs : ARRAY[STRING]
 	type : STRING
-	
+
 feature {ANY}
 
-	dvd(new_realisateur : STRING; new_acteurs : ARRAY[STRING]; new_type : STRING; new_titre : STRING; new_annee, new_nombre_disponible : INTEGER) is
+	dvd(new_realisateurs : ARRAY[STRING]; new_acteurs : ARRAY[STRING]; new_type : STRING; new_titre : STRING; new_annee, new_nombre_disponible : INTEGER) is
 	do
-		realisateur := new_realisateur
+		realisateurs := new_realisateurs
 		acteurs := new_acteurs
 		type := new_type
 		init(new_titre, new_annee, new_nombre_disponible)
 	end
-	
+
 	-- =====================================
-	-- Renvoie le réalisateur du DVD courant
+	-- Ajoute un realisateur dans la liste des realisateurs
 	-- =====================================
-	get_realisateur : STRING is
+	add_realisateur(realisateur : STRING) is
 	do
-		Result := realisateur
+		realisateurs.put(realisateur, realisateurs.count)
 	end
-	
+
 	-- =====================================
-	-- Modifie le réalisateur du DVD courant
+	-- Récupère un realisateur dans la liste des realisateurs
 	-- =====================================
-	set_realisateur(new_realisateur : STRING) is
+	get_realisateur(rang : INTEGER) : STRING is
+	require
+		rang >= 0
 	do
-		titre := new_realisateur
+		Result := realisateurs @ rang
 	end
-	
+
+	-- =====================================
+	-- Renvoie la liste des r�alisateurs
+	-- =====================================
+	get_realisateurs : ARRAY[STRING] is
+	do
+		Result := realisateurs
+	end
+
+
 	-- =====================================
 	-- Ajoute un acteur dans la liste des acteurs
 	-- =====================================
@@ -45,7 +56,7 @@ feature {ANY}
 	do
 		acteurs.put(acteur, acteurs.count)
 	end
-	
+
 	-- =====================================
 	-- Récupère un acteur dans la liste des acteurs
 	-- =====================================
@@ -55,7 +66,7 @@ feature {ANY}
 	do
 		Result := acteurs @ rang
 	end
-	
+
 	-- =====================================
 	-- Renvoie la liste des acteurs
 	-- =====================================
@@ -63,7 +74,7 @@ feature {ANY}
 	do
 		Result := acteurs
 	end
-	
+
 	-- =====================================
 	-- Modifie le type du DVD courant
 	-- =====================================
@@ -71,7 +82,7 @@ feature {ANY}
 	do
 		type := new_type
 	end
-	
+
 	-- =====================================
 	-- Renvoie le type du DVD courant
 	-- =====================================
