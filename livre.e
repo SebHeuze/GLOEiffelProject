@@ -36,4 +36,36 @@ feature{ANY}
 	do
 		auteur := iauteur
 	end
+	
+	-- =====================================
+	-- Modifie l'éditeur du livre courant
+	-- =====================================
+	set_editeur(iediteur : STRING) is
+	do
+		editeur := iediteur
+	end
+	
+	-- =====================================
+	-- Retourne l'éditeur du livre courant
+	-- =====================================
+	get_editeur : STRING is
+	do
+		Result := editeur
+	end
+	
+	-- =====================================
+	-- Retourne le type du livre courant
+	-- =====================================
+	get_type : STRING is
+	do
+		Result := type
+	end
+	
+	-- =====================================
+	-- Retourne le type du livre courant
+	-- =====================================
+	set_type(itype : STRING) is
+	do
+		type := itype
+	end
 end
