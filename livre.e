@@ -1,42 +1,53 @@
 -- Implémentation de la classe IMedia représentant un Livre
 indexing
 	description:"Implémentation de IMedia pour un Livre"
-	
+
 class LIVRE inherit IMEDIA
 
 creation {ANY}
 	livre
 
 feature {}
-	auteur : STRING
+	auteurs : ARRAY[STRING]
 	editeur : STRING
 	type : STRING
 
 feature{ANY}
-	livre(iauteur, iediteur, itype, ititre : STRING; iannee, inombre_disponible : INTEGER) is
+	livre(iauteurs : ARRAY[STRING]; iediteur, itype, ititre : STRING; iannee, inombre_disponible : INTEGER) is
 	do
-		auteur := iauteur
+		auteurs := iauteurs
 		editeur := iediteur
 		type := itype
 		init(ititre, iannee, inombre_disponible)
 	end
-	
+
 	-- =====================================
-	-- Renvoie l'auteur du livre courant
+	-- Ajoute un auteur dans la liste des auteurs
 	-- =====================================
-	get_auteur : STRING is
+	add_auteur(auteur : STRING) is
 	do
-		Result := auteur
+		auteurs.put(auteur, auteurs.count)
 	end
-	
+
 	-- =====================================
-	-- Modifie l'auteur du livre courant
+	-- Récupère un auteur dans la liste des auteurs
 	-- =====================================
-	set_auteur(iauteur : STRING) is
+	get_auteur(rang : INTEGER) : STRING is
+	require
+		rang >= 0
 	do
-		auteur := iauteur
+		Result := auteurs @ rang
 	end
-	
+
+	-- =====================================
+	-- Renvoie la liste des auteurs
+	-- =====================================
+	get_auteurs : ARRAY[STRING] is
+	do
+		Result := auteurs
+	end
+
+
 	-- =====================================
 	-- Modifie l'éditeur du livre courant
 	-- =====================================
@@ -44,7 +55,7 @@ feature{ANY}
 	do
 		editeur := iediteur
 	end
-	
+
 	-- =====================================
 	-- Retourne l'éditeur du livre courant
 	-- =====================================
@@ -52,7 +63,7 @@ feature{ANY}
 	do
 		Result := editeur
 	end
-	
+
 	-- =====================================
 	-- Retourne le type du livre courant
 	-- =====================================
@@ -60,7 +71,7 @@ feature{ANY}
 	do
 		Result := type
 	end
-	
+
 	-- =====================================
 	-- Retourne le type du livre courant
 	-- =====================================

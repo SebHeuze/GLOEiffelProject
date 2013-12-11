@@ -105,7 +105,7 @@ feature {ANY}
 								io.put_string (string_data + "%N")
 								index := index +1
 							end
-							create a_livre.livre(auteurs, "", "", titre, "", nombre)
+							create a_livre.livre(auteurs, "", "", titre, 0, nombre)
 							liste_livres.add_last(a_livre);
 						end
 					end

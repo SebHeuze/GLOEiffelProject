@@ -19,6 +19,215 @@ C Compiler options used:
 extern "C" {
 #endif
 
+/*INTEGER_16*/T6 r10is_equal(se_dump_stack*caller,T10 C,T10 a1){
+T6 R=0;
+void**locals[2];
+static se_frame_descriptor fd={"is_equal"" INTEGER_16",1,2,"%E10%other%E10%Result%E6%",1};
+se_dump_stack ds;
+ds.fd=&fd;
+ds.current=(void*)&C;
+ds.p=0x06831804/*l792c2\integer_general.e*/;
+ds.caller=caller;
+ds.locals=locals;
+ds.exception_origin=NULL;
+locals[0]=(void**)&a1;
+locals[1]=(void**)&R;
+set_dump_stack_top(&ds);/*link*/
+if(fd.assertion_flag){
+fd.assertion_flag=0;
+(ds.p=0x01A03608/*l54c4\any.e*/);
+ac_req((a1,1),"other /= Void");
+fd.assertion_flag=1;
+}
+(ds.p=0x06831A08/*l794c4\integer_general.e*/);
+R=((T6)((C)==(a1)));
+if(fd.assertion_flag){
+fd.assertion_flag=0;
+(ds.p=0x01A03972/*l57c57\any.e*/);
+ac_ens((T6)((!(((T0*)(t[10]))==((void*)((T0*)(t[10])))))||((T6)((R)==(r10is_equal(&ds,a1,C))))),"commutative");
+(ds.p=0x04601C16/*l28c11\hashable.e*/);
+ac_ens((T6)((!(R))||((T6)((r10hash_code(&ds,C))==(r10hash_code(&ds,a1))))),"Result implies hash_code = other.hash_code");
+(ds.p=0x04401320/*l19c16\comparable.e*/);
+ac_ens((R)==(r6_ix_and(&ds,(T6)(r6_px_not(&ds,(T6)(((int16_t)(C))<(a1)))),(T6)(r6_px_not(&ds,(T6)(((int16_t)(a1))<(C)))))),"trichotomy");
+fd.assertion_flag=1;
+}
+set_dump_stack_top(caller);/*unlink*/
+return R;
+}/*--*/
+
+/*INTEGER_16*/T6 r10fit_integer_8(se_dump_stack*caller,T10 C){
+T6 R=0;
+void**locals[1];
+static se_frame_descriptor fd={"fit_integer_8"" INTEGER_16",1,1,"%E10%Result%E6%",1};
+se_dump_stack ds;
+ds.fd=&fd;
+ds.current=(void*)&C;
+ds.p=0x01400D04/*l13c2\integer_16.e*/;
+ds.caller=caller;
+ds.locals=locals;
+ds.exception_origin=NULL;
+locals[0]=(void**)&R;
+set_dump_stack_top(&ds);/*link*/
+if(((ds.p=0x0140101E/*l16c15\integer_16.e*/),((int16_t)(C))>=(/*IC*/(T10)(INT8_MIN)))){
+(ds.p=0x0140110A/*l17c5\integer_16.e*/);
+R=((T6)(((int16_t)(C))<=(/*IC*/(T10)(INT8_C(127)))));
+}
+if(fd.assertion_flag){
+fd.assertion_flag=0;
+(ds.p=0x01401408/*l20c4\integer_16.e*/);
+ac_ens((R)==(r10in_range(&ds,C,/*IC*/(T10)(INT8_MIN),/*IC*/(T10)(INT8_C(127)))),"Result = Current.in_range(-128, 127)");
+fd.assertion_flag=1;
+}
+set_dump_stack_top(caller);/*unlink*/
+return R;
+}/*--*/
+
+/*INTEGER_16*/T6 r10in_range(se_dump_stack*caller,T10 C,T10 a1,T10 a2){
+T6 R=0;
+void**locals[3];
+static se_frame_descriptor fd={"in_range"" INTEGER_16",1,3,"%E10%lower%E10%upper%E10%Result%E6%",1};
+se_dump_stack ds;
+ds.fd=&fd;
+ds.current=(void*)&C;
+ds.p=0x04404504/*l69c2\comparable.e*/;
+ds.caller=caller;
+ds.locals=locals;
+ds.exception_origin=NULL;
+locals[0]=(void**)&a1;
+locals[1]=(void**)&a2;
+locals[2]=(void**)&R;
+set_dump_stack_top(&ds);/*link*/
+(ds.p=0x04404A08/*l74c4\comparable.e*/);
+R=((T6)((T6)((((int16_t)(C))>=(a1))&&((T6)(((int16_t)(C))<=(a2))))));
+if(fd.assertion_flag){
+fd.assertion_flag=0;
+(ds.p=0x04404C08/*l76c4\comparable.e*/);
+ac_ens((R)==(r6_ix_and(&ds,(T6)(((int16_t)(C))>=(a1)),(T6)(((int16_t)(C))<=(a2)))),"Result = (Current >= lower and Current <= upper)");
+fd.assertion_flag=1;
+}
+set_dump_stack_top(caller);/*unlink*/
+return R;
+}/*--*/
+
+/*INTEGER_16*/T2 r10hash_code(se_dump_stack*caller,T10 C){
+T2 R=0;
+void**locals[1];
+static se_frame_descriptor fd={"hash_code"" INTEGER_16",1,1,"%E10%Result%E2%",1};
+se_dump_stack ds;
+ds.fd=&fd;
+ds.current=(void*)&C;
+ds.p=0x01406A04/*l106c2\integer_16.e*/;
+ds.caller=caller;
+ds.locals=locals;
+ds.exception_origin=NULL;
+locals[0]=(void**)&R;
+set_dump_stack_top(&ds);/*link*/
+(ds.p=0x01406C08/*l108c4\integer_16.e*/);
+R=/*IC*/(T2)((C&/*0x7FFF*/INT16_C(32767)));
+if(fd.assertion_flag){
+fd.assertion_flag=0;
+(ds.p=0x04601638/*l22c28\hashable.e*/);
+ac_ens(((int32_t)(R))>=(/*IC*/(T2)(INT8_C(0))),"good_hash_value");
+fd.assertion_flag=1;
+}
+set_dump_stack_top(caller);/*unlink*/
+return R;
+}/*--*/
+
+/*INTEGER_16*/T1 r10to_integer_8(se_dump_stack*caller,T10 C){
+T1 R=0;
+void**locals[1];
+static se_frame_descriptor fd={"to_integer_8"" INTEGER_16",1,1,"%E10%Result%E1%",1};
+se_dump_stack ds;
+ds.fd=&fd;
+ds.current=(void*)&C;
+ds.p=0x01401704/*l23c2\integer_16.e*/;
+ds.caller=caller;
+ds.locals=locals;
+ds.exception_origin=NULL;
+locals[0]=(void**)&R;
+set_dump_stack_top(&ds);/*link*/
+if(fd.assertion_flag){
+fd.assertion_flag=0;
+(ds.p=0x01401A08/*l26c4\integer_16.e*/);
+ac_req(r10fit_integer_8(&ds,C),"fit_integer_8");
+fd.assertion_flag=1;
+}
+R=((EIF_INTEGER_8)C);
+if(fd.assertion_flag){
+fd.assertion_flag=0;
+(ds.p=0x01401D18/*l29c12\integer_16.e*/);
+ac_ens(r10is_equal(&ds,C,/*IC*/(T10)(R)),"Current.is_equal(Result)");
+fd.assertion_flag=1;
+}
+set_dump_stack_top(caller);/*unlink*/
+return R;
+}/*--*/
+
+/*INTEGER_16*/T10 r10_ix_45(se_dump_stack*caller,T10 C,T10 a1){
+T10 R=0;
+void**locals[2];
+static se_frame_descriptor fd={"infix ""-"" (""infix ""-"" INTEGER_16)",1,2,"%E10%other%E10%Result%E10%",1};
+se_dump_stack ds;
+ds.fd=&fd;
+ds.current=(void*)&C;
+ds.p=0x06802404/*l36c2\integer_general.e*/;
+ds.caller=caller;
+ds.locals=locals;
+ds.exception_origin=NULL;
+locals[0]=(void**)&a1;
+locals[1]=(void**)&R;
+set_dump_stack_top(&ds);/*link*/
+if(fd.assertion_flag){
+fd.assertion_flag=0;
+(ds.p=0x06802658/*l38c44\integer_general.e*/);
+ac_req((T6)((!((((int16_t)(C))>(/*IC*/(T10)(INT8_C(0))))!=(((int16_t)(a1))>(/*IC*/(T10)(INT8_C(0))))))||((T6)((((int16_t)(((int16_t)(C))-(a1)))>(/*IC*/(T10)(INT8_C(0))))==(((int16_t)(C))>(/*IC*/(T10)(INT8_C(0))))))),"no_overflow");
+fd.assertion_flag=1;
+}
+(ds.p=0x06802808/*l40c4\integer_general.e*/);
+R=((int16_t)(C))-(a1);
+if(fd.assertion_flag){
+fd.assertion_flag=0;
+(ds.p=0x06802A16/*l42c11\integer_general.e*/);
+ac_ens((((int16_t)(R))+(a1))==(C),"Result #+ other = Current");
+fd.assertion_flag=1;
+}
+set_dump_stack_top(caller);/*unlink*/
+return R;
+}/*--*/
+
+/*INTEGER_16*/T10 r10_ix_43(se_dump_stack*caller,T10 C,T10 a1){
+T10 R=0;
+void**locals[2];
+static se_frame_descriptor fd={"infix ""+"" (""infix ""+"" INTEGER_16)",1,2,"%E10%other%E10%Result%E10%",1};
+se_dump_stack ds;
+ds.fd=&fd;
+ds.current=(void*)&C;
+ds.p=0x06801B04/*l27c2\integer_general.e*/;
+ds.caller=caller;
+ds.locals=locals;
+ds.exception_origin=NULL;
+locals[0]=(void**)&a1;
+locals[1]=(void**)&R;
+set_dump_stack_top(&ds);/*link*/
+if(fd.assertion_flag){
+fd.assertion_flag=0;
+(ds.p=0x06801D56/*l29c43\integer_general.e*/);
+ac_req((T6)((!((((int16_t)(C))>(/*IC*/(T10)(INT8_C(0))))==(((int16_t)(a1))>(/*IC*/(T10)(INT8_C(0))))))||((T6)((((int16_t)(((int16_t)(C))+(a1)))>(/*IC*/(T10)(INT8_C(0))))==(((int16_t)(C))>(/*IC*/(T10)(INT8_C(0))))))),"no_overflow");
+fd.assertion_flag=1;
+}
+(ds.p=0x06801F08/*l31c4\integer_general.e*/);
+R=((int16_t)(C))+(a1);
+if(fd.assertion_flag){
+fd.assertion_flag=0;
+(ds.p=0x06802116/*l33c11\integer_general.e*/);
+ac_ens((((int16_t)(R))-(a1))==(C),"Result #- other = Current");
+fd.assertion_flag=1;
+}
+set_dump_stack_top(caller);/*unlink*/
+return R;
+}/*--*/
+
 /*ARRAY[STRING]*/void r122mark_native_arrays(se_dump_stack*caller,T122* C){
 T2 _i=0;
 void**locals[1];
@@ -482,6 +691,581 @@ ds.fd->assertion_flag=1;
 se_dst=caller;/*unlink*/
 return C;
 }/*--*/
+
+/*DVD*/T6 r125is_default(se_dump_stack*caller,T125* C){
+T6 R=0;
+void**locals[1];
+static se_frame_descriptor fd={"is_default"" DVD",1,1,"%R125%Result%E6%",1};
+se_dump_stack ds;
+ds.fd=&fd;
+ds.current=(void*)&C;
+ds.p=0x01A08404/*l132c2\any.e*/;
+ds.caller=caller;
+ds.locals=locals;
+ds.exception_origin=NULL;
+locals[0]=(void**)&R;
+set_dump_stack_top(&ds);/*link*/
+(ds.p=0x01A08D08/*l141c4\any.e*/);
+R=((T6)((C)==((void*)(r125default(&ds,C)))));
+if(se_rci(caller,C))se_i125(&ds,C);
+set_dump_stack_top(caller);/*unlink*/
+return R;
+}/*--*/
+
+/*DVD*/T0* r125default(se_dump_stack*caller,T125* C){
+T0* R=(void*)0;
+void**locals[1];
+static se_frame_descriptor fd={"default"" DVD",1,1,"%R125%Result%R125%",1};
+se_dump_stack ds;
+ds.fd=&fd;
+ds.current=(void*)&C;
+ds.p=0x01A07D12/*l125c9\any.e*/;
+ds.caller=caller;
+ds.locals=locals;
+ds.exception_origin=NULL;
+locals[0]=(void**)&R;
+set_dump_stack_top(&ds);/*link*/
+if(se_rci(caller,C))se_i125(&ds,C);
+set_dump_stack_top(caller);/*unlink*/
+return R;
+}/*--*/
+
+/*DVD*/void r125init(se_dump_stack*caller,T125* C,T0* a1,T2 a2,T2 a3){
+void**locals[3];
+static se_frame_descriptor fd={"init"" DVD",1,3,"%R125%ititre%R7%iannee%E2%inombre_disponible%E2%",1};
+se_dump_stack ds;
+ds.fd=&fd;
+ds.current=(void*)&C;
+ds.p=0x0FC01204/*l18c2\IMedia.e*/;
+ds.caller=caller;
+ds.locals=locals;
+ds.exception_origin=NULL;
+locals[0]=(void**)&a1;
+locals[1]=(void**)&a2;
+locals[2]=(void**)&a3;
+set_dump_stack_top(&ds);/*link*/
+(ds.p=0x0FC01406/*l20c3\IMedia.e*/);
+/*SFN*/(C->_titre/*i6p*/)=a1;
+(ds.p=0x0FC01506/*l21c3\IMedia.e*/);
+/*SFN*/(C->_annee/*i6p*/)=a2;
+(ds.p=0x0FC01606/*l22c3\IMedia.e*/);
+/*SFN*/(C->_nombre_disponible/*i6p*/)=a3;
+if(se_rci(caller,C))se_i125(&ds,C);
+set_dump_stack_top(caller);/*unlink*/
+}/*--*/
+
+/*DVD*/void r125dvd(se_dump_stack*caller,T125* C,T0* a1,T0* a2,T0* a3,T0* a4,T2 a5,T2 a6){
+void**locals[6];
+static se_frame_descriptor fd={"dvd"" DVD",1,6,"%R125%new_realisateurs%R122%new_acteurs%R122%new_type%R7%new_titre%R7%new_annee%E2%new_nombre_disponible%E2%",1};
+se_dump_stack ds;
+ds.fd=&fd;
+ds.current=(void*)&C;
+ds.p=0x0FA01104/*l17c2\dvd.e*/;
+ds.caller=caller;
+ds.locals=locals;
+ds.exception_origin=NULL;
+locals[0]=(void**)&a1;
+locals[1]=(void**)&a2;
+locals[2]=(void**)&a3;
+locals[3]=(void**)&a4;
+locals[4]=(void**)&a5;
+locals[5]=(void**)&a6;
+set_dump_stack_top(&ds);/*link*/
+(ds.p=0x0FA01306/*l19c3\dvd.e*/);
+/*SFN*/(C->_realisateurs/*i6p*/)=a1;
+(ds.p=0x0FA01406/*l20c3\dvd.e*/);
+/*SFN*/(C->_acteurs/*i6p*/)=a2;
+(ds.p=0x0FA01506/*l21c3\dvd.e*/);
+/*SFN*/(C->_type/*i6p*/)=a3;
+(ds.p=0x0FA01606/*l22c3\dvd.e*/);
+r125init(&ds,C,a4,a5,a6);
+if(se_rci(caller,C))se_i125(&ds,C);
+set_dump_stack_top(caller);/*unlink*/
+}/*--*/
+se_frame_descriptor se_ifd125={"invariant DVD",1,0,"%R125%",1};
+
+T125*se_i125(se_dump_stack*caller,T125*C){
+se_dump_stack ds;
+ds.fd=&se_ifd125;
+ds.current=((void*)&C);
+ds.p=0x0FC04302/*l67c1\IMedia.e*/;
+ds.caller=caller;
+ds.exception_origin=NULL;
+ds.locals=NULL;
+se_dst=&ds;/*link*/
+if(ds.fd->assertion_flag){
+ds.fd->assertion_flag=0;
+(ds.p=0x0FC04448/*l68c36\IMedia.e*/);
+ac_inv(((int32_t)((/*RF2*/(C)->_nombre_disponible/*i6p*/)))>=(/*IC*/(T2)(INT8_C(0))),"nb_exemplaires");
+ds.fd->assertion_flag=1;
+}
+se_dst=caller;/*unlink*/
+return C;
+}/*--*/
+
+/*ARRAY[DVD]*/void r129mark_native_arrays(se_dump_stack*caller,T129* C){
+T2 _i=0;
+void**locals[1];
+static se_frame_descriptor fd={"mark_native_arrays"" ARRAY[DVD]",1,1,"%R129%i%E2%",1};
+se_dump_stack ds;
+ds.fd=&fd;
+ds.current=(void*)&C;
+ds.p=0x08419604/*l406c2\array.e*/;
+ds.caller=caller;
+ds.locals=locals;
+ds.exception_origin=NULL;
+locals[0]=(void**)&_i;
+set_dump_stack_top(&ds);/*link*/
+(ds.p=0x0841A30A/*l419c5\array.e*/);
+_i=r2_ix_45(&ds,r129count(&ds,C),/*IC*/(T2)(INT8_C(1)));
+while (!(((ds.p=0x0841A50E/*l421c7\array.e*/),((int32_t)(_i))<(/*IC*/(T2)(INT8_C(0))))))
+{
+(ds.p=0x0841A70A/*l423c5\array.e*/);
+{/*mark_item*/
+T0* elt=(/*RF2*/(C)->_storage/*i4p*/)[_i];
+if(NULL!=elt)gc_mark125((T125*)(elt));
+/*mark_item*/}(ds.p=0x0841A80A/*l424c5\array.e*/);
+_i=r2_ix_45(&ds,_i,/*IC*/(T2)(INT8_C(1)));
+}
+if(se_rci(caller,C))se_i129(&ds,C);
+set_dump_stack_top(caller);/*unlink*/
+}/*--*/
+
+/*ARRAY[DVD]*/T6 r129all_default(se_dump_stack*caller,T129* C){
+T6 R=0;
+void**locals[1];
+static se_frame_descriptor fd={"all_default"" ARRAY[DVD]",1,1,"%R129%Result%E6%",1};
+se_dump_stack ds;
+ds.fd=&fd;
+ds.current=(void*)&C;
+ds.p=0x08413004/*l304c2\array.e*/;
+ds.caller=caller;
+ds.locals=locals;
+ds.exception_origin=NULL;
+locals[0]=(void**)&R;
+set_dump_stack_top(&ds);/*link*/
+(ds.p=0x08413208/*l306c4\array.e*/);
+R=((T6)(r130all_default(&ds,(/*RF2*/(C)->_storage/*i4p*/),r2_ix_45(&ds,(/*RF2*/(C)->_upper/*i4p*/),(/*RF2*/(C)->_lower/*i4p*/)))));
+if(se_rci(caller,C))se_i129(&ds,C);
+set_dump_stack_top(caller);/*unlink*/
+return R;
+}/*--*/
+
+/*ARRAY[DVD]*/void r129clear_all(se_dump_stack*caller,T129* C){
+T0* _value=(void*)0;
+T2 o63_117_26=0;
+T2 o63_118_26=0;
+void**locals[3];
+static se_frame_descriptor fd={"clear_all"" ARRAY[DVD]",1,3,"%R129%value%R125%old value%E2%old value%E2%",1};
+se_dump_stack ds;
+ds.fd=&fd;
+ds.current=(void*)&C;
+ds.p=0x07E06C04/*l108c2\collection.e*/;
+ds.caller=caller;
+ds.locals=locals;
+ds.exception_origin=NULL;
+locals[0]=(void**)&_value;
+locals[1]=(void**)&o63_117_26;
+locals[2]=(void**)&o63_118_26;
+set_dump_stack_top(&ds);/*link*/
+o63_117_26=(/*RF2*/(C)->_upper/*i4p*/);
+o63_118_26=(/*RF2*/(C)->_lower/*i4p*/);
+(ds.p=0x07E07308/*l115c4\collection.e*/);
+r129set_all_with(&ds,C,_value);
+if(fd.assertion_flag){
+fd.assertion_flag=0;
+(ds.p=0x07E07524/*l117c18\collection.e*/);
+ac_ens(((/*RF2*/(C)->_upper/*i4p*/))==(o63_117_26),"stable_upper");
+(ds.p=0x07E07624/*l118c18\collection.e*/);
+ac_ens(((/*RF2*/(C)->_lower/*i4p*/))==(o63_118_26),"stable_lower");
+(ds.p=0x07E07708/*l119c4\collection.e*/);
+ac_ens(r129all_default(&ds,C),"all_default");
+fd.assertion_flag=1;
+}
+if(se_rci(caller,C))se_i129(&ds,C);
+set_dump_stack_top(caller);/*unlink*/
+}/*--*/
+
+/*ARRAY[DVD]*/void r129set_all_with(se_dump_stack*caller,T129* C,T0* a1){
+T2 o63_82_12=0;
+void**locals[2];
+static se_frame_descriptor fd={"set_all_with"" ARRAY[DVD]",1,2,"%R129%v%R125%old value%E2%",1};
+se_dump_stack ds;
+ds.fd=&fd;
+ds.current=(void*)&C;
+ds.p=0x0840DC04/*l220c2\array.e*/;
+ds.caller=caller;
+ds.locals=locals;
+ds.exception_origin=NULL;
+locals[0]=(void**)&a1;
+locals[1]=(void**)&o63_82_12;
+set_dump_stack_top(&ds);/*link*/
+o63_82_12=r129count(&ds,C);
+(ds.p=0x0840DE18/*l222c12\array.e*/);
+r130set_all_with(&ds,(/*RF2*/(C)->_storage/*i4p*/),a1,r2_ix_45(&ds,(/*RF2*/(C)->_upper/*i4p*/),(/*RF2*/(C)->_lower/*i4p*/)));
+if(fd.assertion_flag){
+fd.assertion_flag=0;
+(ds.p=0x07E05208/*l82c4\collection.e*/);
+ac_ens((r129count(&ds,C))==(o63_82_12),"count = old count");
+fd.assertion_flag=1;
+}
+if(se_rci(caller,C))se_i129(&ds,C);
+set_dump_stack_top(caller);/*unlink*/
+}/*--*/
+
+/*ARRAY[DVD]*/void r129ensure_capacity_and_bounds(se_dump_stack*caller,T129* C,T2 a1,T2 a2,T2 a3){
+T0* _value=(void*)0;
+void**locals[4];
+static se_frame_descriptor fd={"ensure_capacity_and_bounds"" ARRAY[DVD]",1,4,"%R129%needed_capacity%E2%low%E2%up%E2%value%R125%",1};
+se_dump_stack ds;
+ds.fd=&fd;
+ds.current=(void*)&C;
+ds.p=0x08403B04/*l59c2\array.e*/;
+ds.caller=caller;
+ds.locals=locals;
+ds.exception_origin=NULL;
+locals[0]=(void**)&a1;
+locals[1]=(void**)&a2;
+locals[2]=(void**)&a3;
+locals[3]=(void**)&_value;
+set_dump_stack_top(&ds);/*link*/
+if(fd.assertion_flag){
+fd.assertion_flag=0;
+(ds.p=0x08403D0E/*l61c7\array.e*/);
+ac_req(((int32_t)(a3))>=(r2_ix_45(&ds,a2,/*IC*/(T2)(INT8_C(1)))),"up >= low - 1");
+(ds.p=0x08403E28/*l62c20\array.e*/);
+ac_req(((int32_t)(a1))>=(r2_ix_43(&ds,r2_ix_45(&ds,a3,a2),/*IC*/(T2)(INT8_C(1)))),"needed_capacity >= up - low + 1");
+fd.assertion_flag=1;
+}
+if(((ds.p=0x08404228/*l66c20\array.e*/),(T6)(((_value)==((void*)((void*)0)))&&((T6)(((int32_t)((/*RF2*/(C)->_capacity/*i4p*/)))>(/*IC*/(T2)(INT8_C(0)))))))){
+(ds.p=0x0840440A/*l68c5\array.e*/);
+r129clear_all(&ds,C);
+}
+(ds.p=0x08404608/*l70c4\array.e*/);
+/*SFN*/(C->_lower/*i4p*/)=a2;
+(ds.p=0x08404708/*l71c4\array.e*/);
+/*SFN*/(C->_upper/*i4p*/)=a3;
+if(((ds.p=0x0840482E/*l72c23\array.e*/),((int32_t)(a1))>(/*IC*/(T2)(INT8_C(0))))){
+if(((ds.p=0x08404922/*l73c17\array.e*/),((int32_t)((/*RF2*/(C)->_capacity/*i4p*/)))<(a1))){
+(ds.p=0x08404A0C/*l74c6\array.e*/);
+/*SFN*/(C->_storage/*i4p*/)=new130(a1);
+(ds.p=0x08404B0C/*l75c6\array.e*/);
+/*SFN*/(C->_capacity/*i4p*/)=a1;
+}
+else if(((ds.p=0x08404C34/*l76c26\array.e*/),(T6)(((_value)!=((void*)((void*)0)))&&((T6)(((int32_t)(a3))>=(a2)))))){
+(ds.p=0x08404E0C/*l78c6\array.e*/);
+r129clear_all(&ds,C);
+}
+}
+if(fd.assertion_flag){
+fd.assertion_flag=0;
+(ds.p=0x08405228/*l82c20\array.e*/);
+ac_ens(((int32_t)(a1))<=((/*RF2*/(C)->_capacity/*i4p*/)),"needed_capacity <= capacity");
+(ds.p=0x08405308/*l83c4\array.e*/);
+ac_ens(((/*RF2*/(C)->_lower/*i4p*/))==(a2),"lower = low");
+(ds.p=0x08405408/*l84c4\array.e*/);
+ac_ens(((/*RF2*/(C)->_upper/*i4p*/))==(a3),"upper = up");
+(ds.p=0x08405508/*l85c4\array.e*/);
+ac_ens(r129all_default(&ds,C),"all_default");
+fd.assertion_flag=1;
+}
+if(se_rci(caller,C))se_i129(&ds,C);
+set_dump_stack_top(caller);/*unlink*/
+}/*--*/
+
+/*ARRAY[DVD]*/void r129add_last(se_dump_stack*caller,T129* C,T0* a1){
+T2 _new_capacity=0;
+T2 o63_143_16=0;
+T2 o63_144_12=0;
+T2 o63_145_16=0;
+void**locals[5];
+static se_frame_descriptor fd={"add_last"" ARRAY[DVD]",1,5,"%R129%element%R125%new_capacity%E2%old value%E2%old value%E2%old value%E2%",1};
+se_dump_stack ds;
+ds.fd=&fd;
+ds.current=(void*)&C;
+ds.p=0x08410904/*l265c2\array.e*/;
+ds.caller=caller;
+ds.locals=locals;
+ds.exception_origin=NULL;
+locals[0]=(void**)&a1;
+locals[1]=(void**)&_new_capacity;
+locals[2]=(void**)&o63_143_16;
+locals[3]=(void**)&o63_144_12;
+locals[4]=(void**)&o63_145_16;
+set_dump_stack_top(&ds);/*link*/
+o63_143_16=r129count(&ds,C);
+o63_144_12=(/*RF2*/(C)->_lower/*i4p*/);
+o63_145_16=(/*RF2*/(C)->_upper/*i4p*/);
+if(((ds.p=0x08410D20/*l269c16\array.e*/),((int32_t)((/*RF2*/(C)->_capacity/*i4p*/)))<(r2_ix_43(&ds,r129count(&ds,C),/*IC*/(T2)(INT8_C(1)))))){
+if(((ds.p=0x08410E10/*l270c8\array.e*/),((/*RF2*/(C)->_capacity/*i4p*/))==(INT8_C(0)))){
+(ds.p=0x08410F0C/*l271c6\array.e*/);
+_new_capacity=/*IC*/(T2)(INT8_C(16));
+(ds.p=0x0841100C/*l272c6\array.e*/);
+/*SFN*/(C->_storage/*i4p*/)=new130(_new_capacity);
+(ds.p=0x0841110C/*l273c6\array.e*/);
+/*SFN*/(C->_capacity/*i4p*/)=_new_capacity;
+}
+else{
+(ds.p=0x0841130C/*l275c6\array.e*/);
+_new_capacity=r2_ix_42(&ds,(/*RF2*/(C)->_capacity/*i4p*/),/*IC*/(T2)(INT8_C(2)));
+(ds.p=0x0841140C/*l276c6\array.e*/);
+/*SFN*/(C->_storage/*i4p*/)=r130realloc(&ds,(/*RF2*/(C)->_storage/*i4p*/),(/*RF2*/(C)->_capacity/*i4p*/),_new_capacity);
+(ds.p=0x0841150C/*l277c6\array.e*/);
+/*SFN*/(C->_capacity/*i4p*/)=_new_capacity;
+}
+}
+(ds.p=0x08411808/*l280c4\array.e*/);
+/*SFN*/(C->_upper/*i4p*/)=r2_ix_43(&ds,(/*RF2*/(C)->_upper/*i4p*/),/*IC*/(T2)(INT8_C(1)));
+(ds.p=0x08411908/*l281c4\array.e*/);
+r129put(&ds,C,a1,(/*RF2*/(C)->_upper/*i4p*/));
+if(fd.assertion_flag){
+fd.assertion_flag=0;
+(ds.p=0x07E08E08/*l142c4\collection.e*/);
+ac_ens((r129last(&ds,C))==((void*)(a1)),"last = element");
+(ds.p=0x07E08F08/*l143c4\collection.e*/);
+ac_ens((r129count(&ds,C))==(r2_ix_43(&ds,/*IC*/(T2)(INT8_C(1)),o63_143_16)),"count = 1 + old count");
+(ds.p=0x07E09008/*l144c4\collection.e*/);
+ac_ens(((/*RF2*/(C)->_lower/*i4p*/))==(o63_144_12),"lower = old lower");
+(ds.p=0x07E09108/*l145c4\collection.e*/);
+ac_ens(((/*RF2*/(C)->_upper/*i4p*/))==(r2_ix_43(&ds,/*IC*/(T2)(INT8_C(1)),o63_145_16)),"upper = 1 + old upper");
+fd.assertion_flag=1;
+}
+if(se_rci(caller,C))se_i129(&ds,C);
+set_dump_stack_top(caller);/*unlink*/
+}/*--*/
+
+/*ARRAY[DVD]*/void r129with_capacity(se_dump_stack*caller,T129* C,T2 a1,T2 a2){
+void**locals[2];
+static se_frame_descriptor fd={"with_capacity"" ARRAY[DVD]",1,2,"%R129%needed_capacity%E2%low%E2%",1};
+se_dump_stack ds;
+ds.fd=&fd;
+ds.current=(void*)&C;
+ds.p=0x08402D04/*l45c2\array.e*/;
+ds.caller=caller;
+ds.locals=locals;
+ds.exception_origin=NULL;
+locals[0]=(void**)&a1;
+locals[1]=(void**)&a2;
+set_dump_stack_top(&ds);/*link*/
+if(fd.assertion_flag){
+fd.assertion_flag=0;
+(ds.p=0x08403128/*l49c20\array.e*/);
+ac_req(((int32_t)(a1))>=(/*IC*/(T2)(INT8_C(0))),"needed_capacity >= 0");
+fd.assertion_flag=1;
+}
+(ds.p=0x08403308/*l51c4\array.e*/);
+r129ensure_capacity_and_bounds(&ds,C,a1,a2,r2_ix_45(&ds,a2,/*IC*/(T2)(INT8_C(1))));
+if(fd.assertion_flag){
+fd.assertion_flag=0;
+(ds.p=0x08403508/*l53c4\array.e*/);
+ac_ens(r129is_empty(&ds,C),"is_empty");
+(ds.p=0x08403628/*l54c20\array.e*/);
+ac_ens(((int32_t)(a1))<=((/*RF2*/(C)->_capacity/*i4p*/)),"needed_capacity <= capacity");
+(ds.p=0x08403708/*l55c4\array.e*/);
+ac_ens(((/*RF2*/(C)->_lower/*i4p*/))==(a2),"lower = low");
+fd.assertion_flag=1;
+}
+if(se_rci(caller,C))se_i129(&ds,C);
+set_dump_stack_top(caller);/*unlink*/
+}/*--*/
+
+/*ARRAY[DVD]*/T2 r129count(se_dump_stack*caller,T129* C){
+T2 R=0;
+void**locals[1];
+static se_frame_descriptor fd={"count"" ARRAY[DVD]",1,1,"%R129%Result%E2%",1};
+se_dump_stack ds;
+ds.fd=&fd;
+ds.current=(void*)&C;
+ds.p=0x08409B04/*l155c2\array.e*/;
+ds.caller=caller;
+ds.locals=locals;
+ds.exception_origin=NULL;
+locals[0]=(void**)&R;
+set_dump_stack_top(&ds);/*link*/
+(ds.p=0x08409D08/*l157c4\array.e*/);
+R=r2_ix_43(&ds,r2_ix_45(&ds,(/*RF2*/(C)->_upper/*i4p*/),(/*RF2*/(C)->_lower/*i4p*/)),/*IC*/(T2)(INT8_C(1)));
+if(fd.assertion_flag){
+fd.assertion_flag=0;
+(ds.p=0x04003620/*l54c16\traversable.e*/);
+ac_ens((R)==(r2_ix_43(&ds,r2_ix_45(&ds,(/*RF2*/(C)->_upper/*i4p*/),(/*RF2*/(C)->_lower/*i4p*/)),/*IC*/(T2)(INT8_C(1)))),"definition");
+fd.assertion_flag=1;
+}
+if(se_rci(caller,C))se_i129(&ds,C);
+set_dump_stack_top(caller);/*unlink*/
+return R;
+}/*--*/
+
+/*ARRAY[DVD]*/T0* r129last(se_dump_stack*caller,T129* C){
+T0* R=(void*)0;
+void**locals[1];
+static se_frame_descriptor fd={"last"" ARRAY[DVD]",1,1,"%R129%Result%R125%",1};
+se_dump_stack ds;
+ds.fd=&fd;
+ds.current=(void*)&C;
+ds.p=0x08802B04/*l43c2\arrayed_collection.e*/;
+ds.caller=caller;
+ds.locals=locals;
+ds.exception_origin=NULL;
+locals[0]=(void**)&R;
+set_dump_stack_top(&ds);/*link*/
+if(fd.assertion_flag){
+fd.assertion_flag=0;
+(ds.p=0x04005C08/*l92c4\traversable.e*/);
+ac_req(r6_px_not(&ds,(T6)(r129is_empty(&ds,C))),"not is_empty");
+fd.assertion_flag=1;
+}
+(ds.p=0x08802D08/*l45c4\arrayed_collection.e*/);
+R=r129item(&ds,C,(/*RF2*/(C)->_upper/*i4p*/));
+if(fd.assertion_flag){
+fd.assertion_flag=0;
+(ds.p=0x04005F20/*l95c16\traversable.e*/);
+ac_ens((R)==((void*)(r129item(&ds,C,(/*RF2*/(C)->_upper/*i4p*/)))),"definition");
+fd.assertion_flag=1;
+}
+if(se_rci(caller,C))se_i129(&ds,C);
+set_dump_stack_top(caller);/*unlink*/
+return R;
+}/*--*/
+
+/*ARRAY[DVD]*/T6 r129valid_index(se_dump_stack*caller,T129* C,T2 a1){
+T6 R=0;
+void**locals[2];
+static se_frame_descriptor fd={"valid_index"" ARRAY[DVD]",1,2,"%R129%i%E2%Result%E6%",1};
+se_dump_stack ds;
+ds.fd=&fd;
+ds.current=(void*)&C;
+ds.p=0x04002504/*l37c2\traversable.e*/;
+ds.caller=caller;
+ds.locals=locals;
+ds.exception_origin=NULL;
+locals[0]=(void**)&a1;
+locals[1]=(void**)&R;
+set_dump_stack_top(&ds);/*link*/
+(ds.p=0x04002A08/*l42c4\traversable.e*/);
+R=((T6)((T6)((((int32_t)((/*RF2*/(C)->_lower/*i4p*/)))<=(a1))&&((T6)(((int32_t)(a1))<=((/*RF2*/(C)->_upper/*i4p*/)))))));
+if(fd.assertion_flag){
+fd.assertion_flag=0;
+(ds.p=0x04002C20/*l44c16\traversable.e*/);
+ac_ens((R)==(r6_ix_and(&ds,(T6)(((int32_t)((/*RF2*/(C)->_lower/*i4p*/)))<=(a1)),(T6)(((int32_t)(a1))<=((/*RF2*/(C)->_upper/*i4p*/))))),"definition");
+fd.assertion_flag=1;
+}
+if(se_rci(caller,C))se_i129(&ds,C);
+set_dump_stack_top(caller);/*unlink*/
+return R;
+}/*--*/
+
+/*ARRAY[DVD]*/T6 r129is_empty(se_dump_stack*caller,T129* C){
+T6 R=0;
+void**locals[1];
+static se_frame_descriptor fd={"is_empty"" ARRAY[DVD]",1,1,"%R129%Result%E6%",1};
+se_dump_stack ds;
+ds.fd=&fd;
+ds.current=(void*)&C;
+ds.p=0x0840A004/*l160c2\array.e*/;
+ds.caller=caller;
+ds.locals=locals;
+ds.exception_origin=NULL;
+locals[0]=(void**)&R;
+set_dump_stack_top(&ds);/*link*/
+(ds.p=0x0840A208/*l162c4\array.e*/);
+R=((T6)(((int32_t)((/*RF2*/(C)->_upper/*i4p*/)))<((/*RF2*/(C)->_lower/*i4p*/))));
+if(fd.assertion_flag){
+fd.assertion_flag=0;
+(ds.p=0x04003F20/*l63c16\traversable.e*/);
+ac_ens((R)==((r129count(&ds,C))==(INT8_C(0))),"definition");
+fd.assertion_flag=1;
+}
+if(se_rci(caller,C))se_i129(&ds,C);
+set_dump_stack_top(caller);/*unlink*/
+return R;
+}/*--*/
+
+/*ARRAY[DVD]*/T0* r129item(se_dump_stack*caller,T129* C,T2 a1){
+T0* R=(void*)0;
+void**locals[2];
+static se_frame_descriptor fd={"item"" ARRAY[DVD]",1,2,"%R129%i%E2%Result%R125%",1};
+se_dump_stack ds;
+ds.fd=&fd;
+ds.current=(void*)&C;
+ds.p=0x0840AD04/*l173c2\array.e*/;
+ds.caller=caller;
+ds.locals=locals;
+ds.exception_origin=NULL;
+locals[0]=(void**)&a1;
+locals[1]=(void**)&R;
+set_dump_stack_top(&ds);/*link*/
+if(fd.assertion_flag){
+fd.assertion_flag=0;
+(ds.p=0x04004808/*l72c4\traversable.e*/);
+ac_req(r129valid_index(&ds,C,a1),"valid_index(i)");
+fd.assertion_flag=1;
+}
+(ds.p=0x0840AF08/*l175c4\array.e*/);
+R=((/*RF2*/(C)->_storage/*i4p*/))[r2_ix_45(&ds,a1,(/*RF2*/(C)->_lower/*i4p*/))];
+if(se_rci(caller,C))se_i129(&ds,C);
+set_dump_stack_top(caller);/*unlink*/
+return R;
+}/*--*/
+
+/*ARRAY[DVD]*/void r129put(se_dump_stack*caller,T129* C,T0* a1,T2 a2){
+T2 o63_54_12=0;
+void**locals[3];
+static se_frame_descriptor fd={"put"" ARRAY[DVD]",1,3,"%R129%element%R125%i%E2%old value%E2%",1};
+se_dump_stack ds;
+ds.fd=&fd;
+ds.current=(void*)&C;
+ds.p=0x0840B204/*l178c2\array.e*/;
+ds.caller=caller;
+ds.locals=locals;
+ds.exception_origin=NULL;
+locals[0]=(void**)&a1;
+locals[1]=(void**)&a2;
+locals[2]=(void**)&o63_54_12;
+set_dump_stack_top(&ds);/*link*/
+o63_54_12=r129count(&ds,C);
+if(fd.assertion_flag){
+fd.assertion_flag=0;
+(ds.p=0x07E03208/*l50c4\collection.e*/);
+ac_req(r129valid_index(&ds,C,a2),"valid_index(i)");
+fd.assertion_flag=1;
+}
+(ds.p=0x0840B418/*l180c12\array.e*/);
+((/*RF2*/(C)->_storage/*i4p*/))[r2_ix_45(&ds,a2,(/*RF2*/(C)->_lower/*i4p*/))]=(a1);
+if(fd.assertion_flag){
+fd.assertion_flag=0;
+(ds.p=0x07E03508/*l53c4\collection.e*/);
+ac_ens((r129item(&ds,C,a2))==((void*)(a1)),"item(i) = element");
+(ds.p=0x07E03608/*l54c4\collection.e*/);
+ac_ens((r129count(&ds,C))==(o63_54_12),"count = old count");
+fd.assertion_flag=1;
+}
+if(se_rci(caller,C))se_i129(&ds,C);
+set_dump_stack_top(caller);/*unlink*/
+}/*--*/
+se_frame_descriptor se_ifd129={"invariant ARRAY[DVD]",1,0,"%R129%",1};
+
+T129*se_i129(se_dump_stack*caller,T129*C){
+se_dump_stack ds;
+ds.fd=&se_ifd129;
+ds.current=((void*)&C);
+ds.p=0x07E29C02/*l668c1\collection.e*/;
+ds.caller=caller;
+ds.exception_origin=NULL;
+ds.locals=NULL;
+se_dst=&ds;/*link*/
+if(ds.fd->assertion_flag){
+ds.fd->assertion_flag=0;
+(ds.p=0x07E29D2C/*l669c22\collection.e*/);
+ac_inv(((int32_t)((/*RF2*/(C)->_lower/*i4p*/)))<=(r2_ix_43(&ds,(/*RF2*/(C)->_upper/*i4p*/),/*IC*/(T2)(INT8_C(1)))),"valid_bounds");
+(ds.p=0x08807516/*l117c11\arrayed_collection.e*/);
+ac_inv(((int32_t)((/*RF2*/(C)->_capacity/*i4p*/)))>=(r2_ix_43(&ds,r2_ix_45(&ds,(/*RF2*/(C)->_upper/*i4p*/),(/*RF2*/(C)->_lower/*i4p*/)),/*IC*/(T2)(INT8_C(1)))),"capacity >= upper - lower + 1");
+(ds.p=0x0880761E/*l118c15\arrayed_collection.e*/);
+ac_inv((T6)((!(((int32_t)((/*RF2*/(C)->_capacity/*i4p*/)))>(/*IC*/(T2)(INT8_C(0)))))||((T6)(r130is_not_null(&ds,(/*RF2*/(C)->_storage/*i4p*/))))),"capacity > 0 implies storage.is_not_null");
+ds.fd->assertion_flag=1;
+}
+se_dst=caller;/*unlink*/
+return C;
+}/*--*/
 T0*oBC13std_input=(void*)0;
 int fBC13std_input=0;
 
@@ -698,6 +1482,69 @@ _i=r2_ix_43(&ds,_i,/*IC*/(T2)(INT8_C(1)));
 }
 if(se_rci(caller,C))se_i40(&ds,C);
 set_dump_stack_top(caller);/*unlink*/
+}/*--*/
+
+/*STD_INPUT_OUTPUT*/void r40put_integer(se_dump_stack*caller,T40* C,T11 a1){
+void**locals[1];
+static se_frame_descriptor fd={"put_integer"" STD_INPUT_OUTPUT",1,1,"%R40%i%E11%",1};
+se_dump_stack ds;
+ds.fd=&fd;
+ds.current=(void*)&C;
+ds.p=0x03C04D12/*l77c9\output_stream_tools.e*/;
+ds.caller=caller;
+ds.locals=locals;
+ds.exception_origin=NULL;
+locals[0]=(void**)&a1;
+set_dump_stack_top(&ds);/*link*/
+if(fd.assertion_flag){
+fd.assertion_flag=0;
+(ds.p=0x03C05008/*l80c4\output_stream_tools.e*/);
+ac_req(r40is_connected(&ds,C),"is_connected");
+(ds.p=0x03C05108/*l81c4\output_stream_tools.e*/);
+ac_req(r6_px_not(&ds,(T6)(r40output_is_filtered(&ds,C))),"not is_filtered");
+fd.assertion_flag=1;
+}
+(ds.p=0x03C0531E/*l83c15\output_stream_tools.e*/);
+r7clear_count(&ds,se_i7(&ds,((T7*)ci(7,r40tmp_string(&ds,C),0x03C05308/*l83c4\output_stream_tools.e*/))));
+(ds.p=0x03C0540C/*l84c6\output_stream_tools.e*/);
+r11append_in(&ds,a1,r40tmp_string(&ds,C));
+(ds.p=0x03C05508/*l85c4\output_stream_tools.e*/);
+r40put_string(&ds,C,r40tmp_string(&ds,C));
+if(se_rci(caller,C))se_i40(&ds,C);
+set_dump_stack_top(caller);/*unlink*/
+}/*--*/
+T0*oBC30tmp_string=(void*)0;
+int fBC30tmp_string=0;
+
+/*STD_INPUT_OUTPUT*/T0* r40tmp_string(se_dump_stack*caller,T40* C){
+/*[INTERNAL_C_LOCAL list*/
+T0* tmp0;
+/*INTERNAL_C_LOCAL list]*/
+void**locals[1];
+static se_frame_descriptor fd={"tmp_string"" STD_INPUT_OUTPUT",1,1,"%R40%Result%R7%",1};
+se_dump_stack ds;
+ds.fd=&fd;
+ds.current=(void*)&C;
+ds.p=0x03C0E404/*l228c2\output_stream_tools.e*/;
+ds.caller=caller;
+ds.locals=locals;
+ds.exception_origin=NULL;
+locals[0]=(void**)&oBC30tmp_string;
+set_dump_stack_top(&ds);/*link*/
+if(fBC30tmp_string==0){fBC30tmp_string=1;{
+(ds.p=0x03C0E608/*l230c4\output_stream_tools.e*/);
+tmp0=((T0*)(new7()));
+r7make(&ds,((T7*)tmp0),/*IC*/(T2)(INT16_C(512)));
+oBC30tmp_string=tmp0;
+se_i7(&ds,((T7*)(oBC30tmp_string)));}
+fBC30tmp_string=2;}
+else{
+(ds.p=0x03C0E404/*l228c2\output_stream_tools.e*/);
+ac_req(fBC30tmp_string==2, "Recursive once function.");
+}
+if(se_rci(caller,C))se_i40(&ds,C);
+set_dump_stack_top(caller);/*unlink*/
+return oBC30tmp_string;
 }/*--*/
 
 /*STD_INPUT_OUTPUT*/T6 r40can_put_character(se_dump_stack*caller,T40* C,T3 a1){
@@ -986,6 +1833,43 @@ if(fd.assertion_flag){
 fd.assertion_flag=0;
 (ds.p=0x06802A16/*l42c11\integer_general.e*/);
 ac_ens((((int8_t)(R))+(a1))==(C),"Result #+ other = Current");
+fd.assertion_flag=1;
+}
+set_dump_stack_top(caller);/*unlink*/
+return R;
+}/*--*/
+
+/*INTEGER_32*/T2 r2abs(se_dump_stack*caller,T2 C){
+T2 R=0;
+void**locals[1];
+static se_frame_descriptor fd={"abs"" INTEGER_32",1,1,"%E2%Result%E2%",1};
+se_dump_stack ds;
+ds.fd=&fd;
+ds.current=(void*)&C;
+ds.p=0x0680AB04/*l171c2\integer_general.e*/;
+ds.caller=caller;
+ds.locals=locals;
+ds.exception_origin=NULL;
+locals[0]=(void**)&R;
+set_dump_stack_top(&ds);/*link*/
+if(fd.assertion_flag){
+fd.assertion_flag=0;
+(ds.p=0x0680AE46/*l174c35\integer_general.e*/);
+ac_req((T6)((!(((int32_t)(C))<(/*IC*/(T2)(INT8_C(0)))))||((T6)(((int32_t)(/*IC*/(T2)(INT8_C(0))))<(-(C))))),"not_minimum_value");
+fd.assertion_flag=1;
+}
+if(((ds.p=0x0680B01E/*l176c15\integer_general.e*/),((int32_t)(C))<(/*IC*/(T2)(INT8_C(0))))){
+(ds.p=0x0680B10A/*l177c5\integer_general.e*/);
+R=r2_px_45(&ds,C);
+}
+else{
+(ds.p=0x0680B30A/*l179c5\integer_general.e*/);
+R=C;
+}
+if(fd.assertion_flag){
+fd.assertion_flag=0;
+(ds.p=0x0680B616/*l182c11\integer_general.e*/);
+ac_ens(((int32_t)(R))>=(/*IC*/(T2)(INT8_C(0))),"Result >= 0");
 fd.assertion_flag=1;
 }
 set_dump_stack_top(caller);/*unlink*/
@@ -1321,43 +2205,6 @@ set_dump_stack_top(caller);/*unlink*/
 return R;
 }/*--*/
 
-/*INTEGER_32*/T2 r2abs(se_dump_stack*caller,T2 C){
-T2 R=0;
-void**locals[1];
-static se_frame_descriptor fd={"abs"" INTEGER_32",1,1,"%E2%Result%E2%",1};
-se_dump_stack ds;
-ds.fd=&fd;
-ds.current=(void*)&C;
-ds.p=0x0680AB04/*l171c2\integer_general.e*/;
-ds.caller=caller;
-ds.locals=locals;
-ds.exception_origin=NULL;
-locals[0]=(void**)&R;
-set_dump_stack_top(&ds);/*link*/
-if(fd.assertion_flag){
-fd.assertion_flag=0;
-(ds.p=0x0680AE46/*l174c35\integer_general.e*/);
-ac_req((T6)((!(((int32_t)(C))<(/*IC*/(T2)(INT8_C(0)))))||((T6)(((int32_t)(/*IC*/(T2)(INT8_C(0))))<(-(C))))),"not_minimum_value");
-fd.assertion_flag=1;
-}
-if(((ds.p=0x0680B01E/*l176c15\integer_general.e*/),((int32_t)(C))<(/*IC*/(T2)(INT8_C(0))))){
-(ds.p=0x0680B10A/*l177c5\integer_general.e*/);
-R=r2_px_45(&ds,C);
-}
-else{
-(ds.p=0x0680B30A/*l179c5\integer_general.e*/);
-R=C;
-}
-if(fd.assertion_flag){
-fd.assertion_flag=0;
-(ds.p=0x0680B616/*l182c11\integer_general.e*/);
-ac_ens(((int32_t)(R))>=(/*IC*/(T2)(INT8_C(0))),"Result >= 0");
-fd.assertion_flag=1;
-}
-set_dump_stack_top(caller);/*unlink*/
-return R;
-}/*--*/
-
 /*INTEGER_32*/T2 r2_ix_43(se_dump_stack*caller,T2 C,T2 a1){
 T2 R=0;
 void**locals[2];
@@ -1436,6 +2283,7 @@ T0* _text_file_read=(void*)0;
 T0* _path=(void*)0;
 T2 _i=0;
 T0* _a_dvd=(void*)0;
+T0* _a_livre=(void*)0;
 T0* _tmp_string=(void*)0;
 T0* _tmp_string2=(void*)0;
 T0* _string_data=(void*)0;
@@ -1449,8 +2297,8 @@ T2 _annee=0;
 T2 _index=0;
 T2 _index2=0;
 T0* _contenu_fichier=(void*)0;
-void**locals[17];
-static se_frame_descriptor fd={"initialisation"" APPLICATION",1,17,"%R25%text_file_read%R57%path%R7%i%E2%a_dvd%R125%tmp_string%R7%tmp_string2%R7%string_data%R7%titre%R7%type%R7%auteurs%R122%acteurs%R122%realisateurs%R122%nombre%E2%annee%E2%index%E2%index2%E2%contenu_fichier%R122%",1};
+void**locals[18];
+static se_frame_descriptor fd={"initialisation"" APPLICATION",1,18,"%R25%text_file_read%R57%path%R7%i%E2%a_dvd%R125%a_livre%R127%tmp_string%R7%tmp_string2%R7%string_data%R7%titre%R7%type%R7%auteurs%R122%acteurs%R122%realisateurs%R122%nombre%E2%annee%E2%index%E2%index2%E2%contenu_fichier%R122%",1};
 se_dump_stack ds;
 ds.fd=&fd;
 ds.current=(void*)&C;
@@ -1462,182 +2310,191 @@ locals[0]=(void**)&_text_file_read;
 locals[1]=(void**)&_path;
 locals[2]=(void**)&_i;
 locals[3]=(void**)&_a_dvd;
-locals[4]=(void**)&_tmp_string;
-locals[5]=(void**)&_tmp_string2;
-locals[6]=(void**)&_string_data;
-locals[7]=(void**)&_titre;
-locals[8]=(void**)&_type;
-locals[9]=(void**)&_auteurs;
-locals[10]=(void**)&_acteurs;
-locals[11]=(void**)&_realisateurs;
-locals[12]=(void**)&_nombre;
-locals[13]=(void**)&_annee;
-locals[14]=(void**)&_index;
-locals[15]=(void**)&_index2;
-locals[16]=(void**)&_contenu_fichier;
+locals[4]=(void**)&_a_livre;
+locals[5]=(void**)&_tmp_string;
+locals[6]=(void**)&_tmp_string2;
+locals[7]=(void**)&_string_data;
+locals[8]=(void**)&_titre;
+locals[9]=(void**)&_type;
+locals[10]=(void**)&_auteurs;
+locals[11]=(void**)&_acteurs;
+locals[12]=(void**)&_realisateurs;
+locals[13]=(void**)&_nombre;
+locals[14]=(void**)&_annee;
+locals[15]=(void**)&_index;
+locals[16]=(void**)&_index2;
+locals[17]=(void**)&_contenu_fichier;
 set_dump_stack_top(&ds);/*link*/
-(ds.p=0x03202E0E/*l46c7\application.e*/);
-r40put_string(&ds,se_i40(&ds,((T40*)ci(40,r25io(&ds,C),0x03202E08/*l46c4\application.e*/))),se_ms(23,s25_36514426));
-(ds.p=0x03202F08/*l47c4\application.e*/);
-_path=se_ms(10,s25_262181241);
+(ds.p=0x03202F0E/*l47c7\application.e*/);
+r40put_string(&ds,se_i40(&ds,((T40*)ci(40,r25io(&ds,C),0x03202F08/*l47c4\application.e*/))),se_ms(23,s25_36514426));
 (ds.p=0x03203008/*l48c4\application.e*/);
+_path=se_ms(10,s25_262181241);
+(ds.p=0x03203108/*l49c4\application.e*/);
 tmp0=((T0*)(new57()));
 r57connect_to(&ds,((T57*)tmp0),_path);
 _text_file_read=tmp0;
-(ds.p=0x03203108/*l49c4\application.e*/);
+(ds.p=0x03203208/*l50c4\application.e*/);
 tmp0=((T0*)(new122()));
 r122with_capacity(&ds,((T122*)tmp0),/*IC*/(T2)(INT8_C(56)),/*IC*/(T2)(INT8_C(1)));
 _contenu_fichier=tmp0;
-se_i122(&ds,((T122*)(_contenu_fichier)));(ds.p=0x03203208/*l50c4\application.e*/);
+se_i122(&ds,((T122*)(_contenu_fichier)));(ds.p=0x03203308/*l51c4\application.e*/);
 tmp0=((T0*)(new122()));
 r122with_capacity(&ds,((T122*)tmp0),/*IC*/(T2)(INT8_C(20)),/*IC*/(T2)(INT8_C(1)));
 _auteurs=tmp0;
-se_i122(&ds,((T122*)(_auteurs)));(ds.p=0x03203308/*l51c4\application.e*/);
+se_i122(&ds,((T122*)(_auteurs)));(ds.p=0x03203408/*l52c4\application.e*/);
 tmp0=((T0*)(new122()));
 r122with_capacity(&ds,((T122*)tmp0),/*IC*/(T2)(INT8_C(20)),/*IC*/(T2)(INT8_C(1)));
 _acteurs=tmp0;
-se_i122(&ds,((T122*)(_acteurs)));(ds.p=0x03203408/*l52c4\application.e*/);
+se_i122(&ds,((T122*)(_acteurs)));(ds.p=0x03203508/*l53c4\application.e*/);
 tmp0=((T0*)(new129()));
 r129with_capacity(&ds,((T129*)tmp0),/*IC*/(T2)(INT8_C(20)),/*IC*/(T2)(INT8_C(1)));
 /*SFN*/(C->_liste_dvd/*i3p*/)=tmp0;
-se_i129(&ds,((T129*)(/*SFN*/(C->_liste_dvd/*i3p*/))));(ds.p=0x03203508/*l53c4\application.e*/);
+se_i129(&ds,((T129*)(/*SFN*/(C->_liste_dvd/*i3p*/))));(ds.p=0x03203608/*l54c4\application.e*/);
 tmp0=((T0*)(new132()));
 r132with_capacity(&ds,((T132*)tmp0),/*IC*/(T2)(INT8_C(20)),/*IC*/(T2)(INT8_C(1)));
 /*SFN*/(C->_liste_livres/*i3p*/)=tmp0;
-se_i132(&ds,((T132*)(/*SFN*/(C->_liste_livres/*i3p*/))));(ds.p=0x03203608/*l54c4\application.e*/);
+se_i132(&ds,((T132*)(/*SFN*/(C->_liste_livres/*i3p*/))));(ds.p=0x03203708/*l55c4\application.e*/);
 tmp0=((T0*)(new131()));
 r131with_capacity(&ds,((T131*)tmp0),/*IC*/(T2)(INT8_C(20)),/*IC*/(T2)(INT8_C(1)));
 /*SFN*/(C->_liste_utilisateurs/*i3p*/)=tmp0;
-se_i131(&ds,((T131*)(/*SFN*/(C->_liste_utilisateurs/*i3p*/))));(ds.p=0x03203708/*l55c4\application.e*/);
+se_i131(&ds,((T131*)(/*SFN*/(C->_liste_utilisateurs/*i3p*/))));(ds.p=0x03203808/*l56c4\application.e*/);
 tmp0=((T0*)(new122()));
 r122with_capacity(&ds,((T122*)tmp0),/*IC*/(T2)(INT8_C(20)),/*IC*/(T2)(INT8_C(1)));
 _realisateurs=tmp0;
-se_i122(&ds,((T122*)(_realisateurs)));if(((ds.p=0x0320382C/*l56c22\application.e*/),r57is_connected(&ds,((T57*)ci(57,_text_file_read,0x0320380E/*l56c7\application.e*/))))){
-(ds.p=0x03203A2A/*l58c21\application.e*/);
-r57read_line(&ds,((T57*)ci(57,_text_file_read,0x03203A0C/*l58c6\application.e*/)));
-while (!(((ds.p=0x03203C2A/*l60c21\application.e*/),(/*RF2*/(((T57*)ci(57,_text_file_read,0x03203C0C/*l60c6\application.e*/)))->_end_of_input/*i10p*/))))
+se_i122(&ds,((T122*)(_realisateurs)));if(((ds.p=0x0320392C/*l57c22\application.e*/),r57is_connected(&ds,((T57*)ci(57,_text_file_read,0x0320390E/*l57c7\application.e*/))))){
+(ds.p=0x03203B2A/*l59c21\application.e*/);
+r57read_line(&ds,((T57*)ci(57,_text_file_read,0x03203B0C/*l59c6\application.e*/)));
+while (!(((ds.p=0x03203D2A/*l61c21\application.e*/),(/*RF2*/(((T57*)ci(57,_text_file_read,0x03203D0C/*l61c6\application.e*/)))->_end_of_input/*i10p*/))))
 {
-(ds.p=0x03203E0C/*l62c6\application.e*/);
+(ds.p=0x03203F0C/*l63c6\application.e*/);
 _tmp_string=se_ms(0,s25_0);
-(ds.p=0x03203F22/*l63c17\application.e*/);
-r7copy(&ds,se_i7(&ds,((T7*)ci(7,_tmp_string,0x03203F0C/*l63c6\application.e*/))),r57last_string(&ds,((T57*)ci(57,_text_file_read,0x03203F2E/*l63c23\application.e*/))));
-(ds.p=0x0320402C/*l64c22\application.e*/);
-r122add_last(&ds,se_i122(&ds,((T122*)ci(122,_contenu_fichier,0x0320400C/*l64c6\application.e*/))),_tmp_string);
-(ds.p=0x0320412A/*l65c21\application.e*/);
-r57read_line(&ds,((T57*)ci(57,_text_file_read,0x0320410C/*l65c6\application.e*/)));
+(ds.p=0x03204022/*l64c17\application.e*/);
+r7copy(&ds,se_i7(&ds,((T7*)ci(7,_tmp_string,0x0320400C/*l64c6\application.e*/))),r57last_string(&ds,((T57*)ci(57,_text_file_read,0x0320402E/*l64c23\application.e*/))));
+(ds.p=0x0320412C/*l65c22\application.e*/);
+r122add_last(&ds,se_i122(&ds,((T122*)ci(122,_contenu_fichier,0x0320410C/*l65c6\application.e*/))),_tmp_string);
+(ds.p=0x0320422A/*l66c21\application.e*/);
+r57read_line(&ds,((T57*)ci(57,_text_file_read,0x0320420C/*l66c6\application.e*/)));
 }
-(ds.p=0x03204328/*l67c20\application.e*/);
-r57disconnect(&ds,((T57*)ci(57,_text_file_read,0x0320430A/*l67c5\application.e*/)));
+(ds.p=0x03204428/*l68c20\application.e*/);
+r57disconnect(&ds,((T57*)ci(57,_text_file_read,0x0320440A/*l68c5\application.e*/)));
 }
 else{
-(ds.p=0x03204510/*l69c8\application.e*/);
-r40put_string(&ds,se_i40(&ds,((T40*)ci(40,r25io(&ds,C),0x0320450A/*l69c5\application.e*/))),r7_ix_43(&ds,se_i7(&ds,((T7*)ci(7,r7_ix_43(&ds,((T7*)se_ms(18,s25_1980932565)),_path),0x03204552/*l69c41\application.e*/))),se_ms(36,s25_958812316)));
+(ds.p=0x03204610/*l70c8\application.e*/);
+r40put_string(&ds,se_i40(&ds,((T40*)ci(40,r25io(&ds,C),0x0320460A/*l70c5\application.e*/))),r7_ix_43(&ds,se_i7(&ds,((T7*)ci(7,r7_ix_43(&ds,((T7*)se_ms(18,s25_1980932565)),_path),0x03204652/*l70c41\application.e*/))),se_ms(36,s25_958812316)));
 }
-(ds.p=0x0320490A/*l73c5\application.e*/);
-_i=(/*RF2*/(se_i122(&ds,((T122*)ci(122,_contenu_fichier,0x03204914/*l73c10\application.e*/))))->_lower/*i4p*/);
-while (!(((ds.p=0x03204B0E/*l75c7\application.e*/),((int32_t)(_i))>((/*RF2*/(se_i122(&ds,((T122*)ci(122,_contenu_fichier,0x03204B12/*l75c9\application.e*/))))->_upper/*i4p*/)))))
+(ds.p=0x03204A0A/*l74c5\application.e*/);
+_i=(/*RF2*/(se_i122(&ds,((T122*)ci(122,_contenu_fichier,0x03204A14/*l74c10\application.e*/))))->_lower/*i4p*/);
+while (!(((ds.p=0x03204C0E/*l76c7\application.e*/),((int32_t)(_i))>((/*RF2*/(se_i122(&ds,((T122*)ci(122,_contenu_fichier,0x03204C12/*l76c9\application.e*/))))->_upper/*i4p*/)))))
 {
-if(((ds.p=0x03204D30/*l77c24\application.e*/),(r122item(&ds,se_i122(&ds,((T122*)ci(122,_contenu_fichier,0x03204D10/*l77c8\application.e*/))),_i))!=((void*)((void*)0)))){
-(ds.p=0x03204E0C/*l78c6\application.e*/);
-_tmp_string=r122item(&ds,se_i122(&ds,((T122*)ci(122,_contenu_fichier,0x03204E28/*l78c20\application.e*/))),_i);
+if(((ds.p=0x03204E30/*l78c24\application.e*/),(r122item(&ds,se_i122(&ds,((T122*)ci(122,_contenu_fichier,0x03204E10/*l78c8\application.e*/))),_i))!=((void*)((void*)0)))){
 (ds.p=0x03204F0C/*l79c6\application.e*/);
+_tmp_string=r122item(&ds,se_i122(&ds,((T122*)ci(122,_contenu_fichier,0x03204F28/*l79c20\application.e*/))),_i);
+(ds.p=0x0320500C/*l80c6\application.e*/);
 _index=/*IC*/(T2)(INT8_C(1));
-if(((ds.p=0x03205028/*l80c20\application.e*/),r7has_substring(&ds,se_i7(&ds,((T7*)ci(7,_tmp_string,0x03205012/*l80c9\application.e*/))),se_ms(8,s25_8031877)))){
-while (!(((ds.p=0x0320521A/*l82c13\application.e*/),(_index)==(INT8_C(0)))))
+if(((ds.p=0x03205128/*l81c20\application.e*/),r7has_substring(&ds,se_i7(&ds,((T7*)ci(7,_tmp_string,0x03205112/*l81c9\application.e*/))),se_ms(8,s25_8031877)))){
+while (!(((ds.p=0x0320531A/*l83c13\application.e*/),(_index)==(INT8_C(0)))))
 {
-(ds.p=0x03205410/*l84c8\application.e*/);
-_index=r7index_of(&ds,se_i7(&ds,((T7*)ci(7,_tmp_string,0x03205422/*l84c17\application.e*/))),((T3)'\073'),_index);
 (ds.p=0x03205510/*l85c8\application.e*/);
-_index2=r7index_of(&ds,se_i7(&ds,((T7*)ci(7,_tmp_string,0x03205524/*l85c18\application.e*/))),((T3)'\073'),r2_ix_43(&ds,_index,/*IC*/(T2)(INT8_C(1))));
-if(((ds.p=0x03205716/*l87c11\application.e*/),(_index)!=(INT8_C(0)))){
-if(((ds.p=0x03205818/*l88c12\application.e*/),(_index2)==(INT8_C(0)))){
-(ds.p=0x03205914/*l89c10\application.e*/);
-_index2=r2_ix_43(&ds,r7count(&ds,se_i7(&ds,((T7*)ci(7,_tmp_string,0x03205928/*l89c20\application.e*/)))),/*IC*/(T2)(INT8_C(2)));
+_index=r7index_of(&ds,se_i7(&ds,((T7*)ci(7,_tmp_string,0x03205522/*l85c17\application.e*/))),((T3)'\073'),_index);
+(ds.p=0x03205610/*l86c8\application.e*/);
+_index2=r7index_of(&ds,se_i7(&ds,((T7*)ci(7,_tmp_string,0x03205624/*l86c18\application.e*/))),((T3)'\073'),r2_ix_43(&ds,_index,/*IC*/(T2)(INT8_C(1))));
+if(((ds.p=0x03205816/*l88c11\application.e*/),(_index)!=(INT8_C(0)))){
+if(((ds.p=0x03205918/*l89c12\application.e*/),(_index2)==(INT8_C(0)))){
+(ds.p=0x03205A14/*l90c10\application.e*/);
+_index2=r2_ix_43(&ds,r7count(&ds,se_i7(&ds,((T7*)ci(7,_tmp_string,0x03205A28/*l90c20\application.e*/)))),/*IC*/(T2)(INT8_C(2)));
 }
-(ds.p=0x03205C12/*l92c9\application.e*/);
-_tmp_string2=r7substring(&ds,se_i7(&ds,((T7*)ci(7,_tmp_string,0x03205C30/*l92c24\application.e*/))),r2_ix_43(&ds,_index,/*IC*/(T2)(INT8_C(2))),r2_ix_45(&ds,_index2,/*IC*/(T2)(INT8_C(2))));
-(ds.p=0x03205E12/*l94c9\application.e*/);
-_string_data=r7substring(&ds,se_i7(&ds,((T7*)ci(7,_tmp_string2,0x03205E30/*l94c24\application.e*/))),r2_ix_43(&ds,r7index_of(&ds,se_i7(&ds,((T7*)ci(7,_tmp_string2,0x03205E5E/*l94c47\application.e*/))),((T3)'\074'),/*IC*/(T2)(INT8_C(1))),/*IC*/(T2)(INT8_C(1))),r2_ix_45(&ds,r7index_of(&ds,se_i7(&ds,((T7*)ci(7,_tmp_string2,0x03205EA0/*l94c80\application.e*/))),((T3)'\076'),/*IC*/(T2)(INT8_C(1))),/*IC*/(T2)(INT8_C(1))));
-if(((ds.p=0x03205F30/*l95c24\application.e*/),r7has_substring(&ds,se_i7(&ds,((T7*)ci(7,_tmp_string2,0x03205F18/*l95c12\application.e*/))),se_ms(5,s25_69196)))){
-(ds.p=0x03206014/*l96c10\application.e*/);
+(ds.p=0x03205D12/*l93c9\application.e*/);
+_tmp_string2=r7substring(&ds,se_i7(&ds,((T7*)ci(7,_tmp_string,0x03205D30/*l93c24\application.e*/))),r2_ix_43(&ds,_index,/*IC*/(T2)(INT8_C(2))),r2_ix_45(&ds,_index2,/*IC*/(T2)(INT8_C(2))));
+(ds.p=0x03205F12/*l95c9\application.e*/);
+_string_data=r7substring(&ds,se_i7(&ds,((T7*)ci(7,_tmp_string2,0x03205F30/*l95c24\application.e*/))),r2_ix_43(&ds,r7index_of(&ds,se_i7(&ds,((T7*)ci(7,_tmp_string2,0x03205F5E/*l95c47\application.e*/))),((T3)'\074'),/*IC*/(T2)(INT8_C(1))),/*IC*/(T2)(INT8_C(1))),r2_ix_45(&ds,r7index_of(&ds,se_i7(&ds,((T7*)ci(7,_tmp_string2,0x03205FA0/*l95c80\application.e*/))),((T3)'\076'),/*IC*/(T2)(INT8_C(1))),/*IC*/(T2)(INT8_C(1))));
+if(((ds.p=0x03206030/*l96c24\application.e*/),r7has_substring(&ds,se_i7(&ds,((T7*)ci(7,_tmp_string2,0x03206018/*l96c12\application.e*/))),se_ms(5,s25_69196)))){
+(ds.p=0x03206114/*l97c10\application.e*/);
 _titre=_string_data;
 }
-if(((ds.p=0x03206230/*l98c24\application.e*/),r7has_substring(&ds,se_i7(&ds,((T7*)ci(7,_tmp_string2,0x03206218/*l98c12\application.e*/))),se_ms(6,s25_293974)))){
-(ds.p=0x03206324/*l99c18\application.e*/);
-r122add_last(&ds,se_i122(&ds,((T122*)ci(122,_auteurs,0x03206314/*l99c10\application.e*/))),_string_data);
+if(((ds.p=0x03206330/*l99c24\application.e*/),r7has_substring(&ds,se_i7(&ds,((T7*)ci(7,_tmp_string2,0x03206318/*l99c12\application.e*/))),se_ms(6,s25_293974)))){
+(ds.p=0x03206424/*l100c18\application.e*/);
+r122add_last(&ds,se_i122(&ds,((T122*)ci(122,_auteurs,0x03206414/*l100c10\application.e*/))),_string_data);
 }
-if(((ds.p=0x03206530/*l101c24\application.e*/),r7has_substring(&ds,se_i7(&ds,((T7*)ci(7,_tmp_string2,0x03206518/*l101c12\application.e*/))),se_ms(6,s25_329871)))){
-(ds.p=0x03206614/*l102c10\application.e*/);
-_nombre=r7to_integer(&ds,se_i7(&ds,((T7*)ci(7,_string_data,0x03206628/*l102c20\application.e*/))));
+if(((ds.p=0x03206630/*l102c24\application.e*/),r7has_substring(&ds,se_i7(&ds,((T7*)ci(7,_tmp_string2,0x03206618/*l102c12\application.e*/))),se_ms(6,s25_329871)))){
+(ds.p=0x03206714/*l103c10\application.e*/);
+_nombre=r7to_integer(&ds,se_i7(&ds,((T7*)ci(7,_string_data,0x03206728/*l103c20\application.e*/))));
 }
-(ds.p=0x03206818/*l104c12\application.e*/);
-r40put_string(&ds,se_i40(&ds,((T40*)ci(40,r25io(&ds,C),0x03206812/*l104c9\application.e*/))),r7_ix_43(&ds,se_i7(&ds,((T7*)ci(7,_string_data,0x03206830/*l104c24\application.e*/))),se_ms(1,s25_10)));
-(ds.p=0x03206912/*l105c9\application.e*/);
+(ds.p=0x03206918/*l105c12\application.e*/);
+r40put_string(&ds,se_i40(&ds,((T40*)ci(40,r25io(&ds,C),0x03206912/*l105c9\application.e*/))),r7_ix_43(&ds,se_i7(&ds,((T7*)ci(7,_string_data,0x03206930/*l105c24\application.e*/))),se_ms(1,s25_10)));
+(ds.p=0x03206A12/*l106c9\application.e*/);
 _index=r2_ix_43(&ds,_index,/*IC*/(T2)(INT8_C(1)));
 }
+(ds.p=0x03206C10/*l108c8\application.e*/);
+tmp0=((T0*)(new127()));
+r127livre(&ds,((T127*)tmp0),_auteurs,se_ms(0,s25_0),se_ms(0,s25_0),_titre,/*IC*/(T2)(INT8_C(0)),_nombre);
+_a_livre=tmp0;
+se_i127(&ds,((T127*)(_a_livre)));(ds.p=0x03206D2A/*l109c21\application.e*/);
+r132add_last(&ds,se_i132(&ds,((T132*)ci(132,(/*RF2*/(C)->_liste_livres/*i3p*/),0x03206D10/*l109c8\application.e*/))),_a_livre);
 }
 }
-if(((ds.p=0x03206D28/*l109c20\application.e*/),r7has_substring(&ds,se_i7(&ds,((T7*)ci(7,_tmp_string,0x03206D12/*l109c9\application.e*/))),se_ms(6,s25_275877)))){
-while (!(((ds.p=0x03206F1A/*l111c13\application.e*/),(_index)==(INT8_C(0)))))
+if(((ds.p=0x03207028/*l112c20\application.e*/),r7has_substring(&ds,se_i7(&ds,((T7*)ci(7,_tmp_string,0x03207012/*l112c9\application.e*/))),se_ms(6,s25_275877)))){
+while (!(((ds.p=0x0320721A/*l114c13\application.e*/),(_index)==(INT8_C(0)))))
 {
-(ds.p=0x03207110/*l113c8\application.e*/);
-_index=r7index_of(&ds,se_i7(&ds,((T7*)ci(7,_tmp_string,0x03207122/*l113c17\application.e*/))),((T3)'\073'),_index);
-(ds.p=0x03207210/*l114c8\application.e*/);
-_index2=r7index_of(&ds,se_i7(&ds,((T7*)ci(7,_tmp_string,0x03207224/*l114c18\application.e*/))),((T3)'\073'),r2_ix_43(&ds,_index,/*IC*/(T2)(INT8_C(1))));
-if(((ds.p=0x03207416/*l116c11\application.e*/),(_index)!=(INT8_C(0)))){
-if(((ds.p=0x03207518/*l117c12\application.e*/),(_index2)==(INT8_C(0)))){
-(ds.p=0x03207614/*l118c10\application.e*/);
-_index2=r2_ix_43(&ds,r7count(&ds,se_i7(&ds,((T7*)ci(7,_tmp_string,0x03207628/*l118c20\application.e*/)))),/*IC*/(T2)(INT8_C(2)));
+(ds.p=0x03207410/*l116c8\application.e*/);
+_index=r7index_of(&ds,se_i7(&ds,((T7*)ci(7,_tmp_string,0x03207422/*l116c17\application.e*/))),((T3)'\073'),_index);
+(ds.p=0x03207510/*l117c8\application.e*/);
+_index2=r7index_of(&ds,se_i7(&ds,((T7*)ci(7,_tmp_string,0x03207524/*l117c18\application.e*/))),((T3)'\073'),r2_ix_43(&ds,_index,/*IC*/(T2)(INT8_C(1))));
+if(((ds.p=0x03207716/*l119c11\application.e*/),(_index)!=(INT8_C(0)))){
+if(((ds.p=0x03207818/*l120c12\application.e*/),(_index2)==(INT8_C(0)))){
+(ds.p=0x03207914/*l121c10\application.e*/);
+_index2=r2_ix_43(&ds,r7count(&ds,se_i7(&ds,((T7*)ci(7,_tmp_string,0x03207928/*l121c20\application.e*/)))),/*IC*/(T2)(INT8_C(2)));
 }
-(ds.p=0x03207912/*l121c9\application.e*/);
-_tmp_string2=r7substring(&ds,se_i7(&ds,((T7*)ci(7,_tmp_string,0x03207930/*l121c24\application.e*/))),r2_ix_43(&ds,_index,/*IC*/(T2)(INT8_C(2))),r2_ix_45(&ds,_index2,/*IC*/(T2)(INT8_C(2))));
-(ds.p=0x03207B12/*l123c9\application.e*/);
-_string_data=r7substring(&ds,se_i7(&ds,((T7*)ci(7,_tmp_string2,0x03207B30/*l123c24\application.e*/))),r2_ix_43(&ds,r7index_of(&ds,se_i7(&ds,((T7*)ci(7,_tmp_string2,0x03207B5E/*l123c47\application.e*/))),((T3)'\074'),/*IC*/(T2)(INT8_C(1))),/*IC*/(T2)(INT8_C(1))),r2_ix_45(&ds,r7index_of(&ds,se_i7(&ds,((T7*)ci(7,_tmp_string2,0x03207BA0/*l123c80\application.e*/))),((T3)'\076'),/*IC*/(T2)(INT8_C(1))),/*IC*/(T2)(INT8_C(1))));
-if(((ds.p=0x03207C30/*l124c24\application.e*/),r7has_substring(&ds,se_i7(&ds,((T7*)ci(7,_tmp_string2,0x03207C18/*l124c12\application.e*/))),se_ms(5,s25_69196)))){
-(ds.p=0x03207D14/*l125c10\application.e*/);
+(ds.p=0x03207C12/*l124c9\application.e*/);
+_tmp_string2=r7substring(&ds,se_i7(&ds,((T7*)ci(7,_tmp_string,0x03207C30/*l124c24\application.e*/))),r2_ix_43(&ds,_index,/*IC*/(T2)(INT8_C(2))),r2_ix_45(&ds,_index2,/*IC*/(T2)(INT8_C(2))));
+(ds.p=0x03207E12/*l126c9\application.e*/);
+_string_data=r7substring(&ds,se_i7(&ds,((T7*)ci(7,_tmp_string2,0x03207E30/*l126c24\application.e*/))),r2_ix_43(&ds,r7index_of(&ds,se_i7(&ds,((T7*)ci(7,_tmp_string2,0x03207E5E/*l126c47\application.e*/))),((T3)'\074'),/*IC*/(T2)(INT8_C(1))),/*IC*/(T2)(INT8_C(1))),r2_ix_45(&ds,r7index_of(&ds,se_i7(&ds,((T7*)ci(7,_tmp_string2,0x03207EA0/*l126c80\application.e*/))),((T3)'\076'),/*IC*/(T2)(INT8_C(1))),/*IC*/(T2)(INT8_C(1))));
+if(((ds.p=0x03207F30/*l127c24\application.e*/),r7has_substring(&ds,se_i7(&ds,((T7*)ci(7,_tmp_string2,0x03207F18/*l127c12\application.e*/))),se_ms(5,s25_69196)))){
+(ds.p=0x03208014/*l128c10\application.e*/);
 _titre=_string_data;
 }
-if(((ds.p=0x03207F30/*l127c24\application.e*/),r7has_substring(&ds,se_i7(&ds,((T7*)ci(7,_tmp_string2,0x03207F18/*l127c12\application.e*/))),se_ms(5,s25_57731)))){
-(ds.p=0x03208014/*l128c10\application.e*/);
-_annee=r7to_integer(&ds,se_i7(&ds,((T7*)ci(7,_string_data,0x03208026/*l128c19\application.e*/))));
+if(((ds.p=0x03208230/*l130c24\application.e*/),r7has_substring(&ds,se_i7(&ds,((T7*)ci(7,_tmp_string2,0x03208218/*l130c12\application.e*/))),se_ms(5,s25_57731)))){
+(ds.p=0x03208314/*l131c10\application.e*/);
+_annee=r7to_integer(&ds,se_i7(&ds,((T7*)ci(7,_string_data,0x03208326/*l131c19\application.e*/))));
 }
-if(((ds.p=0x03208230/*l130c24\application.e*/),r7has_substring(&ds,se_i7(&ds,((T7*)ci(7,_tmp_string2,0x03208218/*l130c12\application.e*/))),se_ms(6,s25_282724)))){
-(ds.p=0x03208324/*l131c18\application.e*/);
-r122add_last(&ds,se_i122(&ds,((T122*)ci(122,_acteurs,0x03208314/*l131c10\application.e*/))),_string_data);
+if(((ds.p=0x03208530/*l133c24\application.e*/),r7has_substring(&ds,se_i7(&ds,((T7*)ci(7,_tmp_string2,0x03208518/*l133c12\application.e*/))),se_ms(6,s25_282724)))){
+(ds.p=0x03208624/*l134c18\application.e*/);
+r122add_last(&ds,se_i122(&ds,((T122*)ci(122,_acteurs,0x03208614/*l134c10\application.e*/))),_string_data);
 }
-if(((ds.p=0x03208530/*l133c24\application.e*/),r7has_substring(&ds,se_i7(&ds,((T7*)ci(7,_tmp_string2,0x03208518/*l133c12\application.e*/))),se_ms(11,s25_1046453349)))){
-(ds.p=0x0320862E/*l134c23\application.e*/);
-r122add_last(&ds,se_i122(&ds,((T122*)ci(122,_realisateurs,0x03208614/*l134c10\application.e*/))),_string_data);
-}
-if(((ds.p=0x03208830/*l136c24\application.e*/),r7has_substring(&ds,se_i7(&ds,((T7*)ci(7,_tmp_string2,0x03208818/*l136c12\application.e*/))),se_ms(6,s25_329871)))){
-(ds.p=0x03208914/*l137c10\application.e*/);
-_nombre=r7to_integer(&ds,se_i7(&ds,((T7*)ci(7,_string_data,0x03208928/*l137c20\application.e*/))));
+if(((ds.p=0x03208830/*l136c24\application.e*/),r7has_substring(&ds,se_i7(&ds,((T7*)ci(7,_tmp_string2,0x03208818/*l136c12\application.e*/))),se_ms(11,s25_1046453349)))){
+(ds.p=0x0320892E/*l137c23\application.e*/);
+r122add_last(&ds,se_i122(&ds,((T122*)ci(122,_realisateurs,0x03208914/*l137c10\application.e*/))),_string_data);
 }
 if(((ds.p=0x03208B30/*l139c24\application.e*/),r7has_substring(&ds,se_i7(&ds,((T7*)ci(7,_tmp_string2,0x03208B18/*l139c12\application.e*/))),se_ms(6,s25_329871)))){
 (ds.p=0x03208C14/*l140c10\application.e*/);
+_nombre=r7to_integer(&ds,se_i7(&ds,((T7*)ci(7,_string_data,0x03208C28/*l140c20\application.e*/))));
+}
+if(((ds.p=0x03208E30/*l142c24\application.e*/),r7has_substring(&ds,se_i7(&ds,((T7*)ci(7,_tmp_string2,0x03208E18/*l142c12\application.e*/))),se_ms(6,s25_329871)))){
+(ds.p=0x03208F14/*l143c10\application.e*/);
 _type=_string_data;
 }
-(ds.p=0x03208E18/*l142c12\application.e*/);
-r40put_string(&ds,se_i40(&ds,((T40*)ci(40,r25io(&ds,C),0x03208E12/*l142c9\application.e*/))),r7_ix_43(&ds,se_i7(&ds,((T7*)ci(7,_string_data,0x03208E30/*l142c24\application.e*/))),se_ms(1,s25_10)));
-(ds.p=0x03208F12/*l143c9\application.e*/);
+(ds.p=0x03209118/*l145c12\application.e*/);
+r40put_string(&ds,se_i40(&ds,((T40*)ci(40,r25io(&ds,C),0x03209112/*l145c9\application.e*/))),r7_ix_43(&ds,se_i7(&ds,((T7*)ci(7,_string_data,0x03209130/*l145c24\application.e*/))),se_ms(1,s25_10)));
+(ds.p=0x03209212/*l146c9\application.e*/);
 _index=r2_ix_43(&ds,_index,/*IC*/(T2)(INT8_C(1)));
 }
 }
-(ds.p=0x0320920E/*l146c7\application.e*/);
+(ds.p=0x0320950E/*l149c7\application.e*/);
 tmp0=((T0*)(new125()));
 r125dvd(&ds,((T125*)tmp0),_realisateurs,_acteurs,_type,_titre,_annee,_nombre);
 _a_dvd=tmp0;
-se_i125(&ds,((T125*)(_a_dvd)));(ds.p=0x03209322/*l147c17\application.e*/);
-r129add_last(&ds,se_i129(&ds,((T129*)ci(129,(/*RF2*/(C)->_liste_dvd/*i3p*/),0x0320930E/*l147c7\application.e*/))),_a_dvd);
+se_i125(&ds,((T125*)(_a_dvd)));(ds.p=0x03209622/*l150c17\application.e*/);
+r129add_last(&ds,se_i129(&ds,((T129*)ci(129,(/*RF2*/(C)->_liste_dvd/*i3p*/),0x0320960E/*l150c7\application.e*/))),_a_dvd);
 }
 }
 else{
-(ds.p=0x03209612/*l150c9\application.e*/);
-r40put_string(&ds,se_i40(&ds,((T40*)ci(40,r25io(&ds,C),0x0320960C/*l150c6\application.e*/))),se_ms(11,s25_905587976));
+(ds.p=0x03209912/*l153c9\application.e*/);
+r40put_string(&ds,se_i40(&ds,((T40*)ci(40,r25io(&ds,C),0x0320990C/*l153c6\application.e*/))),se_ms(11,s25_905587976));
 }
-(ds.p=0x0320980A/*l152c5\application.e*/);
+(ds.p=0x03209B0A/*l155c5\application.e*/);
 _i=r2_ix_43(&ds,_i,/*IC*/(T2)(INT8_C(1)));
 }
+(ds.p=0x03209D0E/*l157c7\application.e*/);
+r40put_integer(&ds,se_i40(&ds,((T40*)ci(40,r25io(&ds,C),0x03209D08/*l157c4\application.e*/))),/*IC*/(T11)(r129count(&ds,se_i129(&ds,((T129*)ci(129,(/*RF2*/(C)->_liste_dvd/*i3p*/),0x03209D28/*l157c20\application.e*/))))));
 set_dump_stack_top(caller);/*unlink*/
 }/*--*/
 
@@ -2237,45 +3094,6 @@ set_dump_stack_top(caller);/*unlink*/
 return R;
 }/*--*/
 
-/*NATIVE_ARRAY[CHARACTER]*/T9 r9realloc(se_dump_stack*caller,T9 C,T2 a1,T2 a2){
-T9 R=(void*)0;
-void**locals[3];
-static se_frame_descriptor fd={"realloc"" NATIVE_ARRAY[CHARACTER]",1,3,"%E9%old_nb_elts%E2%new_nb_elts%E2%Result%E9%",1};
-se_dump_stack ds;
-ds.fd=&fd;
-ds.current=(void*)&C;
-ds.p=0x06403304/*l51c2\native_array.e*/;
-ds.caller=caller;
-ds.locals=locals;
-ds.exception_origin=NULL;
-locals[0]=(void**)&a1;
-locals[1]=(void**)&a2;
-locals[2]=(void**)&R;
-set_dump_stack_top(&ds);/*link*/
-if(fd.assertion_flag){
-fd.assertion_flag=0;
-(ds.p=0x06403A08/*l58c4\native_array.e*/);
-ac_req(r9is_not_null(&ds,C),"is_not_null");
-(ds.p=0x06403B20/*l59c16\native_array.e*/);
-ac_req(((int32_t)(a1))>(/*IC*/(T2)(INT8_C(0))),"old_nb_elts > 0");
-(ds.p=0x06403C20/*l60c16\native_array.e*/);
-ac_req(((int32_t)(a1))<(a2),"old_nb_elts < new_nb_elts");
-fd.assertion_flag=1;
-}
-(ds.p=0x06403E08/*l62c4\native_array.e*/);
-R=new9(a2);
-(ds.p=0x06403F16/*l63c11\native_array.e*/);
-r9copy_from(&ds,R,C,r2_ix_45(&ds,a1,/*IC*/(T2)(INT8_C(1))));
-if(fd.assertion_flag){
-fd.assertion_flag=0;
-(ds.p=0x06404116/*l65c11\native_array.e*/);
-ac_ens(r9is_not_null(&ds,R),"Result.is_not_null");
-fd.assertion_flag=1;
-}
-set_dump_stack_top(caller);/*unlink*/
-return R;
-}/*--*/
-
 /*NATIVE_ARRAY[CHARACTER]*/void r9clear_all(se_dump_stack*caller,T9 C,T2 a1){
 T3 _v=0;
 T2 _i=0;
@@ -2314,6 +3132,81 @@ ac_ens(r9all_default(&ds,C,a1),"all_default(upper)");
 fd.assertion_flag=1;
 }
 set_dump_stack_top(caller);/*unlink*/
+}/*--*/
+
+/*NATIVE_ARRAY[CHARACTER]*/T6 r9fast_has(se_dump_stack*caller,T9 C,T3 a1,T2 a2){
+T6 R=0;
+T2 _i=0;
+void**locals[4];
+static se_frame_descriptor fd={"fast_has"" NATIVE_ARRAY[CHARACTER]",1,4,"%E9%element%E3%upper%E2%Result%E6%i%E2%",1};
+se_dump_stack ds;
+ds.fd=&fd;
+ds.current=(void*)&C;
+ds.p=0x06415E04/*l350c2\native_array.e*/;
+ds.caller=caller;
+ds.locals=locals;
+ds.exception_origin=NULL;
+locals[0]=(void**)&a1;
+locals[1]=(void**)&a2;
+locals[2]=(void**)&R;
+locals[3]=(void**)&_i;
+set_dump_stack_top(&ds);/*link*/
+if(fd.assertion_flag){
+fd.assertion_flag=0;
+(ds.p=0x06416214/*l354c10\native_array.e*/);
+ac_req(((int32_t)(a2))>=(/*IC*/(T2)(INT8_C(-1))),"upper >= -1");
+fd.assertion_flag=1;
+}
+(ds.p=0x0641670A/*l359c5\native_array.e*/);
+_i=a2;
+while (!(((ds.p=0x06416916/*l361c11\native_array.e*/),(T6)((((int32_t)(_i))<(/*IC*/(T2)(INT8_C(0))))||((T6)((a1)==((C)[_i])))))))
+{
+(ds.p=0x06416B0A/*l363c5\native_array.e*/);
+_i=r2_ix_45(&ds,_i,/*IC*/(T2)(INT8_C(1)));
+}
+(ds.p=0x06416D08/*l365c4\native_array.e*/);
+R=((T6)(((int32_t)(_i))>=(/*IC*/(T2)(INT8_C(0)))));
+set_dump_stack_top(caller);/*unlink*/
+return R;
+}/*--*/
+
+/*NATIVE_ARRAY[CHARACTER]*/T9 r9realloc(se_dump_stack*caller,T9 C,T2 a1,T2 a2){
+T9 R=(void*)0;
+void**locals[3];
+static se_frame_descriptor fd={"realloc"" NATIVE_ARRAY[CHARACTER]",1,3,"%E9%old_nb_elts%E2%new_nb_elts%E2%Result%E9%",1};
+se_dump_stack ds;
+ds.fd=&fd;
+ds.current=(void*)&C;
+ds.p=0x06403304/*l51c2\native_array.e*/;
+ds.caller=caller;
+ds.locals=locals;
+ds.exception_origin=NULL;
+locals[0]=(void**)&a1;
+locals[1]=(void**)&a2;
+locals[2]=(void**)&R;
+set_dump_stack_top(&ds);/*link*/
+if(fd.assertion_flag){
+fd.assertion_flag=0;
+(ds.p=0x06403A08/*l58c4\native_array.e*/);
+ac_req(r9is_not_null(&ds,C),"is_not_null");
+(ds.p=0x06403B20/*l59c16\native_array.e*/);
+ac_req(((int32_t)(a1))>(/*IC*/(T2)(INT8_C(0))),"old_nb_elts > 0");
+(ds.p=0x06403C20/*l60c16\native_array.e*/);
+ac_req(((int32_t)(a1))<(a2),"old_nb_elts < new_nb_elts");
+fd.assertion_flag=1;
+}
+(ds.p=0x06403E08/*l62c4\native_array.e*/);
+R=new9(a2);
+(ds.p=0x06403F16/*l63c11\native_array.e*/);
+r9copy_from(&ds,R,C,r2_ix_45(&ds,a1,/*IC*/(T2)(INT8_C(1))));
+if(fd.assertion_flag){
+fd.assertion_flag=0;
+(ds.p=0x06404116/*l65c11\native_array.e*/);
+ac_ens(r9is_not_null(&ds,R),"Result.is_not_null");
+fd.assertion_flag=1;
+}
+set_dump_stack_top(caller);/*unlink*/
+return R;
 }/*--*/
 
 /*NATIVE_ARRAY[CHARACTER]*/void r9copy_from(se_dump_stack*caller,T9 C,T9 a1,T2 a2){
@@ -3059,6 +3952,41 @@ set_dump_stack_top(caller);/*unlink*/
 return R;
 }/*--*/
 
+/*STRING*/void r7extend(se_dump_stack*caller,T7* C,T3 a1){
+T2 o7_1417_16=0;
+void**locals[2];
+static se_frame_descriptor fd={"add_last"" STRING",1,2,"%R7%c%E3%old value%E2%",1};
+se_dump_stack ds;
+ds.fd=&fd;
+ds.current=(void*)&C;
+ds.p=0x00E57E04/*l1406c2\string.e*/;
+ds.caller=caller;
+ds.locals=locals;
+ds.exception_origin=NULL;
+locals[0]=(void**)&a1;
+locals[1]=(void**)&o7_1417_16;
+set_dump_stack_top(&ds);/*link*/
+o7_1417_16=(/*RF2*/(C)->_count/*i3p*/);
+if(((ds.p=0x00E5830E/*l1411c7\string.e*/),((/*RF2*/(C)->_count/*i3p*/))==((/*RF2*/(C)->_capacity/*i3p*/)))){
+(ds.p=0x00E5840A/*l1412c5\string.e*/);
+r7ensure_capacity(&ds,C,r2_ix_43(&ds,(/*RF2*/(C)->_count/*i3p*/),/*IC*/(T2)(INT8_C(1))));
+}
+(ds.p=0x00E58618/*l1414c12\string.e*/);
+((/*RF2*/(C)->_storage/*i3p*/))[(/*RF2*/(C)->_count/*i3p*/)]=(a1);
+(ds.p=0x00E58708/*l1415c4\string.e*/);
+/*SFN*/(C->_count/*i3p*/)=r2_ix_43(&ds,(/*RF2*/(C)->_count/*i3p*/),/*IC*/(T2)(INT8_C(1)));
+if(fd.assertion_flag){
+fd.assertion_flag=0;
+(ds.p=0x00E58908/*l1417c4\string.e*/);
+ac_ens(((/*RF2*/(C)->_count/*i3p*/))==(r2_ix_43(&ds,/*IC*/(T2)(INT8_C(1)),o7_1417_16)),"count = 1 + old count");
+(ds.p=0x00E58A08/*l1418c4\string.e*/);
+ac_ens((r7item(&ds,C,(/*RF2*/(C)->_count/*i3p*/)))==(a1),"item(count) = c");
+fd.assertion_flag=1;
+}
+if(se_rci(caller,C))se_i7(&ds,C);
+set_dump_stack_top(caller);/*unlink*/
+}/*--*/
+
 /*STRING*/void r7remove_last(se_dump_stack*caller,T7* C){
 T2 o7_1549_12=0;
 void**locals[1];
@@ -3131,6 +4059,27 @@ fd.assertion_flag=0;
 ac_ens(((int32_t)(R))>=(/*IC*/(T2)(INT8_C(0))),"good_hash_value");
 fd.assertion_flag=1;
 }
+if(se_rci(caller,C))se_i7(&ds,C);
+set_dump_stack_top(caller);/*unlink*/
+return R;
+}/*--*/
+
+/*STRING*/T6 r7has(se_dump_stack*caller,T7* C,T3 a1){
+T6 R=0;
+void**locals[2];
+static se_frame_descriptor fd={"has"" STRING",1,2,"%R7%c%E3%Result%E6%",1};
+se_dump_stack ds;
+ds.fd=&fd;
+ds.current=(void*)&C;
+ds.p=0x00E13304/*l307c2\string.e*/;
+ds.caller=caller;
+ds.locals=locals;
+ds.exception_origin=NULL;
+locals[0]=(void**)&a1;
+locals[1]=(void**)&R;
+set_dump_stack_top(&ds);/*link*/
+(ds.p=0x00E13808/*l312c4\string.e*/);
+R=((T6)(r9fast_has(&ds,(/*RF2*/(C)->_storage/*i3p*/),a1,r2_ix_45(&ds,(/*RF2*/(C)->_count/*i3p*/),/*IC*/(T2)(INT8_C(1))))));
 if(se_rci(caller,C))se_i7(&ds,C);
 set_dump_stack_top(caller);/*unlink*/
 return R;
@@ -3588,6 +4537,53 @@ set_dump_stack_top(caller);/*unlink*/
 return R;
 }/*--*/
 
+/*STRING*/void r7swap(se_dump_stack*caller,T7* C,T2 a1,T2 a2){
+T3 _tmp=0;
+T3 o7_1326_15=0;
+T3 o7_1327_15=0;
+void**locals[5];
+static se_frame_descriptor fd={"swap"" STRING",1,5,"%R7%i1%E2%i2%E2%tmp%E3%old value%E3%old value%E3%",1};
+se_dump_stack ds;
+ds.fd=&fd;
+ds.current=(void*)&C;
+ds.p=0x00E52004/*l1312c2\string.e*/;
+ds.caller=caller;
+ds.locals=locals;
+ds.exception_origin=NULL;
+locals[0]=(void**)&a1;
+locals[1]=(void**)&a2;
+locals[2]=(void**)&_tmp;
+locals[3]=(void**)&o7_1326_15;
+locals[4]=(void**)&o7_1327_15;
+set_dump_stack_top(&ds);/*link*/
+o7_1326_15=r7item(&ds,C,a2);
+o7_1327_15=r7item(&ds,C,a1);
+if(fd.assertion_flag){
+fd.assertion_flag=0;
+(ds.p=0x00E52508/*l1317c4\string.e*/);
+ac_req(r7valid_index(&ds,C,a1),"valid_index(i1)");
+(ds.p=0x00E52608/*l1318c4\string.e*/);
+ac_req(r7valid_index(&ds,C,a2),"valid_index(i2)");
+fd.assertion_flag=1;
+}
+(ds.p=0x00E52A08/*l1322c4\string.e*/);
+_tmp=r7item(&ds,C,a1);
+(ds.p=0x00E52B08/*l1323c4\string.e*/);
+r7put(&ds,C,r7item(&ds,C,a2),a1);
+(ds.p=0x00E52C08/*l1324c4\string.e*/);
+r7put(&ds,C,_tmp,a2);
+if(fd.assertion_flag){
+fd.assertion_flag=0;
+(ds.p=0x00E52E08/*l1326c4\string.e*/);
+ac_ens((r7item(&ds,C,a1))==(o7_1326_15),"item(i1) = old item(i2)");
+(ds.p=0x00E52F08/*l1327c4\string.e*/);
+ac_ens((r7item(&ds,C,a2))==(o7_1327_15),"item(i2) = old item(i1)");
+fd.assertion_flag=1;
+}
+if(se_rci(caller,C))se_i7(&ds,C);
+set_dump_stack_top(caller);/*unlink*/
+}/*--*/
+
 /*STRING*/T3 r7last(se_dump_stack*caller,T7* C){
 T3 R=0;
 void**locals[1];
@@ -3886,2016 +4882,6 @@ ds.fd->assertion_flag=1;
 }
 se_dst=caller;/*unlink*/
 return C;
-}/*--*/
-
-T0*se_ms(int c,char*e){
-/* Allocate a Manifest STRING.*/
-T7*s=new7();
-s->_count=c;
-s->_capacity=c+1;
-s->_storage=((T9)new9(c+1));
-memcpy(s->_storage,e,c+1);
-return((T0*)s);}/*--*/
-
-T0*se_string(char*e){
-/* Allocate an Eiffel STRING by copying C char*e */
-int c=strlen(e);
-T7*s=new7();
-s->_count=c;
-s->_capacity=c+1;
-s->_storage=((T9)new9(c+1));
-memcpy(s->_storage,e,c+1);
-return((T0*)s);}/*--*/
-
-void manifest_string_mark1(void){
-}/*--*/
-
-void once_function_mark(void){
-/*NON_VOID_NO_DISPATCH:*/
-/*Ordinary once functions:*/
-if(NULL!=oBC13io)gc_mark40((T40*)(oBC13io));
-if(NULL!=oBC13std_output)gc_mark47((T47*)(oBC13std_output));
-if(NULL!=oBC13std_input)gc_mark48((T48*)(oBC13std_input));
-if(NULL!=oBC44last_string)gc_mark7((T7*)(oBC44last_string));
-}/*--*/
-
-void gc_start(void){
-if(gc_is_off)return;
-if(garbage_delayed())return;
-handle(SE_HANDLE_ENTER_GC,NULL);
-gcmt_tail_addr=(((char*)(gcmt[gcmt_used-1]))+(gcmt[gcmt_used-1])->size);
-((gc25*)eiffel_root_object)->header.flag=FSOH_UNMARKED;
-if(na_env134.store_left>0){
-na_env134.store->header.size=na_env134.store_left;
-na_env134.store->header.magic_flag=RSOH_FREE;
-na_env134.store_left=0;
-}
-na_env134.chunk_list=NULL;
-na_env134.store_chunk=NULL;
-if(na_env133.store_left>0){
-na_env133.store->header.size=na_env133.store_left;
-na_env133.store->header.magic_flag=RSOH_FREE;
-na_env133.store_left=0;
-}
-na_env133.chunk_list=NULL;
-na_env133.store_chunk=NULL;
-if(na_env130.store_left>0){
-na_env130.store->header.size=na_env130.store_left;
-na_env130.store->header.magic_flag=RSOH_FREE;
-na_env130.store_left=0;
-}
-na_env130.chunk_list=NULL;
-na_env130.store_chunk=NULL;
-if(na_env123.store_left>0){
-na_env123.store->header.size=na_env123.store_left;
-na_env123.store->header.magic_flag=RSOH_FREE;
-na_env123.store_left=0;
-}
-na_env123.chunk_list=NULL;
-na_env123.store_chunk=NULL;
-gc_free48=(void*)0;
-gc_free47=(void*)0;
-gc_free132=(void*)0;
-gc_free131=(void*)0;
-gc_free57=(void*)0;
-gc_free125=(void*)0;
-gc_free129=(void*)0;
-gc_free122=(void*)0;
-gc_free40=(void*)0;
-gc_free25=(void*)0;
-if(na_env9.store_left>0){
-na_env9.store->header.size=na_env9.store_left;
-na_env9.store->header.magic_flag=RSOH_FREE;
-na_env9.store_left=0;
-}
-na_env9.chunk_list=NULL;
-na_env9.store_chunk=NULL;
-gc_free7=(void*)0;
-gc_mark25(eiffel_root_object);
-manifest_string_mark1();
-once_function_mark();
-{int i=SE_MAXID-1;
-while(i>=0){
-if(g[i]!=NULL)gc_mark7(g[i]);
-i--;}
-}
-{int i=SE_MAXID-1;
-while(i>=0){
-if(t[i]!=NULL)gc_mark7(t[i]);
-i--;}
-}
-mark_stack_and_registers();
-gc_sweep();
-collector_counter++;
-handle(SE_HANDLE_EXIT_GC,NULL);
-}/*--*/
-na_env na_env134={0,NULL,NULL,NULL,(void(*)(T0*))gc_mark134};
-na_env na_env133={0,NULL,NULL,NULL,(void(*)(T0*))gc_mark133};
-na_env na_env130={0,NULL,NULL,NULL,(void(*)(T0*))gc_mark130};
-na_env na_env123={0,NULL,NULL,NULL,(void(*)(T0*))gc_mark123};
-gc48*store48=(void*)0;
-int store_left48=0;
-fsoc*store_chunk48=(void*)0;
-gc48*gc_free48=(void*)0;
-gc47*store47=(void*)0;
-int store_left47=0;
-fsoc*store_chunk47=(void*)0;
-gc47*gc_free47=(void*)0;
-gc132*store132=(void*)0;
-int store_left132=0;
-fsoc*store_chunk132=(void*)0;
-gc132*gc_free132=(void*)0;
-gc131*store131=(void*)0;
-int store_left131=0;
-fsoc*store_chunk131=(void*)0;
-gc131*gc_free131=(void*)0;
-gc57*store57=(void*)0;
-int store_left57=0;
-fsoc*store_chunk57=(void*)0;
-gc57*gc_free57=(void*)0;
-gc125*store125=(void*)0;
-int store_left125=0;
-fsoc*store_chunk125=(void*)0;
-gc125*gc_free125=(void*)0;
-gc129*store129=(void*)0;
-int store_left129=0;
-fsoc*store_chunk129=(void*)0;
-gc129*gc_free129=(void*)0;
-gc122*store122=(void*)0;
-int store_left122=0;
-fsoc*store_chunk122=(void*)0;
-gc122*gc_free122=(void*)0;
-gc40*store40=(void*)0;
-int store_left40=0;
-fsoc*store_chunk40=(void*)0;
-gc40*gc_free40=(void*)0;
-gc25*store25=(void*)0;
-int store_left25=0;
-fsoc*store_chunk25=(void*)0;
-gc25*gc_free25=(void*)0;
-na_env na_env9={0,NULL,NULL,NULL,(void(*)(T0*))gc_mark9};
-gc7*store7=(void*)0;
-int store_left7=0;
-fsoc*store_chunk7=(void*)0;
-gc7*gc_free7=(void*)0;
-
-void gc_mark134(T134 o){
-if(NULL==gc_find_chunk(o))
-return; /* external NA */
-{rsoh*h=((rsoh*)o)-1;
- if((h->header.magic_flag)==RSOH_UNMARKED){
-    h->header.magic_flag=RSOH_MARKED;
-    {T0* e;
-T0**p=((void*)(o+((((h->header.size)-sizeof(rsoh))/sizeof(e))-1)));
-for(;((void*)p)>=((void*)o);p--){
-e=*p;
-}}}}
-}/*--*/
-
-T134 new134(unsigned int size){
-size=(size*sizeof(T0*))+sizeof(rsoh);
-size=((size+(sizeof(double)-1))&~(sizeof(double)-1));
-if (size<=(na_env134.store_left)){
-rsoh*r=na_env134.store;
-na_env134.store_left-=size;
-if(na_env134.store_left>sizeof(rsoh)){
-r->header.size=size;
-na_env134.store=((rsoh*)(((char*)(na_env134.store))+size));
-}
-else {
-r->header.size=size+na_env134.store_left;
-na_env134.store_left=0;
-}
-(r->header.magic_flag)=RSOH_UNMARKED;
-((void)memset((r+1),0,r->header.size-sizeof(rsoh)));
-return((T134)(r+1));
-}
-return((T134)new_na(&na_env134,size));
-}/*--*/
-
-void gc_mark133(T133 o){
-if(NULL==gc_find_chunk(o))
-return; /* external NA */
-{rsoh*h=((rsoh*)o)-1;
- if((h->header.magic_flag)==RSOH_UNMARKED){
-    h->header.magic_flag=RSOH_MARKED;
-    {T0* e;
-T0**p=((void*)(o+((((h->header.size)-sizeof(rsoh))/sizeof(e))-1)));
-for(;((void*)p)>=((void*)o);p--){
-e=*p;
-}}}}
-}/*--*/
-
-T133 new133(unsigned int size){
-size=(size*sizeof(T0*))+sizeof(rsoh);
-size=((size+(sizeof(double)-1))&~(sizeof(double)-1));
-if (size<=(na_env133.store_left)){
-rsoh*r=na_env133.store;
-na_env133.store_left-=size;
-if(na_env133.store_left>sizeof(rsoh)){
-r->header.size=size;
-na_env133.store=((rsoh*)(((char*)(na_env133.store))+size));
-}
-else {
-r->header.size=size+na_env133.store_left;
-na_env133.store_left=0;
-}
-(r->header.magic_flag)=RSOH_UNMARKED;
-((void)memset((r+1),0,r->header.size-sizeof(rsoh)));
-return((T133)(r+1));
-}
-return((T133)new_na(&na_env133,size));
-}/*--*/
-
-void gc_mark130(T130 o){
-if(NULL==gc_find_chunk(o))
-return; /* external NA */
-{rsoh*h=((rsoh*)o)-1;
- if((h->header.magic_flag)==RSOH_UNMARKED){
-    h->header.magic_flag=RSOH_MARKED;
-    {T0* e;
-T0**p=((void*)(o+((((h->header.size)-sizeof(rsoh))/sizeof(e))-1)));
-for(;((void*)p)>=((void*)o);p--){
-e=*p;
-if(NULL!=e)gc_mark125((T125*)(e));
-}}}}
-}/*--*/
-
-T130 new130(unsigned int size){
-size=(size*sizeof(T0*))+sizeof(rsoh);
-size=((size+(sizeof(double)-1))&~(sizeof(double)-1));
-if (size<=(na_env130.store_left)){
-rsoh*r=na_env130.store;
-na_env130.store_left-=size;
-if(na_env130.store_left>sizeof(rsoh)){
-r->header.size=size;
-na_env130.store=((rsoh*)(((char*)(na_env130.store))+size));
-}
-else {
-r->header.size=size+na_env130.store_left;
-na_env130.store_left=0;
-}
-(r->header.magic_flag)=RSOH_UNMARKED;
-((void)memset((r+1),0,r->header.size-sizeof(rsoh)));
-return((T130)(r+1));
-}
-return((T130)new_na(&na_env130,size));
-}/*--*/
-
-void gc_mark123(T123 o){
-if(NULL==gc_find_chunk(o))
-return; /* external NA */
-{rsoh*h=((rsoh*)o)-1;
- if((h->header.magic_flag)==RSOH_UNMARKED){
-    h->header.magic_flag=RSOH_MARKED;
-    {T0* e;
-T0**p=((void*)(o+((((h->header.size)-sizeof(rsoh))/sizeof(e))-1)));
-for(;((void*)p)>=((void*)o);p--){
-e=*p;
-if(NULL!=e)gc_mark7((T7*)(e));
-}}}}
-}/*--*/
-
-T123 new123(unsigned int size){
-size=(size*sizeof(T0*))+sizeof(rsoh);
-size=((size+(sizeof(double)-1))&~(sizeof(double)-1));
-if (size<=(na_env123.store_left)){
-rsoh*r=na_env123.store;
-na_env123.store_left-=size;
-if(na_env123.store_left>sizeof(rsoh)){
-r->header.size=size;
-na_env123.store=((rsoh*)(((char*)(na_env123.store))+size));
-}
-else {
-r->header.size=size+na_env123.store_left;
-na_env123.store_left=0;
-}
-(r->header.magic_flag)=RSOH_UNMARKED;
-((void)memset((r+1),0,r->header.size-sizeof(rsoh)));
-return((T123)(r+1));
-}
-return((T123)new_na(&na_env123,size));
-}/*--*/
-
-void gc_sweep48(fsoc*c){
-gc48*o1,*o2;
-o1=((gc48*)(&(c->first_object)));
-if(c->header.state_type==FSO_STORE_CHUNK){
-for(;o1<store48;o1++){
-if((o1->header.flag)==FSOH_MARKED){
-o1->header.flag=FSOH_UNMARKED;
-}
-else{
-o1->header.next=gc_free48;
-gc_free48=o1;
-}
-}
-}
-else{
-int dead=1;
-gc48* old_gc_free = gc_free48;
-o2=o1+c->count_minus_one;
-for(;o1<=o2;o1++){
-if((o1->header.flag)==FSOH_MARKED){
-o1->header.flag=FSOH_UNMARKED;
-dead=0;}
-else{
-o1->header.next=gc_free48;
-gc_free48=o1;
-}
-}
-if (dead){
-gc_free48 = old_gc_free;
-c->next=fsocfl;
-fsocfl=c;
-c->header.state_type=FSO_FREE_CHUNK;
-}
-}
-}/*--*/
-
-void gc_mark48(T48*o){
-se_gc_check_id(o,48);
-{
-if(((gc48*)o)->header.flag==FSOH_UNMARKED){
-((gc48*)o)->header.flag=FSOH_MARKED;
-/*i2p*/if(NULL!=o->_buffer)gc_mark9((o->_buffer));
-}
-}
-}/*--*/
-
-void gc_align_mark48(fsoc*c,gc48*p){
-gc48*b=((gc48*)(&(c->first_object)));
-if((c->header.state_type==FSO_STORE_CHUNK)&&(((char*)p)>=((char*)store48)))return;
-if(((char*)p)>((char*)(b+(c->count_minus_one))))return;
-if(((char*)p)<((char*)b))return;
-if(((((char*)p)-((char*)b))%sizeof(*p))==0){
-if(p->header.flag==FSOH_UNMARKED){
-T48*o=(&(p->object));
-((gc48*)o)->header.flag=FSOH_MARKED;
-/*i2p*/if(NULL!=o->_buffer)gc_mark9((o->_buffer));
-}
-}
-}/*--*/
-fsoc H48={{FSOC_SIZE,FSO_STORE_CHUNK,
-(void(*)(mch*,void*))gc_align_mark48,
-(void(*)(mch*))gc_sweep48},NULL,(((FSOC_SIZE-sizeof(fsoc)+sizeof(double))/sizeof(gc48))-1)};
-
-T48*new48(void){
-gc48*n;
-fsoc*c;
-if(store_left48>1){
-store_left48--;
-n=store48++;
-}
-else if(gc_free48!=NULL){
-n=gc_free48;
-gc_free48=n->header.next;
-}
-else if(store_left48==1){
-store_left48=0;
-store_chunk48->header.state_type=FSO_USED_CHUNK;
-n=store48++;
-}
-else{
-c=gc_fsoc_get1();
-if(gc_free48!=NULL){
-n=gc_free48;
-gc_free48=n->header.next;
-}
-else{
-if(c==NULL)c=gc_fsoc_get2();
-store_chunk48=c;
-*store_chunk48=H48;
-store48=((gc48*)(&(store_chunk48->first_object)));
-store_left48=H48.count_minus_one;
-n=store48++;
-}
-}
-n->header.flag=FSOH_UNMARKED;
-n->object=M48;
-return((T48*)n);
-}/*--*/
-
-void gc_sweep47(fsoc*c){
-gc47*o1,*o2;
-o1=((gc47*)(&(c->first_object)));
-if(c->header.state_type==FSO_STORE_CHUNK){
-for(;o1<store47;o1++){
-if((o1->header.flag)==FSOH_MARKED){
-o1->header.flag=FSOH_UNMARKED;
-}
-else{
-o1->header.next=gc_free47;
-gc_free47=o1;
-}
-}
-}
-else{
-int dead=1;
-gc47* old_gc_free = gc_free47;
-o2=o1+c->count_minus_one;
-for(;o1<=o2;o1++){
-if((o1->header.flag)==FSOH_MARKED){
-o1->header.flag=FSOH_UNMARKED;
-dead=0;}
-else{
-o1->header.next=gc_free47;
-gc_free47=o1;
-}
-}
-if (dead){
-gc_free47 = old_gc_free;
-c->next=fsocfl;
-fsocfl=c;
-c->header.state_type=FSO_FREE_CHUNK;
-}
-}
-}/*--*/
-
-void gc_mark47(T47*o){
-se_gc_check_id(o,47);
-{
-if(((gc47*)o)->header.flag==FSOH_UNMARKED){
-((gc47*)o)->header.flag=FSOH_MARKED;
-/*i4p*/if(NULL!=o->_buffer)gc_mark9((o->_buffer));
-/*i4p*/}
-}
-}/*--*/
-
-void gc_align_mark47(fsoc*c,gc47*p){
-gc47*b=((gc47*)(&(c->first_object)));
-if((c->header.state_type==FSO_STORE_CHUNK)&&(((char*)p)>=((char*)store47)))return;
-if(((char*)p)>((char*)(b+(c->count_minus_one))))return;
-if(((char*)p)<((char*)b))return;
-if(((((char*)p)-((char*)b))%sizeof(*p))==0){
-if(p->header.flag==FSOH_UNMARKED){
-T47*o=(&(p->object));
-((gc47*)o)->header.flag=FSOH_MARKED;
-/*i4p*/if(NULL!=o->_buffer)gc_mark9((o->_buffer));
-/*i4p*/}
-}
-}/*--*/
-fsoc H47={{FSOC_SIZE,FSO_STORE_CHUNK,
-(void(*)(mch*,void*))gc_align_mark47,
-(void(*)(mch*))gc_sweep47},NULL,(((FSOC_SIZE-sizeof(fsoc)+sizeof(double))/sizeof(gc47))-1)};
-
-T47*new47(void){
-gc47*n;
-fsoc*c;
-if(store_left47>1){
-store_left47--;
-n=store47++;
-}
-else if(gc_free47!=NULL){
-n=gc_free47;
-gc_free47=n->header.next;
-}
-else if(store_left47==1){
-store_left47=0;
-store_chunk47->header.state_type=FSO_USED_CHUNK;
-n=store47++;
-}
-else{
-c=gc_fsoc_get1();
-if(gc_free47!=NULL){
-n=gc_free47;
-gc_free47=n->header.next;
-}
-else{
-if(c==NULL)c=gc_fsoc_get2();
-store_chunk47=c;
-*store_chunk47=H47;
-store47=((gc47*)(&(store_chunk47->first_object)));
-store_left47=H47.count_minus_one;
-n=store47++;
-}
-}
-n->header.flag=FSOH_UNMARKED;
-n->object=M47;
-return((T47*)n);
-}/*--*/
-
-void gc_sweep132(fsoc*c){
-gc132*o1,*o2;
-o1=((gc132*)(&(c->first_object)));
-if(c->header.state_type==FSO_STORE_CHUNK){
-for(;o1<store132;o1++){
-if((o1->header.flag)==FSOH_MARKED){
-o1->header.flag=FSOH_UNMARKED;
-}
-else{
-o1->header.next=gc_free132;
-gc_free132=o1;
-}
-}
-}
-else{
-int dead=1;
-gc132* old_gc_free = gc_free132;
-o2=o1+c->count_minus_one;
-for(;o1<=o2;o1++){
-if((o1->header.flag)==FSOH_MARKED){
-o1->header.flag=FSOH_UNMARKED;
-dead=0;}
-else{
-o1->header.next=gc_free132;
-gc_free132=o1;
-}
-}
-if (dead){
-gc_free132 = old_gc_free;
-c->next=fsocfl;
-fsocfl=c;
-c->header.state_type=FSO_FREE_CHUNK;
-}
-}
-}/*--*/
-
-void gc_mark132(T132*o){
-se_gc_check_id(o,132);
-{
-if(((gc132*)o)->header.flag==FSOH_UNMARKED){
-((gc132*)o)->header.flag=FSOH_MARKED;
-/*i4p*/{
-T134 na=o->_storage;
-if(gc_find_chunk(na)!=NULL){/* non external NA */
-   rsoh*h=((rsoh*)na)-1;
-   if((h->header.magic_flag)==RSOH_UNMARKED){
-      h->header.magic_flag=RSOH_MARKED;
-r132mark_native_arrays(NULL,o);
-}
-}
-}}
-}
-}/*--*/
-
-void gc_align_mark132(fsoc*c,gc132*p){
-gc132*b=((gc132*)(&(c->first_object)));
-if((c->header.state_type==FSO_STORE_CHUNK)&&(((char*)p)>=((char*)store132)))return;
-if(((char*)p)>((char*)(b+(c->count_minus_one))))return;
-if(((char*)p)<((char*)b))return;
-if(((((char*)p)-((char*)b))%sizeof(*p))==0){
-if(p->header.flag==FSOH_UNMARKED){
-T132*o=(&(p->object));
-((gc132*)o)->header.flag=FSOH_MARKED;
-/*i4p*/{
-T134 na=o->_storage;
-if(gc_find_chunk(na)!=NULL){/* non external NA */
-   rsoh*h=((rsoh*)na)-1;
-   if((h->header.magic_flag)==RSOH_UNMARKED){
-      h->header.magic_flag=RSOH_MARKED;
-r132mark_native_arrays(NULL,o);
-}
-}
-}}
-}
-}/*--*/
-fsoc H132={{FSOC_SIZE,FSO_STORE_CHUNK,
-(void(*)(mch*,void*))gc_align_mark132,
-(void(*)(mch*))gc_sweep132},NULL,(((FSOC_SIZE-sizeof(fsoc)+sizeof(double))/sizeof(gc132))-1)};
-
-T132*new132(void){
-gc132*n;
-fsoc*c;
-if(store_left132>1){
-store_left132--;
-n=store132++;
-}
-else if(gc_free132!=NULL){
-n=gc_free132;
-gc_free132=n->header.next;
-}
-else if(store_left132==1){
-store_left132=0;
-store_chunk132->header.state_type=FSO_USED_CHUNK;
-n=store132++;
-}
-else{
-c=gc_fsoc_get1();
-if(gc_free132!=NULL){
-n=gc_free132;
-gc_free132=n->header.next;
-}
-else{
-if(c==NULL)c=gc_fsoc_get2();
-store_chunk132=c;
-*store_chunk132=H132;
-store132=((gc132*)(&(store_chunk132->first_object)));
-store_left132=H132.count_minus_one;
-n=store132++;
-}
-}
-n->header.flag=FSOH_UNMARKED;
-n->object=M132;
-return((T132*)n);
-}/*--*/
-
-void gc_sweep131(fsoc*c){
-gc131*o1,*o2;
-o1=((gc131*)(&(c->first_object)));
-if(c->header.state_type==FSO_STORE_CHUNK){
-for(;o1<store131;o1++){
-if((o1->header.flag)==FSOH_MARKED){
-o1->header.flag=FSOH_UNMARKED;
-}
-else{
-o1->header.next=gc_free131;
-gc_free131=o1;
-}
-}
-}
-else{
-int dead=1;
-gc131* old_gc_free = gc_free131;
-o2=o1+c->count_minus_one;
-for(;o1<=o2;o1++){
-if((o1->header.flag)==FSOH_MARKED){
-o1->header.flag=FSOH_UNMARKED;
-dead=0;}
-else{
-o1->header.next=gc_free131;
-gc_free131=o1;
-}
-}
-if (dead){
-gc_free131 = old_gc_free;
-c->next=fsocfl;
-fsocfl=c;
-c->header.state_type=FSO_FREE_CHUNK;
-}
-}
-}/*--*/
-
-void gc_mark131(T131*o){
-se_gc_check_id(o,131);
-{
-if(((gc131*)o)->header.flag==FSOH_UNMARKED){
-((gc131*)o)->header.flag=FSOH_MARKED;
-/*i4p*/{
-T133 na=o->_storage;
-if(gc_find_chunk(na)!=NULL){/* non external NA */
-   rsoh*h=((rsoh*)na)-1;
-   if((h->header.magic_flag)==RSOH_UNMARKED){
-      h->header.magic_flag=RSOH_MARKED;
-r131mark_native_arrays(NULL,o);
-}
-}
-}}
-}
-}/*--*/
-
-void gc_align_mark131(fsoc*c,gc131*p){
-gc131*b=((gc131*)(&(c->first_object)));
-if((c->header.state_type==FSO_STORE_CHUNK)&&(((char*)p)>=((char*)store131)))return;
-if(((char*)p)>((char*)(b+(c->count_minus_one))))return;
-if(((char*)p)<((char*)b))return;
-if(((((char*)p)-((char*)b))%sizeof(*p))==0){
-if(p->header.flag==FSOH_UNMARKED){
-T131*o=(&(p->object));
-((gc131*)o)->header.flag=FSOH_MARKED;
-/*i4p*/{
-T133 na=o->_storage;
-if(gc_find_chunk(na)!=NULL){/* non external NA */
-   rsoh*h=((rsoh*)na)-1;
-   if((h->header.magic_flag)==RSOH_UNMARKED){
-      h->header.magic_flag=RSOH_MARKED;
-r131mark_native_arrays(NULL,o);
-}
-}
-}}
-}
-}/*--*/
-fsoc H131={{FSOC_SIZE,FSO_STORE_CHUNK,
-(void(*)(mch*,void*))gc_align_mark131,
-(void(*)(mch*))gc_sweep131},NULL,(((FSOC_SIZE-sizeof(fsoc)+sizeof(double))/sizeof(gc131))-1)};
-
-T131*new131(void){
-gc131*n;
-fsoc*c;
-if(store_left131>1){
-store_left131--;
-n=store131++;
-}
-else if(gc_free131!=NULL){
-n=gc_free131;
-gc_free131=n->header.next;
-}
-else if(store_left131==1){
-store_left131=0;
-store_chunk131->header.state_type=FSO_USED_CHUNK;
-n=store131++;
-}
-else{
-c=gc_fsoc_get1();
-if(gc_free131!=NULL){
-n=gc_free131;
-gc_free131=n->header.next;
-}
-else{
-if(c==NULL)c=gc_fsoc_get2();
-store_chunk131=c;
-*store_chunk131=H131;
-store131=((gc131*)(&(store_chunk131->first_object)));
-store_left131=H131.count_minus_one;
-n=store131++;
-}
-}
-n->header.flag=FSOH_UNMARKED;
-n->object=M131;
-return((T131*)n);
-}/*--*/
-
-void gc_sweep57(fsoc*c){
-gc57*o1,*o2;
-o1=((gc57*)(&(c->first_object)));
-if(c->header.state_type==FSO_STORE_CHUNK){
-for(;o1<store57;o1++){
-if((o1->header.flag)==FSOH_MARKED){
-o1->header.flag=FSOH_UNMARKED;
-}
-else{
-o1->header.next=gc_free57;
-gc_free57=o1;
-}
-}
-}
-else{
-int dead=1;
-gc57* old_gc_free = gc_free57;
-o2=o1+c->count_minus_one;
-for(;o1<=o2;o1++){
-if((o1->header.flag)==FSOH_MARKED){
-o1->header.flag=FSOH_UNMARKED;
-dead=0;}
-else{
-o1->header.next=gc_free57;
-gc_free57=o1;
-}
-}
-if (dead){
-gc_free57 = old_gc_free;
-c->next=fsocfl;
-fsocfl=c;
-c->header.state_type=FSO_FREE_CHUNK;
-}
-}
-}/*--*/
-
-void gc_mark57(T57*o){
-se_gc_check_id(o,57);
-{
-if(((gc57*)o)->header.flag==FSOH_UNMARKED){
-((gc57*)o)->header.flag=FSOH_MARKED;
-/*i10p*/if(NULL!=o->_buffer)gc_mark9((o->_buffer));
-/*i10p*/if(NULL!=o->_path)gc_mark7((T7*)(o->_path));
-}
-}
-}/*--*/
-
-void gc_align_mark57(fsoc*c,gc57*p){
-gc57*b=((gc57*)(&(c->first_object)));
-if((c->header.state_type==FSO_STORE_CHUNK)&&(((char*)p)>=((char*)store57)))return;
-if(((char*)p)>((char*)(b+(c->count_minus_one))))return;
-if(((char*)p)<((char*)b))return;
-if(((((char*)p)-((char*)b))%sizeof(*p))==0){
-if(p->header.flag==FSOH_UNMARKED){
-T57*o=(&(p->object));
-((gc57*)o)->header.flag=FSOH_MARKED;
-/*i10p*/if(NULL!=o->_buffer)gc_mark9((o->_buffer));
-/*i10p*/if(NULL!=o->_path)gc_mark7((T7*)(o->_path));
-}
-}
-}/*--*/
-fsoc H57={{FSOC_SIZE,FSO_STORE_CHUNK,
-(void(*)(mch*,void*))gc_align_mark57,
-(void(*)(mch*))gc_sweep57},NULL,(((FSOC_SIZE-sizeof(fsoc)+sizeof(double))/sizeof(gc57))-1)};
-
-T57*new57(void){
-gc57*n;
-fsoc*c;
-if(store_left57>1){
-store_left57--;
-n=store57++;
-}
-else if(gc_free57!=NULL){
-n=gc_free57;
-gc_free57=n->header.next;
-}
-else if(store_left57==1){
-store_left57=0;
-store_chunk57->header.state_type=FSO_USED_CHUNK;
-n=store57++;
-}
-else{
-c=gc_fsoc_get1();
-if(gc_free57!=NULL){
-n=gc_free57;
-gc_free57=n->header.next;
-}
-else{
-if(c==NULL)c=gc_fsoc_get2();
-store_chunk57=c;
-*store_chunk57=H57;
-store57=((gc57*)(&(store_chunk57->first_object)));
-store_left57=H57.count_minus_one;
-n=store57++;
-}
-}
-n->header.flag=FSOH_UNMARKED;
-n->object=M57;
-return((T57*)n);
-}/*--*/
-
-void gc_sweep125(fsoc*c){
-gc125*o1,*o2;
-o1=((gc125*)(&(c->first_object)));
-if(c->header.state_type==FSO_STORE_CHUNK){
-for(;o1<store125;o1++){
-if((o1->header.flag)==FSOH_MARKED){
-o1->header.flag=FSOH_UNMARKED;
-}
-else{
-o1->header.next=gc_free125;
-gc_free125=o1;
-}
-}
-}
-else{
-int dead=1;
-gc125* old_gc_free = gc_free125;
-o2=o1+c->count_minus_one;
-for(;o1<=o2;o1++){
-if((o1->header.flag)==FSOH_MARKED){
-o1->header.flag=FSOH_UNMARKED;
-dead=0;}
-else{
-o1->header.next=gc_free125;
-gc_free125=o1;
-}
-}
-if (dead){
-gc_free125 = old_gc_free;
-c->next=fsocfl;
-fsocfl=c;
-c->header.state_type=FSO_FREE_CHUNK;
-}
-}
-}/*--*/
-
-void gc_mark125(T125*o){
-se_gc_check_id(o,125);
-{
-if(((gc125*)o)->header.flag==FSOH_UNMARKED){
-((gc125*)o)->header.flag=FSOH_MARKED;
-/*i6p*/if(NULL!=o->_type)gc_mark7((T7*)(o->_type));
-/*i6p*/if(NULL!=o->_acteurs)gc_mark122((T122*)(o->_acteurs));
-/*i6p*/if(NULL!=o->_realisateurs)gc_mark122((T122*)(o->_realisateurs));
-/*i6p*/if(NULL!=o->_titre)gc_mark7((T7*)(o->_titre));
-}
-}
-}/*--*/
-
-void gc_align_mark125(fsoc*c,gc125*p){
-gc125*b=((gc125*)(&(c->first_object)));
-if((c->header.state_type==FSO_STORE_CHUNK)&&(((char*)p)>=((char*)store125)))return;
-if(((char*)p)>((char*)(b+(c->count_minus_one))))return;
-if(((char*)p)<((char*)b))return;
-if(((((char*)p)-((char*)b))%sizeof(*p))==0){
-if(p->header.flag==FSOH_UNMARKED){
-T125*o=(&(p->object));
-((gc125*)o)->header.flag=FSOH_MARKED;
-/*i6p*/if(NULL!=o->_type)gc_mark7((T7*)(o->_type));
-/*i6p*/if(NULL!=o->_acteurs)gc_mark122((T122*)(o->_acteurs));
-/*i6p*/if(NULL!=o->_realisateurs)gc_mark122((T122*)(o->_realisateurs));
-/*i6p*/if(NULL!=o->_titre)gc_mark7((T7*)(o->_titre));
-}
-}
-}/*--*/
-fsoc H125={{FSOC_SIZE,FSO_STORE_CHUNK,
-(void(*)(mch*,void*))gc_align_mark125,
-(void(*)(mch*))gc_sweep125},NULL,(((FSOC_SIZE-sizeof(fsoc)+sizeof(double))/sizeof(gc125))-1)};
-
-T125*new125(void){
-gc125*n;
-fsoc*c;
-if(store_left125>1){
-store_left125--;
-n=store125++;
-}
-else if(gc_free125!=NULL){
-n=gc_free125;
-gc_free125=n->header.next;
-}
-else if(store_left125==1){
-store_left125=0;
-store_chunk125->header.state_type=FSO_USED_CHUNK;
-n=store125++;
-}
-else{
-c=gc_fsoc_get1();
-if(gc_free125!=NULL){
-n=gc_free125;
-gc_free125=n->header.next;
-}
-else{
-if(c==NULL)c=gc_fsoc_get2();
-store_chunk125=c;
-*store_chunk125=H125;
-store125=((gc125*)(&(store_chunk125->first_object)));
-store_left125=H125.count_minus_one;
-n=store125++;
-}
-}
-n->header.flag=FSOH_UNMARKED;
-n->object=M125;
-return((T125*)n);
-}/*--*/
-
-void gc_sweep129(fsoc*c){
-gc129*o1,*o2;
-o1=((gc129*)(&(c->first_object)));
-if(c->header.state_type==FSO_STORE_CHUNK){
-for(;o1<store129;o1++){
-if((o1->header.flag)==FSOH_MARKED){
-o1->header.flag=FSOH_UNMARKED;
-}
-else{
-o1->header.next=gc_free129;
-gc_free129=o1;
-}
-}
-}
-else{
-int dead=1;
-gc129* old_gc_free = gc_free129;
-o2=o1+c->count_minus_one;
-for(;o1<=o2;o1++){
-if((o1->header.flag)==FSOH_MARKED){
-o1->header.flag=FSOH_UNMARKED;
-dead=0;}
-else{
-o1->header.next=gc_free129;
-gc_free129=o1;
-}
-}
-if (dead){
-gc_free129 = old_gc_free;
-c->next=fsocfl;
-fsocfl=c;
-c->header.state_type=FSO_FREE_CHUNK;
-}
-}
-}/*--*/
-
-void gc_mark129(T129*o){
-se_gc_check_id(o,129);
-{
-if(((gc129*)o)->header.flag==FSOH_UNMARKED){
-((gc129*)o)->header.flag=FSOH_MARKED;
-/*i4p*/{
-T130 na=o->_storage;
-if(gc_find_chunk(na)!=NULL){/* non external NA */
-   rsoh*h=((rsoh*)na)-1;
-   if((h->header.magic_flag)==RSOH_UNMARKED){
-      h->header.magic_flag=RSOH_MARKED;
-r129mark_native_arrays(NULL,o);
-}
-}
-}}
-}
-}/*--*/
-
-void gc_align_mark129(fsoc*c,gc129*p){
-gc129*b=((gc129*)(&(c->first_object)));
-if((c->header.state_type==FSO_STORE_CHUNK)&&(((char*)p)>=((char*)store129)))return;
-if(((char*)p)>((char*)(b+(c->count_minus_one))))return;
-if(((char*)p)<((char*)b))return;
-if(((((char*)p)-((char*)b))%sizeof(*p))==0){
-if(p->header.flag==FSOH_UNMARKED){
-T129*o=(&(p->object));
-((gc129*)o)->header.flag=FSOH_MARKED;
-/*i4p*/{
-T130 na=o->_storage;
-if(gc_find_chunk(na)!=NULL){/* non external NA */
-   rsoh*h=((rsoh*)na)-1;
-   if((h->header.magic_flag)==RSOH_UNMARKED){
-      h->header.magic_flag=RSOH_MARKED;
-r129mark_native_arrays(NULL,o);
-}
-}
-}}
-}
-}/*--*/
-fsoc H129={{FSOC_SIZE,FSO_STORE_CHUNK,
-(void(*)(mch*,void*))gc_align_mark129,
-(void(*)(mch*))gc_sweep129},NULL,(((FSOC_SIZE-sizeof(fsoc)+sizeof(double))/sizeof(gc129))-1)};
-
-T129*new129(void){
-gc129*n;
-fsoc*c;
-if(store_left129>1){
-store_left129--;
-n=store129++;
-}
-else if(gc_free129!=NULL){
-n=gc_free129;
-gc_free129=n->header.next;
-}
-else if(store_left129==1){
-store_left129=0;
-store_chunk129->header.state_type=FSO_USED_CHUNK;
-n=store129++;
-}
-else{
-c=gc_fsoc_get1();
-if(gc_free129!=NULL){
-n=gc_free129;
-gc_free129=n->header.next;
-}
-else{
-if(c==NULL)c=gc_fsoc_get2();
-store_chunk129=c;
-*store_chunk129=H129;
-store129=((gc129*)(&(store_chunk129->first_object)));
-store_left129=H129.count_minus_one;
-n=store129++;
-}
-}
-n->header.flag=FSOH_UNMARKED;
-n->object=M129;
-return((T129*)n);
-}/*--*/
-
-void gc_sweep122(fsoc*c){
-gc122*o1,*o2;
-o1=((gc122*)(&(c->first_object)));
-if(c->header.state_type==FSO_STORE_CHUNK){
-for(;o1<store122;o1++){
-if((o1->header.flag)==FSOH_MARKED){
-o1->header.flag=FSOH_UNMARKED;
-}
-else{
-o1->header.next=gc_free122;
-gc_free122=o1;
-}
-}
-}
-else{
-int dead=1;
-gc122* old_gc_free = gc_free122;
-o2=o1+c->count_minus_one;
-for(;o1<=o2;o1++){
-if((o1->header.flag)==FSOH_MARKED){
-o1->header.flag=FSOH_UNMARKED;
-dead=0;}
-else{
-o1->header.next=gc_free122;
-gc_free122=o1;
-}
-}
-if (dead){
-gc_free122 = old_gc_free;
-c->next=fsocfl;
-fsocfl=c;
-c->header.state_type=FSO_FREE_CHUNK;
-}
-}
-}/*--*/
-
-void gc_mark122(T122*o){
-se_gc_check_id(o,122);
-{
-if(((gc122*)o)->header.flag==FSOH_UNMARKED){
-((gc122*)o)->header.flag=FSOH_MARKED;
-/*i4p*/{
-T123 na=o->_storage;
-if(gc_find_chunk(na)!=NULL){/* non external NA */
-   rsoh*h=((rsoh*)na)-1;
-   if((h->header.magic_flag)==RSOH_UNMARKED){
-      h->header.magic_flag=RSOH_MARKED;
-r122mark_native_arrays(NULL,o);
-}
-}
-}}
-}
-}/*--*/
-
-void gc_align_mark122(fsoc*c,gc122*p){
-gc122*b=((gc122*)(&(c->first_object)));
-if((c->header.state_type==FSO_STORE_CHUNK)&&(((char*)p)>=((char*)store122)))return;
-if(((char*)p)>((char*)(b+(c->count_minus_one))))return;
-if(((char*)p)<((char*)b))return;
-if(((((char*)p)-((char*)b))%sizeof(*p))==0){
-if(p->header.flag==FSOH_UNMARKED){
-T122*o=(&(p->object));
-((gc122*)o)->header.flag=FSOH_MARKED;
-/*i4p*/{
-T123 na=o->_storage;
-if(gc_find_chunk(na)!=NULL){/* non external NA */
-   rsoh*h=((rsoh*)na)-1;
-   if((h->header.magic_flag)==RSOH_UNMARKED){
-      h->header.magic_flag=RSOH_MARKED;
-r122mark_native_arrays(NULL,o);
-}
-}
-}}
-}
-}/*--*/
-fsoc H122={{FSOC_SIZE,FSO_STORE_CHUNK,
-(void(*)(mch*,void*))gc_align_mark122,
-(void(*)(mch*))gc_sweep122},NULL,(((FSOC_SIZE-sizeof(fsoc)+sizeof(double))/sizeof(gc122))-1)};
-
-T122*new122(void){
-gc122*n;
-fsoc*c;
-if(store_left122>1){
-store_left122--;
-n=store122++;
-}
-else if(gc_free122!=NULL){
-n=gc_free122;
-gc_free122=n->header.next;
-}
-else if(store_left122==1){
-store_left122=0;
-store_chunk122->header.state_type=FSO_USED_CHUNK;
-n=store122++;
-}
-else{
-c=gc_fsoc_get1();
-if(gc_free122!=NULL){
-n=gc_free122;
-gc_free122=n->header.next;
-}
-else{
-if(c==NULL)c=gc_fsoc_get2();
-store_chunk122=c;
-*store_chunk122=H122;
-store122=((gc122*)(&(store_chunk122->first_object)));
-store_left122=H122.count_minus_one;
-n=store122++;
-}
-}
-n->header.flag=FSOH_UNMARKED;
-n->object=M122;
-return((T122*)n);
-}/*--*/
-
-void gc_sweep40(fsoc*c){
-gc40*o1,*o2;
-o1=((gc40*)(&(c->first_object)));
-if(c->header.state_type==FSO_STORE_CHUNK){
-for(;o1<store40;o1++){
-if((o1->header.flag)==FSOH_MARKED){
-o1->header.flag=FSOH_UNMARKED;
-}
-else{
-o1->header.next=gc_free40;
-gc_free40=o1;
-}
-}
-}
-else{
-int dead=1;
-gc40* old_gc_free = gc_free40;
-o2=o1+c->count_minus_one;
-for(;o1<=o2;o1++){
-if((o1->header.flag)==FSOH_MARKED){
-o1->header.flag=FSOH_UNMARKED;
-dead=0;}
-else{
-o1->header.next=gc_free40;
-gc_free40=o1;
-}
-}
-if (dead){
-gc_free40 = old_gc_free;
-c->next=fsocfl;
-fsocfl=c;
-c->header.state_type=FSO_FREE_CHUNK;
-}
-}
-}/*--*/
-
-void gc_mark40(T40*o){
-se_gc_check_id(o,40);
-{
-if(((gc40*)o)->header.flag==FSOH_UNMARKED){
-((gc40*)o)->header.flag=FSOH_MARKED;
-/*i3p*/}
-}
-}/*--*/
-
-void gc_align_mark40(fsoc*c,gc40*p){
-gc40*b=((gc40*)(&(c->first_object)));
-if((c->header.state_type==FSO_STORE_CHUNK)&&(((char*)p)>=((char*)store40)))return;
-if(((char*)p)>((char*)(b+(c->count_minus_one))))return;
-if(((char*)p)<((char*)b))return;
-if(((((char*)p)-((char*)b))%sizeof(*p))==0){
-if(p->header.flag==FSOH_UNMARKED){
-T40*o=(&(p->object));
-((gc40*)o)->header.flag=FSOH_MARKED;
-/*i3p*/}
-}
-}/*--*/
-fsoc H40={{FSOC_SIZE,FSO_STORE_CHUNK,
-(void(*)(mch*,void*))gc_align_mark40,
-(void(*)(mch*))gc_sweep40},NULL,(((FSOC_SIZE-sizeof(fsoc)+sizeof(double))/sizeof(gc40))-1)};
-
-T40*new40(void){
-gc40*n;
-fsoc*c;
-if(store_left40>1){
-store_left40--;
-n=store40++;
-}
-else if(gc_free40!=NULL){
-n=gc_free40;
-gc_free40=n->header.next;
-}
-else if(store_left40==1){
-store_left40=0;
-store_chunk40->header.state_type=FSO_USED_CHUNK;
-n=store40++;
-}
-else{
-c=gc_fsoc_get1();
-if(gc_free40!=NULL){
-n=gc_free40;
-gc_free40=n->header.next;
-}
-else{
-if(c==NULL)c=gc_fsoc_get2();
-store_chunk40=c;
-*store_chunk40=H40;
-store40=((gc40*)(&(store_chunk40->first_object)));
-store_left40=H40.count_minus_one;
-n=store40++;
-}
-}
-n->header.flag=FSOH_UNMARKED;
-n->object=M40;
-return((T40*)n);
-}/*--*/
-
-void gc_sweep25(fsoc*c){
-gc25*o1,*o2;
-o1=((gc25*)(&(c->first_object)));
-if(c->header.state_type==FSO_STORE_CHUNK){
-for(;o1<store25;o1++){
-if((o1->header.flag)==FSOH_MARKED){
-o1->header.flag=FSOH_UNMARKED;
-}
-else{
-o1->header.next=gc_free25;
-gc_free25=o1;
-}
-}
-}
-else{
-int dead=1;
-gc25* old_gc_free = gc_free25;
-o2=o1+c->count_minus_one;
-for(;o1<=o2;o1++){
-if((o1->header.flag)==FSOH_MARKED){
-o1->header.flag=FSOH_UNMARKED;
-dead=0;}
-else{
-o1->header.next=gc_free25;
-gc_free25=o1;
-}
-}
-if (dead){
-gc_free25 = old_gc_free;
-c->next=fsocfl;
-fsocfl=c;
-c->header.state_type=FSO_FREE_CHUNK;
-}
-}
-}/*--*/
-
-void gc_mark25(T25*o){
-se_gc_check_id(o,25);
-{
-if(((gc25*)o)->header.flag==FSOH_UNMARKED){
-((gc25*)o)->header.flag=FSOH_MARKED;
-/*i3p*/if(NULL!=o->_liste_utilisateurs)gc_mark131((T131*)(o->_liste_utilisateurs));
-/*i3p*/if(NULL!=o->_liste_livres)gc_mark132((T132*)(o->_liste_livres));
-/*i3p*/if(NULL!=o->_liste_dvd)gc_mark129((T129*)(o->_liste_dvd));
-}
-}
-}/*--*/
-
-void gc_align_mark25(fsoc*c,gc25*p){
-gc25*b=((gc25*)(&(c->first_object)));
-if((c->header.state_type==FSO_STORE_CHUNK)&&(((char*)p)>=((char*)store25)))return;
-if(((char*)p)>((char*)(b+(c->count_minus_one))))return;
-if(((char*)p)<((char*)b))return;
-if(((((char*)p)-((char*)b))%sizeof(*p))==0){
-if(p->header.flag==FSOH_UNMARKED){
-T25*o=(&(p->object));
-((gc25*)o)->header.flag=FSOH_MARKED;
-/*i3p*/if(NULL!=o->_liste_utilisateurs)gc_mark131((T131*)(o->_liste_utilisateurs));
-/*i3p*/if(NULL!=o->_liste_livres)gc_mark132((T132*)(o->_liste_livres));
-/*i3p*/if(NULL!=o->_liste_dvd)gc_mark129((T129*)(o->_liste_dvd));
-}
-}
-}/*--*/
-fsoc H25={{FSOC_SIZE,FSO_STORE_CHUNK,
-(void(*)(mch*,void*))gc_align_mark25,
-(void(*)(mch*))gc_sweep25},NULL,(((FSOC_SIZE-sizeof(fsoc)+sizeof(double))/sizeof(gc25))-1)};
-
-T25*new25(void){
-gc25*n;
-fsoc*c;
-if(store_left25>1){
-store_left25--;
-n=store25++;
-}
-else if(gc_free25!=NULL){
-n=gc_free25;
-gc_free25=n->header.next;
-}
-else if(store_left25==1){
-store_left25=0;
-store_chunk25->header.state_type=FSO_USED_CHUNK;
-n=store25++;
-}
-else{
-c=gc_fsoc_get1();
-if(gc_free25!=NULL){
-n=gc_free25;
-gc_free25=n->header.next;
-}
-else{
-if(c==NULL)c=gc_fsoc_get2();
-store_chunk25=c;
-*store_chunk25=H25;
-store25=((gc25*)(&(store_chunk25->first_object)));
-store_left25=H25.count_minus_one;
-n=store25++;
-}
-}
-n->header.flag=FSOH_UNMARKED;
-n->object=M25;
-return((T25*)n);
-}/*--*/
-
-void gc_mark9(T9 o){
-if(NULL==gc_find_chunk(o))
-return; /* external NA */
-(((rsoh*)o)-1)->header.magic_flag=RSOH_MARKED;
-}/*--*/
-
-T9 new9(unsigned int size){
-size=(size*sizeof(T3))+sizeof(rsoh);
-size=((size+(sizeof(double)-1))&~(sizeof(double)-1));
-if (size<=(na_env9.store_left)){
-rsoh*r=na_env9.store;
-na_env9.store_left-=size;
-if(na_env9.store_left>sizeof(rsoh)){
-r->header.size=size;
-na_env9.store=((rsoh*)(((char*)(na_env9.store))+size));
-}
-else {
-r->header.size=size+na_env9.store_left;
-na_env9.store_left=0;
-}
-(r->header.magic_flag)=RSOH_UNMARKED;
-((void)memset((r+1),0,r->header.size-sizeof(rsoh)));
-return((T9)(r+1));
-}
-return((T9)new_na(&na_env9,size));
-}/*--*/
-
-void gc_sweep7(fsoc*c){
-gc7*o1,*o2;
-o1=((gc7*)(&(c->first_object)));
-if(c->header.state_type==FSO_STORE_CHUNK){
-for(;o1<store7;o1++){
-if((o1->header.flag)==FSOH_MARKED){
-o1->header.flag=FSOH_UNMARKED;
-}
-else{
-o1->header.next=gc_free7;
-gc_free7=o1;
-}
-}
-}
-else{
-int dead=1;
-gc7* old_gc_free = gc_free7;
-o2=o1+c->count_minus_one;
-for(;o1<=o2;o1++){
-if((o1->header.flag)==FSOH_MARKED){
-o1->header.flag=FSOH_UNMARKED;
-dead=0;}
-else{
-o1->header.next=gc_free7;
-gc_free7=o1;
-}
-}
-if (dead){
-gc_free7 = old_gc_free;
-c->next=fsocfl;
-fsocfl=c;
-c->header.state_type=FSO_FREE_CHUNK;
-}
-}
-}/*--*/
-
-void gc_mark7(T7*o){
-se_gc_check_id(o,7);
-{
-if(((gc7*)o)->header.flag==FSOH_UNMARKED){
-((gc7*)o)->header.flag=FSOH_MARKED;
-/*i3p*/if(NULL!=o->_storage)gc_mark9((o->_storage));
-}
-}
-}/*--*/
-
-void gc_align_mark7(fsoc*c,gc7*p){
-gc7*b=((gc7*)(&(c->first_object)));
-if((c->header.state_type==FSO_STORE_CHUNK)&&(((char*)p)>=((char*)store7)))return;
-if(((char*)p)>((char*)(b+(c->count_minus_one))))return;
-if(((char*)p)<((char*)b))return;
-if(((((char*)p)-((char*)b))%sizeof(*p))==0){
-if(p->header.flag==FSOH_UNMARKED){
-T7*o=(&(p->object));
-((gc7*)o)->header.flag=FSOH_MARKED;
-/*i3p*/if(NULL!=o->_storage)gc_mark9((o->_storage));
-}
-}
-}/*--*/
-fsoc H7={{FSOC_SIZE,FSO_STORE_CHUNK,
-(void(*)(mch*,void*))gc_align_mark7,
-(void(*)(mch*))gc_sweep7},NULL,(((FSOC_SIZE-sizeof(fsoc)+sizeof(double))/sizeof(gc7))-1)};
-
-T7*new7(void){
-gc7*n;
-fsoc*c;
-if(store_left7>1){
-store_left7--;
-n=store7++;
-}
-else if(gc_free7!=NULL){
-n=gc_free7;
-gc_free7=n->header.next;
-}
-else if(store_left7==1){
-store_left7=0;
-store_chunk7->header.state_type=FSO_USED_CHUNK;
-n=store7++;
-}
-else{
-c=gc_fsoc_get1();
-if(gc_free7!=NULL){
-n=gc_free7;
-gc_free7=n->header.next;
-}
-else{
-if(c==NULL)c=gc_fsoc_get2();
-store_chunk7=c;
-*store_chunk7=H7;
-store7=((gc7*)(&(store_chunk7->first_object)));
-store_left7=H7.count_minus_one;
-n=store7++;
-}
-}
-n->header.flag=FSOH_UNMARKED;
-n->object=M7;
-return((T7*)n);
-}/*--*/
-T25*eiffel_root_object=(void*)0;
-int se_argc;
-char**se_argv;
-T7*g[135];
-T7*t[135];
-char*p[135];
-void(*se_prinT[135])(FILE*,void*);
-int se_strucT[135]={0,sizeof(T1),sizeof(T2),sizeof(T3),0,0,sizeof(T6),sizeof(T7),sizeof(T8),sizeof(T9),sizeof(T10),0,0,0,
-0,
-0,
-0,
-0,
-0,
-0,
-0,
-0,
-0,
-0,
-0,
-sizeof(T25),
-0,
-0,
-0,
-0,
-0,
-0,
-0,
-0,
-0,
-0,
-0,
-0,
-0,
-0,
-sizeof(T40),
-0,
-0,
-0,
-0,
-0,
-0,
-sizeof(T47),
-sizeof(T48),
-0,
-0,
-0,
-0,
-0,
-0,
-0,
-0,
-sizeof(T57),
-0,
-0,
-0,
-0,
-0,
-0,
-0,
-0,
-0,
-0,
-0,
-0,
-0,
-0,
-0,
-0,
-0,
-0,
-0,
-0,
-0,
-0,
-0,
-0,
-0,
-0,
-0,
-0,
-0,
-0,
-0,
-0,
-0,
-0,
-0,
-0,
-0,
-0,
-0,
-0,
-0,
-0,
-0,
-0,
-0,
-0,
-0,
-0,
-0,
-0,
-0,
-0,
-0,
-0,
-0,
-0,
-0,
-0,
-0,
-0,
-0,
-0,
-0,
-0,
-sizeof(T122),
-sizeof(T123),
-0,
-sizeof(T125),
-0,
-0,
-0,
-sizeof(T129),
-sizeof(T130),
-sizeof(T131),
-sizeof(T132),
-sizeof(T133),
-sizeof(T134)};
-
-void se_atexit(void){
-se_frame_descriptor fd={"<atexit wrapper>",0,0,"",1};
-se_dump_stack ds;
-ds.fd=&fd;
-ds.p=0;
-ds.caller=NULL;
-ds.exception_origin=NULL;
-ds.locals=NULL;
-r47se_atexit(&ds,NULL/*Unused Target*/);
-}/*--*/
-
-void initialize_eiffel_runtime(int argc,char*argv[]){
-/*[INTERNAL_C_LOCAL list*/
-T0* tmp0;
-/*INTERNAL_C_LOCAL list]*/
-se_frame_descriptor irfd={"<runtime init>",0,0,"",1};
-se_dump_stack ds = {NULL,NULL,0,NULL,NULL};
-ds.fd=&irfd;
-set_dump_stack_top(&ds);/*link*/
-se_argc=argc;
-se_argv=argv;
-atexit(se_atexit);
-gcmt=((mch**)se_malloc((gcmt_max+1)*sizeof(void*)));
-#ifdef FIXED_STACK_BOTTOM
-if (!stack_bottom) stack_bottom=((void**)(void*)(&argc));
-#endif
-p[0]="???";
-p[127]="C:\\Users\\SEB\\Documents\\GitHub\\GLOEiffelProject\\livre.e";
-p[128]="C:\\Users\\SEB\\Documents\\GitHub\\GLOEiffelProject\\utilisateur.e";
-p[126]="C:\\Users\\SEB\\Documents\\GitHub\\GLOEiffelProject\\IMedia.e";
-p[125]="C:\\Users\\SEB\\Documents\\GitHub\\GLOEiffelProject\\dvd.e";
-p[25]="C:\\Users\\SEB\\Documents\\GitHub\\GLOEiffelProject\\application.e";
-p[100]="C:\\SmartEiffel\\lib\\kernel\\procedure.e";
-p[94]="C:\\SmartEiffel\\lib\\kernel\\memory.e";
-p[15]="C:\\SmartEiffel\\lib\\kernel\\tuple.e";
-p[16]="C:\\SmartEiffel\\lib\\kernel\\tuple.e";
-p[65]="C:\\SmartEiffel\\lib\\kernel\\routine.e";
-p[17]="C:\\SmartEiffel\\lib\\kernel\\tuple.e";
-p[18]="C:\\SmartEiffel\\lib\\kernel\\tuple.e";
-p[19]="C:\\SmartEiffel\\lib\\kernel\\tuple.e";
-p[20]="C:\\SmartEiffel\\lib\\kernel\\tuple.e";
-p[21]="C:\\SmartEiffel\\lib\\kernel\\tuple.e";
-p[22]="C:\\SmartEiffel\\lib\\kernel\\tuple.e";
-p[23]="C:\\SmartEiffel\\lib\\kernel\\tuple.e";
-p[14]="C:\\SmartEiffel\\lib\\kernel\\tuple.e";
-p[24]="C:\\SmartEiffel\\lib\\kernel\\tuple.e";
-p[8]="C:\\SmartEiffel\\lib\\kernel\\pointer.e";
-p[99]="C:\\SmartEiffel\\lib\\kernel\\reference.e";
-p[64]="C:\\SmartEiffel\\lib\\kernel\\function.e";
-p[6]="C:\\SmartEiffel\\lib\\kernel\\boolean.e";
-p[51]="C:\\SmartEiffel\\lib\\kernel\\safe_equal.e";
-p[13]="C:\\SmartEiffel\\lib\\kernel\\any.e";
-p[101]="C:\\SmartEiffel\\lib\\kernel\\weak_reference.e";
-p[36]="C:\\SmartEiffel\\lib\\kernel\\platform.e";
-p[73]="C:\\SmartEiffel\\lib\\kernel\\internal\\internals_handler.e";
-p[85]="C:\\SmartEiffel\\lib\\kernel\\internal\\native_array_internals.e";
-p[45]="C:\\SmartEiffel\\lib\\kernel\\internal\\typed_internals.e";
-p[67]="C:\\SmartEiffel\\lib\\kernel\\internal\\native_array_collector.e";
-p[46]="C:\\SmartEiffel\\lib\\kernel\\internal\\internals.e";
-p[63]="C:\\SmartEiffel\\lib\\storage\\collection.e";
-p[80]="C:\\SmartEiffel\\lib\\storage\\collection\\fast_array.e";
-p[66]="C:\\SmartEiffel\\lib\\storage\\collection\\array.e";
-p[102]="C:\\SmartEiffel\\lib\\storage\\collection\\ring_array.e";
-p[50]="C:\\SmartEiffel\\lib\\storage\\low_level\\native_array.e";
-p[93]="C:\\SmartEiffel\\lib\\storage\\low_level\\recycling_pool.e";
-p[68]="C:\\SmartEiffel\\lib\\storage\\internal\\arrayed_collection.e";
-p[106]="C:\\SmartEiffel\\lib\\io\\directory_notation.e";
-p[49]="C:\\SmartEiffel\\lib\\io\\filter.e";
-p[26]="C:\\SmartEiffel\\lib\\io\\output_stream.e";
-p[113]="C:\\SmartEiffel\\lib\\io\\path_name.e";
-p[71]="C:\\SmartEiffel\\lib\\io\\filter_input_stream.e";
-p[38]="C:\\SmartEiffel\\lib\\io\\terminal_output_stream.e";
-p[104]="C:\\SmartEiffel\\lib\\io\\file_tools.e";
-p[42]="C:\\SmartEiffel\\lib\\io\\terminal_input_stream.e";
-p[41]="C:\\SmartEiffel\\lib\\io\\terminal_input_output_stream.e";
-p[59]="C:\\SmartEiffel\\lib\\io\\filter_output_stream.e";
-p[43]="C:\\SmartEiffel\\lib\\io\\input_stream.e";
-p[27]="C:\\SmartEiffel\\lib\\io\\stream.e";
-p[58]="C:\\SmartEiffel\\lib\\io\\terminal\\file.e";
-p[57]="C:\\SmartEiffel\\lib\\io\\terminal\\text_file_read.e";
-p[40]="C:\\SmartEiffel\\lib\\io\\terminal\\std_input_output.e";
-p[37]="C:\\SmartEiffel\\lib\\io\\terminal\\std_error.e";
-p[48]="C:\\SmartEiffel\\lib\\io\\terminal\\std_input.e";
-p[47]="C:\\SmartEiffel\\lib\\io\\terminal\\std_output.e";
-p[44]="C:\\SmartEiffel\\lib\\io\\low_level\\input_stream_tools.e";
-p[30]="C:\\SmartEiffel\\lib\\io\\low_level\\output_stream_tools.e";
-p[39]="C:\\SmartEiffel\\lib\\io\\low_level\\redirection_tools.e";
-p[105]="C:\\SmartEiffel\\lib\\io\\low_level\\basic_directory.e";
-p[115]="C:\\SmartEiffel\\lib\\io\\internal\\unixish_path_name.e";
-p[29]="C:\\SmartEiffel\\lib\\io\\internal\\filterable.e";
-p[112]="C:\\SmartEiffel\\lib\\io\\internal\\path_joiner.e";
-p[114]="C:\\SmartEiffel\\lib\\io\\path_name\\posix_path_name.e";
-p[111]="C:\\SmartEiffel\\lib\\io\\path_name\\path_name_notation.e";
-p[109]="C:\\SmartEiffel\\lib\\io\\path_name\\macintosh_directory_notation.e";
-p[117]="C:\\SmartEiffel\\lib\\io\\path_name\\openvms_directory_notation.e";
-p[120]="C:\\SmartEiffel\\lib\\io\\path_name\\microsoft_path_name.e";
-p[119]="C:\\SmartEiffel\\lib\\io\\path_name\\windows_directory_notation.e";
-p[110]="C:\\SmartEiffel\\lib\\io\\path_name\\unix_directory_notation.e";
-p[118]="C:\\SmartEiffel\\lib\\io\\path_name\\amiga_directory_notation.e";
-p[121]="C:\\SmartEiffel\\lib\\io\\path_name\\cygwin_directory_notation.e";
-p[107]="C:\\SmartEiffel\\lib\\unicode\\unicode_string_handler.e";
-p[62]="C:\\SmartEiffel\\lib\\iterator\\iterator.e";
-p[83]="C:\\SmartEiffel\\lib\\iterator\\internal\\iterator_on_traversable.e";
-p[81]="C:\\SmartEiffel\\lib\\iterator\\internal\\iterator_on_unicode_string.e";
-p[70]="C:\\SmartEiffel\\lib\\iterator\\internal\\iterator_on_string.e";
-p[84]="C:\\SmartEiffel\\lib\\misc\\mini_parser_buffer.e";
-p[82]="C:\\SmartEiffel\\lib\\sequencer\\events_set.e";
-p[60]="C:\\SmartEiffel\\lib\\sequencer\\event_descriptor.e";
-p[72]="C:\\SmartEiffel\\lib\\sequencer\\events\\can_read_data_from_stream.e";
-p[98]="C:\\SmartEiffel\\lib\\sequencer\\events\\network_connection_occurred.e";
-p[61]="C:\\SmartEiffel\\lib\\sequencer\\events\\can_write_data_to_stream.e";
-p[28]="C:\\SmartEiffel\\lib\\abilities\\recyclable.e";
-p[92]="C:\\SmartEiffel\\lib\\abilities\\disposable.e";
-p[32]="C:\\SmartEiffel\\lib\\abilities\\traversable.e";
-p[35]="C:\\SmartEiffel\\lib\\abilities\\hashable.e";
-p[33]="C:\\SmartEiffel\\lib\\abilities\\storable.e";
-p[34]="C:\\SmartEiffel\\lib\\abilities\\comparable.e";
-p[12]="C:\\SmartEiffel\\lib\\numeric\\real_extended.e";
-p[54]="C:\\SmartEiffel\\lib\\numeric\\real_general.e";
-p[2]="C:\\SmartEiffel\\lib\\numeric\\integer_32.e";
-p[55]="C:\\SmartEiffel\\lib\\numeric\\number.e";
-p[4]="C:\\SmartEiffel\\lib\\numeric\\real_32.e";
-p[1]="C:\\SmartEiffel\\lib\\numeric\\integer_8.e";
-p[76]="C:\\SmartEiffel\\lib\\numeric\\mutable_big_integer.e";
-p[11]="C:\\SmartEiffel\\lib\\numeric\\integer_64.e";
-p[69]="C:\\SmartEiffel\\lib\\numeric\\number_tools.e";
-p[52]="C:\\SmartEiffel\\lib\\numeric\\integer_general.e";
-p[5]="C:\\SmartEiffel\\lib\\numeric\\real_64.e";
-p[53]="C:\\SmartEiffel\\lib\\numeric\\numeric.e";
-p[10]="C:\\SmartEiffel\\lib\\numeric\\integer_16.e";
-p[77]="C:\\SmartEiffel\\lib\\numeric\\internal\\fraction_with_big_integer_number.e";
-p[74]="C:\\SmartEiffel\\lib\\numeric\\internal\\integer_64_number.e";
-p[75]="C:\\SmartEiffel\\lib\\numeric\\internal\\integer_general_number.e";
-p[78]="C:\\SmartEiffel\\lib\\numeric\\internal\\fraction_general_number.e";
-p[79]="C:\\SmartEiffel\\lib\\numeric\\internal\\big_integer_number.e";
-p[56]="C:\\SmartEiffel\\lib\\string\\unicode_string.e";
-p[3]="C:\\SmartEiffel\\lib\\string\\character.e";
-p[7]="C:\\SmartEiffel\\lib\\string\\string.e";
-p[31]="C:\\SmartEiffel\\lib\\string\\low_level\\string_handler.e";
-p[108]="C:\\SmartEiffel\\lib\\time\\time_formatter.e";
-p[90]="C:\\SmartEiffel\\lib\\time\\time.e";
-p[86]="C:\\SmartEiffel\\lib\\time\\microsecond_time.e";
-p[95]="C:\\SmartEiffel\\lib\\net\\access.e";
-p[97]="C:\\SmartEiffel\\lib\\net\\socket_input_output_stream.e";
-p[87]="C:\\SmartEiffel\\lib\\net\\low_level\\socket_server.e";
-p[103]="C:\\SmartEiffel\\lib\\net\\low_level\\client_socket_input_output_stream.e";
-p[96]="C:\\SmartEiffel\\lib\\net\\low_level\\server_socket_input_output_stream.e";
-p[88]="C:\\SmartEiffel\\lib\\net\\low_level\\socket_plug_in.e";
-p[89]="C:\\SmartEiffel\\lib\\net\\low_level\\socket_handler.e";
-p[91]="C:\\SmartEiffel\\lib\\net\\low_level\\socket.e";
-p[116]="C:\\SmartEiffel\\lib\\exec\\system.e";
-se_prinT[134]=((void(*)(FILE*,void*))se_prinT134);
-p[134]=p[50];
-se_prinT[133]=((void(*)(FILE*,void*))se_prinT133);
-p[133]=p[50];
-se_prinT[132]=((void(*)(FILE*,void*))se_prinT132);
-p[132]=p[66];
-se_prinT[131]=((void(*)(FILE*,void*))se_prinT131);
-p[131]=p[66];
-se_prinT[130]=((void(*)(FILE*,void*))se_prinT130);
-p[130]=p[50];
-se_prinT[129]=((void(*)(FILE*,void*))se_prinT129);
-p[129]=p[66];
-se_prinT[125]=((void(*)(FILE*,void*))se_prinT125);
-se_prinT[123]=((void(*)(FILE*,void*))se_prinT123);
-p[123]=p[50];
-se_prinT[122]=((void(*)(FILE*,void*))se_prinT122);
-p[122]=p[66];
-se_prinT[57]=((void(*)(FILE*,void*))se_prinT57);
-se_prinT[48]=((void(*)(FILE*,void*))se_prinT48);
-se_prinT[47]=((void(*)(FILE*,void*))se_prinT47);
-se_prinT[40]=((void(*)(FILE*,void*))se_prinT40);
-se_prinT[25]=((void(*)(FILE*,void*))se_prinT25);
-se_prinT[10]=((void(*)(FILE*,void*))se_prinT10);
-se_prinT[9]=((void(*)(FILE*,void*))se_prinT9);
-p[9]=p[50];
-se_prinT[8]=((void(*)(FILE*,void*))se_prinT8);
-se_prinT[7]=((void(*)(FILE*,void*))se_prinT7);
-se_prinT[6]=((void(*)(FILE*,void*))se_prinT6);
-se_prinT[3]=((void(*)(FILE*,void*))se_prinT3);
-se_prinT[2]=((void(*)(FILE*,void*))se_prinT2);
-se_prinT[1]=((void(*)(FILE*,void*))se_prinT1);
-g[127]=(T7*)se_string("LIVRE");
-g[128]=(T7*)se_string("UTILISATEUR");
-g[126]=(T7*)se_string("IMEDIA");
-g[125]=(T7*)se_string("DVD");
-g[25]=(T7*)se_string("APPLICATION");
-g[100]=(T7*)se_string("PROCEDURE");
-g[94]=(T7*)se_string("MEMORY");
-g[15]=(T7*)se_string("TUPLE 1");
-g[16]=(T7*)se_string("TUPLE 2");
-g[65]=(T7*)se_string("ROUTINE");
-g[17]=(T7*)se_string("TUPLE 3");
-g[18]=(T7*)se_string("TUPLE 4");
-g[19]=(T7*)se_string("TUPLE 5");
-g[20]=(T7*)se_string("TUPLE 6");
-g[21]=(T7*)se_string("TUPLE 7");
-g[22]=(T7*)se_string("TUPLE 8");
-g[23]=(T7*)se_string("TUPLE 9");
-g[14]=(T7*)se_string("TUPLE");
-g[24]=(T7*)se_string("TUPLE 10");
-g[8]=(T7*)se_string("POINTER");
-g[99]=(T7*)se_string("REFERENCE");
-g[64]=(T7*)se_string("FUNCTION");
-g[6]=(T7*)se_string("BOOLEAN");
-g[51]=(T7*)se_string("SAFE_EQUAL");
-g[13]=(T7*)se_string("ANY");
-g[101]=(T7*)se_string("WEAK_REFERENCE");
-g[36]=(T7*)se_string("PLATFORM");
-g[73]=(T7*)se_string("INTERNALS_HANDLER");
-g[85]=(T7*)se_string("NATIVE_ARRAY_INTERNALS");
-g[45]=(T7*)se_string("TYPED_INTERNALS");
-g[67]=(T7*)se_string("NATIVE_ARRAY_COLLECTOR");
-g[46]=(T7*)se_string("INTERNALS");
-g[63]=(T7*)se_string("COLLECTION");
-g[80]=(T7*)se_string("FAST_ARRAY");
-g[66]=(T7*)se_string("ARRAY");
-g[102]=(T7*)se_string("RING_ARRAY");
-g[50]=(T7*)se_string("NATIVE_ARRAY");
-g[93]=(T7*)se_string("RECYCLING_POOL");
-g[68]=(T7*)se_string("ARRAYED_COLLECTION");
-g[106]=(T7*)se_string("DIRECTORY_NOTATION");
-g[49]=(T7*)se_string("FILTER");
-g[26]=(T7*)se_string("OUTPUT_STREAM");
-g[113]=(T7*)se_string("PATH_NAME");
-g[71]=(T7*)se_string("FILTER_INPUT_STREAM");
-g[38]=(T7*)se_string("TERMINAL_OUTPUT_STREAM");
-g[104]=(T7*)se_string("FILE_TOOLS");
-g[42]=(T7*)se_string("TERMINAL_INPUT_STREAM");
-g[41]=(T7*)se_string("TERMINAL_INPUT_OUTPUT_STREAM");
-g[59]=(T7*)se_string("FILTER_OUTPUT_STREAM");
-g[43]=(T7*)se_string("INPUT_STREAM");
-g[27]=(T7*)se_string("STREAM");
-g[58]=(T7*)se_string("FILE");
-g[57]=(T7*)se_string("TEXT_FILE_READ");
-g[40]=(T7*)se_string("STD_INPUT_OUTPUT");
-g[37]=(T7*)se_string("STD_ERROR");
-g[48]=(T7*)se_string("STD_INPUT");
-g[47]=(T7*)se_string("STD_OUTPUT");
-g[44]=(T7*)se_string("INPUT_STREAM_TOOLS");
-g[30]=(T7*)se_string("OUTPUT_STREAM_TOOLS");
-g[39]=(T7*)se_string("REDIRECTION_TOOLS");
-g[105]=(T7*)se_string("BASIC_DIRECTORY");
-g[115]=(T7*)se_string("UNIXISH_PATH_NAME");
-g[29]=(T7*)se_string("FILTERABLE");
-g[112]=(T7*)se_string("PATH_JOINER");
-g[114]=(T7*)se_string("POSIX_PATH_NAME");
-g[111]=(T7*)se_string("PATH_NAME_NOTATION");
-g[109]=(T7*)se_string("MACINTOSH_DIRECTORY_NOTATION");
-g[117]=(T7*)se_string("OPENVMS_DIRECTORY_NOTATION");
-g[120]=(T7*)se_string("MICROSOFT_PATH_NAME");
-g[119]=(T7*)se_string("WINDOWS_DIRECTORY_NOTATION");
-g[110]=(T7*)se_string("UNIX_DIRECTORY_NOTATION");
-g[118]=(T7*)se_string("AMIGA_DIRECTORY_NOTATION");
-g[121]=(T7*)se_string("CYGWIN_DIRECTORY_NOTATION");
-g[107]=(T7*)se_string("UNICODE_STRING_HANDLER");
-g[62]=(T7*)se_string("ITERATOR");
-g[83]=(T7*)se_string("ITERATOR_ON_TRAVERSABLE");
-g[81]=(T7*)se_string("ITERATOR_ON_UNICODE_STRING");
-g[70]=(T7*)se_string("ITERATOR_ON_STRING");
-g[84]=(T7*)se_string("MINI_PARSER_BUFFER");
-g[82]=(T7*)se_string("EVENTS_SET");
-g[60]=(T7*)se_string("EVENT_DESCRIPTOR");
-g[72]=(T7*)se_string("CAN_READ_DATA_FROM_STREAM");
-g[98]=(T7*)se_string("NETWORK_CONNECTION_OCCURRED");
-g[61]=(T7*)se_string("CAN_WRITE_DATA_TO_STREAM");
-g[28]=(T7*)se_string("RECYCLABLE");
-g[92]=(T7*)se_string("DISPOSABLE");
-g[32]=(T7*)se_string("TRAVERSABLE");
-g[35]=(T7*)se_string("HASHABLE");
-g[33]=(T7*)se_string("STORABLE");
-g[34]=(T7*)se_string("COMPARABLE");
-g[12]=(T7*)se_string("REAL_EXTENDED");
-g[54]=(T7*)se_string("REAL_GENERAL");
-g[2]=(T7*)se_string("INTEGER_32");
-g[55]=(T7*)se_string("NUMBER");
-g[4]=(T7*)se_string("REAL_32");
-g[1]=(T7*)se_string("INTEGER_8");
-g[76]=(T7*)se_string("MUTABLE_BIG_INTEGER");
-g[11]=(T7*)se_string("INTEGER_64");
-g[69]=(T7*)se_string("NUMBER_TOOLS");
-g[52]=(T7*)se_string("INTEGER_GENERAL");
-g[5]=(T7*)se_string("REAL_64");
-g[53]=(T7*)se_string("NUMERIC");
-g[10]=(T7*)se_string("INTEGER_16");
-g[77]=(T7*)se_string("FRACTION_WITH_BIG_INTEGER_NUMBER");
-g[74]=(T7*)se_string("INTEGER_64_NUMBER");
-g[75]=(T7*)se_string("INTEGER_GENERAL_NUMBER");
-g[78]=(T7*)se_string("FRACTION_GENERAL_NUMBER");
-g[79]=(T7*)se_string("BIG_INTEGER_NUMBER");
-g[56]=(T7*)se_string("UNICODE_STRING");
-g[3]=(T7*)se_string("CHARACTER");
-g[7]=(T7*)se_string("STRING");
-g[31]=(T7*)se_string("STRING_HANDLER");
-g[108]=(T7*)se_string("TIME_FORMATTER");
-g[90]=(T7*)se_string("TIME");
-g[86]=(T7*)se_string("MICROSECOND_TIME");
-g[95]=(T7*)se_string("ACCESS");
-g[97]=(T7*)se_string("SOCKET_INPUT_OUTPUT_STREAM");
-g[87]=(T7*)se_string("SOCKET_SERVER");
-g[103]=(T7*)se_string("CLIENT_SOCKET_INPUT_OUTPUT_STREAM");
-g[96]=(T7*)se_string("SERVER_SOCKET_INPUT_OUTPUT_STREAM");
-g[88]=(T7*)se_string("SOCKET_PLUG_IN");
-g[89]=(T7*)se_string("SOCKET_HANDLER");
-g[91]=(T7*)se_string("SOCKET");
-g[116]=(T7*)se_string("SYSTEM");
-g[134]=g[50];
-g[133]=g[50];
-g[132]=g[66];
-g[131]=g[66];
-g[130]=g[50];
-g[129]=g[66];
-g[123]=g[50];
-g[122]=g[66];
-g[9]=g[50];
-t[134]=(T7*)se_string("NATIVE_ARRAY[LIVRE]");
-t[133]=(T7*)se_string("NATIVE_ARRAY[UTILISATEUR]");
-t[132]=(T7*)se_string("ARRAY[LIVRE]");
-t[131]=(T7*)se_string("ARRAY[UTILISATEUR]");
-t[130]=(T7*)se_string("NATIVE_ARRAY[DVD]");
-t[129]=(T7*)se_string("ARRAY[DVD]");
-t[125]=g[125];
-t[123]=(T7*)se_string("NATIVE_ARRAY[STRING]");
-t[122]=(T7*)se_string("ARRAY[STRING]");
-t[57]=g[57];
-t[48]=g[48];
-t[47]=g[47];
-t[40]=g[40];
-t[25]=g[25];
-t[10]=g[10];
-t[9]=(T7*)se_string("NATIVE_ARRAY[CHARACTER]");
-t[8]=g[8];
-t[7]=g[7];
-t[6]=g[6];
-t[3]=g[3];
-t[2]=g[2];
-t[1]=g[1];
-#ifdef SIGINT
-signal(SIGINT,se_signal_handler);
-#endif
-#ifdef SIGTERM
-signal(SIGTERM,se_signal_handler);
-#endif
-#ifdef SIGQUIT
-signal(SIGQUIT,se_signal_handler);
-#endif
-#ifdef SIGILL
-signal(SIGILL,se_signal_handler);
-#endif
-#ifdef SIGABRT
-signal(SIGABRT,se_signal_handler);
-#endif
-#ifdef SIGFPE
-signal(SIGFPE,se_signal_handler);
-#endif
-#ifdef SIGSEGV
-signal(SIGSEGV,se_signal_handler);
-#endif
-#ifdef SIGBUS
-signal(SIGBUS,se_signal_handler);
-#endif
-#ifdef SIGSYS
-signal(SIGSYS,se_signal_handler);
-#endif
-#ifdef SIGTRAP
-signal(SIGTRAP,se_signal_handler);
-#endif
-#ifdef SIGXCPU
-signal(SIGXCPU,se_signal_handler);
-#endif
-#ifdef SIGXFSZ
-signal(SIGXFSZ,se_signal_handler);
-#endif
-gc_is_off=0;
-tmp0=((T0*)(new25()));
-eiffel_root_object=((T25*)tmp0);
-set_dump_stack_top((void*)0);/*unlink*/
-}/*--*/
-
-int main(int argc,char*argv[]){
-/*[INTERNAL_C_LOCAL list*/
-T0* tmp0;
-/*INTERNAL_C_LOCAL list]*/
-se_frame_descriptor root={"<system root>",1,0,"%R25%",1};
-se_dump_stack ds;
-stack_bottom=((void**)(void*)(&argc));
-initialize_eiffel_runtime(argc,argv);
-tmp0=((T0*)eiffel_root_object);
-ds.fd=&root;
-ds.current=((void*)(&tmp0));
-ds.p=0x03201604/*l22c2\application.e*/;
-ds.caller=NULL;
-ds.exception_origin=NULL;
-ds.locals=NULL;
-set_dump_stack_top(&ds);/*link*/
-r25main(&ds,((T25*)tmp0));
-handle(SE_HANDLE_NORMAL_EXIT, NULL);
-set_dump_stack_top(NULL);/*unlink*/
-exit(0);
-return 0;
 }/*--*/
 
 #ifdef __cplusplus
