@@ -27,9 +27,17 @@ feature {ANY}
 
 	initialisation is
 		local
-			text_file_read: TEXT_FILE_READ; path: STRING; i : INTEGER;
-			tmp_var: STRING;
-			contenu_fichier : ARRAY[STRING]
+			text_file_read: TEXT_FILE_READ; path: STRING; i : INTEGER; j : INTEGER;
+			tmp_string: STRING;
+			tmp_string2: STRING;
+			string_data: STRING;
+			titre: STRING;
+			auteurs : ARRAY[STRING];
+			nombre : INTEGER;
+			index : INTEGER;
+			index2 : INTEGER;
+			contenu_fichier : ARRAY[STRING];
+			stringsplit : ARRAY[STRING];
 		do
 			io.put_string("Initialisation::Début.%N")
 			path := "medias.txt"
@@ -41,22 +49,49 @@ feature {ANY}
 				until
 					text_file_read.end_of_input
 				loop
-					tmp_var := ""
-					tmp_var.copy (text_file_read.last_string)
-					contenu_fichier.add_last(tmp_var)
+					tmp_string := ""
+					tmp_string.copy (text_file_read.last_string)
+					contenu_fichier.add_last(tmp_string)
 					text_file_read.read_line
 				end
 				text_file_read.disconnect
 			else
 				io.put_string("Cannot read file %"" + path + "%" in the current working directory.%N")
 			end
-			
+
 			from
 				i := contenu_fichier.lower
 			until
 				i >= contenu_fichier.upper
 			loop
-				io.put_string(contenu_fichier.item(i))
+				if contenu_fichier.item(i) /= Void then
+					tmp_string := contenu_fichier.item(i)
+					index := 1;
+					if tmp_string.has_substring ("Livre ; ") then
+						from
+						until index = 0 and index2 = 0
+						loop
+							index := tmp_string.index_of (';', index)
+							index2 := tmp_string.index_of (';', index+1)
+							if index /= 0 and index2 /= 0 then
+								tmp_string2 := tmp_string.substring (index + 2, index2-2)
+								string_data := tmp_string2.substring (tmp_string2.index_of ('<', 1)+1, tmp_string2.index_of ('>', 1)-1);
+								if tmp_string2.has_substring ("Titre") then
+									titre := string_data
+								end
+								if tmp_string2.has_substring ("Auteur") then
+									auteurs.add_last(string_data)
+								end
+								if tmp_string2.has_substring ("Nombre") then
+									nombre := string_data.to_integer()
+								end
+								io.put_string (string_data + "%N")
+							end
+						end
+					end
+				else
+					io.put_string ("Chaine vide")
+				end
 				i := i +1
 			end
 		end

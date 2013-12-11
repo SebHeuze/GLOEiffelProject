@@ -757,6 +757,8 @@ assertion-level: all
 parent-count: 1 insert: 13 
 #
 |lib:storage/loadpath.se:
+124 "COLLECTION[STRING]" l
+#
 63 "COLLECTION" l
 class-path: "C:\SmartEiffel\lib\storage\collection.e"
 class-name: COLLECTION
