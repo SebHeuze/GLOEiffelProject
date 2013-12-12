@@ -14,12 +14,12 @@ feature {}
 
 feature {ANY}
 
-	dvd(new_realisateurs : ARRAY[STRING]; new_acteurs : ARRAY[STRING]; new_type : STRING; new_titre : STRING; new_annee, new_nombre_disponible : INTEGER) is
+	dvd(new_realisateurs : ARRAY[STRING]; new_acteurs : ARRAY[STRING]; new_type : STRING; new_titre : STRING; new_annee, new_nombre_disponible, new_nombre_possede : INTEGER) is
 	do
 		realisateurs := new_realisateurs
 		acteurs := new_acteurs
 		type := new_type
-		init(new_titre, new_annee, new_nombre_disponible)
+		init(new_titre, new_annee, new_nombre_disponible, new_nombre_possede)
 	end
 
 	-- =====================================

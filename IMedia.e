@@ -8,18 +8,20 @@ deferred class IMEDIA
 feature {}
 	titre: STRING
 	annee: INTEGER
-	nombre_disponible: INTEGER
+	nombre_disponible: INTEGER -- Représente le nombre d'exemplaires encore disponibles à l'emprunt
+	nombre_possedes: INTEGER -- Représente le nombre d'exemplaires total (nbreDispos + nbreEmpruntés)
 	
 feature {ANY}
 
 	-- =====================================
 	-- Initialisation d'un media depuis les paramètres fournis
 	-- =====================================
-	init (ititre : STRING; iannee, inombre_disponible : INTEGER) is
+	init (ititre : STRING; iannee, inombre_disponible, inombre_possedes : INTEGER) is
 	do
 		titre := ititre
 		annee := iannee
 		nombre_disponible := inombre_disponible
+		nombre_possedes := inombre_possedes
 	end
 	
 	-- =====================================
