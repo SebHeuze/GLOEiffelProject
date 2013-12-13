@@ -13,12 +13,12 @@ feature {}
 	type : STRING
 
 feature{ANY}
-	livre(iauteurs : ARRAY[STRING]; iediteur, itype, ititre : STRING; iannee, inombre_disponible : INTEGER) is
+	livre(iauteurs : ARRAY[STRING]; iediteur, itype, ititre : STRING; iannee, inombre_disponible, inombre_possede : INTEGER) is
 	do
 		auteurs := iauteurs
 		editeur := iediteur
 		type := itype
-		init(ititre, iannee, inombre_disponible)
+		init(ititre, iannee, inombre_disponible, inombre_possede)
 	end
 
 	-- =====================================

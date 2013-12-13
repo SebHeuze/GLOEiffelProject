@@ -152,6 +152,9 @@ feature {ANY}
 								index := index +1
 							end
 						end
+						-- TODO : On ajoute un nouveau DVD à chaque fois au lieu d'incrémenter le nombre de DVD possédés.
+						-- Il faut créer une classe qui va gérer les différents types de médias dans des listes et proposer des méthodes d'ajout de médias.
+						-- Dans ces méthodes on parcours la liste des DVD et si le DVD à ajouter est le même alors on incrémente DVD.nombre_disponible
 						create a_dvd.dvd(realisateurs, acteurs, type, titre, annee, nombre)
 						liste_dvd.add_last(a_dvd);
 					end
