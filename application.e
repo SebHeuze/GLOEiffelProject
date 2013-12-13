@@ -27,14 +27,19 @@ feature {ANY}
 
 	initialisation is
 		local
-			text_file_read: TEXT_FILE_READ; path: STRING; i : INTEGER;
+			text_file_read: TEXT_FILE_READ; path_media: STRING; path_utilisateurs: STRING; i : INTEGER;
 			a_dvd : DVD;
 			a_livre : LIVRE;
+			a_user : UTILISATEUR;
 			tmp_string: STRING;
 			tmp_string2: STRING;
 			string_data: STRING;
 			titre: STRING;
 			type: STRING;
+			nom: STRING;
+			prenom: STRING;
+			identifiant: STRING;
+			is_admin: BOOLEAN;
 			auteurs : ARRAY[STRING];
 			acteurs : ARRAY[STRING];
 			realisateurs : ARRAY[STRING];
@@ -45,8 +50,9 @@ feature {ANY}
 			contenu_fichier : ARRAY[STRING];
 		do
 			io.put_string("Initialisation::Début.%N")
-			path := "medias.txt"
-			create text_file_read.connect_to(path)
+			path_media := "medias.txt"
+			path_utilisateurs := "utilisateurs.txt"
+			create text_file_read.connect_to(path_media)
 			create contenu_fichier.with_capacity(56,1)
 			create auteurs.with_capacity(20,1)
 			create acteurs.with_capacity(20,1)
@@ -54,6 +60,8 @@ feature {ANY}
 			create liste_livres.with_capacity(20,1)
 			create liste_utilisateurs.with_capacity(20,1)
 			create realisateurs.with_capacity(20,1)
+			is_admin:=False;
+
 			if text_file_read.is_connected then
 				from
 					text_file_read.read_line
@@ -67,7 +75,7 @@ feature {ANY}
 				end
 				text_file_read.disconnect
 			else
-				io.put_string("Cannot read file %"" + path + "%" in the current working directory.%N")
+				io.put_string("Cannot read file %"" + path_media + "%" in the current working directory.%N")
 			end
 
 			from
@@ -102,7 +110,6 @@ feature {ANY}
 								if tmp_string2.has_substring ("Nombre") then
 									nombre := string_data.to_integer
 								end
-								io.put_string (string_data + "%N")
 								index := index +1
 							end
 							create a_livre.livre(auteurs, "", "", titre, 0, nombre)
@@ -139,15 +146,82 @@ feature {ANY}
 								if tmp_string2.has_substring ("Nombre") then
 									nombre := string_data.to_integer
 								end
-								if tmp_string2.has_substring ("Nombre") then
+								if tmp_string2.has_substring ("Type") then
 									type := string_data
 								end
-								io.put_string (string_data + "%N")
 								index := index +1
 							end
 						end
 						create a_dvd.dvd(realisateurs, acteurs, type, titre, annee, nombre)
 						liste_dvd.add_last(a_dvd);
+					end
+				else
+					io.put_string ("Chaine vide")
+				end
+				i := i +1
+			end
+
+			create text_file_read.connect_to(path_utilisateurs)
+
+			if text_file_read.is_connected then
+				from
+					text_file_read.read_line
+				until
+					text_file_read.end_of_input
+				loop
+					tmp_string := ""
+					tmp_string.copy (text_file_read.last_string)
+					contenu_fichier.add_last(tmp_string)
+					text_file_read.read_line
+				end
+				text_file_read.disconnect
+			else
+				io.put_string("Cannot read file %"" + path_utilisateurs + "%" in the current working directory.%N")
+			end
+
+			from
+				i := contenu_fichier.lower
+			until
+				i > contenu_fichier.upper
+			loop
+				if contenu_fichier.item(i) /= Void then
+					tmp_string := contenu_fichier.item(i)
+					index := 1;
+
+					from
+					until index = 0
+					loop
+						index := tmp_string.index_of (';', index)
+						index2 := tmp_string.index_of (';', index+1)
+
+						if index /= 0 then
+							if index2 = 0 then
+								index2 := tmp_string.count + 2
+							end
+
+							tmp_string2 := tmp_string.substring (index + 2, index2-2)
+
+							string_data := tmp_string2.substring (tmp_string2.index_of ('<', 1)+1, tmp_string2.index_of ('>', 1)-1);
+							if tmp_string2.has_substring ("Nom") then
+								nom := string_data
+							end
+							if tmp_string2.has_substring ("Prenom") then
+								prenom := string_data
+							end
+							if tmp_string2.has_substring ("Identifiant") then
+								identifiant := string_data
+							end
+							if tmp_string2.has_substring ("Admin") then
+								if string_data = "OUI" then
+									is_admin := True
+								else
+									is_admin := False
+								end
+							end
+							index := index +1
+						end
+						create a_user.utilisateur(nom, prenom, identifiant, is_admin)
+						liste_utilisateurs.add_last(a_user);
 					end
 				else
 					io.put_string ("Chaine vide")
