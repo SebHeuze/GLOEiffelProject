@@ -68,43 +68,6 @@ class-name: STRING_HANDLER
 assertion-level: all
 parent-count: 1 insert: 13 
 #
-|lib:abilities/
-33 "STORABLE" l
-class-path: "C:\SmartEiffel\lib\abilities\storable.e"
-class-name: STORABLE
-assertion-level: all
-parent-count: 1 insert: 13 
-#
-28 "RECYCLABLE" l
-class-path: "C:\SmartEiffel\lib\abilities\recyclable.e"
-class-name: RECYCLABLE
-assertion-level: all
-parent-count: 1 insert: 13 
-#
-35 "HASHABLE" l
-class-path: "C:\SmartEiffel\lib\abilities\hashable.e"
-class-name: HASHABLE
-assertion-level: all
-parent-count: 1 insert: 13 
-#
-32 "TRAVERSABLE" l
-class-path: "C:\SmartEiffel\lib\abilities\traversable.e"
-class-name: TRAVERSABLE
-assertion-level: all
-parent-count: 1 insert: 13 
-#
-92 "DISPOSABLE" l
-class-path: "C:\SmartEiffel\lib\abilities\disposable.e"
-class-name: DISPOSABLE
-assertion-level: all
-parent-count: 1 insert: 13 
-#
-34 "COMPARABLE" l
-class-path: "C:\SmartEiffel\lib\abilities\comparable.e"
-class-name: COMPARABLE
-assertion-level: all
-parent-count: 1 insert: 13 
-#
 |lib:io/loadpath.se:terminal/
 57 "TEXT_FILE_READ" l
 class-path: "C:\SmartEiffel\lib\io\terminal\text_file_read.e"
@@ -166,32 +129,42 @@ run-time-set-count: 1
 run-time-set:
 	STD_INPUT_OUTPUT (40)
 #
-|lib:storage/loadpath.se:collection/
-132 "ARRAY[LIVRE]" l
-#
-131 "ARRAY[UTILISATEUR]" l
-#
-129 "ARRAY[DVD]" l
-#
-80 "FAST_ARRAY" l
-class-path: "C:\SmartEiffel\lib\storage\collection\fast_array.e"
-class-name: FAST_ARRAY
+|lib:abilities/
+33 "STORABLE" l
+class-path: "C:\SmartEiffel\lib\abilities\storable.e"
+class-name: STORABLE
 assertion-level: all
-parent-count: 3 inherit: 63 insert: 68 67 
+parent-count: 1 insert: 13 
 #
-102 "RING_ARRAY" l
-class-path: "C:\SmartEiffel\lib\storage\collection\ring_array.e"
-class-name: RING_ARRAY
+28 "RECYCLABLE" l
+class-path: "C:\SmartEiffel\lib\abilities\recyclable.e"
+class-name: RECYCLABLE
 assertion-level: all
-parent-count: 3 inherit: 63 insert: 68 67 
+parent-count: 1 insert: 13 
 #
-122 "ARRAY[STRING]" l
-#
-66 "ARRAY" l
-class-path: "C:\SmartEiffel\lib\storage\collection\array.e"
-class-name: ARRAY
+35 "HASHABLE" l
+class-path: "C:\SmartEiffel\lib\abilities\hashable.e"
+class-name: HASHABLE
 assertion-level: all
-parent-count: 3 inherit: 63 insert: 68 67 
+parent-count: 1 insert: 13 
+#
+32 "TRAVERSABLE" l
+class-path: "C:\SmartEiffel\lib\abilities\traversable.e"
+class-name: TRAVERSABLE
+assertion-level: all
+parent-count: 1 insert: 13 
+#
+92 "DISPOSABLE" l
+class-path: "C:\SmartEiffel\lib\abilities\disposable.e"
+class-name: DISPOSABLE
+assertion-level: all
+parent-count: 1 insert: 13 
+#
+34 "COMPARABLE" l
+class-path: "C:\SmartEiffel\lib\abilities\comparable.e"
+class-name: COMPARABLE
+assertion-level: all
+parent-count: 1 insert: 13 
 #
 |lib:numeric/loadpath.se:internal/
 75 "INTEGER_GENERAL_NUMBER" l
@@ -223,6 +196,33 @@ class-path: "C:\SmartEiffel\lib\numeric\internal\big_integer_number.e"
 class-name: BIG_INTEGER_NUMBER
 assertion-level: all
 parent-count: 1 inherit: 75
+#
+|lib:storage/loadpath.se:collection/
+132 "ARRAY[LIVRE]" l
+#
+131 "ARRAY[UTILISATEUR]" l
+#
+129 "ARRAY[DVD]" l
+#
+80 "FAST_ARRAY" l
+class-path: "C:\SmartEiffel\lib\storage\collection\fast_array.e"
+class-name: FAST_ARRAY
+assertion-level: all
+parent-count: 3 inherit: 63 insert: 68 67 
+#
+102 "RING_ARRAY" l
+class-path: "C:\SmartEiffel\lib\storage\collection\ring_array.e"
+class-name: RING_ARRAY
+assertion-level: all
+parent-count: 3 inherit: 63 insert: 68 67 
+#
+122 "ARRAY[STRING]" l
+#
+66 "ARRAY" l
+class-path: "C:\SmartEiffel\lib\storage\collection\array.e"
+class-name: ARRAY
+assertion-level: all
+parent-count: 3 inherit: 63 insert: 68 67 
 #
 |lib:kernel/
 14 "TUPLE" l
@@ -279,17 +279,17 @@ class-name: TUPLE 2
 assertion-level: all
 parent-count: 1 inherit: 15
 #
-13 "ANY" l
-class-path: "C:\SmartEiffel\lib\kernel\any.e"
-class-name: ANY
-assertion-level: all
-parent-count: 0
-#
 17 "TUPLE 3" l
 class-path: "C:\SmartEiffel\lib\kernel\tuple.e"
 class-name: TUPLE 3
 assertion-level: all
 parent-count: 1 inherit: 16
+#
+13 "ANY" l
+class-path: "C:\SmartEiffel\lib\kernel\any.e"
+class-name: ANY
+assertion-level: all
+parent-count: 0
 #
 18 "TUPLE 4" l
 class-path: "C:\SmartEiffel\lib\kernel\tuple.e"
@@ -339,28 +339,21 @@ class-name: SAFE_EQUAL
 assertion-level: all
 parent-count: 1 insert: 13 
 #
-24 "TUPLE 10" l
-class-path: "C:\SmartEiffel\lib\kernel\tuple.e"
-class-name: TUPLE 10
-assertion-level: all
-parent-count: 1 inherit: 23
-#
 100 "PROCEDURE" l
 class-path: "C:\SmartEiffel\lib\kernel\procedure.e"
 class-name: PROCEDURE
 assertion-level: all
 parent-count: 1 inherit: 65
 #
+24 "TUPLE 10" l
+class-path: "C:\SmartEiffel\lib\kernel\tuple.e"
+class-name: TUPLE 10
+assertion-level: all
+parent-count: 1 inherit: 23
+#
 94 "MEMORY" l
 class-path: "C:\SmartEiffel\lib\kernel\memory.e"
 class-name: MEMORY
-assertion-level: all
-parent-count: 1 insert: 13 
-#
-|lib:iterator/loadpath.se:
-62 "ITERATOR" l
-class-path: "C:\SmartEiffel\lib\iterator\iterator.e"
-class-name: ITERATOR
 assertion-level: all
 parent-count: 1 insert: 13 
 #
@@ -376,6 +369,13 @@ class-path: "C:\SmartEiffel\lib\net\socket_input_output_stream.e"
 class-name: SOCKET_INPUT_OUTPUT_STREAM
 assertion-level: all
 parent-count: 3 inherit: 41 insert: 89 31 
+#
+|lib:iterator/loadpath.se:
+62 "ITERATOR" l
+class-path: "C:\SmartEiffel\lib\iterator\iterator.e"
+class-name: ITERATOR
+assertion-level: all
+parent-count: 1 insert: 13 
 #
 |lib:numeric/loadpath.se:
 69 "NUMBER_TOOLS" l
@@ -492,6 +492,9 @@ class-name: MINI_PARSER_BUFFER
 assertion-level: all
 parent-count: 1 insert: 31 
 #
+|lib:storage/loadpath.se:dictionary/
+136 "ARRAY_DICTIONARY" l
+#
 |lib:io/loadpath.se:path_name/
 114 "POSIX_PATH_NAME" l
 class-path: "C:\SmartEiffel\lib\io\path_name\posix_path_name.e"
@@ -547,9 +550,6 @@ class-name: AMIGA_DIRECTORY_NOTATION
 assertion-level: all
 parent-count: 1 inherit: 106
 #
-|lib:storage/loadpath.se:dictionary/
-136 "ARRAY_DICTIONARY" l
-#
 |lib:storage/loadpath.se:internal/
 68 "ARRAYED_COLLECTION" l
 class-path: "C:\SmartEiffel\lib\storage\internal\arrayed_collection.e"
@@ -590,17 +590,17 @@ assertion-level: all
 parent-count: 2 insert: 35 34 
 #
 |lib:kernel/internal/
-67 "NATIVE_ARRAY_COLLECTOR" l
-class-path: "C:\SmartEiffel\lib\kernel\internal\native_array_collector.e"
-class-name: NATIVE_ARRAY_COLLECTOR
-assertion-level: all
-parent-count: 1 insert: 13 
-#
 85 "NATIVE_ARRAY_INTERNALS" l
 class-path: "C:\SmartEiffel\lib\kernel\internal\native_array_internals.e"
 class-name: NATIVE_ARRAY_INTERNALS
 assertion-level: all
 parent-count: 1 inherit: 45
+#
+67 "NATIVE_ARRAY_COLLECTOR" l
+class-path: "C:\SmartEiffel\lib\kernel\internal\native_array_collector.e"
+class-name: NATIVE_ARRAY_COLLECTOR
+assertion-level: all
+parent-count: 1 insert: 13 
 #
 73 "INTERNALS_HANDLER" l
 class-path: "C:\SmartEiffel\lib\kernel\internal\internals_handler.e"
@@ -675,17 +675,17 @@ ref-status: dead
 destination-graph-nodes: none
 run-time-set-count: 0
 #
-38 "TERMINAL_OUTPUT_STREAM" l
-class-path: "C:\SmartEiffel\lib\io\terminal_output_stream.e"
-class-name: TERMINAL_OUTPUT_STREAM
-assertion-level: all
-parent-count: 1 inherit: 26
-#
 49 "FILTER" l
 class-path: "C:\SmartEiffel\lib\io\filter.e"
 class-name: FILTER
 assertion-level: all
 parent-count: 1 insert: 13 
+#
+38 "TERMINAL_OUTPUT_STREAM" l
+class-path: "C:\SmartEiffel\lib\io\terminal_output_stream.e"
+class-name: TERMINAL_OUTPUT_STREAM
+assertion-level: all
+parent-count: 1 inherit: 26
 #
 71 "FILTER_INPUT_STREAM" l
 class-path: "C:\SmartEiffel\lib\io\filter_input_stream.e"
@@ -767,9 +767,20 @@ class-name: PATH_JOINER
 assertion-level: all
 parent-count: 1 insert: 13 
 #
+|lib:storage/loadpath.se:
+137 "DICTIONARY" l
+#
+124 "COLLECTION[STRING]" l
+#
+63 "COLLECTION" l
+class-path: "C:\SmartEiffel\lib\storage\collection.e"
+class-name: COLLECTION
+assertion-level: all
+parent-count: 3 inherit: 13 33 32
+#
 |Local Cluster
 128 "UTILISATEUR" l
-class-path: "C:\Users\SEB\Documents\GitHub\GLOEiffelProject\utilisateur.e"
+class-path: "E:\SEB\Documents\GitHub\GLOEiffelProject\utilisateur.e"
 class-name: UTILISATEUR
 assertion-level: all
 parent-count: 1 inherit: 135
@@ -781,13 +792,37 @@ run-time-set:
 	UTILISATEUR (128)
 #
 135 "IPERSONNE" l
-class-path: "C:\Users\SEB\Documents\GitHub\GLOEiffelProject\IPersonne.e"
+class-path: "E:\SEB\Documents\GitHub\GLOEiffelProject\IPersonne.e"
 class-name: IPERSONNE
 assertion-level: all
 parent-count: 1 insert: 13 
 #
+140 "MEDIAMANAGER" l
+class-path: "E:\SEB\Documents\GitHub\GLOEiffelProject\mediamanager.e"
+class-name: MEDIAMANAGER
+assertion-level: all
+parent-count: 1 insert: 13 
+c-type: T140 reference: yes
+ref-status: live id-field: yes 
+destination-graph-nodes: none
+run-time-set-count: 1
+run-time-set:
+	MEDIAMANAGER (140)
+#
+139 "USERMANAGER" l
+class-path: "E:\SEB\Documents\GitHub\GLOEiffelProject\usermanager.e"
+class-name: USERMANAGER
+assertion-level: all
+parent-count: 1 insert: 13 
+c-type: T139 reference: yes
+ref-status: live id-field: yes 
+destination-graph-nodes: none
+run-time-set-count: 1
+run-time-set:
+	USERMANAGER (139)
+#
 125 "DVD" l
-class-path: "C:\Users\SEB\Documents\GitHub\GLOEiffelProject\dvd.e"
+class-path: "E:\SEB\Documents\GitHub\GLOEiffelProject\dvd.e"
 class-name: DVD
 assertion-level: all
 parent-count: 1 inherit: 126
@@ -799,13 +834,13 @@ run-time-set:
 	DVD (125)
 #
 126 "IMEDIA" l
-class-path: "C:\Users\SEB\Documents\GitHub\GLOEiffelProject\IMedia.e"
+class-path: "E:\SEB\Documents\GitHub\GLOEiffelProject\IMedia.e"
 class-name: IMEDIA
 assertion-level: all
 parent-count: 1 insert: 13 
 #
 25 "APPLICATION" l
-class-path: "C:\Users\SEB\Documents\GitHub\GLOEiffelProject\application.e"
+class-path: "E:\SEB\Documents\GitHub\GLOEiffelProject\application.e"
 class-name: APPLICATION
 assertion-level: all
 parent-count: 1 insert: 13 
@@ -817,7 +852,7 @@ run-time-set:
 	APPLICATION (25)
 #
 127 "LIVRE" l
-class-path: "C:\Users\SEB\Documents\GitHub\GLOEiffelProject\livre.e"
+class-path: "E:\SEB\Documents\GitHub\GLOEiffelProject\livre.e"
 class-name: LIVRE
 assertion-level: all
 parent-count: 1 inherit: 126
@@ -827,17 +862,6 @@ destination-graph-nodes: none
 run-time-set-count: 1
 run-time-set:
 	LIVRE (127)
-#
-|lib:storage/loadpath.se:
-137 "DICTIONARY" l
-#
-124 "COLLECTION[STRING]" l
-#
-63 "COLLECTION" l
-class-path: "C:\SmartEiffel\lib\storage\collection.e"
-class-name: COLLECTION
-assertion-level: all
-parent-count: 3 inherit: 13 33 32
 #
 |lib:storage/loadpath.se:low_level/
 130 "NATIVE_ARRAY[DVD]" l

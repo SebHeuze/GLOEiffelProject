@@ -22,6 +22,14 @@ feature{ANY}
 	end
 
 	-- =====================================
+	-- Affiche les infos du livre
+	-- =====================================
+	afficher is
+	do
+		io.put_string(titre +"%N");
+	end
+
+	-- =====================================
 	-- Ajoute un auteur dans la liste des auteurs
 	-- =====================================
 	add_auteur(auteur : STRING) is

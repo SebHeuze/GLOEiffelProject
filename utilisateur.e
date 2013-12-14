@@ -8,7 +8,7 @@ feature {}
 	is_admin : BOOLEAN
 
 feature{ANY}
-	utilisateur(input_nom, input_prenom, input_identifiant : STRING, input_is_admin : BOOLEAN) is
+	utilisateur(input_nom, input_prenom, input_identifiant : STRING; input_is_admin : BOOLEAN) is
 	do
 		nom := input_nom
 		prenom := input_prenom

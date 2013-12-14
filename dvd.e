@@ -23,6 +23,14 @@ feature {ANY}
 	end
 
 	-- =====================================
+	-- Affiche les infos du livre
+	-- =====================================
+	afficher is
+	do
+		io.put_string(titre);
+	end
+
+	-- =====================================
 	-- Ajoute un realisateur dans la liste des realisateurs
 	-- =====================================
 	add_realisateur(realisateur : STRING) is
