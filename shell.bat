@@ -1,12 +1,11 @@
 Echo off
 Echo ***********************************
-Echo * Modification d'un utilisateur   *
+Echo * Rechercher un utilisateur       *
 Echo ***********************************
-Echo identifiant de l'utilisateur a modifier ?
-Echo cdupont
-Echo Nom de l'utilisateur
+Echo Nom de l'utilisateur ?
+Echo Dupont
+Echo * Il existe 2 utilisateurs avec ce nom *
+Echo Identifiant       Nom        Prenom
+Echo cdupont           DUPONT     CHARLES
+Echo jdupont           DUPONT     JEANNE
 Echo.
-Echo Prenom de l'utilisateur
-Echo.
-Echo Droits administrateur
-Echo Oui
