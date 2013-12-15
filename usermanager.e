@@ -8,21 +8,23 @@ creation {ANY}
 	init_user_manager
 
 feature {}
-	liste_utilisateurs : ARRAY[UTILISATEUR]
+	liste_utilisateurs : ARRAY[IUTILISATEUR]
 
 feature{ANY}
 	init_user_manager is
 	local
 		text_file_read: TEXT_FILE_READ;
 		path_utilisateurs: STRING; i : INTEGER;
-		a_user : UTILISATEUR;
+		a_documentaliste : DOCUMENTALISTE;
+		a_adherent : ADHERENT;
 		contenu_ligne: STRING;
 		string_tmp: STRING;
 		string_data: STRING;
 		nom: STRING;
 		prenom: STRING;
+		age : INTEGER;
+		adresse : STRING;
 		identifiant: STRING;
-		is_admin: BOOLEAN;
 		index : INTEGER;
 		index2 : INTEGER;
 		contenu_fichier : ARRAY[STRING];
@@ -67,7 +69,6 @@ feature{ANY}
 				loop
 					index := contenu_ligne.index_of (';', index)
 					index2 := contenu_ligne.index_of (';', index+1)
-
 					if index /= 0 then
 						if index2 = 0 then
 							index2 := contenu_ligne.count + 2
@@ -77,7 +78,7 @@ feature{ANY}
 
 						string_data := string_tmp.substring (string_tmp.index_of ('<', 1)+1, string_tmp.index_of ('>', 1)-1);
 						if string_tmp.has_substring ("Nom") then
-								nom := string_data
+							nom := string_data
 						end
 						if string_tmp.has_substring ("Prenom") then
 							prenom := string_data
@@ -85,19 +86,26 @@ feature{ANY}
 						if string_tmp.has_substring ("Identifiant") then
 							identifiant := string_data
 						end
-						if string_tmp.has_substring ("Admin") then
-							if string_data = "OUI" then
-								is_admin := True
-							else
-								is_admin := False
-							end
+						if string_tmp.has_substring ("Adresse") then
+							adresse := string_data
+						end
+						if string_tmp.has_substring ("Age") then
+							age := string_data.to_integer
 						end
 						index := index +1
 					end
 
 				end
-				create a_user.utilisateur(nom, prenom, identifiant, is_admin)
-				liste_utilisateurs.add_last(a_user)
+
+				if contenu_ligne.has_substring ("Documentaliste ; ") then
+					create a_documentaliste.documentaliste(nom, prenom, adresse, identifiant, age)
+					liste_utilisateurs.add_last(a_documentaliste)
+				end
+				if contenu_ligne.has_substring ("Adherent ; ") then
+					create a_adherent.adherent(nom, prenom, adresse, identifiant, age)
+					liste_utilisateurs.add_last(a_adherent);
+				end
+
 			else
 				io.put_string ("Chaine vide")
 			end

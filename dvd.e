@@ -2,10 +2,15 @@
 indexing
 	description:"Implémentation de IMedia pour un DVD"
 
-class DVD inherit IMEDIA
+class DVD
 
+inherit IMEDIA
+	redefine
+            afficher
+    end
 creation {ANY}
 	dvd
+
 
 feature {}
 	realisateurs : ARRAY[STRING]
@@ -27,7 +32,7 @@ feature {ANY}
 	-- =====================================
 	afficher is
 	do
-		io.put_string(titre);
+		io.put_string(titre + "%N");
 	end
 
 	-- =====================================

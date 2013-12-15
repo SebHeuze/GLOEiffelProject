@@ -2,7 +2,11 @@
 indexing
 	description:"Implémentation de IMedia pour un Livre"
 
-class LIVRE inherit IMEDIA
+class LIVRE
+inherit IMEDIA
+redefine
+		afficher
+  end
 
 creation {ANY}
 	livre

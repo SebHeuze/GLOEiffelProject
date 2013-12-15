@@ -10,7 +10,7 @@ feature {}
 	annee: INTEGER
 	nombre_disponible: INTEGER -- Représente le nombre d'exemplaires encore disponibles à l'emprunt
 	nombre_possedes: INTEGER -- Représente le nombre d'exemplaires total (nbreDispos + nbreEmpruntés)
-	
+
 feature {ANY}
 
 	-- =====================================
@@ -23,7 +23,7 @@ feature {ANY}
 		nombre_disponible := inombre_disponible
 		nombre_possedes := inombre_possedes
 	end
-	
+
 	-- =====================================
 	-- Matérialise l'emprunt d'un média, ie diminution du nombre d'exemplaires disponibles
 	-- =====================================
@@ -33,7 +33,7 @@ feature {ANY}
 	do
 		nombre_disponible := nombre_disponible - 1
 	end
-	
+
 	-- =====================================
 	-- Renvoie le titre du média courant
 	-- =====================================
@@ -41,7 +41,7 @@ feature {ANY}
 	do
 		Result := titre
 	end
-	
+
 	-- =====================================
 	-- Modifie le titre du média courant
 	-- =====================================
@@ -49,7 +49,7 @@ feature {ANY}
 	do
 		titre := new_titre
 	end
-	
+
 	-- =====================================
 	-- Renvoie l'année d'édition du média
 	-- =====================================
@@ -57,13 +57,21 @@ feature {ANY}
 	do
 		Result := annee
 	end
-	
+
 	-- =====================================
 	-- Modifie l'année d'édition du média
 	-- =====================================
 	set_annee(iannee : INTEGER) is
 	do
 		annee := iannee
+	end
+
+	-- =====================================
+	-- Affiche le m�dia
+	-- =====================================
+	afficher is
+	do
+
 	end
 
 invariant

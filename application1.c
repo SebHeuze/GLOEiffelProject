@@ -149,13 +149,13 @@ void _handle(se_handler_action_t action, void*data) {
   }
 }
 
-void se_prinT133(FILE* file,T133*o){
-fprintf(file,"NATIVE_ARRAY[UTILISATEUR]");
+void se_prinT146(FILE* file,T146*o){
+fprintf(file,"NATIVE_ARRAY[IMEDIA]");
 fprintf(file,"#%p",(void*)*o);
 }/*--*/
 
-void se_prinT130(FILE* file,T130*o){
-fprintf(file,"NATIVE_ARRAY[DVD]");
+void se_prinT147(FILE* file,T147*o){
+fprintf(file,"NATIVE_ARRAY[IUTILISATEUR]");
 fprintf(file,"#%p",(void*)*o);
 }/*--*/
 
@@ -163,44 +163,79 @@ void se_prinT123(FILE* file,T123*o){
 fprintf(file,"NATIVE_ARRAY[STRING]");
 fprintf(file,"#%p",(void*)*o);
 }/*--*/
+T127 M127={127,(void*)0,0,0,0,(void*)0,(void*)0,(void*)0};
 
-void se_prinT134(FILE* file,T134*o){
-fprintf(file,"NATIVE_ARRAY[LIVRE]");
-fprintf(file,"#%p",(void*)*o);
-}/*--*/
-T128 M128={128,(void*)0,(void*)0,(void*)0,0};
-
-void se_prinT128(FILE* file,T128**o){
+void se_prinT127(FILE* file,T127**o){
 if(*o==NULL){
    fprintf(file, "void");
    return;}
-fprintf(file,"UTILISATEUR");
+fprintf(file,"LIVRE");
 fprintf(file,"#%p",(void*)*o);
 fprintf(file,"\n\t[ ");
-fprintf(file,"prenom = ");
-se_prinT7(file,(EIF_STRING*)(&((*o)->_prenom)));
+fprintf(file,"titre = ");
+se_prinT7(file,(EIF_STRING*)(&((*o)->_titre)));
 fprintf(file,"\n\t  ");
-fprintf(file,"nom = ");
-se_prinT7(file,(EIF_STRING*)(&((*o)->_nom)));
+fprintf(file,"annee = ");
+se_prinT2(file,(&((*o)->_annee)));
 fprintf(file,"\n\t  ");
-fprintf(file,"identifiant = ");
-se_prinT7(file,(EIF_STRING*)(&((*o)->_identifiant)));
+fprintf(file,"nombre_disponible = ");
+se_prinT2(file,(&((*o)->_nombre_disponible)));
 fprintf(file,"\n\t  ");
-fprintf(file,"is_admin = ");
-se_prinT6(file,(&((*o)->_is_admin)));
+fprintf(file,"nombre_possedes = ");
+se_prinT2(file,(&((*o)->_nombre_possedes)));
+fprintf(file,"\n\t  ");
+fprintf(file,"auteurs = ");
+se_prinT0(file,(T0**)(&((*o)->_auteurs)));
+fprintf(file,"\n\t  ");
+fprintf(file,"editeur = ");
+se_prinT7(file,(EIF_STRING*)(&((*o)->_editeur)));
+fprintf(file,"\n\t  ");
+fprintf(file,"type = ");
+se_prinT7(file,(EIF_STRING*)(&((*o)->_type)));
 fprintf(file,"\n\t]");
 }/*--*/
-T131 M131={131,(void*)0,0,0,0};
+T125 M125={125,(void*)0,0,0,0,(void*)0,(void*)0,(void*)0};
 
-void se_prinT131(FILE* file,T131**o){
+void se_prinT125(FILE* file,T125**o){
 if(*o==NULL){
    fprintf(file, "void");
    return;}
-fprintf(file,"ARRAY[UTILISATEUR]");
+fprintf(file,"DVD");
+fprintf(file,"#%p",(void*)*o);
+fprintf(file,"\n\t[ ");
+fprintf(file,"titre = ");
+se_prinT7(file,(EIF_STRING*)(&((*o)->_titre)));
+fprintf(file,"\n\t  ");
+fprintf(file,"annee = ");
+se_prinT2(file,(&((*o)->_annee)));
+fprintf(file,"\n\t  ");
+fprintf(file,"nombre_disponible = ");
+se_prinT2(file,(&((*o)->_nombre_disponible)));
+fprintf(file,"\n\t  ");
+fprintf(file,"nombre_possedes = ");
+se_prinT2(file,(&((*o)->_nombre_possedes)));
+fprintf(file,"\n\t  ");
+fprintf(file,"realisateurs = ");
+se_prinT0(file,(T0**)(&((*o)->_realisateurs)));
+fprintf(file,"\n\t  ");
+fprintf(file,"acteurs = ");
+se_prinT0(file,(T0**)(&((*o)->_acteurs)));
+fprintf(file,"\n\t  ");
+fprintf(file,"type = ");
+se_prinT7(file,(EIF_STRING*)(&((*o)->_type)));
+fprintf(file,"\n\t]");
+}/*--*/
+T144 M144={144,(void*)0,0,0,0};
+
+void se_prinT144(FILE* file,T144**o){
+if(*o==NULL){
+   fprintf(file, "void");
+   return;}
+fprintf(file,"ARRAY[IMEDIA]");
 fprintf(file,"#%p",(void*)*o);
 fprintf(file,"\n\t[ ");
 fprintf(file,"storage = ");
-se_prinT133(file,(&((*o)->_storage)));
+se_prinT146(file,(&((*o)->_storage)));
 fprintf(file,"\n\t  ");
 fprintf(file,"capacity = ");
 se_prinT2(file,(&((*o)->_capacity)));
@@ -252,48 +287,70 @@ fprintf(file,"capacity = ");
 se_prinT2(file,(&((*o)->_capacity)));
 fprintf(file,"\n\t]");
 }/*--*/
-T125 M125={125,(void*)0,0,0,0,(void*)0,(void*)0,(void*)0};
+T143 M143={143,(void*)0,(void*)0,(void*)0,0,(void*)0};
 
-void se_prinT125(FILE* file,T125**o){
+void se_prinT143(FILE* file,T143**o){
 if(*o==NULL){
    fprintf(file, "void");
    return;}
-fprintf(file,"DVD");
+fprintf(file,"DOCUMENTALISTE");
 fprintf(file,"#%p",(void*)*o);
 fprintf(file,"\n\t[ ");
-fprintf(file,"titre = ");
-se_prinT7(file,(EIF_STRING*)(&((*o)->_titre)));
+fprintf(file,"prenom = ");
+se_prinT7(file,(EIF_STRING*)(&((*o)->_prenom)));
 fprintf(file,"\n\t  ");
-fprintf(file,"annee = ");
-se_prinT2(file,(&((*o)->_annee)));
+fprintf(file,"adresse = ");
+se_prinT7(file,(EIF_STRING*)(&((*o)->_adresse)));
 fprintf(file,"\n\t  ");
-fprintf(file,"nombre_disponible = ");
-se_prinT2(file,(&((*o)->_nombre_disponible)));
+fprintf(file,"nom = ");
+se_prinT7(file,(EIF_STRING*)(&((*o)->_nom)));
 fprintf(file,"\n\t  ");
-fprintf(file,"nombre_possedes = ");
-se_prinT2(file,(&((*o)->_nombre_possedes)));
+fprintf(file,"age = ");
+se_prinT2(file,(&((*o)->_age)));
 fprintf(file,"\n\t  ");
-fprintf(file,"realisateurs = ");
-se_prinT0(file,(T0**)(&((*o)->_realisateurs)));
-fprintf(file,"\n\t  ");
-fprintf(file,"acteurs = ");
-se_prinT0(file,(T0**)(&((*o)->_acteurs)));
-fprintf(file,"\n\t  ");
-fprintf(file,"type = ");
-se_prinT7(file,(EIF_STRING*)(&((*o)->_type)));
+fprintf(file,"identifiant = ");
+se_prinT7(file,(EIF_STRING*)(&((*o)->_identifiant)));
 fprintf(file,"\n\t]");
 }/*--*/
-T129 M129={129,(void*)0,0,0,0};
+T142 M142={142,(void*)0,(void*)0,(void*)0,0,(void*)0,(void*)0};
 
-void se_prinT129(FILE* file,T129**o){
+void se_prinT142(FILE* file,T142**o){
 if(*o==NULL){
    fprintf(file, "void");
    return;}
-fprintf(file,"ARRAY[DVD]");
+fprintf(file,"ADHERENT");
+fprintf(file,"#%p",(void*)*o);
+fprintf(file,"\n\t[ ");
+fprintf(file,"prenom = ");
+se_prinT7(file,(EIF_STRING*)(&((*o)->_prenom)));
+fprintf(file,"\n\t  ");
+fprintf(file,"adresse = ");
+se_prinT7(file,(EIF_STRING*)(&((*o)->_adresse)));
+fprintf(file,"\n\t  ");
+fprintf(file,"nom = ");
+se_prinT7(file,(EIF_STRING*)(&((*o)->_nom)));
+fprintf(file,"\n\t  ");
+fprintf(file,"age = ");
+se_prinT2(file,(&((*o)->_age)));
+fprintf(file,"\n\t  ");
+fprintf(file,"identifiant = ");
+se_prinT7(file,(EIF_STRING*)(&((*o)->_identifiant)));
+fprintf(file,"\n\t  ");
+fprintf(file,"liste_emprunts = ");
+se_prinT0(file,(T0**)(&((*o)->_liste_emprunts)));
+fprintf(file,"\n\t]");
+}/*--*/
+T145 M145={145,(void*)0,0,0,0};
+
+void se_prinT145(FILE* file,T145**o){
+if(*o==NULL){
+   fprintf(file, "void");
+   return;}
+fprintf(file,"ARRAY[IUTILISATEUR]");
 fprintf(file,"#%p",(void*)*o);
 fprintf(file,"\n\t[ ");
 fprintf(file,"storage = ");
-se_prinT130(file,(&((*o)->_storage)));
+se_prinT147(file,(&((*o)->_storage)));
 fprintf(file,"\n\t  ");
 fprintf(file,"capacity = ");
 se_prinT2(file,(&((*o)->_capacity)));
@@ -327,60 +384,7 @@ fprintf(file,"lower = ");
 se_prinT2(file,(&((*o)->_lower)));
 fprintf(file,"\n\t]");
 }/*--*/
-T127 M127={127,(void*)0,0,0,0,(void*)0,(void*)0,(void*)0};
-
-void se_prinT127(FILE* file,T127**o){
-if(*o==NULL){
-   fprintf(file, "void");
-   return;}
-fprintf(file,"LIVRE");
-fprintf(file,"#%p",(void*)*o);
-fprintf(file,"\n\t[ ");
-fprintf(file,"titre = ");
-se_prinT7(file,(EIF_STRING*)(&((*o)->_titre)));
-fprintf(file,"\n\t  ");
-fprintf(file,"annee = ");
-se_prinT2(file,(&((*o)->_annee)));
-fprintf(file,"\n\t  ");
-fprintf(file,"nombre_disponible = ");
-se_prinT2(file,(&((*o)->_nombre_disponible)));
-fprintf(file,"\n\t  ");
-fprintf(file,"nombre_possedes = ");
-se_prinT2(file,(&((*o)->_nombre_possedes)));
-fprintf(file,"\n\t  ");
-fprintf(file,"auteurs = ");
-se_prinT0(file,(T0**)(&((*o)->_auteurs)));
-fprintf(file,"\n\t  ");
-fprintf(file,"editeur = ");
-se_prinT7(file,(EIF_STRING*)(&((*o)->_editeur)));
-fprintf(file,"\n\t  ");
-fprintf(file,"type = ");
-se_prinT7(file,(EIF_STRING*)(&((*o)->_type)));
-fprintf(file,"\n\t]");
-}/*--*/
-T132 M132={132,(void*)0,0,0,0};
-
-void se_prinT132(FILE* file,T132**o){
-if(*o==NULL){
-   fprintf(file, "void");
-   return;}
-fprintf(file,"ARRAY[LIVRE]");
-fprintf(file,"#%p",(void*)*o);
-fprintf(file,"\n\t[ ");
-fprintf(file,"storage = ");
-se_prinT134(file,(&((*o)->_storage)));
-fprintf(file,"\n\t  ");
-fprintf(file,"capacity = ");
-se_prinT2(file,(&((*o)->_capacity)));
-fprintf(file,"\n\t  ");
-fprintf(file,"upper = ");
-se_prinT2(file,(&((*o)->_upper)));
-fprintf(file,"\n\t  ");
-fprintf(file,"lower = ");
-se_prinT2(file,(&((*o)->_lower)));
-fprintf(file,"\n\t]");
-}/*--*/
-T48 M48={48,(void*)0,0};
+T48 M48={48,(void*)0,0,0,(void*)0,0,0,0,0,0};
 
 void se_prinT48(FILE* file,T48**o){
 if(*o==NULL){
@@ -389,11 +393,32 @@ if(*o==NULL){
 fprintf(file,"STD_INPUT");
 fprintf(file,"#%p",(void*)*o);
 fprintf(file,"\n\t[ ");
+fprintf(file,"filter = ");
+se_prinT0(file,(T0**)(&((*o)->_filter)));
+fprintf(file,"\n\t  ");
+fprintf(file,"end_of_input = ");
+se_prinT6(file,(&((*o)->_end_of_input)));
+fprintf(file,"\n\t  ");
+fprintf(file,"filtered_last_character = ");
+se_prinT3(file,(&((*o)->_filtered_last_character)));
+fprintf(file,"\n\t  ");
 fprintf(file,"buffer = ");
 se_prinT9(file,(&((*o)->_buffer)));
 fprintf(file,"\n\t  ");
+fprintf(file,"end_reached = ");
+se_prinT6(file,(&((*o)->_end_reached)));
+fprintf(file,"\n\t  ");
+fprintf(file,"buffer_size = ");
+se_prinT2(file,(&((*o)->_buffer_size)));
+fprintf(file,"\n\t  ");
+fprintf(file,"buffer_position = ");
+se_prinT2(file,(&((*o)->_buffer_position)));
+fprintf(file,"\n\t  ");
 fprintf(file,"capacity = ");
 se_prinT2(file,(&((*o)->_capacity)));
+fprintf(file,"\n\t  ");
+fprintf(file,"unread_character_flag = ");
+se_prinT6(file,(&((*o)->_unread_character_flag)));
 fprintf(file,"\n\t]");
 }/*--*/
 T47 M47={47,(void*)0,0,(void*)0,0};
@@ -418,6 +443,19 @@ fprintf(file,"capacity = ");
 se_prinT2(file,(&((*o)->_capacity)));
 fprintf(file,"\n\t]");
 }/*--*/
+T140 M140={140,(void*)0};
+
+void se_prinT140(FILE* file,T140**o){
+if(*o==NULL){
+   fprintf(file, "void");
+   return;}
+fprintf(file,"MEDIAMANAGER");
+fprintf(file,"#%p",(void*)*o);
+fprintf(file,"\n\t[ ");
+fprintf(file,"liste_medias = ");
+se_prinT0(file,(T0**)(&((*o)->_liste_medias)));
+fprintf(file,"\n\t]");
+}/*--*/
 T139 M139={139,(void*)0};
 
 void se_prinT139(FILE* file,T139**o){
@@ -429,22 +467,6 @@ fprintf(file,"#%p",(void*)*o);
 fprintf(file,"\n\t[ ");
 fprintf(file,"liste_utilisateurs = ");
 se_prinT0(file,(T0**)(&((*o)->_liste_utilisateurs)));
-fprintf(file,"\n\t]");
-}/*--*/
-T140 M140={140,(void*)0,(void*)0};
-
-void se_prinT140(FILE* file,T140**o){
-if(*o==NULL){
-   fprintf(file, "void");
-   return;}
-fprintf(file,"MEDIAMANAGER");
-fprintf(file,"#%p",(void*)*o);
-fprintf(file,"\n\t[ ");
-fprintf(file,"liste_dvd = ");
-se_prinT0(file,(T0**)(&((*o)->_liste_dvd)));
-fprintf(file,"\n\t  ");
-fprintf(file,"liste_livres = ");
-se_prinT0(file,(T0**)(&((*o)->_liste_livres)));
 fprintf(file,"\n\t]");
 }/*--*/
 T40 M40={40,(void*)0,(void*)0,(void*)0};
@@ -489,24 +511,40 @@ fprintf(file,"#%p",(void*)*o);
 }/*--*/
 T7 M7={7,(void*)0,0,0};
 /*Aliased storage area or unicode storage.*/
-char*s140_0="";
-char*s127_10="\n";
-char*s140_958812316="\" in the current working directory.\n";
-char*s140_905587976="Chaine vide";
+char*s139_0="";
+char*s125_10="\n";
+char*s25_48="0";
+char*s25_49="1";
+char*s25_50="2";
+char*s139_958812316="\" in the current working directory.\n";
+char*s139_1415551="Adresse";
+char*s139_905587976="Chaine vide";
+char*s25_1611347649="Initialisation::Medias charg\351""s.\n";
+char*s139_880775002="Adherent ; ";
 char*s140_262181241="medias.txt";
-char*s139_56485="Admin";
 char*s140_69196="Titre";
+char*s25_334788481="1 - Afficher livres\n";
 char*s140_14186="Type";
-char*s25_36514426="Initialisation::D\351""but.\n";
+char*s139_630946996="Documentaliste ; ";
 char*s140_1046453349="Realisateur";
+char*s140_2198="DVD";
+char*s139_2241="Age";
 char*s140_57731="Annee";
 char*s139_1395793447="utilisateurs.txt";
-char*s139_2473="OUI";
+char*s25_1034526776="***********************************\n";
+char*s25_36926926="Initialisation::Debut.\n";
+char*s25_2012437566="*******    Menu Principal     *****\n";
 char*s139_2614="Nom";
-char*s140_1980932565="Cannot read file \"";
+char*s25_1338915423="Initialisation::Utilisateurs charg\351""s.\n";
+char*s139_1980932565="Cannot read file \"";
+char*s25_342121886="Initialisation::Fin.\n";
 char*s139_958470591="Identifiant";
 char*s25_317365="Main.\n";
 char*s140_329871="Nombre";
+char*s140_59254="LIVRE";
+char*s25_344632396="2 - Afficher DVD\n";
+char*s25_1638022050="Votre choix \? ";
+char*s25_1529752190="0 - Quitter\n";
 char*s140_8031877="Livre ; ";
 char*s140_293974="Auteur";
 char*s139_337289="Prenom";
@@ -2543,14 +2581,14 @@ int io_file_exists(char*source) {
   }
 }
 unsigned int fsoc_count_ceil=84;
-unsigned int rsoc_count_ceil=15;
+unsigned int rsoc_count_ceil=12;
 
-/*NATIVE_ARRAY[UTILISATEUR]*/T6 r133all_default(se_dump_stack*caller,T133 C,T2 a1){
+/*NATIVE_ARRAY[IMEDIA]*/T6 r146all_default(se_dump_stack*caller,T146 C,T2 a1){
 T6 R=0;
 T2 _i=0;
 T0* _v=(void*)0;
 void**locals[4];
-static se_frame_descriptor fd={"all_default"" NATIVE_ARRAY[UTILISATEUR]",1,4,"%E133%upper%E2%Result%E6%i%E2%v%R128%",1};
+static se_frame_descriptor fd={"all_default"" NATIVE_ARRAY[IMEDIA]",1,4,"%E146%upper%E2%Result%E6%i%E2%v%R126%",1};
 se_dump_stack ds;
 ds.fd=&fd;
 ds.current=(void*)&C;
@@ -2579,7 +2617,7 @@ while (!(((ds.p=0x0642EB16/*l747c11\native_array.e*/),(T6)((((int32_t)(_i))<(/*I
 _v=(C)[_i];
 if(((ds.p=0x0642EE10/*l750c8\native_array.e*/),(_v)!=((void*)((void*)0)))){
 (ds.p=0x0642EF0C/*l751c6\native_array.e*/);
-R=((T6)(r128is_default(&ds,((T128*)ci(128,_v,0x0642EF20/*l751c16\native_array.e*/)))));
+R=((T6)(X126is_default(&ds,0x0642EF20/*l751c16\native_array.e*/,_v)));
 }
 (ds.p=0x0642F10A/*l753c5\native_array.e*/);
 _i=r2_ix_45(&ds,_i,/*IC*/(T2)(INT8_C(1)));
@@ -2588,11 +2626,11 @@ set_dump_stack_top(caller);/*unlink*/
 return R;
 }/*--*/
 
-/*NATIVE_ARRAY[UTILISATEUR]*/void r133clear_all(se_dump_stack*caller,T133 C,T2 a1){
+/*NATIVE_ARRAY[IMEDIA]*/void r146clear_all(se_dump_stack*caller,T146 C,T2 a1){
 T0* _v=(void*)0;
 T2 _i=0;
 void**locals[3];
-static se_frame_descriptor fd={"clear_all"" NATIVE_ARRAY[UTILISATEUR]",1,3,"%E133%upper%E2%v%R128%i%E2%",1};
+static se_frame_descriptor fd={"clear_all"" NATIVE_ARRAY[IMEDIA]",1,3,"%E146%upper%E2%v%R126%i%E2%",1};
 se_dump_stack ds;
 ds.fd=&fd;
 ds.current=(void*)&C;
@@ -2622,16 +2660,16 @@ _i=r2_ix_45(&ds,_i,/*IC*/(T2)(INT8_C(1)));
 if(fd.assertion_flag){
 fd.assertion_flag=0;
 (ds.p=0x06422D08/*l557c4\native_array.e*/);
-ac_ens(r133all_default(&ds,C,a1),"all_default(upper)");
+ac_ens(r146all_default(&ds,C,a1),"all_default(upper)");
 fd.assertion_flag=1;
 }
 set_dump_stack_top(caller);/*unlink*/
 }/*--*/
 
-/*NATIVE_ARRAY[UTILISATEUR]*/void r133set_all_with(se_dump_stack*caller,T133 C,T0* a1,T2 a2){
+/*NATIVE_ARRAY[IMEDIA]*/void r146set_all_with(se_dump_stack*caller,T146 C,T0* a1,T2 a2){
 T2 _i=0;
 void**locals[3];
-static se_frame_descriptor fd={"set_all_with"" NATIVE_ARRAY[UTILISATEUR]",1,3,"%E133%v%R128%upper%E2%i%E2%",1};
+static se_frame_descriptor fd={"set_all_with"" NATIVE_ARRAY[IMEDIA]",1,3,"%E146%v%R126%upper%E2%i%E2%",1};
 se_dump_stack ds;
 ds.fd=&fd;
 ds.current=(void*)&C;
@@ -2661,10 +2699,10 @@ _i=r2_ix_45(&ds,_i,/*IC*/(T2)(INT8_C(1)));
 set_dump_stack_top(caller);/*unlink*/
 }/*--*/
 
-/*NATIVE_ARRAY[UTILISATEUR]*/T6 r133is_not_null(se_dump_stack*caller,T133 C){
+/*NATIVE_ARRAY[IMEDIA]*/T6 r146is_not_null(se_dump_stack*caller,T146 C){
 T6 R=0;
 void**locals[1];
-static se_frame_descriptor fd={"is_not_null"" NATIVE_ARRAY[UTILISATEUR]",1,1,"%E133%Result%E6%",1};
+static se_frame_descriptor fd={"is_not_null"" NATIVE_ARRAY[IMEDIA]",1,1,"%E146%Result%E6%",1};
 se_dump_stack ds;
 ds.fd=&fd;
 ds.current=(void*)&C;
@@ -2680,10 +2718,10 @@ set_dump_stack_top(caller);/*unlink*/
 return R;
 }/*--*/
 
-/*NATIVE_ARRAY[UTILISATEUR]*/T133 r133realloc(se_dump_stack*caller,T133 C,T2 a1,T2 a2){
-T133 R=(void*)0;
+/*NATIVE_ARRAY[IMEDIA]*/T146 r146realloc(se_dump_stack*caller,T146 C,T2 a1,T2 a2){
+T146 R=(void*)0;
 void**locals[3];
-static se_frame_descriptor fd={"realloc"" NATIVE_ARRAY[UTILISATEUR]",1,3,"%E133%old_nb_elts%E2%new_nb_elts%E2%Result%E133%",1};
+static se_frame_descriptor fd={"realloc"" NATIVE_ARRAY[IMEDIA]",1,3,"%E146%old_nb_elts%E2%new_nb_elts%E2%Result%E146%",1};
 se_dump_stack ds;
 ds.fd=&fd;
 ds.current=(void*)&C;
@@ -2698,7 +2736,7 @@ set_dump_stack_top(&ds);/*link*/
 if(fd.assertion_flag){
 fd.assertion_flag=0;
 (ds.p=0x06403A08/*l58c4\native_array.e*/);
-ac_req(r133is_not_null(&ds,C),"is_not_null");
+ac_req(r146is_not_null(&ds,C),"is_not_null");
 (ds.p=0x06403B20/*l59c16\native_array.e*/);
 ac_req(((int32_t)(a1))>(/*IC*/(T2)(INT8_C(0))),"old_nb_elts > 0");
 (ds.p=0x06403C20/*l60c16\native_array.e*/);
@@ -2706,23 +2744,23 @@ ac_req(((int32_t)(a1))<(a2),"old_nb_elts < new_nb_elts");
 fd.assertion_flag=1;
 }
 (ds.p=0x06403E08/*l62c4\native_array.e*/);
-R=new133(a2);
+R=new146(a2);
 (ds.p=0x06403F16/*l63c11\native_array.e*/);
-r133copy_from(&ds,R,C,r2_ix_45(&ds,a1,/*IC*/(T2)(INT8_C(1))));
+r146copy_from(&ds,R,C,r2_ix_45(&ds,a1,/*IC*/(T2)(INT8_C(1))));
 if(fd.assertion_flag){
 fd.assertion_flag=0;
 (ds.p=0x06404116/*l65c11\native_array.e*/);
-ac_ens(r133is_not_null(&ds,R),"Result.is_not_null");
+ac_ens(r146is_not_null(&ds,R),"Result.is_not_null");
 fd.assertion_flag=1;
 }
 set_dump_stack_top(caller);/*unlink*/
 return R;
 }/*--*/
 
-/*NATIVE_ARRAY[UTILISATEUR]*/void r133copy_from(se_dump_stack*caller,T133 C,T133 a1,T2 a2){
+/*NATIVE_ARRAY[IMEDIA]*/void r146copy_from(se_dump_stack*caller,T146 C,T146 a1,T2 a2){
 T2 _i=0;
 void**locals[3];
-static se_frame_descriptor fd={"copy_from"" NATIVE_ARRAY[UTILISATEUR]",1,3,"%E133%model%E133%upper%E2%i%E2%",1};
+static se_frame_descriptor fd={"copy_from"" NATIVE_ARRAY[IMEDIA]",1,3,"%E146%model%E146%upper%E2%i%E2%",1};
 se_dump_stack ds;
 ds.fd=&fd;
 ds.current=(void*)&C;
@@ -2752,12 +2790,12 @@ _i=r2_ix_45(&ds,_i,/*IC*/(T2)(INT8_C(1)));
 set_dump_stack_top(caller);/*unlink*/
 }/*--*/
 
-/*NATIVE_ARRAY[DVD]*/T6 r130all_default(se_dump_stack*caller,T130 C,T2 a1){
+/*NATIVE_ARRAY[IUTILISATEUR]*/T6 r147all_default(se_dump_stack*caller,T147 C,T2 a1){
 T6 R=0;
 T2 _i=0;
 T0* _v=(void*)0;
 void**locals[4];
-static se_frame_descriptor fd={"all_default"" NATIVE_ARRAY[DVD]",1,4,"%E130%upper%E2%Result%E6%i%E2%v%R125%",1};
+static se_frame_descriptor fd={"all_default"" NATIVE_ARRAY[IUTILISATEUR]",1,4,"%E147%upper%E2%Result%E6%i%E2%v%R141%",1};
 se_dump_stack ds;
 ds.fd=&fd;
 ds.current=(void*)&C;
@@ -2786,7 +2824,7 @@ while (!(((ds.p=0x0642EB16/*l747c11\native_array.e*/),(T6)((((int32_t)(_i))<(/*I
 _v=(C)[_i];
 if(((ds.p=0x0642EE10/*l750c8\native_array.e*/),(_v)!=((void*)((void*)0)))){
 (ds.p=0x0642EF0C/*l751c6\native_array.e*/);
-R=((T6)(r125is_default(&ds,se_i125(&ds,((T125*)ci(125,_v,0x0642EF20/*l751c16\native_array.e*/))))));
+R=((T6)(X141is_default(&ds,0x0642EF20/*l751c16\native_array.e*/,_v)));
 }
 (ds.p=0x0642F10A/*l753c5\native_array.e*/);
 _i=r2_ix_45(&ds,_i,/*IC*/(T2)(INT8_C(1)));
@@ -2795,11 +2833,11 @@ set_dump_stack_top(caller);/*unlink*/
 return R;
 }/*--*/
 
-/*NATIVE_ARRAY[DVD]*/void r130clear_all(se_dump_stack*caller,T130 C,T2 a1){
+/*NATIVE_ARRAY[IUTILISATEUR]*/void r147clear_all(se_dump_stack*caller,T147 C,T2 a1){
 T0* _v=(void*)0;
 T2 _i=0;
 void**locals[3];
-static se_frame_descriptor fd={"clear_all"" NATIVE_ARRAY[DVD]",1,3,"%E130%upper%E2%v%R125%i%E2%",1};
+static se_frame_descriptor fd={"clear_all"" NATIVE_ARRAY[IUTILISATEUR]",1,3,"%E147%upper%E2%v%R141%i%E2%",1};
 se_dump_stack ds;
 ds.fd=&fd;
 ds.current=(void*)&C;
@@ -2829,16 +2867,16 @@ _i=r2_ix_45(&ds,_i,/*IC*/(T2)(INT8_C(1)));
 if(fd.assertion_flag){
 fd.assertion_flag=0;
 (ds.p=0x06422D08/*l557c4\native_array.e*/);
-ac_ens(r130all_default(&ds,C,a1),"all_default(upper)");
+ac_ens(r147all_default(&ds,C,a1),"all_default(upper)");
 fd.assertion_flag=1;
 }
 set_dump_stack_top(caller);/*unlink*/
 }/*--*/
 
-/*NATIVE_ARRAY[DVD]*/void r130set_all_with(se_dump_stack*caller,T130 C,T0* a1,T2 a2){
+/*NATIVE_ARRAY[IUTILISATEUR]*/void r147set_all_with(se_dump_stack*caller,T147 C,T0* a1,T2 a2){
 T2 _i=0;
 void**locals[3];
-static se_frame_descriptor fd={"set_all_with"" NATIVE_ARRAY[DVD]",1,3,"%E130%v%R125%upper%E2%i%E2%",1};
+static se_frame_descriptor fd={"set_all_with"" NATIVE_ARRAY[IUTILISATEUR]",1,3,"%E147%v%R141%upper%E2%i%E2%",1};
 se_dump_stack ds;
 ds.fd=&fd;
 ds.current=(void*)&C;
@@ -2868,10 +2906,10 @@ _i=r2_ix_45(&ds,_i,/*IC*/(T2)(INT8_C(1)));
 set_dump_stack_top(caller);/*unlink*/
 }/*--*/
 
-/*NATIVE_ARRAY[DVD]*/T6 r130is_not_null(se_dump_stack*caller,T130 C){
+/*NATIVE_ARRAY[IUTILISATEUR]*/T6 r147is_not_null(se_dump_stack*caller,T147 C){
 T6 R=0;
 void**locals[1];
-static se_frame_descriptor fd={"is_not_null"" NATIVE_ARRAY[DVD]",1,1,"%E130%Result%E6%",1};
+static se_frame_descriptor fd={"is_not_null"" NATIVE_ARRAY[IUTILISATEUR]",1,1,"%E147%Result%E6%",1};
 se_dump_stack ds;
 ds.fd=&fd;
 ds.current=(void*)&C;
@@ -2887,10 +2925,10 @@ set_dump_stack_top(caller);/*unlink*/
 return R;
 }/*--*/
 
-/*NATIVE_ARRAY[DVD]*/T130 r130realloc(se_dump_stack*caller,T130 C,T2 a1,T2 a2){
-T130 R=(void*)0;
+/*NATIVE_ARRAY[IUTILISATEUR]*/T147 r147realloc(se_dump_stack*caller,T147 C,T2 a1,T2 a2){
+T147 R=(void*)0;
 void**locals[3];
-static se_frame_descriptor fd={"realloc"" NATIVE_ARRAY[DVD]",1,3,"%E130%old_nb_elts%E2%new_nb_elts%E2%Result%E130%",1};
+static se_frame_descriptor fd={"realloc"" NATIVE_ARRAY[IUTILISATEUR]",1,3,"%E147%old_nb_elts%E2%new_nb_elts%E2%Result%E147%",1};
 se_dump_stack ds;
 ds.fd=&fd;
 ds.current=(void*)&C;
@@ -2905,7 +2943,7 @@ set_dump_stack_top(&ds);/*link*/
 if(fd.assertion_flag){
 fd.assertion_flag=0;
 (ds.p=0x06403A08/*l58c4\native_array.e*/);
-ac_req(r130is_not_null(&ds,C),"is_not_null");
+ac_req(r147is_not_null(&ds,C),"is_not_null");
 (ds.p=0x06403B20/*l59c16\native_array.e*/);
 ac_req(((int32_t)(a1))>(/*IC*/(T2)(INT8_C(0))),"old_nb_elts > 0");
 (ds.p=0x06403C20/*l60c16\native_array.e*/);
@@ -2913,23 +2951,23 @@ ac_req(((int32_t)(a1))<(a2),"old_nb_elts < new_nb_elts");
 fd.assertion_flag=1;
 }
 (ds.p=0x06403E08/*l62c4\native_array.e*/);
-R=new130(a2);
+R=new147(a2);
 (ds.p=0x06403F16/*l63c11\native_array.e*/);
-r130copy_from(&ds,R,C,r2_ix_45(&ds,a1,/*IC*/(T2)(INT8_C(1))));
+r147copy_from(&ds,R,C,r2_ix_45(&ds,a1,/*IC*/(T2)(INT8_C(1))));
 if(fd.assertion_flag){
 fd.assertion_flag=0;
 (ds.p=0x06404116/*l65c11\native_array.e*/);
-ac_ens(r130is_not_null(&ds,R),"Result.is_not_null");
+ac_ens(r147is_not_null(&ds,R),"Result.is_not_null");
 fd.assertion_flag=1;
 }
 set_dump_stack_top(caller);/*unlink*/
 return R;
 }/*--*/
 
-/*NATIVE_ARRAY[DVD]*/void r130copy_from(se_dump_stack*caller,T130 C,T130 a1,T2 a2){
+/*NATIVE_ARRAY[IUTILISATEUR]*/void r147copy_from(se_dump_stack*caller,T147 C,T147 a1,T2 a2){
 T2 _i=0;
 void**locals[3];
-static se_frame_descriptor fd={"copy_from"" NATIVE_ARRAY[DVD]",1,3,"%E130%model%E130%upper%E2%i%E2%",1};
+static se_frame_descriptor fd={"copy_from"" NATIVE_ARRAY[IUTILISATEUR]",1,3,"%E147%model%E147%upper%E2%i%E2%",1};
 se_dump_stack ds;
 ds.fd=&fd;
 ds.current=(void*)&C;
@@ -3166,217 +3204,10 @@ _i=r2_ix_45(&ds,_i,/*IC*/(T2)(INT8_C(1)));
 set_dump_stack_top(caller);/*unlink*/
 }/*--*/
 
-/*NATIVE_ARRAY[LIVRE]*/T6 r134all_default(se_dump_stack*caller,T134 C,T2 a1){
-T6 R=0;
-T2 _i=0;
-T0* _v=(void*)0;
-void**locals[4];
-static se_frame_descriptor fd={"all_default"" NATIVE_ARRAY[LIVRE]",1,4,"%E134%upper%E2%Result%E6%i%E2%v%R127%",1};
-se_dump_stack ds;
-ds.fd=&fd;
-ds.current=(void*)&C;
-ds.p=0x0642DF04/*l735c2\native_array.e*/;
-ds.caller=caller;
-ds.locals=locals;
-ds.exception_origin=NULL;
-locals[0]=(void**)&a1;
-locals[1]=(void**)&R;
-locals[2]=(void**)&_i;
-locals[3]=(void**)&_v;
-set_dump_stack_top(&ds);/*link*/
-if(fd.assertion_flag){
-fd.assertion_flag=0;
-(ds.p=0x0642E314/*l739c10\native_array.e*/);
-ac_req(((int32_t)(a1))>=(/*IC*/(T2)(INT8_C(-1))),"upper >= -1");
-fd.assertion_flag=1;
-}
-(ds.p=0x0642E80A/*l744c5\native_array.e*/);
-R=((T6)(1));
-(ds.p=0x0642E90A/*l745c5\native_array.e*/);
-_i=a1;
-while (!(((ds.p=0x0642EB16/*l747c11\native_array.e*/),(T6)((((int32_t)(_i))<(/*IC*/(T2)(INT8_C(0))))||((T6)(r6_px_not(&ds,(T6)(R))))))))
-{
-(ds.p=0x0642ED0A/*l749c5\native_array.e*/);
-_v=(C)[_i];
-if(((ds.p=0x0642EE10/*l750c8\native_array.e*/),(_v)!=((void*)((void*)0)))){
-(ds.p=0x0642EF0C/*l751c6\native_array.e*/);
-R=((T6)(r127is_default(&ds,se_i127(&ds,((T127*)ci(127,_v,0x0642EF20/*l751c16\native_array.e*/))))));
-}
-(ds.p=0x0642F10A/*l753c5\native_array.e*/);
-_i=r2_ix_45(&ds,_i,/*IC*/(T2)(INT8_C(1)));
-}
-set_dump_stack_top(caller);/*unlink*/
-return R;
-}/*--*/
-
-/*NATIVE_ARRAY[LIVRE]*/void r134clear_all(se_dump_stack*caller,T134 C,T2 a1){
-T0* _v=(void*)0;
-T2 _i=0;
-void**locals[3];
-static se_frame_descriptor fd={"clear_all"" NATIVE_ARRAY[LIVRE]",1,3,"%E134%upper%E2%v%R127%i%E2%",1};
-se_dump_stack ds;
-ds.fd=&fd;
-ds.current=(void*)&C;
-ds.p=0x06421D04/*l541c2\native_array.e*/;
-ds.caller=caller;
-ds.locals=locals;
-ds.exception_origin=NULL;
-locals[0]=(void**)&a1;
-locals[1]=(void**)&_v;
-locals[2]=(void**)&_i;
-set_dump_stack_top(&ds);/*link*/
-if(fd.assertion_flag){
-fd.assertion_flag=0;
-(ds.p=0x06422014/*l544c10\native_array.e*/);
-ac_req(((int32_t)(a1))>=(/*IC*/(T2)(INT8_C(-1))),"upper >= -1");
-fd.assertion_flag=1;
-}
-(ds.p=0x0642250A/*l549c5\native_array.e*/);
-_i=a1;
-while (!(((ds.p=0x0642270E/*l551c7\native_array.e*/),((int32_t)(_i))<(/*IC*/(T2)(INT8_C(0))))))
-{
-(ds.p=0x0642290A/*l553c5\native_array.e*/);
-(C)[_i]=(_v);
-(ds.p=0x06422A0A/*l554c5\native_array.e*/);
-_i=r2_ix_45(&ds,_i,/*IC*/(T2)(INT8_C(1)));
-}
-if(fd.assertion_flag){
-fd.assertion_flag=0;
-(ds.p=0x06422D08/*l557c4\native_array.e*/);
-ac_ens(r134all_default(&ds,C,a1),"all_default(upper)");
-fd.assertion_flag=1;
-}
-set_dump_stack_top(caller);/*unlink*/
-}/*--*/
-
-/*NATIVE_ARRAY[LIVRE]*/void r134set_all_with(se_dump_stack*caller,T134 C,T0* a1,T2 a2){
-T2 _i=0;
-void**locals[3];
-static se_frame_descriptor fd={"set_all_with"" NATIVE_ARRAY[LIVRE]",1,3,"%E134%v%R127%upper%E2%i%E2%",1};
-se_dump_stack ds;
-ds.fd=&fd;
-ds.current=(void*)&C;
-ds.p=0x0641FA04/*l506c2\native_array.e*/;
-ds.caller=caller;
-ds.locals=locals;
-ds.exception_origin=NULL;
-locals[0]=(void**)&a1;
-locals[1]=(void**)&a2;
-locals[2]=(void**)&_i;
-set_dump_stack_top(&ds);/*link*/
-if(fd.assertion_flag){
-fd.assertion_flag=0;
-(ds.p=0x0641FD14/*l509c10\native_array.e*/);
-ac_req(((int32_t)(a2))>=(/*IC*/(T2)(INT8_C(-1))),"upper >= -1");
-fd.assertion_flag=1;
-}
-(ds.p=0x0642020A/*l514c5\native_array.e*/);
-_i=a2;
-while (!(((ds.p=0x0642040E/*l516c7\native_array.e*/),((int32_t)(_i))<(/*IC*/(T2)(INT8_C(0))))))
-{
-(ds.p=0x0642060A/*l518c5\native_array.e*/);
-(C)[_i]=(a1);
-(ds.p=0x0642070A/*l519c5\native_array.e*/);
-_i=r2_ix_45(&ds,_i,/*IC*/(T2)(INT8_C(1)));
-}
-set_dump_stack_top(caller);/*unlink*/
-}/*--*/
-
-/*NATIVE_ARRAY[LIVRE]*/T6 r134is_not_null(se_dump_stack*caller,T134 C){
+/*LIVRE*/T6 r127is_default(se_dump_stack*caller,T127* C){
 T6 R=0;
 void**locals[1];
-static se_frame_descriptor fd={"is_not_null"" NATIVE_ARRAY[LIVRE]",1,1,"%E134%Result%E6%",1};
-se_dump_stack ds;
-ds.fd=&fd;
-ds.current=(void*)&C;
-ds.p=0x06431804/*l792c2\native_array.e*/;
-ds.caller=caller;
-ds.locals=locals;
-ds.exception_origin=NULL;
-locals[0]=(void**)&R;
-set_dump_stack_top(&ds);/*link*/
-(ds.p=0x06431A08/*l794c4\native_array.e*/);
-R=((T6)((NULL!=((void*)(C)))));
-set_dump_stack_top(caller);/*unlink*/
-return R;
-}/*--*/
-
-/*NATIVE_ARRAY[LIVRE]*/T134 r134realloc(se_dump_stack*caller,T134 C,T2 a1,T2 a2){
-T134 R=(void*)0;
-void**locals[3];
-static se_frame_descriptor fd={"realloc"" NATIVE_ARRAY[LIVRE]",1,3,"%E134%old_nb_elts%E2%new_nb_elts%E2%Result%E134%",1};
-se_dump_stack ds;
-ds.fd=&fd;
-ds.current=(void*)&C;
-ds.p=0x06403304/*l51c2\native_array.e*/;
-ds.caller=caller;
-ds.locals=locals;
-ds.exception_origin=NULL;
-locals[0]=(void**)&a1;
-locals[1]=(void**)&a2;
-locals[2]=(void**)&R;
-set_dump_stack_top(&ds);/*link*/
-if(fd.assertion_flag){
-fd.assertion_flag=0;
-(ds.p=0x06403A08/*l58c4\native_array.e*/);
-ac_req(r134is_not_null(&ds,C),"is_not_null");
-(ds.p=0x06403B20/*l59c16\native_array.e*/);
-ac_req(((int32_t)(a1))>(/*IC*/(T2)(INT8_C(0))),"old_nb_elts > 0");
-(ds.p=0x06403C20/*l60c16\native_array.e*/);
-ac_req(((int32_t)(a1))<(a2),"old_nb_elts < new_nb_elts");
-fd.assertion_flag=1;
-}
-(ds.p=0x06403E08/*l62c4\native_array.e*/);
-R=new134(a2);
-(ds.p=0x06403F16/*l63c11\native_array.e*/);
-r134copy_from(&ds,R,C,r2_ix_45(&ds,a1,/*IC*/(T2)(INT8_C(1))));
-if(fd.assertion_flag){
-fd.assertion_flag=0;
-(ds.p=0x06404116/*l65c11\native_array.e*/);
-ac_ens(r134is_not_null(&ds,R),"Result.is_not_null");
-fd.assertion_flag=1;
-}
-set_dump_stack_top(caller);/*unlink*/
-return R;
-}/*--*/
-
-/*NATIVE_ARRAY[LIVRE]*/void r134copy_from(se_dump_stack*caller,T134 C,T134 a1,T2 a2){
-T2 _i=0;
-void**locals[3];
-static se_frame_descriptor fd={"copy_from"" NATIVE_ARRAY[LIVRE]",1,3,"%E134%model%E134%upper%E2%i%E2%",1};
-se_dump_stack ds;
-ds.fd=&fd;
-ds.current=(void*)&C;
-ds.p=0x06424204/*l578c2\native_array.e*/;
-ds.caller=caller;
-ds.locals=locals;
-ds.exception_origin=NULL;
-locals[0]=(void**)&a1;
-locals[1]=(void**)&a2;
-locals[2]=(void**)&_i;
-set_dump_stack_top(&ds);/*link*/
-if(fd.assertion_flag){
-fd.assertion_flag=0;
-(ds.p=0x06424514/*l581c10\native_array.e*/);
-ac_req(((int32_t)(a2))>=(/*IC*/(T2)(INT8_C(-1))),"upper >= -1");
-fd.assertion_flag=1;
-}
-(ds.p=0x06424A0A/*l586c5\native_array.e*/);
-_i=a2;
-while (!(((ds.p=0x06424C0E/*l588c7\native_array.e*/),((int32_t)(_i))<(/*IC*/(T2)(INT8_C(0))))))
-{
-(ds.p=0x06424E0A/*l590c5\native_array.e*/);
-(C)[_i]=((a1)[_i]);
-(ds.p=0x06424F0A/*l591c5\native_array.e*/);
-_i=r2_ix_45(&ds,_i,/*IC*/(T2)(INT8_C(1)));
-}
-set_dump_stack_top(caller);/*unlink*/
-}/*--*/
-
-/*UTILISATEUR*/T6 r128is_default(se_dump_stack*caller,T128* C){
-T6 R=0;
-void**locals[1];
-static se_frame_descriptor fd={"is_default"" UTILISATEUR",1,1,"%R128%Result%E6%",1};
+static se_frame_descriptor fd={"is_default"" LIVRE",1,1,"%R127%Result%E6%",1};
 se_dump_stack ds;
 ds.fd=&fd;
 ds.current=(void*)&C;
@@ -3387,15 +3218,16 @@ ds.exception_origin=NULL;
 locals[0]=(void**)&R;
 set_dump_stack_top(&ds);/*link*/
 (ds.p=0x01A08D08/*l141c4\any.e*/);
-R=((T6)((C)==((void*)(r128default(&ds,C)))));
+R=((T6)((C)==((void*)(r127default(&ds,C)))));
+if(se_rci(caller,C))se_i127(&ds,C);
 set_dump_stack_top(caller);/*unlink*/
 return R;
 }/*--*/
 
-/*UTILISATEUR*/T0* r128default(se_dump_stack*caller,T128* C){
+/*LIVRE*/T0* r127default(se_dump_stack*caller,T127* C){
 T0* R=(void*)0;
 void**locals[1];
-static se_frame_descriptor fd={"default"" UTILISATEUR",1,1,"%R128%Result%R128%",1};
+static se_frame_descriptor fd={"default"" LIVRE",1,1,"%R127%Result%R127%",1};
 se_dump_stack ds;
 ds.fd=&fd;
 ds.current=(void*)&C;
@@ -3405,17 +3237,87 @@ ds.locals=locals;
 ds.exception_origin=NULL;
 locals[0]=(void**)&R;
 set_dump_stack_top(&ds);/*link*/
+if(se_rci(caller,C))se_i127(&ds,C);
 set_dump_stack_top(caller);/*unlink*/
 return R;
 }/*--*/
 
-/*UTILISATEUR*/void r128utilisateur(se_dump_stack*caller,T128* C,T0* a1,T0* a2,T0* a3,T6 a4){
-void**locals[4];
-static se_frame_descriptor fd={"utilisateur"" UTILISATEUR",1,4,"%R128%input_nom%R7%input_prenom%R7%input_identifiant%R7%input_is_admin%E6%",1};
+/*LIVRE*/void r127livre(se_dump_stack*caller,T127* C,T0* a1,T0* a2,T0* a3,T0* a4,T2 a5,T2 a6,T2 a7){
+void**locals[7];
+static se_frame_descriptor fd={"livre"" LIVRE",1,7,"%R127%iauteurs%R122%iediteur%R7%itype%R7%ititre%R7%iannee%E2%inombre_disponible%E2%inombre_possede%E2%",1};
 se_dump_stack ds;
 ds.fd=&fd;
 ds.current=(void*)&C;
-ds.p=0x10000B04/*l11c2\utilisateur.e*/;
+ds.p=0x0FE01404/*l20c2\livre.e*/;
+ds.caller=caller;
+ds.locals=locals;
+ds.exception_origin=NULL;
+locals[0]=(void**)&a1;
+locals[1]=(void**)&a2;
+locals[2]=(void**)&a3;
+locals[3]=(void**)&a4;
+locals[4]=(void**)&a5;
+locals[5]=(void**)&a6;
+locals[6]=(void**)&a7;
+set_dump_stack_top(&ds);/*link*/
+(ds.p=0x0FE01606/*l22c3\livre.e*/);
+/*SFN*/(C->_auteurs/*i7p*/)=a1;
+(ds.p=0x0FE01706/*l23c3\livre.e*/);
+/*SFN*/(C->_editeur/*i7p*/)=a2;
+(ds.p=0x0FE01806/*l24c3\livre.e*/);
+/*SFN*/(C->_type/*i7p*/)=a3;
+(ds.p=0x0FE01906/*l25c3\livre.e*/);
+r127init(&ds,C,a4,a5,a6,a7);
+if(se_rci(caller,C))se_i127(&ds,C);
+set_dump_stack_top(caller);/*unlink*/
+}/*--*/
+T0*oBC13io=(void*)0;
+int fBC13io=0;
+
+/*LIVRE*/T0* r127io(se_dump_stack*caller,T127* C){
+/*[INTERNAL_C_LOCAL list*/
+T0* tmp0;
+/*INTERNAL_C_LOCAL list]*/
+void**locals[1];
+static se_frame_descriptor fd={"io"" LIVRE",1,1,"%R127%Result%R40%",1};
+se_dump_stack ds;
+ds.fd=&fd;
+ds.current=(void*)&C;
+ds.p=0x01A09F04/*l159c2\any.e*/;
+ds.caller=caller;
+ds.locals=locals;
+ds.exception_origin=NULL;
+locals[0]=(void**)&oBC13io;
+set_dump_stack_top(&ds);/*link*/
+if(fBC13io==0){fBC13io=1;{
+(ds.p=0x01A0A408/*l164c4\any.e*/);
+tmp0=((T0*)(new40()));
+r40make(&ds,((T40*)tmp0));
+oBC13io=tmp0;
+se_i40(&ds,((T40*)(oBC13io)));}
+fBC13io=2;}
+else{
+(ds.p=0x01A09F04/*l159c2\any.e*/);
+ac_req(fBC13io==2, "Recursive once function.");
+}
+if(fd.assertion_flag){
+fd.assertion_flag=0;
+(ds.p=0x01A0A608/*l166c4\any.e*/);
+ac_ens((oBC13io)!=((void*)((void*)0)),"Result /= Void");
+fd.assertion_flag=1;
+}
+if(se_rci(caller,C))se_i127(&ds,C);
+set_dump_stack_top(caller);/*unlink*/
+return oBC13io;
+}/*--*/
+
+/*LIVRE*/void r127init(se_dump_stack*caller,T127* C,T0* a1,T2 a2,T2 a3,T2 a4){
+void**locals[4];
+static se_frame_descriptor fd={"init"" LIVRE",1,4,"%R127%ititre%R7%iannee%E2%inombre_disponible%E2%inombre_possedes%E2%",1};
+se_dump_stack ds;
+ds.fd=&fd;
+ds.current=(void*)&C;
+ds.p=0x0FC01304/*l19c2\IMedia.e*/;
 ds.caller=caller;
 ds.locals=locals;
 ds.exception_origin=NULL;
@@ -3424,21 +3326,226 @@ locals[1]=(void**)&a2;
 locals[2]=(void**)&a3;
 locals[3]=(void**)&a4;
 set_dump_stack_top(&ds);/*link*/
-(ds.p=0x10000D06/*l13c3\utilisateur.e*/);
-/*SFN*/(C->_nom/*i4p*/)=a1;
-(ds.p=0x10000E06/*l14c3\utilisateur.e*/);
-/*SFN*/(C->_prenom/*i4p*/)=a2;
-(ds.p=0x10000F06/*l15c3\utilisateur.e*/);
-/*SFN*/(C->_identifiant/*i4p*/)=a3;
-(ds.p=0x10001006/*l16c3\utilisateur.e*/);
-/*SFN*/(C->_is_admin/*i4p*/)=((T6)(a4));
+(ds.p=0x0FC01506/*l21c3\IMedia.e*/);
+/*SFN*/(C->_titre/*i7p*/)=a1;
+(ds.p=0x0FC01606/*l22c3\IMedia.e*/);
+/*SFN*/(C->_annee/*i7p*/)=a2;
+(ds.p=0x0FC01706/*l23c3\IMedia.e*/);
+/*SFN*/(C->_nombre_disponible/*i7p*/)=a3;
+(ds.p=0x0FC01806/*l24c3\IMedia.e*/);
+/*SFN*/(C->_nombre_possedes/*i7p*/)=a4;
+if(se_rci(caller,C))se_i127(&ds,C);
 set_dump_stack_top(caller);/*unlink*/
 }/*--*/
 
-/*ARRAY[UTILISATEUR]*/T6 r131all_default(se_dump_stack*caller,T131* C){
+/*LIVRE*/void r127afficher(se_dump_stack*caller,T127* C){
+static se_frame_descriptor fd={"afficher"" LIVRE",1,0,"%R127%",1};
+se_dump_stack ds;
+ds.fd=&fd;
+ds.current=(void*)&C;
+ds.p=0x0FE01F04/*l31c2\livre.e*/;
+ds.caller=caller;
+ds.locals=NULL;
+ds.exception_origin=NULL;
+set_dump_stack_top(&ds);/*link*/
+(ds.p=0x0FE0210C/*l33c6\livre.e*/);
+r40put_string(&ds,se_i40(&ds,((T40*)ci(40,r127io(&ds,C),0x0FE02106/*l33c3\livre.e*/))),r7_ix_43(&ds,se_i7(&ds,((T7*)ci(7,(/*RF2*/(C)->_titre/*i7p*/),0x0FE02122/*l33c17\livre.e*/))),se_ms(1,s125_10)));
+if(se_rci(caller,C))se_i127(&ds,C);
+set_dump_stack_top(caller);/*unlink*/
+}/*--*/
+se_frame_descriptor se_ifd127={"invariant LIVRE",1,0,"%R127%",1};
+
+T127*se_i127(se_dump_stack*caller,T127*C){
+se_dump_stack ds;
+ds.fd=&se_ifd127;
+ds.current=((void*)&C);
+ds.p=0x0FC04D02/*l77c1\IMedia.e*/;
+ds.caller=caller;
+ds.exception_origin=NULL;
+ds.locals=NULL;
+se_dst=&ds;/*link*/
+if(ds.fd->assertion_flag){
+ds.fd->assertion_flag=0;
+(ds.p=0x0FC04E48/*l78c36\IMedia.e*/);
+ac_inv(((int32_t)((/*RF2*/(C)->_nombre_disponible/*i7p*/)))>=(/*IC*/(T2)(INT8_C(0))),"nb_exemplaires");
+ds.fd->assertion_flag=1;
+}
+se_dst=caller;/*unlink*/
+return C;
+}/*--*/
+
+/*DVD*/T6 r125is_default(se_dump_stack*caller,T125* C){
 T6 R=0;
 void**locals[1];
-static se_frame_descriptor fd={"all_default"" ARRAY[UTILISATEUR]",1,1,"%R131%Result%E6%",1};
+static se_frame_descriptor fd={"is_default"" DVD",1,1,"%R125%Result%E6%",1};
+se_dump_stack ds;
+ds.fd=&fd;
+ds.current=(void*)&C;
+ds.p=0x01A08404/*l132c2\any.e*/;
+ds.caller=caller;
+ds.locals=locals;
+ds.exception_origin=NULL;
+locals[0]=(void**)&R;
+set_dump_stack_top(&ds);/*link*/
+(ds.p=0x01A08D08/*l141c4\any.e*/);
+R=((T6)((C)==((void*)(r125default(&ds,C)))));
+if(se_rci(caller,C))se_i125(&ds,C);
+set_dump_stack_top(caller);/*unlink*/
+return R;
+}/*--*/
+
+/*DVD*/void r125dvd(se_dump_stack*caller,T125* C,T0* a1,T0* a2,T0* a3,T0* a4,T2 a5,T2 a6,T2 a7){
+void**locals[7];
+static se_frame_descriptor fd={"dvd"" DVD",1,7,"%R125%new_realisateurs%R122%new_acteurs%R122%new_type%R7%new_titre%R7%new_annee%E2%new_nombre_disponible%E2%new_nombre_possede%E2%",1};
+se_dump_stack ds;
+ds.fd=&fd;
+ds.current=(void*)&C;
+ds.p=0x0FA01604/*l22c2\dvd.e*/;
+ds.caller=caller;
+ds.locals=locals;
+ds.exception_origin=NULL;
+locals[0]=(void**)&a1;
+locals[1]=(void**)&a2;
+locals[2]=(void**)&a3;
+locals[3]=(void**)&a4;
+locals[4]=(void**)&a5;
+locals[5]=(void**)&a6;
+locals[6]=(void**)&a7;
+set_dump_stack_top(&ds);/*link*/
+(ds.p=0x0FA01806/*l24c3\dvd.e*/);
+/*SFN*/(C->_realisateurs/*i7p*/)=a1;
+(ds.p=0x0FA01906/*l25c3\dvd.e*/);
+/*SFN*/(C->_acteurs/*i7p*/)=a2;
+(ds.p=0x0FA01A06/*l26c3\dvd.e*/);
+/*SFN*/(C->_type/*i7p*/)=a3;
+(ds.p=0x0FA01B06/*l27c3\dvd.e*/);
+r125init(&ds,C,a4,a5,a6,a7);
+if(se_rci(caller,C))se_i125(&ds,C);
+set_dump_stack_top(caller);/*unlink*/
+}/*--*/
+
+/*DVD*/T0* r125default(se_dump_stack*caller,T125* C){
+T0* R=(void*)0;
+void**locals[1];
+static se_frame_descriptor fd={"default"" DVD",1,1,"%R125%Result%R125%",1};
+se_dump_stack ds;
+ds.fd=&fd;
+ds.current=(void*)&C;
+ds.p=0x01A07D12/*l125c9\any.e*/;
+ds.caller=caller;
+ds.locals=locals;
+ds.exception_origin=NULL;
+locals[0]=(void**)&R;
+set_dump_stack_top(&ds);/*link*/
+if(se_rci(caller,C))se_i125(&ds,C);
+set_dump_stack_top(caller);/*unlink*/
+return R;
+}/*--*/
+
+/*DVD*/T0* r125io(se_dump_stack*caller,T125* C){
+/*[INTERNAL_C_LOCAL list*/
+T0* tmp0;
+/*INTERNAL_C_LOCAL list]*/
+void**locals[1];
+static se_frame_descriptor fd={"io"" DVD",1,1,"%R125%Result%R40%",1};
+se_dump_stack ds;
+ds.fd=&fd;
+ds.current=(void*)&C;
+ds.p=0x01A09F04/*l159c2\any.e*/;
+ds.caller=caller;
+ds.locals=locals;
+ds.exception_origin=NULL;
+locals[0]=(void**)&oBC13io;
+set_dump_stack_top(&ds);/*link*/
+if(fBC13io==0){fBC13io=1;{
+(ds.p=0x01A0A408/*l164c4\any.e*/);
+tmp0=((T0*)(new40()));
+r40make(&ds,((T40*)tmp0));
+oBC13io=tmp0;
+se_i40(&ds,((T40*)(oBC13io)));}
+fBC13io=2;}
+else{
+(ds.p=0x01A09F04/*l159c2\any.e*/);
+ac_req(fBC13io==2, "Recursive once function.");
+}
+if(fd.assertion_flag){
+fd.assertion_flag=0;
+(ds.p=0x01A0A608/*l166c4\any.e*/);
+ac_ens((oBC13io)!=((void*)((void*)0)),"Result /= Void");
+fd.assertion_flag=1;
+}
+if(se_rci(caller,C))se_i125(&ds,C);
+set_dump_stack_top(caller);/*unlink*/
+return oBC13io;
+}/*--*/
+
+/*DVD*/void r125init(se_dump_stack*caller,T125* C,T0* a1,T2 a2,T2 a3,T2 a4){
+void**locals[4];
+static se_frame_descriptor fd={"init"" DVD",1,4,"%R125%ititre%R7%iannee%E2%inombre_disponible%E2%inombre_possedes%E2%",1};
+se_dump_stack ds;
+ds.fd=&fd;
+ds.current=(void*)&C;
+ds.p=0x0FC01304/*l19c2\IMedia.e*/;
+ds.caller=caller;
+ds.locals=locals;
+ds.exception_origin=NULL;
+locals[0]=(void**)&a1;
+locals[1]=(void**)&a2;
+locals[2]=(void**)&a3;
+locals[3]=(void**)&a4;
+set_dump_stack_top(&ds);/*link*/
+(ds.p=0x0FC01506/*l21c3\IMedia.e*/);
+/*SFN*/(C->_titre/*i7p*/)=a1;
+(ds.p=0x0FC01606/*l22c3\IMedia.e*/);
+/*SFN*/(C->_annee/*i7p*/)=a2;
+(ds.p=0x0FC01706/*l23c3\IMedia.e*/);
+/*SFN*/(C->_nombre_disponible/*i7p*/)=a3;
+(ds.p=0x0FC01806/*l24c3\IMedia.e*/);
+/*SFN*/(C->_nombre_possedes/*i7p*/)=a4;
+if(se_rci(caller,C))se_i125(&ds,C);
+set_dump_stack_top(caller);/*unlink*/
+}/*--*/
+
+/*DVD*/void r125afficher(se_dump_stack*caller,T125* C){
+static se_frame_descriptor fd={"afficher"" DVD",1,0,"%R125%",1};
+se_dump_stack ds;
+ds.fd=&fd;
+ds.current=(void*)&C;
+ds.p=0x0FA02104/*l33c2\dvd.e*/;
+ds.caller=caller;
+ds.locals=NULL;
+ds.exception_origin=NULL;
+set_dump_stack_top(&ds);/*link*/
+(ds.p=0x0FA0230C/*l35c6\dvd.e*/);
+r40put_string(&ds,se_i40(&ds,((T40*)ci(40,r125io(&ds,C),0x0FA02306/*l35c3\dvd.e*/))),r7_ix_43(&ds,se_i7(&ds,((T7*)ci(7,(/*RF2*/(C)->_titre/*i7p*/),0x0FA02322/*l35c17\dvd.e*/))),se_ms(1,s125_10)));
+if(se_rci(caller,C))se_i125(&ds,C);
+set_dump_stack_top(caller);/*unlink*/
+}/*--*/
+se_frame_descriptor se_ifd125={"invariant DVD",1,0,"%R125%",1};
+
+T125*se_i125(se_dump_stack*caller,T125*C){
+se_dump_stack ds;
+ds.fd=&se_ifd125;
+ds.current=((void*)&C);
+ds.p=0x0FC04D02/*l77c1\IMedia.e*/;
+ds.caller=caller;
+ds.exception_origin=NULL;
+ds.locals=NULL;
+se_dst=&ds;/*link*/
+if(ds.fd->assertion_flag){
+ds.fd->assertion_flag=0;
+(ds.p=0x0FC04E48/*l78c36\IMedia.e*/);
+ac_inv(((int32_t)((/*RF2*/(C)->_nombre_disponible/*i7p*/)))>=(/*IC*/(T2)(INT8_C(0))),"nb_exemplaires");
+ds.fd->assertion_flag=1;
+}
+se_dst=caller;/*unlink*/
+return C;
+}/*--*/
+
+/*ARRAY[IMEDIA]*/T6 r144all_default(se_dump_stack*caller,T144* C){
+T6 R=0;
+void**locals[1];
+static se_frame_descriptor fd={"all_default"" ARRAY[IMEDIA]",1,1,"%R144%Result%E6%",1};
 se_dump_stack ds;
 ds.fd=&fd;
 ds.current=(void*)&C;
@@ -3449,18 +3556,18 @@ ds.exception_origin=NULL;
 locals[0]=(void**)&R;
 set_dump_stack_top(&ds);/*link*/
 (ds.p=0x08413208/*l306c4\array.e*/);
-R=((T6)(r133all_default(&ds,(/*RF2*/(C)->_storage/*i4p*/),r2_ix_45(&ds,(/*RF2*/(C)->_upper/*i4p*/),(/*RF2*/(C)->_lower/*i4p*/)))));
-if(se_rci(caller,C))se_i131(&ds,C);
+R=((T6)(r146all_default(&ds,(/*RF2*/(C)->_storage/*i4p*/),r2_ix_45(&ds,(/*RF2*/(C)->_upper/*i4p*/),(/*RF2*/(C)->_lower/*i4p*/)))));
+if(se_rci(caller,C))se_i144(&ds,C);
 set_dump_stack_top(caller);/*unlink*/
 return R;
 }/*--*/
 
-/*ARRAY[UTILISATEUR]*/void r131clear_all(se_dump_stack*caller,T131* C){
+/*ARRAY[IMEDIA]*/void r144clear_all(se_dump_stack*caller,T144* C){
 T0* _value=(void*)0;
 T2 o63_117_26=0;
 T2 o63_118_26=0;
 void**locals[3];
-static se_frame_descriptor fd={"clear_all"" ARRAY[UTILISATEUR]",1,3,"%R131%value%R128%old value%E2%old value%E2%",1};
+static se_frame_descriptor fd={"clear_all"" ARRAY[IMEDIA]",1,3,"%R144%value%R126%old value%E2%old value%E2%",1};
 se_dump_stack ds;
 ds.fd=&fd;
 ds.current=(void*)&C;
@@ -3475,7 +3582,7 @@ set_dump_stack_top(&ds);/*link*/
 o63_117_26=(/*RF2*/(C)->_upper/*i4p*/);
 o63_118_26=(/*RF2*/(C)->_lower/*i4p*/);
 (ds.p=0x07E07308/*l115c4\collection.e*/);
-r131set_all_with(&ds,C,_value);
+r144set_all_with(&ds,C,_value);
 if(fd.assertion_flag){
 fd.assertion_flag=0;
 (ds.p=0x07E07524/*l117c18\collection.e*/);
@@ -3483,17 +3590,17 @@ ac_ens(((/*RF2*/(C)->_upper/*i4p*/))==(o63_117_26),"stable_upper");
 (ds.p=0x07E07624/*l118c18\collection.e*/);
 ac_ens(((/*RF2*/(C)->_lower/*i4p*/))==(o63_118_26),"stable_lower");
 (ds.p=0x07E07708/*l119c4\collection.e*/);
-ac_ens(r131all_default(&ds,C),"all_default");
+ac_ens(r144all_default(&ds,C),"all_default");
 fd.assertion_flag=1;
 }
-if(se_rci(caller,C))se_i131(&ds,C);
+if(se_rci(caller,C))se_i144(&ds,C);
 set_dump_stack_top(caller);/*unlink*/
 }/*--*/
 
-/*ARRAY[UTILISATEUR]*/void r131set_all_with(se_dump_stack*caller,T131* C,T0* a1){
+/*ARRAY[IMEDIA]*/void r144set_all_with(se_dump_stack*caller,T144* C,T0* a1){
 T2 o63_82_12=0;
 void**locals[2];
-static se_frame_descriptor fd={"set_all_with"" ARRAY[UTILISATEUR]",1,2,"%R131%v%R128%old value%E2%",1};
+static se_frame_descriptor fd={"set_all_with"" ARRAY[IMEDIA]",1,2,"%R144%v%R126%old value%E2%",1};
 se_dump_stack ds;
 ds.fd=&fd;
 ds.current=(void*)&C;
@@ -3504,26 +3611,26 @@ ds.exception_origin=NULL;
 locals[0]=(void**)&a1;
 locals[1]=(void**)&o63_82_12;
 set_dump_stack_top(&ds);/*link*/
-o63_82_12=r131count(&ds,C);
+o63_82_12=r144count(&ds,C);
 (ds.p=0x0840DE18/*l222c12\array.e*/);
-r133set_all_with(&ds,(/*RF2*/(C)->_storage/*i4p*/),a1,r2_ix_45(&ds,(/*RF2*/(C)->_upper/*i4p*/),(/*RF2*/(C)->_lower/*i4p*/)));
+r146set_all_with(&ds,(/*RF2*/(C)->_storage/*i4p*/),a1,r2_ix_45(&ds,(/*RF2*/(C)->_upper/*i4p*/),(/*RF2*/(C)->_lower/*i4p*/)));
 if(fd.assertion_flag){
 fd.assertion_flag=0;
 (ds.p=0x07E05208/*l82c4\collection.e*/);
-ac_ens((r131count(&ds,C))==(o63_82_12),"count = old count");
+ac_ens((r144count(&ds,C))==(o63_82_12),"count = old count");
 fd.assertion_flag=1;
 }
-if(se_rci(caller,C))se_i131(&ds,C);
+if(se_rci(caller,C))se_i144(&ds,C);
 set_dump_stack_top(caller);/*unlink*/
 }/*--*/
 
-/*ARRAY[UTILISATEUR]*/void r131add_last(se_dump_stack*caller,T131* C,T0* a1){
+/*ARRAY[IMEDIA]*/void r144add_last(se_dump_stack*caller,T144* C,T0* a1){
 T2 _new_capacity=0;
 T2 o63_143_16=0;
 T2 o63_144_12=0;
 T2 o63_145_16=0;
 void**locals[5];
-static se_frame_descriptor fd={"add_last"" ARRAY[UTILISATEUR]",1,5,"%R131%element%R128%new_capacity%E2%old value%E2%old value%E2%old value%E2%",1};
+static se_frame_descriptor fd={"add_last"" ARRAY[IMEDIA]",1,5,"%R144%element%R126%new_capacity%E2%old value%E2%old value%E2%old value%E2%",1};
 se_dump_stack ds;
 ds.fd=&fd;
 ds.current=(void*)&C;
@@ -3537,15 +3644,15 @@ locals[2]=(void**)&o63_143_16;
 locals[3]=(void**)&o63_144_12;
 locals[4]=(void**)&o63_145_16;
 set_dump_stack_top(&ds);/*link*/
-o63_143_16=r131count(&ds,C);
+o63_143_16=r144count(&ds,C);
 o63_144_12=(/*RF2*/(C)->_lower/*i4p*/);
 o63_145_16=(/*RF2*/(C)->_upper/*i4p*/);
-if(((ds.p=0x08410D20/*l269c16\array.e*/),((int32_t)((/*RF2*/(C)->_capacity/*i4p*/)))<(r2_ix_43(&ds,r131count(&ds,C),/*IC*/(T2)(INT8_C(1)))))){
+if(((ds.p=0x08410D20/*l269c16\array.e*/),((int32_t)((/*RF2*/(C)->_capacity/*i4p*/)))<(r2_ix_43(&ds,r144count(&ds,C),/*IC*/(T2)(INT8_C(1)))))){
 if(((ds.p=0x08410E10/*l270c8\array.e*/),((/*RF2*/(C)->_capacity/*i4p*/))==(INT8_C(0)))){
 (ds.p=0x08410F0C/*l271c6\array.e*/);
 _new_capacity=/*IC*/(T2)(INT8_C(16));
 (ds.p=0x0841100C/*l272c6\array.e*/);
-/*SFN*/(C->_storage/*i4p*/)=new133(_new_capacity);
+/*SFN*/(C->_storage/*i4p*/)=new146(_new_capacity);
 (ds.p=0x0841110C/*l273c6\array.e*/);
 /*SFN*/(C->_capacity/*i4p*/)=_new_capacity;
 }
@@ -3553,7 +3660,7 @@ else{
 (ds.p=0x0841130C/*l275c6\array.e*/);
 _new_capacity=r2_ix_42(&ds,(/*RF2*/(C)->_capacity/*i4p*/),/*IC*/(T2)(INT8_C(2)));
 (ds.p=0x0841140C/*l276c6\array.e*/);
-/*SFN*/(C->_storage/*i4p*/)=r133realloc(&ds,(/*RF2*/(C)->_storage/*i4p*/),(/*RF2*/(C)->_capacity/*i4p*/),_new_capacity);
+/*SFN*/(C->_storage/*i4p*/)=r146realloc(&ds,(/*RF2*/(C)->_storage/*i4p*/),(/*RF2*/(C)->_capacity/*i4p*/),_new_capacity);
 (ds.p=0x0841150C/*l277c6\array.e*/);
 /*SFN*/(C->_capacity/*i4p*/)=_new_capacity;
 }
@@ -3561,27 +3668,27 @@ _new_capacity=r2_ix_42(&ds,(/*RF2*/(C)->_capacity/*i4p*/),/*IC*/(T2)(INT8_C(2)))
 (ds.p=0x08411808/*l280c4\array.e*/);
 /*SFN*/(C->_upper/*i4p*/)=r2_ix_43(&ds,(/*RF2*/(C)->_upper/*i4p*/),/*IC*/(T2)(INT8_C(1)));
 (ds.p=0x08411908/*l281c4\array.e*/);
-r131put(&ds,C,a1,(/*RF2*/(C)->_upper/*i4p*/));
+r144put(&ds,C,a1,(/*RF2*/(C)->_upper/*i4p*/));
 if(fd.assertion_flag){
 fd.assertion_flag=0;
 (ds.p=0x07E08E08/*l142c4\collection.e*/);
-ac_ens((r131last(&ds,C))==((void*)(a1)),"last = element");
+ac_ens((r144last(&ds,C))==((void*)(a1)),"last = element");
 (ds.p=0x07E08F08/*l143c4\collection.e*/);
-ac_ens((r131count(&ds,C))==(r2_ix_43(&ds,/*IC*/(T2)(INT8_C(1)),o63_143_16)),"count = 1 + old count");
+ac_ens((r144count(&ds,C))==(r2_ix_43(&ds,/*IC*/(T2)(INT8_C(1)),o63_143_16)),"count = 1 + old count");
 (ds.p=0x07E09008/*l144c4\collection.e*/);
 ac_ens(((/*RF2*/(C)->_lower/*i4p*/))==(o63_144_12),"lower = old lower");
 (ds.p=0x07E09108/*l145c4\collection.e*/);
 ac_ens(((/*RF2*/(C)->_upper/*i4p*/))==(r2_ix_43(&ds,/*IC*/(T2)(INT8_C(1)),o63_145_16)),"upper = 1 + old upper");
 fd.assertion_flag=1;
 }
-if(se_rci(caller,C))se_i131(&ds,C);
+if(se_rci(caller,C))se_i144(&ds,C);
 set_dump_stack_top(caller);/*unlink*/
 }/*--*/
 
-/*ARRAY[UTILISATEUR]*/void r131mark_native_arrays(se_dump_stack*caller,T131* C){
+/*ARRAY[IMEDIA]*/void r144mark_native_arrays(se_dump_stack*caller,T144* C){
 T2 _i=0;
 void**locals[1];
-static se_frame_descriptor fd={"mark_native_arrays"" ARRAY[UTILISATEUR]",1,1,"%R131%i%E2%",1};
+static se_frame_descriptor fd={"mark_native_arrays"" ARRAY[IMEDIA]",1,1,"%R144%i%E2%",1};
 se_dump_stack ds;
 ds.fd=&fd;
 ds.current=(void*)&C;
@@ -3592,24 +3699,24 @@ ds.exception_origin=NULL;
 locals[0]=(void**)&_i;
 set_dump_stack_top(&ds);/*link*/
 (ds.p=0x0841A30A/*l419c5\array.e*/);
-_i=r2_ix_45(&ds,r131count(&ds,C),/*IC*/(T2)(INT8_C(1)));
+_i=r2_ix_45(&ds,r144count(&ds,C),/*IC*/(T2)(INT8_C(1)));
 while (!(((ds.p=0x0841A50E/*l421c7\array.e*/),((int32_t)(_i))<(/*IC*/(T2)(INT8_C(0))))))
 {
 (ds.p=0x0841A70A/*l423c5\array.e*/);
 {/*mark_item*/
 T0* elt=(/*RF2*/(C)->_storage/*i4p*/)[_i];
-if(NULL!=elt)gc_mark128((T128*)(elt));
+if(NULL!=elt)Xgc_mark126((T0*)(elt));
 /*mark_item*/}(ds.p=0x0841A80A/*l424c5\array.e*/);
 _i=r2_ix_45(&ds,_i,/*IC*/(T2)(INT8_C(1)));
 }
-if(se_rci(caller,C))se_i131(&ds,C);
+if(se_rci(caller,C))se_i144(&ds,C);
 set_dump_stack_top(caller);/*unlink*/
 }/*--*/
 
-/*ARRAY[UTILISATEUR]*/void r131ensure_capacity_and_bounds(se_dump_stack*caller,T131* C,T2 a1,T2 a2,T2 a3){
+/*ARRAY[IMEDIA]*/void r144ensure_capacity_and_bounds(se_dump_stack*caller,T144* C,T2 a1,T2 a2,T2 a3){
 T0* _value=(void*)0;
 void**locals[4];
-static se_frame_descriptor fd={"ensure_capacity_and_bounds"" ARRAY[UTILISATEUR]",1,4,"%R131%needed_capacity%E2%low%E2%up%E2%value%R128%",1};
+static se_frame_descriptor fd={"ensure_capacity_and_bounds"" ARRAY[IMEDIA]",1,4,"%R144%needed_capacity%E2%low%E2%up%E2%value%R126%",1};
 se_dump_stack ds;
 ds.fd=&fd;
 ds.current=(void*)&C;
@@ -3632,7 +3739,7 @@ fd.assertion_flag=1;
 }
 if(((ds.p=0x08404228/*l66c20\array.e*/),(T6)(((_value)==((void*)((void*)0)))&&((T6)(((int32_t)((/*RF2*/(C)->_capacity/*i4p*/)))>(/*IC*/(T2)(INT8_C(0)))))))){
 (ds.p=0x0840440A/*l68c5\array.e*/);
-r131clear_all(&ds,C);
+r144clear_all(&ds,C);
 }
 (ds.p=0x08404608/*l70c4\array.e*/);
 /*SFN*/(C->_lower/*i4p*/)=a2;
@@ -3641,13 +3748,13 @@ r131clear_all(&ds,C);
 if(((ds.p=0x0840482E/*l72c23\array.e*/),((int32_t)(a1))>(/*IC*/(T2)(INT8_C(0))))){
 if(((ds.p=0x08404922/*l73c17\array.e*/),((int32_t)((/*RF2*/(C)->_capacity/*i4p*/)))<(a1))){
 (ds.p=0x08404A0C/*l74c6\array.e*/);
-/*SFN*/(C->_storage/*i4p*/)=new133(a1);
+/*SFN*/(C->_storage/*i4p*/)=new146(a1);
 (ds.p=0x08404B0C/*l75c6\array.e*/);
 /*SFN*/(C->_capacity/*i4p*/)=a1;
 }
 else if(((ds.p=0x08404C34/*l76c26\array.e*/),(T6)(((_value)!=((void*)((void*)0)))&&((T6)(((int32_t)(a3))>=(a2)))))){
 (ds.p=0x08404E0C/*l78c6\array.e*/);
-r131clear_all(&ds,C);
+r144clear_all(&ds,C);
 }
 }
 if(fd.assertion_flag){
@@ -3659,16 +3766,16 @@ ac_ens(((/*RF2*/(C)->_lower/*i4p*/))==(a2),"lower = low");
 (ds.p=0x08405408/*l84c4\array.e*/);
 ac_ens(((/*RF2*/(C)->_upper/*i4p*/))==(a3),"upper = up");
 (ds.p=0x08405508/*l85c4\array.e*/);
-ac_ens(r131all_default(&ds,C),"all_default");
+ac_ens(r144all_default(&ds,C),"all_default");
 fd.assertion_flag=1;
 }
-if(se_rci(caller,C))se_i131(&ds,C);
+if(se_rci(caller,C))se_i144(&ds,C);
 set_dump_stack_top(caller);/*unlink*/
 }/*--*/
 
-/*ARRAY[UTILISATEUR]*/void r131with_capacity(se_dump_stack*caller,T131* C,T2 a1,T2 a2){
+/*ARRAY[IMEDIA]*/void r144with_capacity(se_dump_stack*caller,T144* C,T2 a1,T2 a2){
 void**locals[2];
-static se_frame_descriptor fd={"with_capacity"" ARRAY[UTILISATEUR]",1,2,"%R131%needed_capacity%E2%low%E2%",1};
+static se_frame_descriptor fd={"with_capacity"" ARRAY[IMEDIA]",1,2,"%R144%needed_capacity%E2%low%E2%",1};
 se_dump_stack ds;
 ds.fd=&fd;
 ds.current=(void*)&C;
@@ -3686,25 +3793,25 @@ ac_req(((int32_t)(a1))>=(/*IC*/(T2)(INT8_C(0))),"needed_capacity >= 0");
 fd.assertion_flag=1;
 }
 (ds.p=0x08403308/*l51c4\array.e*/);
-r131ensure_capacity_and_bounds(&ds,C,a1,a2,r2_ix_45(&ds,a2,/*IC*/(T2)(INT8_C(1))));
+r144ensure_capacity_and_bounds(&ds,C,a1,a2,r2_ix_45(&ds,a2,/*IC*/(T2)(INT8_C(1))));
 if(fd.assertion_flag){
 fd.assertion_flag=0;
 (ds.p=0x08403508/*l53c4\array.e*/);
-ac_ens(r131is_empty(&ds,C),"is_empty");
+ac_ens(r144is_empty(&ds,C),"is_empty");
 (ds.p=0x08403628/*l54c20\array.e*/);
 ac_ens(((int32_t)(a1))<=((/*RF2*/(C)->_capacity/*i4p*/)),"needed_capacity <= capacity");
 (ds.p=0x08403708/*l55c4\array.e*/);
 ac_ens(((/*RF2*/(C)->_lower/*i4p*/))==(a2),"lower = low");
 fd.assertion_flag=1;
 }
-if(se_rci(caller,C))se_i131(&ds,C);
+if(se_rci(caller,C))se_i144(&ds,C);
 set_dump_stack_top(caller);/*unlink*/
 }/*--*/
 
-/*ARRAY[UTILISATEUR]*/T2 r131count(se_dump_stack*caller,T131* C){
+/*ARRAY[IMEDIA]*/T2 r144count(se_dump_stack*caller,T144* C){
 T2 R=0;
 void**locals[1];
-static se_frame_descriptor fd={"count"" ARRAY[UTILISATEUR]",1,1,"%R131%Result%E2%",1};
+static se_frame_descriptor fd={"count"" ARRAY[IMEDIA]",1,1,"%R144%Result%E2%",1};
 se_dump_stack ds;
 ds.fd=&fd;
 ds.current=(void*)&C;
@@ -3722,15 +3829,15 @@ fd.assertion_flag=0;
 ac_ens((R)==(r2_ix_43(&ds,r2_ix_45(&ds,(/*RF2*/(C)->_upper/*i4p*/),(/*RF2*/(C)->_lower/*i4p*/)),/*IC*/(T2)(INT8_C(1)))),"definition");
 fd.assertion_flag=1;
 }
-if(se_rci(caller,C))se_i131(&ds,C);
+if(se_rci(caller,C))se_i144(&ds,C);
 set_dump_stack_top(caller);/*unlink*/
 return R;
 }/*--*/
 
-/*ARRAY[UTILISATEUR]*/T0* r131last(se_dump_stack*caller,T131* C){
+/*ARRAY[IMEDIA]*/T0* r144last(se_dump_stack*caller,T144* C){
 T0* R=(void*)0;
 void**locals[1];
-static se_frame_descriptor fd={"last"" ARRAY[UTILISATEUR]",1,1,"%R131%Result%R128%",1};
+static se_frame_descriptor fd={"last"" ARRAY[IMEDIA]",1,1,"%R144%Result%R126%",1};
 se_dump_stack ds;
 ds.fd=&fd;
 ds.current=(void*)&C;
@@ -3743,26 +3850,26 @@ set_dump_stack_top(&ds);/*link*/
 if(fd.assertion_flag){
 fd.assertion_flag=0;
 (ds.p=0x04005C08/*l92c4\traversable.e*/);
-ac_req(r6_px_not(&ds,(T6)(r131is_empty(&ds,C))),"not is_empty");
+ac_req(r6_px_not(&ds,(T6)(r144is_empty(&ds,C))),"not is_empty");
 fd.assertion_flag=1;
 }
 (ds.p=0x08802D08/*l45c4\arrayed_collection.e*/);
-R=r131item(&ds,C,(/*RF2*/(C)->_upper/*i4p*/));
+R=r144item(&ds,C,(/*RF2*/(C)->_upper/*i4p*/));
 if(fd.assertion_flag){
 fd.assertion_flag=0;
 (ds.p=0x04005F20/*l95c16\traversable.e*/);
-ac_ens((R)==((void*)(r131item(&ds,C,(/*RF2*/(C)->_upper/*i4p*/)))),"definition");
+ac_ens((R)==((void*)(r144item(&ds,C,(/*RF2*/(C)->_upper/*i4p*/)))),"definition");
 fd.assertion_flag=1;
 }
-if(se_rci(caller,C))se_i131(&ds,C);
+if(se_rci(caller,C))se_i144(&ds,C);
 set_dump_stack_top(caller);/*unlink*/
 return R;
 }/*--*/
 
-/*ARRAY[UTILISATEUR]*/T6 r131valid_index(se_dump_stack*caller,T131* C,T2 a1){
+/*ARRAY[IMEDIA]*/T6 r144valid_index(se_dump_stack*caller,T144* C,T2 a1){
 T6 R=0;
 void**locals[2];
-static se_frame_descriptor fd={"valid_index"" ARRAY[UTILISATEUR]",1,2,"%R131%i%E2%Result%E6%",1};
+static se_frame_descriptor fd={"valid_index"" ARRAY[IMEDIA]",1,2,"%R144%i%E2%Result%E6%",1};
 se_dump_stack ds;
 ds.fd=&fd;
 ds.current=(void*)&C;
@@ -3781,15 +3888,15 @@ fd.assertion_flag=0;
 ac_ens((R)==(r6_ix_and(&ds,(T6)(((int32_t)((/*RF2*/(C)->_lower/*i4p*/)))<=(a1)),(T6)(((int32_t)(a1))<=((/*RF2*/(C)->_upper/*i4p*/))))),"definition");
 fd.assertion_flag=1;
 }
-if(se_rci(caller,C))se_i131(&ds,C);
+if(se_rci(caller,C))se_i144(&ds,C);
 set_dump_stack_top(caller);/*unlink*/
 return R;
 }/*--*/
 
-/*ARRAY[UTILISATEUR]*/T6 r131is_empty(se_dump_stack*caller,T131* C){
+/*ARRAY[IMEDIA]*/T6 r144is_empty(se_dump_stack*caller,T144* C){
 T6 R=0;
 void**locals[1];
-static se_frame_descriptor fd={"is_empty"" ARRAY[UTILISATEUR]",1,1,"%R131%Result%E6%",1};
+static se_frame_descriptor fd={"is_empty"" ARRAY[IMEDIA]",1,1,"%R144%Result%E6%",1};
 se_dump_stack ds;
 ds.fd=&fd;
 ds.current=(void*)&C;
@@ -3804,18 +3911,18 @@ R=((T6)(((int32_t)((/*RF2*/(C)->_upper/*i4p*/)))<((/*RF2*/(C)->_lower/*i4p*/))))
 if(fd.assertion_flag){
 fd.assertion_flag=0;
 (ds.p=0x04003F20/*l63c16\traversable.e*/);
-ac_ens((R)==((r131count(&ds,C))==(INT8_C(0))),"definition");
+ac_ens((R)==((r144count(&ds,C))==(INT8_C(0))),"definition");
 fd.assertion_flag=1;
 }
-if(se_rci(caller,C))se_i131(&ds,C);
+if(se_rci(caller,C))se_i144(&ds,C);
 set_dump_stack_top(caller);/*unlink*/
 return R;
 }/*--*/
 
-/*ARRAY[UTILISATEUR]*/T0* r131item(se_dump_stack*caller,T131* C,T2 a1){
+/*ARRAY[IMEDIA]*/T0* r144item(se_dump_stack*caller,T144* C,T2 a1){
 T0* R=(void*)0;
 void**locals[2];
-static se_frame_descriptor fd={"item"" ARRAY[UTILISATEUR]",1,2,"%R131%i%E2%Result%R128%",1};
+static se_frame_descriptor fd={"item"" ARRAY[IMEDIA]",1,2,"%R144%i%E2%Result%R126%",1};
 se_dump_stack ds;
 ds.fd=&fd;
 ds.current=(void*)&C;
@@ -3829,20 +3936,20 @@ set_dump_stack_top(&ds);/*link*/
 if(fd.assertion_flag){
 fd.assertion_flag=0;
 (ds.p=0x04004808/*l72c4\traversable.e*/);
-ac_req(r131valid_index(&ds,C,a1),"valid_index(i)");
+ac_req(r144valid_index(&ds,C,a1),"valid_index(i)");
 fd.assertion_flag=1;
 }
 (ds.p=0x0840AF08/*l175c4\array.e*/);
 R=((/*RF2*/(C)->_storage/*i4p*/))[r2_ix_45(&ds,a1,(/*RF2*/(C)->_lower/*i4p*/))];
-if(se_rci(caller,C))se_i131(&ds,C);
+if(se_rci(caller,C))se_i144(&ds,C);
 set_dump_stack_top(caller);/*unlink*/
 return R;
 }/*--*/
 
-/*ARRAY[UTILISATEUR]*/void r131put(se_dump_stack*caller,T131* C,T0* a1,T2 a2){
+/*ARRAY[IMEDIA]*/void r144put(se_dump_stack*caller,T144* C,T0* a1,T2 a2){
 T2 o63_54_12=0;
 void**locals[3];
-static se_frame_descriptor fd={"put"" ARRAY[UTILISATEUR]",1,3,"%R131%element%R128%i%E2%old value%E2%",1};
+static se_frame_descriptor fd={"put"" ARRAY[IMEDIA]",1,3,"%R144%element%R126%i%E2%old value%E2%",1};
 se_dump_stack ds;
 ds.fd=&fd;
 ds.current=(void*)&C;
@@ -3854,11 +3961,11 @@ locals[0]=(void**)&a1;
 locals[1]=(void**)&a2;
 locals[2]=(void**)&o63_54_12;
 set_dump_stack_top(&ds);/*link*/
-o63_54_12=r131count(&ds,C);
+o63_54_12=r144count(&ds,C);
 if(fd.assertion_flag){
 fd.assertion_flag=0;
 (ds.p=0x07E03208/*l50c4\collection.e*/);
-ac_req(r131valid_index(&ds,C,a2),"valid_index(i)");
+ac_req(r144valid_index(&ds,C,a2),"valid_index(i)");
 fd.assertion_flag=1;
 }
 (ds.p=0x0840B418/*l180c12\array.e*/);
@@ -3866,19 +3973,19 @@ fd.assertion_flag=1;
 if(fd.assertion_flag){
 fd.assertion_flag=0;
 (ds.p=0x07E03508/*l53c4\collection.e*/);
-ac_ens((r131item(&ds,C,a2))==((void*)(a1)),"item(i) = element");
+ac_ens((r144item(&ds,C,a2))==((void*)(a1)),"item(i) = element");
 (ds.p=0x07E03608/*l54c4\collection.e*/);
-ac_ens((r131count(&ds,C))==(o63_54_12),"count = old count");
+ac_ens((r144count(&ds,C))==(o63_54_12),"count = old count");
 fd.assertion_flag=1;
 }
-if(se_rci(caller,C))se_i131(&ds,C);
+if(se_rci(caller,C))se_i144(&ds,C);
 set_dump_stack_top(caller);/*unlink*/
 }/*--*/
-se_frame_descriptor se_ifd131={"invariant ARRAY[UTILISATEUR]",1,0,"%R131%",1};
+se_frame_descriptor se_ifd144={"invariant ARRAY[IMEDIA]",1,0,"%R144%",1};
 
-T131*se_i131(se_dump_stack*caller,T131*C){
+T144*se_i144(se_dump_stack*caller,T144*C){
 se_dump_stack ds;
-ds.fd=&se_ifd131;
+ds.fd=&se_ifd144;
 ds.current=((void*)&C);
 ds.p=0x07E29C02/*l668c1\collection.e*/;
 ds.caller=caller;
@@ -3892,7 +3999,7 @@ ac_inv(((int32_t)((/*RF2*/(C)->_lower/*i4p*/)))<=(r2_ix_43(&ds,(/*RF2*/(C)->_upp
 (ds.p=0x08807516/*l117c11\arrayed_collection.e*/);
 ac_inv(((int32_t)((/*RF2*/(C)->_capacity/*i4p*/)))>=(r2_ix_43(&ds,r2_ix_45(&ds,(/*RF2*/(C)->_upper/*i4p*/),(/*RF2*/(C)->_lower/*i4p*/)),/*IC*/(T2)(INT8_C(1)))),"capacity >= upper - lower + 1");
 (ds.p=0x0880761E/*l118c15\arrayed_collection.e*/);
-ac_inv((T6)((!(((int32_t)((/*RF2*/(C)->_capacity/*i4p*/)))>(/*IC*/(T2)(INT8_C(0)))))||((T6)(r133is_not_null(&ds,(/*RF2*/(C)->_storage/*i4p*/))))),"capacity > 0 implies storage.is_not_null");
+ac_inv((T6)((!(((int32_t)((/*RF2*/(C)->_capacity/*i4p*/)))>(/*IC*/(T2)(INT8_C(0)))))||((T6)(r146is_not_null(&ds,(/*RF2*/(C)->_storage/*i4p*/))))),"capacity > 0 implies storage.is_not_null");
 ds.fd->assertion_flag=1;
 }
 se_dst=caller;/*unlink*/
@@ -4176,33 +4283,6 @@ if(((ds.p=0x0720FC26/*l252c19\text_file_read.e*/),((int32_t)((/*RF2*/(C)->_buffe
 set_dump_stack_top(caller);/*unlink*/
 }/*--*/
 
-/*TEXT_FILE_READ*/void r57read_line_in(se_dump_stack*caller,T57* C,T0* a1){
-void**locals[1];
-static se_frame_descriptor fd={"read_line_in"" TEXT_FILE_READ",1,1,"%R57%buffer%R7%",1};
-se_dump_stack ds;
-ds.fd=&fd;
-ds.current=(void*)&C;
-ds.p=0x05601C04/*l28c2\input_stream.e*/;
-ds.caller=caller;
-ds.locals=locals;
-ds.exception_origin=NULL;
-locals[0]=(void**)&a1;
-set_dump_stack_top(&ds);/*link*/
-if(fd.assertion_flag){
-fd.assertion_flag=0;
-(ds.p=0x05801508/*l21c4\input_stream_tools.e*/);
-ac_req(r57is_connected(&ds,C),"is_connected");
-(ds.p=0x05801628/*l22c20\input_stream_tools.e*/);
-ac_req((T6)((r6_px_not(&ds,(T6)(r57is_filtered(&ds,C))))&&((T6)(/*RF1can_read_line*/1))),"not is_filtered and then can_read_line");
-(ds.p=0x05801708/*l23c4\input_stream_tools.e*/);
-ac_req((a1)!=((void*)((void*)0)),"buffer /= Void");
-fd.assertion_flag=1;
-}
-(ds.p=0x05601E08/*l30c4\input_stream.e*/);
-r57filtered_read_line_in(&ds,C,a1);
-set_dump_stack_top(caller);/*unlink*/
-}/*--*/
-
 /*TEXT_FILE_READ*/void r57connect_to(se_dump_stack*caller,T57* C,T0* a1){
 T8 _p=(void*)0;
 void**locals[2];
@@ -4266,219 +4346,37 @@ fd.assertion_flag=1;
 set_dump_stack_top(caller);/*unlink*/
 }/*--*/
 
-/*INTEGER_16*/T6 r10is_equal(se_dump_stack*caller,T10 C,T10 a1){
-T6 R=0;
-void**locals[2];
-static se_frame_descriptor fd={"is_equal"" INTEGER_16",1,2,"%E10%other%E10%Result%E6%",1};
+/*TEXT_FILE_READ*/void r57read_line_in(se_dump_stack*caller,T57* C,T0* a1){
+void**locals[1];
+static se_frame_descriptor fd={"read_line_in"" TEXT_FILE_READ",1,1,"%R57%buffer%R7%",1};
 se_dump_stack ds;
 ds.fd=&fd;
 ds.current=(void*)&C;
-ds.p=0x06831804/*l792c2\integer_general.e*/;
+ds.p=0x05601C04/*l28c2\input_stream.e*/;
 ds.caller=caller;
 ds.locals=locals;
 ds.exception_origin=NULL;
 locals[0]=(void**)&a1;
-locals[1]=(void**)&R;
 set_dump_stack_top(&ds);/*link*/
 if(fd.assertion_flag){
 fd.assertion_flag=0;
-(ds.p=0x01A03608/*l54c4\any.e*/);
-ac_req((a1,1),"other /= Void");
+(ds.p=0x05801508/*l21c4\input_stream_tools.e*/);
+ac_req(r57is_connected(&ds,C),"is_connected");
+(ds.p=0x05801628/*l22c20\input_stream_tools.e*/);
+ac_req((T6)((r6_px_not(&ds,(T6)(r57is_filtered(&ds,C))))&&((T6)(/*RF1can_read_line*/1))),"not is_filtered and then can_read_line");
+(ds.p=0x05801708/*l23c4\input_stream_tools.e*/);
+ac_req((a1)!=((void*)((void*)0)),"buffer /= Void");
 fd.assertion_flag=1;
 }
-(ds.p=0x06831A08/*l794c4\integer_general.e*/);
-R=((T6)((C)==(a1)));
-if(fd.assertion_flag){
-fd.assertion_flag=0;
-(ds.p=0x01A03972/*l57c57\any.e*/);
-ac_ens((T6)((!(((T0*)(t[10]))==((void*)((T0*)(t[10])))))||((T6)((R)==(r10is_equal(&ds,a1,C))))),"commutative");
-(ds.p=0x04601C16/*l28c11\hashable.e*/);
-ac_ens((T6)((!(R))||((T6)((r10hash_code(&ds,C))==(r10hash_code(&ds,a1))))),"Result implies hash_code = other.hash_code");
-(ds.p=0x04401320/*l19c16\comparable.e*/);
-ac_ens((R)==(r6_ix_and(&ds,(T6)(r6_px_not(&ds,(T6)(((int16_t)(C))<(a1)))),(T6)(r6_px_not(&ds,(T6)(((int16_t)(a1))<(C)))))),"trichotomy");
-fd.assertion_flag=1;
-}
+(ds.p=0x05601E08/*l30c4\input_stream.e*/);
+r57filtered_read_line_in(&ds,C,a1);
 set_dump_stack_top(caller);/*unlink*/
-return R;
 }/*--*/
 
-/*INTEGER_16*/T6 r10in_range(se_dump_stack*caller,T10 C,T10 a1,T10 a2){
-T6 R=0;
-void**locals[3];
-static se_frame_descriptor fd={"in_range"" INTEGER_16",1,3,"%E10%lower%E10%upper%E10%Result%E6%",1};
-se_dump_stack ds;
-ds.fd=&fd;
-ds.current=(void*)&C;
-ds.p=0x04404504/*l69c2\comparable.e*/;
-ds.caller=caller;
-ds.locals=locals;
-ds.exception_origin=NULL;
-locals[0]=(void**)&a1;
-locals[1]=(void**)&a2;
-locals[2]=(void**)&R;
-set_dump_stack_top(&ds);/*link*/
-(ds.p=0x04404A08/*l74c4\comparable.e*/);
-R=((T6)((T6)((((int16_t)(C))>=(a1))&&((T6)(((int16_t)(C))<=(a2))))));
-if(fd.assertion_flag){
-fd.assertion_flag=0;
-(ds.p=0x04404C08/*l76c4\comparable.e*/);
-ac_ens((R)==(r6_ix_and(&ds,(T6)(((int16_t)(C))>=(a1)),(T6)(((int16_t)(C))<=(a2)))),"Result = (Current >= lower and Current <= upper)");
-fd.assertion_flag=1;
-}
-set_dump_stack_top(caller);/*unlink*/
-return R;
-}/*--*/
-
-/*INTEGER_16*/T2 r10hash_code(se_dump_stack*caller,T10 C){
-T2 R=0;
-void**locals[1];
-static se_frame_descriptor fd={"hash_code"" INTEGER_16",1,1,"%E10%Result%E2%",1};
-se_dump_stack ds;
-ds.fd=&fd;
-ds.current=(void*)&C;
-ds.p=0x01406A04/*l106c2\integer_16.e*/;
-ds.caller=caller;
-ds.locals=locals;
-ds.exception_origin=NULL;
-locals[0]=(void**)&R;
-set_dump_stack_top(&ds);/*link*/
-(ds.p=0x01406C08/*l108c4\integer_16.e*/);
-R=/*IC*/(T2)((C&/*0x7FFF*/INT16_C(32767)));
-if(fd.assertion_flag){
-fd.assertion_flag=0;
-(ds.p=0x04601638/*l22c28\hashable.e*/);
-ac_ens(((int32_t)(R))>=(/*IC*/(T2)(INT8_C(0))),"good_hash_value");
-fd.assertion_flag=1;
-}
-set_dump_stack_top(caller);/*unlink*/
-return R;
-}/*--*/
-
-/*INTEGER_16*/T10 r10_ix_45(se_dump_stack*caller,T10 C,T10 a1){
-T10 R=0;
-void**locals[2];
-static se_frame_descriptor fd={"infix ""-"" (""infix ""-"" INTEGER_16)",1,2,"%E10%other%E10%Result%E10%",1};
-se_dump_stack ds;
-ds.fd=&fd;
-ds.current=(void*)&C;
-ds.p=0x06802404/*l36c2\integer_general.e*/;
-ds.caller=caller;
-ds.locals=locals;
-ds.exception_origin=NULL;
-locals[0]=(void**)&a1;
-locals[1]=(void**)&R;
-set_dump_stack_top(&ds);/*link*/
-if(fd.assertion_flag){
-fd.assertion_flag=0;
-(ds.p=0x06802658/*l38c44\integer_general.e*/);
-ac_req((T6)((!((((int16_t)(C))>(/*IC*/(T10)(INT8_C(0))))!=(((int16_t)(a1))>(/*IC*/(T10)(INT8_C(0))))))||((T6)((((int16_t)(((int16_t)(C))-(a1)))>(/*IC*/(T10)(INT8_C(0))))==(((int16_t)(C))>(/*IC*/(T10)(INT8_C(0))))))),"no_overflow");
-fd.assertion_flag=1;
-}
-(ds.p=0x06802808/*l40c4\integer_general.e*/);
-R=((int16_t)(C))-(a1);
-if(fd.assertion_flag){
-fd.assertion_flag=0;
-(ds.p=0x06802A16/*l42c11\integer_general.e*/);
-ac_ens((((int16_t)(R))+(a1))==(C),"Result #+ other = Current");
-fd.assertion_flag=1;
-}
-set_dump_stack_top(caller);/*unlink*/
-return R;
-}/*--*/
-
-/*INTEGER_16*/T1 r10to_integer_8(se_dump_stack*caller,T10 C){
-T1 R=0;
-void**locals[1];
-static se_frame_descriptor fd={"to_integer_8"" INTEGER_16",1,1,"%E10%Result%E1%",1};
-se_dump_stack ds;
-ds.fd=&fd;
-ds.current=(void*)&C;
-ds.p=0x01401704/*l23c2\integer_16.e*/;
-ds.caller=caller;
-ds.locals=locals;
-ds.exception_origin=NULL;
-locals[0]=(void**)&R;
-set_dump_stack_top(&ds);/*link*/
-if(fd.assertion_flag){
-fd.assertion_flag=0;
-(ds.p=0x01401A08/*l26c4\integer_16.e*/);
-ac_req(r10fit_integer_8(&ds,C),"fit_integer_8");
-fd.assertion_flag=1;
-}
-R=((EIF_INTEGER_8)C);
-if(fd.assertion_flag){
-fd.assertion_flag=0;
-(ds.p=0x01401D18/*l29c12\integer_16.e*/);
-ac_ens(r10is_equal(&ds,C,/*IC*/(T10)(R)),"Current.is_equal(Result)");
-fd.assertion_flag=1;
-}
-set_dump_stack_top(caller);/*unlink*/
-return R;
-}/*--*/
-
-/*INTEGER_16*/T10 r10_ix_43(se_dump_stack*caller,T10 C,T10 a1){
-T10 R=0;
-void**locals[2];
-static se_frame_descriptor fd={"infix ""+"" (""infix ""+"" INTEGER_16)",1,2,"%E10%other%E10%Result%E10%",1};
-se_dump_stack ds;
-ds.fd=&fd;
-ds.current=(void*)&C;
-ds.p=0x06801B04/*l27c2\integer_general.e*/;
-ds.caller=caller;
-ds.locals=locals;
-ds.exception_origin=NULL;
-locals[0]=(void**)&a1;
-locals[1]=(void**)&R;
-set_dump_stack_top(&ds);/*link*/
-if(fd.assertion_flag){
-fd.assertion_flag=0;
-(ds.p=0x06801D56/*l29c43\integer_general.e*/);
-ac_req((T6)((!((((int16_t)(C))>(/*IC*/(T10)(INT8_C(0))))==(((int16_t)(a1))>(/*IC*/(T10)(INT8_C(0))))))||((T6)((((int16_t)(((int16_t)(C))+(a1)))>(/*IC*/(T10)(INT8_C(0))))==(((int16_t)(C))>(/*IC*/(T10)(INT8_C(0))))))),"no_overflow");
-fd.assertion_flag=1;
-}
-(ds.p=0x06801F08/*l31c4\integer_general.e*/);
-R=((int16_t)(C))+(a1);
-if(fd.assertion_flag){
-fd.assertion_flag=0;
-(ds.p=0x06802116/*l33c11\integer_general.e*/);
-ac_ens((((int16_t)(R))-(a1))==(C),"Result #- other = Current");
-fd.assertion_flag=1;
-}
-set_dump_stack_top(caller);/*unlink*/
-return R;
-}/*--*/
-
-/*INTEGER_16*/T6 r10fit_integer_8(se_dump_stack*caller,T10 C){
+/*DOCUMENTALISTE*/T6 r143is_default(se_dump_stack*caller,T143* C){
 T6 R=0;
 void**locals[1];
-static se_frame_descriptor fd={"fit_integer_8"" INTEGER_16",1,1,"%E10%Result%E6%",1};
-se_dump_stack ds;
-ds.fd=&fd;
-ds.current=(void*)&C;
-ds.p=0x01400D04/*l13c2\integer_16.e*/;
-ds.caller=caller;
-ds.locals=locals;
-ds.exception_origin=NULL;
-locals[0]=(void**)&R;
-set_dump_stack_top(&ds);/*link*/
-if(((ds.p=0x0140101E/*l16c15\integer_16.e*/),((int16_t)(C))>=(/*IC*/(T10)(INT8_MIN)))){
-(ds.p=0x0140110A/*l17c5\integer_16.e*/);
-R=((T6)(((int16_t)(C))<=(/*IC*/(T10)(INT8_C(127)))));
-}
-if(fd.assertion_flag){
-fd.assertion_flag=0;
-(ds.p=0x01401408/*l20c4\integer_16.e*/);
-ac_ens((R)==(r10in_range(&ds,C,/*IC*/(T10)(INT8_MIN),/*IC*/(T10)(INT8_C(127)))),"Result = Current.in_range(-128, 127)");
-fd.assertion_flag=1;
-}
-set_dump_stack_top(caller);/*unlink*/
-return R;
-}/*--*/
-
-/*DVD*/T6 r125is_default(se_dump_stack*caller,T125* C){
-T6 R=0;
-void**locals[1];
-static se_frame_descriptor fd={"is_default"" DVD",1,1,"%R125%Result%E6%",1};
+static se_frame_descriptor fd={"is_default"" DOCUMENTALISTE",1,1,"%R143%Result%E6%",1};
 se_dump_stack ds;
 ds.fd=&fd;
 ds.current=(void*)&C;
@@ -4489,46 +4387,15 @@ ds.exception_origin=NULL;
 locals[0]=(void**)&R;
 set_dump_stack_top(&ds);/*link*/
 (ds.p=0x01A08D08/*l141c4\any.e*/);
-R=((T6)((C)==((void*)(r125default(&ds,C)))));
-if(se_rci(caller,C))se_i125(&ds,C);
+R=((T6)((C)==((void*)(r143default(&ds,C)))));
 set_dump_stack_top(caller);/*unlink*/
 return R;
 }/*--*/
 
-/*DVD*/void r125dvd(se_dump_stack*caller,T125* C,T0* a1,T0* a2,T0* a3,T0* a4,T2 a5,T2 a6,T2 a7){
-void**locals[7];
-static se_frame_descriptor fd={"dvd"" DVD",1,7,"%R125%new_realisateurs%R122%new_acteurs%R122%new_type%R7%new_titre%R7%new_annee%E2%new_nombre_disponible%E2%new_nombre_possede%E2%",1};
-se_dump_stack ds;
-ds.fd=&fd;
-ds.current=(void*)&C;
-ds.p=0x0FA01104/*l17c2\dvd.e*/;
-ds.caller=caller;
-ds.locals=locals;
-ds.exception_origin=NULL;
-locals[0]=(void**)&a1;
-locals[1]=(void**)&a2;
-locals[2]=(void**)&a3;
-locals[3]=(void**)&a4;
-locals[4]=(void**)&a5;
-locals[5]=(void**)&a6;
-locals[6]=(void**)&a7;
-set_dump_stack_top(&ds);/*link*/
-(ds.p=0x0FA01306/*l19c3\dvd.e*/);
-/*SFN*/(C->_realisateurs/*i7p*/)=a1;
-(ds.p=0x0FA01406/*l20c3\dvd.e*/);
-/*SFN*/(C->_acteurs/*i7p*/)=a2;
-(ds.p=0x0FA01506/*l21c3\dvd.e*/);
-/*SFN*/(C->_type/*i7p*/)=a3;
-(ds.p=0x0FA01606/*l22c3\dvd.e*/);
-r125init(&ds,C,a4,a5,a6,a7);
-if(se_rci(caller,C))se_i125(&ds,C);
-set_dump_stack_top(caller);/*unlink*/
-}/*--*/
-
-/*DVD*/T0* r125default(se_dump_stack*caller,T125* C){
+/*DOCUMENTALISTE*/T0* r143default(se_dump_stack*caller,T143* C){
 T0* R=(void*)0;
 void**locals[1];
-static se_frame_descriptor fd={"default"" DVD",1,1,"%R125%Result%R125%",1};
+static se_frame_descriptor fd={"default"" DOCUMENTALISTE",1,1,"%R143%Result%R143%",1};
 se_dump_stack ds;
 ds.fd=&fd;
 ds.current=(void*)&C;
@@ -4538,18 +4405,17 @@ ds.locals=locals;
 ds.exception_origin=NULL;
 locals[0]=(void**)&R;
 set_dump_stack_top(&ds);/*link*/
-if(se_rci(caller,C))se_i125(&ds,C);
 set_dump_stack_top(caller);/*unlink*/
 return R;
 }/*--*/
 
-/*DVD*/void r125init(se_dump_stack*caller,T125* C,T0* a1,T2 a2,T2 a3,T2 a4){
-void**locals[4];
-static se_frame_descriptor fd={"init"" DVD",1,4,"%R125%ititre%R7%iannee%E2%inombre_disponible%E2%inombre_possedes%E2%",1};
+/*DOCUMENTALISTE*/void r143init(se_dump_stack*caller,T143* C,T0* a1,T0* a2,T0* a3,T0* a4,T2 a5){
+void**locals[5];
+static se_frame_descriptor fd={"init"" DOCUMENTALISTE",1,5,"%R143%inom%R7%iprenom%R7%iadresse%R7%iidentifiant%R7%iage%E2%",1};
 se_dump_stack ds;
 ds.fd=&fd;
 ds.current=(void*)&C;
-ds.p=0x0FC01304/*l19c2\IMedia.e*/;
+ds.p=0x11A01104/*l17c2\IUtilisateur.e*/;
 ds.caller=caller;
 ds.locals=locals;
 ds.exception_origin=NULL;
@@ -4557,43 +4423,139 @@ locals[0]=(void**)&a1;
 locals[1]=(void**)&a2;
 locals[2]=(void**)&a3;
 locals[3]=(void**)&a4;
+locals[4]=(void**)&a5;
 set_dump_stack_top(&ds);/*link*/
-(ds.p=0x0FC01506/*l21c3\IMedia.e*/);
-/*SFN*/(C->_titre/*i7p*/)=a1;
-(ds.p=0x0FC01606/*l22c3\IMedia.e*/);
-/*SFN*/(C->_annee/*i7p*/)=a2;
-(ds.p=0x0FC01706/*l23c3\IMedia.e*/);
-/*SFN*/(C->_nombre_disponible/*i7p*/)=a3;
-(ds.p=0x0FC01806/*l24c3\IMedia.e*/);
-/*SFN*/(C->_nombre_possedes/*i7p*/)=a4;
-if(se_rci(caller,C))se_i125(&ds,C);
+(ds.p=0x11A01306/*l19c3\IUtilisateur.e*/);
+/*SFN*/(C->_nom/*i5p*/)=a1;
+(ds.p=0x11A01406/*l20c3\IUtilisateur.e*/);
+/*SFN*/(C->_prenom/*i5p*/)=a2;
+(ds.p=0x11A01506/*l21c3\IUtilisateur.e*/);
+/*SFN*/(C->_adresse/*i5p*/)=a3;
+(ds.p=0x11A01606/*l22c3\IUtilisateur.e*/);
+/*SFN*/(C->_age/*i5p*/)=a5;
+(ds.p=0x11A01706/*l23c3\IUtilisateur.e*/);
+/*SFN*/(C->_identifiant/*i5p*/)=a4;
 set_dump_stack_top(caller);/*unlink*/
 }/*--*/
-se_frame_descriptor se_ifd125={"invariant DVD",1,0,"%R125%",1};
 
-T125*se_i125(se_dump_stack*caller,T125*C){
+/*DOCUMENTALISTE*/void r143documentaliste(se_dump_stack*caller,T143* C,T0* a1,T0* a2,T0* a3,T0* a4,T2 a5){
+void**locals[5];
+static se_frame_descriptor fd={"documentaliste"" DOCUMENTALISTE",1,5,"%R143%input_nom%R7%input_prenom%R7%input_adresse%R7%input_identifiant%R7%input_age%E2%",1};
 se_dump_stack ds;
-ds.fd=&se_ifd125;
-ds.current=((void*)&C);
-ds.p=0x0FC04502/*l69c1\IMedia.e*/;
+ds.fd=&fd;
+ds.current=(void*)&C;
+ds.p=0x11E00904/*l9c2\documentaliste.e*/;
 ds.caller=caller;
+ds.locals=locals;
 ds.exception_origin=NULL;
-ds.locals=NULL;
-se_dst=&ds;/*link*/
-if(ds.fd->assertion_flag){
-ds.fd->assertion_flag=0;
-(ds.p=0x0FC04648/*l70c36\IMedia.e*/);
-ac_inv(((int32_t)((/*RF2*/(C)->_nombre_disponible/*i7p*/)))>=(/*IC*/(T2)(INT8_C(0))),"nb_exemplaires");
-ds.fd->assertion_flag=1;
-}
-se_dst=caller;/*unlink*/
-return C;
+locals[0]=(void**)&a1;
+locals[1]=(void**)&a2;
+locals[2]=(void**)&a3;
+locals[3]=(void**)&a4;
+locals[4]=(void**)&a5;
+set_dump_stack_top(&ds);/*link*/
+(ds.p=0x11E00B06/*l11c3\documentaliste.e*/);
+r143init(&ds,C,a1,a2,a3,a4,a5);
+set_dump_stack_top(caller);/*unlink*/
 }/*--*/
 
-/*ARRAY[DVD]*/T6 r129all_default(se_dump_stack*caller,T129* C){
+/*ADHERENT*/T6 r142is_default(se_dump_stack*caller,T142* C){
 T6 R=0;
 void**locals[1];
-static se_frame_descriptor fd={"all_default"" ARRAY[DVD]",1,1,"%R129%Result%E6%",1};
+static se_frame_descriptor fd={"is_default"" ADHERENT",1,1,"%R142%Result%E6%",1};
+se_dump_stack ds;
+ds.fd=&fd;
+ds.current=(void*)&C;
+ds.p=0x01A08404/*l132c2\any.e*/;
+ds.caller=caller;
+ds.locals=locals;
+ds.exception_origin=NULL;
+locals[0]=(void**)&R;
+set_dump_stack_top(&ds);/*link*/
+(ds.p=0x01A08D08/*l141c4\any.e*/);
+R=((T6)((C)==((void*)(r142default(&ds,C)))));
+set_dump_stack_top(caller);/*unlink*/
+return R;
+}/*--*/
+
+/*ADHERENT*/T0* r142default(se_dump_stack*caller,T142* C){
+T0* R=(void*)0;
+void**locals[1];
+static se_frame_descriptor fd={"default"" ADHERENT",1,1,"%R142%Result%R142%",1};
+se_dump_stack ds;
+ds.fd=&fd;
+ds.current=(void*)&C;
+ds.p=0x01A07D12/*l125c9\any.e*/;
+ds.caller=caller;
+ds.locals=locals;
+ds.exception_origin=NULL;
+locals[0]=(void**)&R;
+set_dump_stack_top(&ds);/*link*/
+set_dump_stack_top(caller);/*unlink*/
+return R;
+}/*--*/
+
+/*ADHERENT*/void r142init(se_dump_stack*caller,T142* C,T0* a1,T0* a2,T0* a3,T0* a4,T2 a5){
+void**locals[5];
+static se_frame_descriptor fd={"init"" ADHERENT",1,5,"%R142%inom%R7%iprenom%R7%iadresse%R7%iidentifiant%R7%iage%E2%",1};
+se_dump_stack ds;
+ds.fd=&fd;
+ds.current=(void*)&C;
+ds.p=0x11A01104/*l17c2\IUtilisateur.e*/;
+ds.caller=caller;
+ds.locals=locals;
+ds.exception_origin=NULL;
+locals[0]=(void**)&a1;
+locals[1]=(void**)&a2;
+locals[2]=(void**)&a3;
+locals[3]=(void**)&a4;
+locals[4]=(void**)&a5;
+set_dump_stack_top(&ds);/*link*/
+(ds.p=0x11A01306/*l19c3\IUtilisateur.e*/);
+/*SFN*/(C->_nom/*i6p*/)=a1;
+(ds.p=0x11A01406/*l20c3\IUtilisateur.e*/);
+/*SFN*/(C->_prenom/*i6p*/)=a2;
+(ds.p=0x11A01506/*l21c3\IUtilisateur.e*/);
+/*SFN*/(C->_adresse/*i6p*/)=a3;
+(ds.p=0x11A01606/*l22c3\IUtilisateur.e*/);
+/*SFN*/(C->_age/*i6p*/)=a5;
+(ds.p=0x11A01706/*l23c3\IUtilisateur.e*/);
+/*SFN*/(C->_identifiant/*i6p*/)=a4;
+set_dump_stack_top(caller);/*unlink*/
+}/*--*/
+
+/*ADHERENT*/void r142adherent(se_dump_stack*caller,T142* C,T0* a1,T0* a2,T0* a3,T0* a4,T2 a5){
+/*[INTERNAL_C_LOCAL list*/
+T0* tmp0;
+/*INTERNAL_C_LOCAL list]*/
+void**locals[5];
+static se_frame_descriptor fd={"adherent"" ADHERENT",1,5,"%R142%input_nom%R7%input_prenom%R7%input_adresse%R7%input_identifiant%R7%input_age%E2%",1};
+se_dump_stack ds;
+ds.fd=&fd;
+ds.current=(void*)&C;
+ds.p=0x11C00A04/*l10c2\adherent.e*/;
+ds.caller=caller;
+ds.locals=locals;
+ds.exception_origin=NULL;
+locals[0]=(void**)&a1;
+locals[1]=(void**)&a2;
+locals[2]=(void**)&a3;
+locals[3]=(void**)&a4;
+locals[4]=(void**)&a5;
+set_dump_stack_top(&ds);/*link*/
+(ds.p=0x11C00C06/*l12c3\adherent.e*/);
+r142init(&ds,C,a1,a2,a3,a4,a5);
+(ds.p=0x11C00D06/*l13c3\adherent.e*/);
+tmp0=((T0*)(new144()));
+r144with_capacity(&ds,((T144*)tmp0),/*IC*/(T2)(INT8_C(60)),/*IC*/(T2)(INT8_C(1)));
+/*SFN*/(C->_liste_emprunts/*i6p*/)=tmp0;
+se_i144(&ds,((T144*)(/*SFN*/(C->_liste_emprunts/*i6p*/))));set_dump_stack_top(caller);/*unlink*/
+}/*--*/
+
+/*ARRAY[IUTILISATEUR]*/T6 r145all_default(se_dump_stack*caller,T145* C){
+T6 R=0;
+void**locals[1];
+static se_frame_descriptor fd={"all_default"" ARRAY[IUTILISATEUR]",1,1,"%R145%Result%E6%",1};
 se_dump_stack ds;
 ds.fd=&fd;
 ds.current=(void*)&C;
@@ -4604,18 +4566,18 @@ ds.exception_origin=NULL;
 locals[0]=(void**)&R;
 set_dump_stack_top(&ds);/*link*/
 (ds.p=0x08413208/*l306c4\array.e*/);
-R=((T6)(r130all_default(&ds,(/*RF2*/(C)->_storage/*i4p*/),r2_ix_45(&ds,(/*RF2*/(C)->_upper/*i4p*/),(/*RF2*/(C)->_lower/*i4p*/)))));
-if(se_rci(caller,C))se_i129(&ds,C);
+R=((T6)(r147all_default(&ds,(/*RF2*/(C)->_storage/*i4p*/),r2_ix_45(&ds,(/*RF2*/(C)->_upper/*i4p*/),(/*RF2*/(C)->_lower/*i4p*/)))));
+if(se_rci(caller,C))se_i145(&ds,C);
 set_dump_stack_top(caller);/*unlink*/
 return R;
 }/*--*/
 
-/*ARRAY[DVD]*/void r129clear_all(se_dump_stack*caller,T129* C){
+/*ARRAY[IUTILISATEUR]*/void r145clear_all(se_dump_stack*caller,T145* C){
 T0* _value=(void*)0;
 T2 o63_117_26=0;
 T2 o63_118_26=0;
 void**locals[3];
-static se_frame_descriptor fd={"clear_all"" ARRAY[DVD]",1,3,"%R129%value%R125%old value%E2%old value%E2%",1};
+static se_frame_descriptor fd={"clear_all"" ARRAY[IUTILISATEUR]",1,3,"%R145%value%R141%old value%E2%old value%E2%",1};
 se_dump_stack ds;
 ds.fd=&fd;
 ds.current=(void*)&C;
@@ -4630,7 +4592,7 @@ set_dump_stack_top(&ds);/*link*/
 o63_117_26=(/*RF2*/(C)->_upper/*i4p*/);
 o63_118_26=(/*RF2*/(C)->_lower/*i4p*/);
 (ds.p=0x07E07308/*l115c4\collection.e*/);
-r129set_all_with(&ds,C,_value);
+r145set_all_with(&ds,C,_value);
 if(fd.assertion_flag){
 fd.assertion_flag=0;
 (ds.p=0x07E07524/*l117c18\collection.e*/);
@@ -4638,17 +4600,17 @@ ac_ens(((/*RF2*/(C)->_upper/*i4p*/))==(o63_117_26),"stable_upper");
 (ds.p=0x07E07624/*l118c18\collection.e*/);
 ac_ens(((/*RF2*/(C)->_lower/*i4p*/))==(o63_118_26),"stable_lower");
 (ds.p=0x07E07708/*l119c4\collection.e*/);
-ac_ens(r129all_default(&ds,C),"all_default");
+ac_ens(r145all_default(&ds,C),"all_default");
 fd.assertion_flag=1;
 }
-if(se_rci(caller,C))se_i129(&ds,C);
+if(se_rci(caller,C))se_i145(&ds,C);
 set_dump_stack_top(caller);/*unlink*/
 }/*--*/
 
-/*ARRAY[DVD]*/void r129set_all_with(se_dump_stack*caller,T129* C,T0* a1){
+/*ARRAY[IUTILISATEUR]*/void r145set_all_with(se_dump_stack*caller,T145* C,T0* a1){
 T2 o63_82_12=0;
 void**locals[2];
-static se_frame_descriptor fd={"set_all_with"" ARRAY[DVD]",1,2,"%R129%v%R125%old value%E2%",1};
+static se_frame_descriptor fd={"set_all_with"" ARRAY[IUTILISATEUR]",1,2,"%R145%v%R141%old value%E2%",1};
 se_dump_stack ds;
 ds.fd=&fd;
 ds.current=(void*)&C;
@@ -4659,26 +4621,26 @@ ds.exception_origin=NULL;
 locals[0]=(void**)&a1;
 locals[1]=(void**)&o63_82_12;
 set_dump_stack_top(&ds);/*link*/
-o63_82_12=r129count(&ds,C);
+o63_82_12=r145count(&ds,C);
 (ds.p=0x0840DE18/*l222c12\array.e*/);
-r130set_all_with(&ds,(/*RF2*/(C)->_storage/*i4p*/),a1,r2_ix_45(&ds,(/*RF2*/(C)->_upper/*i4p*/),(/*RF2*/(C)->_lower/*i4p*/)));
+r147set_all_with(&ds,(/*RF2*/(C)->_storage/*i4p*/),a1,r2_ix_45(&ds,(/*RF2*/(C)->_upper/*i4p*/),(/*RF2*/(C)->_lower/*i4p*/)));
 if(fd.assertion_flag){
 fd.assertion_flag=0;
 (ds.p=0x07E05208/*l82c4\collection.e*/);
-ac_ens((r129count(&ds,C))==(o63_82_12),"count = old count");
+ac_ens((r145count(&ds,C))==(o63_82_12),"count = old count");
 fd.assertion_flag=1;
 }
-if(se_rci(caller,C))se_i129(&ds,C);
+if(se_rci(caller,C))se_i145(&ds,C);
 set_dump_stack_top(caller);/*unlink*/
 }/*--*/
 
-/*ARRAY[DVD]*/void r129add_last(se_dump_stack*caller,T129* C,T0* a1){
+/*ARRAY[IUTILISATEUR]*/void r145add_last(se_dump_stack*caller,T145* C,T0* a1){
 T2 _new_capacity=0;
 T2 o63_143_16=0;
 T2 o63_144_12=0;
 T2 o63_145_16=0;
 void**locals[5];
-static se_frame_descriptor fd={"add_last"" ARRAY[DVD]",1,5,"%R129%element%R125%new_capacity%E2%old value%E2%old value%E2%old value%E2%",1};
+static se_frame_descriptor fd={"add_last"" ARRAY[IUTILISATEUR]",1,5,"%R145%element%R141%new_capacity%E2%old value%E2%old value%E2%old value%E2%",1};
 se_dump_stack ds;
 ds.fd=&fd;
 ds.current=(void*)&C;
@@ -4692,15 +4654,15 @@ locals[2]=(void**)&o63_143_16;
 locals[3]=(void**)&o63_144_12;
 locals[4]=(void**)&o63_145_16;
 set_dump_stack_top(&ds);/*link*/
-o63_143_16=r129count(&ds,C);
+o63_143_16=r145count(&ds,C);
 o63_144_12=(/*RF2*/(C)->_lower/*i4p*/);
 o63_145_16=(/*RF2*/(C)->_upper/*i4p*/);
-if(((ds.p=0x08410D20/*l269c16\array.e*/),((int32_t)((/*RF2*/(C)->_capacity/*i4p*/)))<(r2_ix_43(&ds,r129count(&ds,C),/*IC*/(T2)(INT8_C(1)))))){
+if(((ds.p=0x08410D20/*l269c16\array.e*/),((int32_t)((/*RF2*/(C)->_capacity/*i4p*/)))<(r2_ix_43(&ds,r145count(&ds,C),/*IC*/(T2)(INT8_C(1)))))){
 if(((ds.p=0x08410E10/*l270c8\array.e*/),((/*RF2*/(C)->_capacity/*i4p*/))==(INT8_C(0)))){
 (ds.p=0x08410F0C/*l271c6\array.e*/);
 _new_capacity=/*IC*/(T2)(INT8_C(16));
 (ds.p=0x0841100C/*l272c6\array.e*/);
-/*SFN*/(C->_storage/*i4p*/)=new130(_new_capacity);
+/*SFN*/(C->_storage/*i4p*/)=new147(_new_capacity);
 (ds.p=0x0841110C/*l273c6\array.e*/);
 /*SFN*/(C->_capacity/*i4p*/)=_new_capacity;
 }
@@ -4708,7 +4670,7 @@ else{
 (ds.p=0x0841130C/*l275c6\array.e*/);
 _new_capacity=r2_ix_42(&ds,(/*RF2*/(C)->_capacity/*i4p*/),/*IC*/(T2)(INT8_C(2)));
 (ds.p=0x0841140C/*l276c6\array.e*/);
-/*SFN*/(C->_storage/*i4p*/)=r130realloc(&ds,(/*RF2*/(C)->_storage/*i4p*/),(/*RF2*/(C)->_capacity/*i4p*/),_new_capacity);
+/*SFN*/(C->_storage/*i4p*/)=r147realloc(&ds,(/*RF2*/(C)->_storage/*i4p*/),(/*RF2*/(C)->_capacity/*i4p*/),_new_capacity);
 (ds.p=0x0841150C/*l277c6\array.e*/);
 /*SFN*/(C->_capacity/*i4p*/)=_new_capacity;
 }
@@ -4716,27 +4678,27 @@ _new_capacity=r2_ix_42(&ds,(/*RF2*/(C)->_capacity/*i4p*/),/*IC*/(T2)(INT8_C(2)))
 (ds.p=0x08411808/*l280c4\array.e*/);
 /*SFN*/(C->_upper/*i4p*/)=r2_ix_43(&ds,(/*RF2*/(C)->_upper/*i4p*/),/*IC*/(T2)(INT8_C(1)));
 (ds.p=0x08411908/*l281c4\array.e*/);
-r129put(&ds,C,a1,(/*RF2*/(C)->_upper/*i4p*/));
+r145put(&ds,C,a1,(/*RF2*/(C)->_upper/*i4p*/));
 if(fd.assertion_flag){
 fd.assertion_flag=0;
 (ds.p=0x07E08E08/*l142c4\collection.e*/);
-ac_ens((r129last(&ds,C))==((void*)(a1)),"last = element");
+ac_ens((r145last(&ds,C))==((void*)(a1)),"last = element");
 (ds.p=0x07E08F08/*l143c4\collection.e*/);
-ac_ens((r129count(&ds,C))==(r2_ix_43(&ds,/*IC*/(T2)(INT8_C(1)),o63_143_16)),"count = 1 + old count");
+ac_ens((r145count(&ds,C))==(r2_ix_43(&ds,/*IC*/(T2)(INT8_C(1)),o63_143_16)),"count = 1 + old count");
 (ds.p=0x07E09008/*l144c4\collection.e*/);
 ac_ens(((/*RF2*/(C)->_lower/*i4p*/))==(o63_144_12),"lower = old lower");
 (ds.p=0x07E09108/*l145c4\collection.e*/);
 ac_ens(((/*RF2*/(C)->_upper/*i4p*/))==(r2_ix_43(&ds,/*IC*/(T2)(INT8_C(1)),o63_145_16)),"upper = 1 + old upper");
 fd.assertion_flag=1;
 }
-if(se_rci(caller,C))se_i129(&ds,C);
+if(se_rci(caller,C))se_i145(&ds,C);
 set_dump_stack_top(caller);/*unlink*/
 }/*--*/
 
-/*ARRAY[DVD]*/void r129mark_native_arrays(se_dump_stack*caller,T129* C){
+/*ARRAY[IUTILISATEUR]*/void r145mark_native_arrays(se_dump_stack*caller,T145* C){
 T2 _i=0;
 void**locals[1];
-static se_frame_descriptor fd={"mark_native_arrays"" ARRAY[DVD]",1,1,"%R129%i%E2%",1};
+static se_frame_descriptor fd={"mark_native_arrays"" ARRAY[IUTILISATEUR]",1,1,"%R145%i%E2%",1};
 se_dump_stack ds;
 ds.fd=&fd;
 ds.current=(void*)&C;
@@ -4747,24 +4709,24 @@ ds.exception_origin=NULL;
 locals[0]=(void**)&_i;
 set_dump_stack_top(&ds);/*link*/
 (ds.p=0x0841A30A/*l419c5\array.e*/);
-_i=r2_ix_45(&ds,r129count(&ds,C),/*IC*/(T2)(INT8_C(1)));
+_i=r2_ix_45(&ds,r145count(&ds,C),/*IC*/(T2)(INT8_C(1)));
 while (!(((ds.p=0x0841A50E/*l421c7\array.e*/),((int32_t)(_i))<(/*IC*/(T2)(INT8_C(0))))))
 {
 (ds.p=0x0841A70A/*l423c5\array.e*/);
 {/*mark_item*/
 T0* elt=(/*RF2*/(C)->_storage/*i4p*/)[_i];
-if(NULL!=elt)gc_mark125((T125*)(elt));
+if(NULL!=elt)Xgc_mark141((T0*)(elt));
 /*mark_item*/}(ds.p=0x0841A80A/*l424c5\array.e*/);
 _i=r2_ix_45(&ds,_i,/*IC*/(T2)(INT8_C(1)));
 }
-if(se_rci(caller,C))se_i129(&ds,C);
+if(se_rci(caller,C))se_i145(&ds,C);
 set_dump_stack_top(caller);/*unlink*/
 }/*--*/
 
-/*ARRAY[DVD]*/void r129ensure_capacity_and_bounds(se_dump_stack*caller,T129* C,T2 a1,T2 a2,T2 a3){
+/*ARRAY[IUTILISATEUR]*/void r145ensure_capacity_and_bounds(se_dump_stack*caller,T145* C,T2 a1,T2 a2,T2 a3){
 T0* _value=(void*)0;
 void**locals[4];
-static se_frame_descriptor fd={"ensure_capacity_and_bounds"" ARRAY[DVD]",1,4,"%R129%needed_capacity%E2%low%E2%up%E2%value%R125%",1};
+static se_frame_descriptor fd={"ensure_capacity_and_bounds"" ARRAY[IUTILISATEUR]",1,4,"%R145%needed_capacity%E2%low%E2%up%E2%value%R141%",1};
 se_dump_stack ds;
 ds.fd=&fd;
 ds.current=(void*)&C;
@@ -4787,7 +4749,7 @@ fd.assertion_flag=1;
 }
 if(((ds.p=0x08404228/*l66c20\array.e*/),(T6)(((_value)==((void*)((void*)0)))&&((T6)(((int32_t)((/*RF2*/(C)->_capacity/*i4p*/)))>(/*IC*/(T2)(INT8_C(0)))))))){
 (ds.p=0x0840440A/*l68c5\array.e*/);
-r129clear_all(&ds,C);
+r145clear_all(&ds,C);
 }
 (ds.p=0x08404608/*l70c4\array.e*/);
 /*SFN*/(C->_lower/*i4p*/)=a2;
@@ -4796,13 +4758,13 @@ r129clear_all(&ds,C);
 if(((ds.p=0x0840482E/*l72c23\array.e*/),((int32_t)(a1))>(/*IC*/(T2)(INT8_C(0))))){
 if(((ds.p=0x08404922/*l73c17\array.e*/),((int32_t)((/*RF2*/(C)->_capacity/*i4p*/)))<(a1))){
 (ds.p=0x08404A0C/*l74c6\array.e*/);
-/*SFN*/(C->_storage/*i4p*/)=new130(a1);
+/*SFN*/(C->_storage/*i4p*/)=new147(a1);
 (ds.p=0x08404B0C/*l75c6\array.e*/);
 /*SFN*/(C->_capacity/*i4p*/)=a1;
 }
 else if(((ds.p=0x08404C34/*l76c26\array.e*/),(T6)(((_value)!=((void*)((void*)0)))&&((T6)(((int32_t)(a3))>=(a2)))))){
 (ds.p=0x08404E0C/*l78c6\array.e*/);
-r129clear_all(&ds,C);
+r145clear_all(&ds,C);
 }
 }
 if(fd.assertion_flag){
@@ -4814,16 +4776,16 @@ ac_ens(((/*RF2*/(C)->_lower/*i4p*/))==(a2),"lower = low");
 (ds.p=0x08405408/*l84c4\array.e*/);
 ac_ens(((/*RF2*/(C)->_upper/*i4p*/))==(a3),"upper = up");
 (ds.p=0x08405508/*l85c4\array.e*/);
-ac_ens(r129all_default(&ds,C),"all_default");
+ac_ens(r145all_default(&ds,C),"all_default");
 fd.assertion_flag=1;
 }
-if(se_rci(caller,C))se_i129(&ds,C);
+if(se_rci(caller,C))se_i145(&ds,C);
 set_dump_stack_top(caller);/*unlink*/
 }/*--*/
 
-/*ARRAY[DVD]*/void r129with_capacity(se_dump_stack*caller,T129* C,T2 a1,T2 a2){
+/*ARRAY[IUTILISATEUR]*/void r145with_capacity(se_dump_stack*caller,T145* C,T2 a1,T2 a2){
 void**locals[2];
-static se_frame_descriptor fd={"with_capacity"" ARRAY[DVD]",1,2,"%R129%needed_capacity%E2%low%E2%",1};
+static se_frame_descriptor fd={"with_capacity"" ARRAY[IUTILISATEUR]",1,2,"%R145%needed_capacity%E2%low%E2%",1};
 se_dump_stack ds;
 ds.fd=&fd;
 ds.current=(void*)&C;
@@ -4841,25 +4803,25 @@ ac_req(((int32_t)(a1))>=(/*IC*/(T2)(INT8_C(0))),"needed_capacity >= 0");
 fd.assertion_flag=1;
 }
 (ds.p=0x08403308/*l51c4\array.e*/);
-r129ensure_capacity_and_bounds(&ds,C,a1,a2,r2_ix_45(&ds,a2,/*IC*/(T2)(INT8_C(1))));
+r145ensure_capacity_and_bounds(&ds,C,a1,a2,r2_ix_45(&ds,a2,/*IC*/(T2)(INT8_C(1))));
 if(fd.assertion_flag){
 fd.assertion_flag=0;
 (ds.p=0x08403508/*l53c4\array.e*/);
-ac_ens(r129is_empty(&ds,C),"is_empty");
+ac_ens(r145is_empty(&ds,C),"is_empty");
 (ds.p=0x08403628/*l54c20\array.e*/);
 ac_ens(((int32_t)(a1))<=((/*RF2*/(C)->_capacity/*i4p*/)),"needed_capacity <= capacity");
 (ds.p=0x08403708/*l55c4\array.e*/);
 ac_ens(((/*RF2*/(C)->_lower/*i4p*/))==(a2),"lower = low");
 fd.assertion_flag=1;
 }
-if(se_rci(caller,C))se_i129(&ds,C);
+if(se_rci(caller,C))se_i145(&ds,C);
 set_dump_stack_top(caller);/*unlink*/
 }/*--*/
 
-/*ARRAY[DVD]*/T2 r129count(se_dump_stack*caller,T129* C){
+/*ARRAY[IUTILISATEUR]*/T2 r145count(se_dump_stack*caller,T145* C){
 T2 R=0;
 void**locals[1];
-static se_frame_descriptor fd={"count"" ARRAY[DVD]",1,1,"%R129%Result%E2%",1};
+static se_frame_descriptor fd={"count"" ARRAY[IUTILISATEUR]",1,1,"%R145%Result%E2%",1};
 se_dump_stack ds;
 ds.fd=&fd;
 ds.current=(void*)&C;
@@ -4877,15 +4839,15 @@ fd.assertion_flag=0;
 ac_ens((R)==(r2_ix_43(&ds,r2_ix_45(&ds,(/*RF2*/(C)->_upper/*i4p*/),(/*RF2*/(C)->_lower/*i4p*/)),/*IC*/(T2)(INT8_C(1)))),"definition");
 fd.assertion_flag=1;
 }
-if(se_rci(caller,C))se_i129(&ds,C);
+if(se_rci(caller,C))se_i145(&ds,C);
 set_dump_stack_top(caller);/*unlink*/
 return R;
 }/*--*/
 
-/*ARRAY[DVD]*/T0* r129last(se_dump_stack*caller,T129* C){
+/*ARRAY[IUTILISATEUR]*/T0* r145last(se_dump_stack*caller,T145* C){
 T0* R=(void*)0;
 void**locals[1];
-static se_frame_descriptor fd={"last"" ARRAY[DVD]",1,1,"%R129%Result%R125%",1};
+static se_frame_descriptor fd={"last"" ARRAY[IUTILISATEUR]",1,1,"%R145%Result%R141%",1};
 se_dump_stack ds;
 ds.fd=&fd;
 ds.current=(void*)&C;
@@ -4898,26 +4860,26 @@ set_dump_stack_top(&ds);/*link*/
 if(fd.assertion_flag){
 fd.assertion_flag=0;
 (ds.p=0x04005C08/*l92c4\traversable.e*/);
-ac_req(r6_px_not(&ds,(T6)(r129is_empty(&ds,C))),"not is_empty");
+ac_req(r6_px_not(&ds,(T6)(r145is_empty(&ds,C))),"not is_empty");
 fd.assertion_flag=1;
 }
 (ds.p=0x08802D08/*l45c4\arrayed_collection.e*/);
-R=r129item(&ds,C,(/*RF2*/(C)->_upper/*i4p*/));
+R=r145item(&ds,C,(/*RF2*/(C)->_upper/*i4p*/));
 if(fd.assertion_flag){
 fd.assertion_flag=0;
 (ds.p=0x04005F20/*l95c16\traversable.e*/);
-ac_ens((R)==((void*)(r129item(&ds,C,(/*RF2*/(C)->_upper/*i4p*/)))),"definition");
+ac_ens((R)==((void*)(r145item(&ds,C,(/*RF2*/(C)->_upper/*i4p*/)))),"definition");
 fd.assertion_flag=1;
 }
-if(se_rci(caller,C))se_i129(&ds,C);
+if(se_rci(caller,C))se_i145(&ds,C);
 set_dump_stack_top(caller);/*unlink*/
 return R;
 }/*--*/
 
-/*ARRAY[DVD]*/T6 r129valid_index(se_dump_stack*caller,T129* C,T2 a1){
+/*ARRAY[IUTILISATEUR]*/T6 r145valid_index(se_dump_stack*caller,T145* C,T2 a1){
 T6 R=0;
 void**locals[2];
-static se_frame_descriptor fd={"valid_index"" ARRAY[DVD]",1,2,"%R129%i%E2%Result%E6%",1};
+static se_frame_descriptor fd={"valid_index"" ARRAY[IUTILISATEUR]",1,2,"%R145%i%E2%Result%E6%",1};
 se_dump_stack ds;
 ds.fd=&fd;
 ds.current=(void*)&C;
@@ -4936,15 +4898,15 @@ fd.assertion_flag=0;
 ac_ens((R)==(r6_ix_and(&ds,(T6)(((int32_t)((/*RF2*/(C)->_lower/*i4p*/)))<=(a1)),(T6)(((int32_t)(a1))<=((/*RF2*/(C)->_upper/*i4p*/))))),"definition");
 fd.assertion_flag=1;
 }
-if(se_rci(caller,C))se_i129(&ds,C);
+if(se_rci(caller,C))se_i145(&ds,C);
 set_dump_stack_top(caller);/*unlink*/
 return R;
 }/*--*/
 
-/*ARRAY[DVD]*/T6 r129is_empty(se_dump_stack*caller,T129* C){
+/*ARRAY[IUTILISATEUR]*/T6 r145is_empty(se_dump_stack*caller,T145* C){
 T6 R=0;
 void**locals[1];
-static se_frame_descriptor fd={"is_empty"" ARRAY[DVD]",1,1,"%R129%Result%E6%",1};
+static se_frame_descriptor fd={"is_empty"" ARRAY[IUTILISATEUR]",1,1,"%R145%Result%E6%",1};
 se_dump_stack ds;
 ds.fd=&fd;
 ds.current=(void*)&C;
@@ -4959,18 +4921,18 @@ R=((T6)(((int32_t)((/*RF2*/(C)->_upper/*i4p*/)))<((/*RF2*/(C)->_lower/*i4p*/))))
 if(fd.assertion_flag){
 fd.assertion_flag=0;
 (ds.p=0x04003F20/*l63c16\traversable.e*/);
-ac_ens((R)==((r129count(&ds,C))==(INT8_C(0))),"definition");
+ac_ens((R)==((r145count(&ds,C))==(INT8_C(0))),"definition");
 fd.assertion_flag=1;
 }
-if(se_rci(caller,C))se_i129(&ds,C);
+if(se_rci(caller,C))se_i145(&ds,C);
 set_dump_stack_top(caller);/*unlink*/
 return R;
 }/*--*/
 
-/*ARRAY[DVD]*/T0* r129item(se_dump_stack*caller,T129* C,T2 a1){
+/*ARRAY[IUTILISATEUR]*/T0* r145item(se_dump_stack*caller,T145* C,T2 a1){
 T0* R=(void*)0;
 void**locals[2];
-static se_frame_descriptor fd={"item"" ARRAY[DVD]",1,2,"%R129%i%E2%Result%R125%",1};
+static se_frame_descriptor fd={"item"" ARRAY[IUTILISATEUR]",1,2,"%R145%i%E2%Result%R141%",1};
 se_dump_stack ds;
 ds.fd=&fd;
 ds.current=(void*)&C;
@@ -4984,20 +4946,20 @@ set_dump_stack_top(&ds);/*link*/
 if(fd.assertion_flag){
 fd.assertion_flag=0;
 (ds.p=0x04004808/*l72c4\traversable.e*/);
-ac_req(r129valid_index(&ds,C,a1),"valid_index(i)");
+ac_req(r145valid_index(&ds,C,a1),"valid_index(i)");
 fd.assertion_flag=1;
 }
 (ds.p=0x0840AF08/*l175c4\array.e*/);
 R=((/*RF2*/(C)->_storage/*i4p*/))[r2_ix_45(&ds,a1,(/*RF2*/(C)->_lower/*i4p*/))];
-if(se_rci(caller,C))se_i129(&ds,C);
+if(se_rci(caller,C))se_i145(&ds,C);
 set_dump_stack_top(caller);/*unlink*/
 return R;
 }/*--*/
 
-/*ARRAY[DVD]*/void r129put(se_dump_stack*caller,T129* C,T0* a1,T2 a2){
+/*ARRAY[IUTILISATEUR]*/void r145put(se_dump_stack*caller,T145* C,T0* a1,T2 a2){
 T2 o63_54_12=0;
 void**locals[3];
-static se_frame_descriptor fd={"put"" ARRAY[DVD]",1,3,"%R129%element%R125%i%E2%old value%E2%",1};
+static se_frame_descriptor fd={"put"" ARRAY[IUTILISATEUR]",1,3,"%R145%element%R141%i%E2%old value%E2%",1};
 se_dump_stack ds;
 ds.fd=&fd;
 ds.current=(void*)&C;
@@ -5009,11 +4971,11 @@ locals[0]=(void**)&a1;
 locals[1]=(void**)&a2;
 locals[2]=(void**)&o63_54_12;
 set_dump_stack_top(&ds);/*link*/
-o63_54_12=r129count(&ds,C);
+o63_54_12=r145count(&ds,C);
 if(fd.assertion_flag){
 fd.assertion_flag=0;
 (ds.p=0x07E03208/*l50c4\collection.e*/);
-ac_req(r129valid_index(&ds,C,a2),"valid_index(i)");
+ac_req(r145valid_index(&ds,C,a2),"valid_index(i)");
 fd.assertion_flag=1;
 }
 (ds.p=0x0840B418/*l180c12\array.e*/);
@@ -5021,19 +4983,19 @@ fd.assertion_flag=1;
 if(fd.assertion_flag){
 fd.assertion_flag=0;
 (ds.p=0x07E03508/*l53c4\collection.e*/);
-ac_ens((r129item(&ds,C,a2))==((void*)(a1)),"item(i) = element");
+ac_ens((r145item(&ds,C,a2))==((void*)(a1)),"item(i) = element");
 (ds.p=0x07E03608/*l54c4\collection.e*/);
-ac_ens((r129count(&ds,C))==(o63_54_12),"count = old count");
+ac_ens((r145count(&ds,C))==(o63_54_12),"count = old count");
 fd.assertion_flag=1;
 }
-if(se_rci(caller,C))se_i129(&ds,C);
+if(se_rci(caller,C))se_i145(&ds,C);
 set_dump_stack_top(caller);/*unlink*/
 }/*--*/
-se_frame_descriptor se_ifd129={"invariant ARRAY[DVD]",1,0,"%R129%",1};
+se_frame_descriptor se_ifd145={"invariant ARRAY[IUTILISATEUR]",1,0,"%R145%",1};
 
-T129*se_i129(se_dump_stack*caller,T129*C){
+T145*se_i145(se_dump_stack*caller,T145*C){
 se_dump_stack ds;
-ds.fd=&se_ifd129;
+ds.fd=&se_ifd145;
 ds.current=((void*)&C);
 ds.p=0x07E29C02/*l668c1\collection.e*/;
 ds.caller=caller;
@@ -5047,7 +5009,7 @@ ac_inv(((int32_t)((/*RF2*/(C)->_lower/*i4p*/)))<=(r2_ix_43(&ds,(/*RF2*/(C)->_upp
 (ds.p=0x08807516/*l117c11\arrayed_collection.e*/);
 ac_inv(((int32_t)((/*RF2*/(C)->_capacity/*i4p*/)))>=(r2_ix_43(&ds,r2_ix_45(&ds,(/*RF2*/(C)->_upper/*i4p*/),(/*RF2*/(C)->_lower/*i4p*/)),/*IC*/(T2)(INT8_C(1)))),"capacity >= upper - lower + 1");
 (ds.p=0x0880761E/*l118c15\arrayed_collection.e*/);
-ac_inv((T6)((!(((int32_t)((/*RF2*/(C)->_capacity/*i4p*/)))>(/*IC*/(T2)(INT8_C(0)))))||((T6)(r130is_not_null(&ds,(/*RF2*/(C)->_storage/*i4p*/))))),"capacity > 0 implies storage.is_not_null");
+ac_inv((T6)((!(((int32_t)((/*RF2*/(C)->_capacity/*i4p*/)))>(/*IC*/(T2)(INT8_C(0)))))||((T6)(r147is_not_null(&ds,(/*RF2*/(C)->_storage/*i4p*/))))),"capacity > 0 implies storage.is_not_null");
 ds.fd->assertion_flag=1;
 }
 se_dst=caller;/*unlink*/

@@ -1,26 +1,44 @@
--- Classe abstraite regroupant les propriétés communes à toutes les personnes
+-- Classe abstraite regroupant les propriétés communes à tous les utilisateurs
 indexing
-	description: "Classe abstraite regroupant les propriétés communes à toutes les personnes"
+	description: "Classe abstraite regroupant les propriétés communes à tous les utilisateurs"
 
-deferred class IPERSONNE
+deferred class IUTILISATEUR
 
 feature{}
 	nom, prenom, adresse : STRING
 	age : INTEGER
+	identifiant : STRING
 
 feature {ANY}
 
 	-- =====================================
-	-- Initialisation d'une personne
+	-- Initialisation d'un utilisateur
 	-- =====================================
-	init(inom, iprenom, iadresse : STRING; iage : INTEGER) is
+	init(inom, iprenom, iadresse, iidentifiant : STRING; iage : INTEGER) is
 	do
 		nom := inom
 		prenom := iprenom
 		adresse := iadresse
 		age := iage
+		identifiant := iidentifiant
 	end
-	
+
+	-- =====================================
+	-- Retourne l'identifiant de l'utilisateur
+	-- =====================================
+	get_identifiant : STRING is
+	do
+		Result := identifiant
+	end
+
+	-- =====================================
+	-- Set l'identifiant de l'utilisateur
+	-- =====================================
+	set_identifiant(input_identifiant : STRING) is
+	do
+		identifiant := input_identifiant
+	end
+
 	-- =====================================
 	-- Retourne l'adresse
 	-- =====================================
@@ -28,7 +46,7 @@ feature {ANY}
 	do
 		Result := adresse
 	end
-	
+
 	-- =====================================
 	-- Modifie l'adresse
 	-- =====================================
@@ -36,7 +54,7 @@ feature {ANY}
 	do
 		adresse := iadresse
 	end
-	
+
 	-- =====================================
 	-- Modifie le prénom
 	-- =====================================
@@ -44,7 +62,7 @@ feature {ANY}
 	do
 		prenom := iprenom
 	end
-	
+
 	-- =====================================
 	-- Retourne le prénom
 	-- =====================================
@@ -52,7 +70,7 @@ feature {ANY}
 	do
 		Result := prenom
 	end
-	
+
 	-- =====================================
 	-- Retourne le nom
 	-- =====================================
@@ -60,7 +78,7 @@ feature {ANY}
 	do
 		Result := nom
 	end
-	
+
 	-- =====================================
 	-- Modifie le nom
 	-- =====================================

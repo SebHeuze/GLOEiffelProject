@@ -8,8 +8,7 @@ creation {ANY}
 	init_media_manager
 
 feature {}
-	liste_dvd : ARRAY[DVD]
-	liste_livres : ARRAY[LIVRE]
+	liste_medias : ARRAY[IMEDIA]
 
 feature{ANY}
 	init_media_manager is
@@ -39,8 +38,7 @@ feature{ANY}
 		create contenu_fichier.with_capacity(56,1)
 
 		--Initialisation des listes de médias
-		create liste_dvd.with_capacity(60,1)
-		create liste_livres.with_capacity(60,1)
+		create liste_medias.with_capacity(60,1)
 
 		--Initialisation des variables temporaires
 		create auteurs.with_capacity(20,1)
@@ -121,11 +119,11 @@ feature{ANY}
 
 				if contenu_ligne.has_substring ("Livre ; ") then
 					create a_livre.livre(auteurs, "", "", titre, 0, nombre, dispo)
-					liste_livres.add_last(a_livre);
+					liste_medias.add_last(a_livre);
 				end
 				if contenu_ligne.has_substring ("DVD ; ") then
 					create a_dvd.dvd(realisateurs, acteurs, type, titre, annee, nombre, dispo)
-					liste_dvd.add_last(a_dvd);
+					liste_medias.add_last(a_dvd);
 				end
 			else
 				io.put_string ("Chaine vide")
@@ -142,11 +140,14 @@ feature{ANY}
 		i : INTEGER
 	do
 		from
-			i := liste_livres.lower
+			i := liste_medias.lower
 		until
-			i > liste_livres.upper
+			i > liste_medias.upper
 		loop
-			liste_livres.item(i).afficher
+			if liste_medias.item(i).generating_type.is_equal("LIVRE")
+			then
+				liste_medias.item(i).afficher
+			end
 			i := i +1
 		end
 	end
@@ -159,11 +160,14 @@ feature{ANY}
 		i : INTEGER
 	do
 		from
-			i := liste_dvd.lower
+			i := liste_medias.lower
 		until
-			i > liste_dvd.upper
+			i > liste_medias.upper
 		loop
-			liste_dvd.item(i).afficher
+			if liste_medias.item(i).generating_type.is_equal("DVD")
+			then
+				liste_medias.item(i).afficher
+			end
 			i := i +1
 		end
 	end
