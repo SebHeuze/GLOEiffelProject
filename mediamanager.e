@@ -75,6 +75,8 @@ feature{ANY}
 				from
 				until index = 0
 				loop
+					
+
 					index := contenu_ligne.index_of (';', index)
 					index2 := contenu_ligne.index_of (';', index+1)
 
@@ -88,29 +90,21 @@ feature{ANY}
 						string_data := string_tmp.substring (string_tmp.index_of ('<', 1)+1, string_tmp.index_of ('>', 1)-1);
 						if string_tmp.has_substring ("Titre") then
 							titre := string_data
-						end
-						if string_tmp.has_substring ("Auteur") then
+						elseif string_tmp.has_substring ("Auteur") then
 							auteurs.add_last(string_data)
-						end
-						if string_tmp.has_substring ("Nombre") then
+						elseif string_tmp.has_substring ("Nombre") then
 							nombre := string_data.to_integer
-						end
-						if string_tmp.has_substring ("Titre") then
-								titre := string_data
-						end
-						if string_tmp.has_substring ("Annee") then
+						elseif string_tmp.has_substring ("Titre") then
+							titre := string_data
+						elseif string_tmp.has_substring ("Annee") then
 							annee := string_data.to_integer
-						end
-						if string_tmp.has_substring ("Acteur") then
+						elseif string_tmp.has_substring ("Acteur") then
 							acteurs.add_last(string_data)
-						end
-						if string_tmp.has_substring ("Realisateur") then
+						elseif string_tmp.has_substring ("Realisateur") then
 							realisateurs.add_last(string_data)
-						end
-						if string_tmp.has_substring ("Nombre") then
+						elseif string_tmp.has_substring ("Nombre") then
 							nombre := string_data.to_integer
-						end
-						if string_tmp.has_substring ("Type") then
+						elseif string_tmp.has_substring ("Type") then
 							type := string_data
 						end
 						index := index +1
@@ -119,12 +113,22 @@ feature{ANY}
 
 				if contenu_ligne.has_substring ("Livre ; ") then
 					create a_livre.livre(auteurs, "", "", titre, 0, nombre, dispo)
-					liste_medias.add_last(a_livre);
+					liste_medias.add_last(a_livre)
+					create auteurs.with_capacity(20,1)
 				end
 				if contenu_ligne.has_substring ("DVD ; ") then
 					create a_dvd.dvd(realisateurs, acteurs, type, titre, annee, nombre, dispo)
-					liste_medias.add_last(a_dvd);
+					liste_medias.add_last(a_dvd)
+					create acteurs.with_capacity(20,1)
+					create realisateurs.with_capacity(20,1)
 				end
+				
+				-- Réinitialisation des propriétés communes
+				create titre.make_empty
+				create type.make_empty
+				nombre := 0
+				dispo := 0
+				annee := 0
 			else
 				io.put_string ("Chaine vide")
 			end
@@ -168,8 +172,27 @@ feature{ANY}
 			then
 				liste_medias.item(i).afficher
 			end
-			i := i +1
+			i := i + 1
 		end
 	end
-
+	
+	-- =====================================
+	-- Recherche un média depuis son titre (recherche de la chaîne demandée dans le titre)
+	-- =====================================
+	rechercher_media_depuis_titre(titre : STRING) : IMEDIA is
+	local
+		i : INTEGER
+	do
+		from
+			i:= liste_medias.lower
+		until
+			i > liste_medias.upper
+		loop
+			if liste_medias.item(i).get_titre.has_substring(titre)
+			then
+				Result := liste_medias.item(i)
+			end
+			i := i + 1
+		end
+	end
 end

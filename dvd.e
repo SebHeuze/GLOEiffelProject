@@ -31,8 +31,26 @@ feature {ANY}
 	-- Affiche les infos du livre
 	-- =====================================
 	afficher is
+	local
+		i : INTEGER
 	do
-		io.put_string(titre + "%N");
+		io.put_string("%N************** DVD ******************%N")
+		io.put_string("Titre : "+titre + "%N")
+		io.put_string("Type : "+type+"%N")
+		io.put_string("Acteurs : ")
+		from
+			i := acteurs.lower
+		until
+			i > acteurs.upper
+		loop
+			if(i = acteurs.upper)
+			then
+				io.put_string(acteurs.item(i) + "%N")
+			else
+				io.put_string(acteurs.item(i) + ", ")
+			end
+			i := i + 1
+		end
 	end
 
 	-- =====================================
@@ -103,4 +121,6 @@ feature {ANY}
 	do
 		Result := type
 	end
+	
+	
 end

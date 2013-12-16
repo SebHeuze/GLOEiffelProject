@@ -71,7 +71,6 @@ feature {ANY}
 	-- =====================================
 	afficher is
 	do
-
 	end
 
 invariant
