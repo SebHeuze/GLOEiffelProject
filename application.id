@@ -777,7 +777,7 @@ parent-count: 1 insert: 13
 135 "IPERSONNE" l
 #
 141 "IUTILISATEUR" l
-class-path: "E:\SEB\Documents\GitHub\GLOEiffelProject\IUtilisateur.e"
+class-path: "C:\Users\SEB\Documents\GitHub\GLOEiffelProject\IUtilisateur.e"
 class-name: IUTILISATEUR
 assertion-level: all
 parent-count: 1 insert: 13 
@@ -790,7 +790,7 @@ run-time-set:
 	DOCUMENTALISTE (143)
 #
 140 "MEDIAMANAGER" l
-class-path: "E:\SEB\Documents\GitHub\GLOEiffelProject\mediamanager.e"
+class-path: "C:\Users\SEB\Documents\GitHub\GLOEiffelProject\mediamanager.e"
 class-name: MEDIAMANAGER
 assertion-level: all
 parent-count: 1 insert: 13 
@@ -802,7 +802,7 @@ run-time-set:
 	MEDIAMANAGER (140)
 #
 143 "DOCUMENTALISTE" l
-class-path: "E:\SEB\Documents\GitHub\GLOEiffelProject\documentaliste.e"
+class-path: "C:\Users\SEB\Documents\GitHub\GLOEiffelProject\documentaliste.e"
 class-name: DOCUMENTALISTE
 assertion-level: all
 parent-count: 1 inherit: 141
@@ -814,7 +814,7 @@ run-time-set:
 	DOCUMENTALISTE (143)
 #
 125 "DVD" l
-class-path: "E:\SEB\Documents\GitHub\GLOEiffelProject\dvd.e"
+class-path: "C:\Users\SEB\Documents\GitHub\GLOEiffelProject\dvd.e"
 class-name: DVD
 assertion-level: all
 parent-count: 1 inherit: 126
@@ -826,7 +826,7 @@ run-time-set:
 	DVD (125)
 #
 139 "USERMANAGER" l
-class-path: "E:\SEB\Documents\GitHub\GLOEiffelProject\usermanager.e"
+class-path: "C:\Users\SEB\Documents\GitHub\GLOEiffelProject\usermanager.e"
 class-name: USERMANAGER
 assertion-level: all
 parent-count: 1 insert: 13 
@@ -838,7 +838,7 @@ run-time-set:
 	USERMANAGER (139)
 #
 126 "IMEDIA" l
-class-path: "E:\SEB\Documents\GitHub\GLOEiffelProject\IMedia.e"
+class-path: "C:\Users\SEB\Documents\GitHub\GLOEiffelProject\IMedia.e"
 class-name: IMEDIA
 assertion-level: all
 parent-count: 1 insert: 13 
@@ -851,7 +851,7 @@ run-time-set:
 	LIVRE (127)
 #
 25 "APPLICATION" l
-class-path: "E:\SEB\Documents\GitHub\GLOEiffelProject\application.e"
+class-path: "C:\Users\SEB\Documents\GitHub\GLOEiffelProject\application.e"
 class-name: APPLICATION
 assertion-level: all
 parent-count: 1 insert: 13 
@@ -863,7 +863,7 @@ run-time-set:
 	APPLICATION (25)
 #
 127 "LIVRE" l
-class-path: "E:\SEB\Documents\GitHub\GLOEiffelProject\livre.e"
+class-path: "C:\Users\SEB\Documents\GitHub\GLOEiffelProject\livre.e"
 class-name: LIVRE
 assertion-level: all
 parent-count: 1 inherit: 126
@@ -875,7 +875,7 @@ run-time-set:
 	LIVRE (127)
 #
 142 "ADHERENT" l
-class-path: "E:\SEB\Documents\GitHub\GLOEiffelProject\adherent.e"
+class-path: "C:\Users\SEB\Documents\GitHub\GLOEiffelProject\adherent.e"
 class-name: ADHERENT
 assertion-level: all
 parent-count: 1 inherit: 141

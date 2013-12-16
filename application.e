@@ -42,6 +42,7 @@ feature {ANY}
 		io.put_string("***********************************%N")
 		io.put_string("1 - Afficher livres%N")
 		io.put_string("2 - Afficher DVD%N")
+		io.put_string("3 - Afficher DVD%N")
 		io.put_string("0 - Quitter%N")
 		io.put_string("Votre choix ? ")
 		from

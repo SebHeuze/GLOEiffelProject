@@ -29,8 +29,26 @@ feature{ANY}
 	-- Affiche les infos du livre
 	-- =====================================
 	afficher is
+	local
+		i : INTEGER
 	do
-		io.put_string(titre +"%N");
+		io.put_string("%N************** LIVRE ******************%N")
+			io.put_string("Titre : "+titre + "%N")
+			io.put_string("Type : "+type+"%N")
+			io.put_string("Auteurs : ")
+			from
+				i := auteurs.lower
+			until
+				i > auteurs.upper
+			loop
+				if(i = auteurs.upper)
+				then
+					io.put_string(auteurs.item(i) + "%N")
+				else
+					io.put_string(auteurs.item(i) + ", ")
+				end
+				i := i + 1
+			end
 	end
 
 	-- =====================================
