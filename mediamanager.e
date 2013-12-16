@@ -179,20 +179,27 @@ feature{ANY}
 	-- =====================================
 	-- Recherche un média depuis son titre (recherche de la chaîne demandée dans le titre)
 	-- =====================================
-	rechercher_media_depuis_titre(titre : STRING) : IMEDIA is
+	rechercher_media_depuis_titre(titre : STRING) : ARRAY[IMEDIA] is
 	local
 		i : INTEGER
+		resultats : ARRAY[IMEDIA]
+		titre_courant_to_upper : STRING
 	do
+		create resultats.with_capacity(40,1)
 		from
 			i:= liste_medias.lower
 		until
 			i > liste_medias.upper
 		loop
-			if liste_medias.item(i).get_titre.has_substring(titre)
+			create titre_courant_to_upper.copy(liste_medias.item(i).get_titre)
+			titre_courant_to_upper.to_upper
+			titre.to_upper
+			if titre_courant_to_upper.has_substring(titre)
 			then
-				Result := liste_medias.item(i)
+				resultats.add_last(liste_medias.item(i))
 			end
 			i := i + 1
 		end
+		Result := resultats
 	end
 end

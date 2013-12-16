@@ -28,7 +28,7 @@ feature {ANY}
 	end
 
 	-- =====================================
-	-- Affiche les infos du livre
+	-- Affiche les infos du dvd
 	-- =====================================
 	afficher is
 	local
