@@ -247,6 +247,8 @@ class-name: ROUTINE
 assertion-level: all
 parent-count: 1 insert: 13 
 #
+148 "SAFE_EQUAL[IUTILISATEUR]" l
+#
 64 "FUNCTION" l
 class-path: "C:\SmartEiffel\lib\kernel\function.e"
 class-name: FUNCTION
@@ -780,10 +782,10 @@ parent-count: 1 insert: 13
 class-path: "C:\Users\SEB\Documents\GitHub\GLOEiffelProject\IUtilisateur.e"
 class-name: IUTILISATEUR
 assertion-level: all
-parent-count: 1 insert: 13 
+parent-count: 1 inherit: 34
 c-type: T141 reference: yes
 ref-status: dead 
-destination-graph-nodes: empty
+destination-graph-nodes: ->DOCUMENTALISTE, ->ADHERENT
 run-time-set-count: 2
 run-time-set:
 	ADHERENT (142)

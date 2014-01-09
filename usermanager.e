@@ -9,6 +9,7 @@ creation {ANY}
 
 feature {}
 	liste_utilisateurs : ARRAY[IUTILISATEUR]
+	connected_user : IUTILISATEUR
 
 feature{ANY}
 	init_user_manager is
@@ -25,6 +26,7 @@ feature{ANY}
 		age : INTEGER;
 		adresse : STRING;
 		identifiant: STRING;
+		pass: STRING;
 		index : INTEGER;
 		index2 : INTEGER;
 		contenu_fichier : ARRAY[STRING];
@@ -86,6 +88,9 @@ feature{ANY}
 						if string_tmp.has_substring ("Identifiant") then
 							identifiant := string_data
 						end
+						if string_tmp.has_substring ("Pass") then
+							pass := string_data
+						end
 						if string_tmp.has_substring ("Adresse") then
 							adresse := string_data
 						end
@@ -98,11 +103,11 @@ feature{ANY}
 				end
 
 				if contenu_ligne.has_substring ("Documentaliste ; ") then
-					create a_documentaliste.documentaliste(nom, prenom, adresse, identifiant, age)
+					create a_documentaliste.documentaliste(nom, prenom, adresse, identifiant, pass, age)
 					liste_utilisateurs.add_last(a_documentaliste)
 				end
 				if contenu_ligne.has_substring ("Adherent ; ") then
-					create a_adherent.adherent(nom, prenom, adresse, identifiant, age)
+					create a_adherent.adherent(nom, prenom, adresse, identifiant, pass, age)
 					liste_utilisateurs.add_last(a_adherent);
 				end
 
@@ -111,6 +116,33 @@ feature{ANY}
 			end
 			i := i +1
 		end
+	end
+
+	-- =====================================
+	-- se loguer
+	-- =====================================
+	login(identifiant,password:STRING):BOOLEAN is
+	local
+		utilisateurlogin : ADHERENT
+		index_user: INTEGER
+	do
+		create utilisateurlogin.adherent("", "", "", identifiant,password, 0)
+		index_user := liste_utilisateurs.index_of(utilisateurlogin, 1)
+		if(index_user/= 0 and index_user<=liste_utilisateurs.upper)
+		then
+			connected_user := liste_utilisateurs.item(index_user)
+			Result := True
+		else
+			Result := False
+		end
+	end
+
+	-- =====================================
+	-- Récupérer l'utilisateur connecté
+	-- =====================================
+	get_connected_user:IUTILISATEUR is
+	do
+		Result := connected_user
 	end
 
 

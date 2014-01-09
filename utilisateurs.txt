@@ -1,7 +1,7 @@
-Documentaliste ; Nom<Delahaye> ; Prenom<Benoit> ; Adresse< Boulevard jules verne> ; Identifiant<bdelahay> ; Age<30>
-Documentaliste ; Nom<Haddock> ; Prenom<Archibald> ; Adresse< Rue dupont> ; Identifiant<bachibouzouk> ; Age<32>
-Adherent ; Nom<Tournesol> ; Prenom<Tryphon> ; Adresse< Place royale> ; Identifiant<trytour> ; Age<20>
-Adherent ; Nom<Bolivar> ; Prenom<Anatole> ; Adresse< 9 impasse de l'impasse> ; Identifiant<anabol> ; Age<10>
-Adherent ; Nom<Haddock> ; Prenom<Colin> ; Adresse< 12 rue de la poste> ; Identifiant<colhad> ; Age<50>
-Adherent ; Nom<Bocasa> ; Prenom<Tryphon> ; Adresse< 150 rue guitouboy> ; Identifiant<trybo> ; Age<30>
-Adherent ; Nom<Patacaisse> ; Prenom<Babar> ; Adresse< Boulevard jules ferry> ; Identifiant<babapa> ; Age<40>
+Documentaliste ; Nom<Delahaye> ; Prenom<Benoit> ; Adresse< Boulevard jules verne> ; Identifiant<bdelahay> ; Pass<bdelahay> ;Age<30>
+Documentaliste ; Nom<Haddock> ; Prenom<Archibald> ; Adresse< Rue dupont> ; Identifiant<bachibouzouk> ; Pass<bachibouzouk> ; Age<32>
+Adherent ; Nom<Tournesol> ; Prenom<Tryphon> ; Adresse< Place royale> ; Identifiant<trytour> ; Pass<trytour> ; Age<20>
+Adherent ; Nom<Bolivar> ; Prenom<Anatole> ; Adresse< 9 impasse de l'impasse> ; Identifiant<anabol> ; Pass<anabol> ; Age<10>
+Adherent ; Nom<Haddock> ; Prenom<Colin> ; Adresse< 12 rue de la poste> ; Identifiant<colhad> ; Pass<colhad> ; Age<50>
+Adherent ; Nom<Bocasa> ; Prenom<Tryphon> ; Adresse< 150 rue guitouboy> ; Identifiant<trybo> ; Pass<trybo> ; Age<30>
+Adherent ; Nom<Patacaisse> ; Prenom<Babar> ; Adresse< Boulevard jules ferry> ; Identifiant<babapa> ; Pass<babapa> ; Age<40>

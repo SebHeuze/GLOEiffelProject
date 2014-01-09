@@ -3,9 +3,12 @@ indexing
 	description: "Classe abstraite regroupant les propriétés communes à tous les utilisateurs"
 
 deferred class IUTILISATEUR
-
-feature{}
-	nom, prenom, adresse : STRING
+	inherit COMPARABLE
+	redefine
+            is_equal
+  	end
+feature{IUTILISATEUR}
+	nom, prenom, adresse, password : STRING
 	age : INTEGER
 	identifiant : STRING
 
@@ -14,13 +17,14 @@ feature {ANY}
 	-- =====================================
 	-- Initialisation d'un utilisateur
 	-- =====================================
-	init(inom, iprenom, iadresse, iidentifiant : STRING; iage : INTEGER) is
+	init(inom, iprenom, iadresse, iidentifiant,ipassword : STRING; iage : INTEGER) is
 	do
 		nom := inom
 		prenom := iprenom
 		adresse := iadresse
 		age := iage
 		identifiant := iidentifiant
+		password := ipassword
 	end
 
 	-- =====================================
@@ -86,4 +90,17 @@ feature {ANY}
 	do
 		nom := inom
 	end
+
+	-- =====================================
+	-- compare deux utilisateurs
+	-- =====================================
+	is_equal(utilisateur2: like Current):BOOLEAN is
+	do
+		Result := identifiant.is_equal(utilisateur2.identifiant) and password.is_equal(utilisateur2.password)
+	end
+
+	infix "<" (utilisateur2: like Current): BOOLEAN is
+    do
+      Result := identifiant < utilisateur2.identifiant
+    end
 end
