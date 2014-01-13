@@ -52,6 +52,68 @@ feature {ANY}
 	end
 
 	-- =====================================
+	-- Retourne la string de sauvegarde d'un DVD
+	-- =====================================
+	save : STRING is
+	local
+		stringsave : STRING
+		i : INTEGER
+	do
+		stringsave := "DVD ; "
+		if(not titre.is_equal(""))
+      	then
+      		stringsave.append_string("Titre<")
+      		stringsave.append_string(titre)
+      		stringsave.append_string(">")
+      	end
+      	if(not annee.is_equal(0))
+      	then
+      		stringsave.append_string("Annee<")
+      		stringsave.append_string(annee.to_string)
+      		stringsave.append_string(">")
+      	end
+		if(not realisateurs.count.is_equal(0))
+      	then
+     		from
+				i := realisateurs.lower
+			until
+				i > realisateurs.upper
+			loop
+				stringsave.append_string(" ; Realisateur<")
+	      		stringsave.append_string(realisateurs.item(i))
+	      		stringsave.append_string(">")
+				i := i + 1
+			end
+      	end
+      	if(not acteurs.count.is_equal(0))
+      	then
+     		from
+				i := acteurs.lower
+			until
+				i > acteurs.upper
+			loop
+				stringsave.append_string(" ; Acteur<")
+	      		stringsave.append_string(acteurs.item(i))
+	      		stringsave.append_string(">")
+				i := i + 1
+			end
+      	end
+      	if(not type.is_equal(""))
+      	then
+	      	stringsave.append_string(" ; Type<")
+	      	stringsave.append_string(type)
+	      	stringsave.append_string(">")
+      	end
+      	stringsave.append_string(" ; Nombre<")
+      	stringsave.append_string(get_nombre_possedes.to_string)
+      	stringsave.append_string(">")
+      	stringsave.append_string(" ; Disponible<")
+      	stringsave.append_string(get_nombre_disponible.to_string)
+      	stringsave.append_string(">")
+		Result := stringsave
+	end
+
+	-- =====================================
 	-- Ajoute un realisateur dans la liste des realisateurs
 	-- =====================================
 	add_realisateur(realisateur : STRING) is
@@ -119,6 +181,6 @@ feature {ANY}
 	do
 		Result := type
 	end
-	
-	
+
+
 end

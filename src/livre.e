@@ -49,6 +49,44 @@ feature{ANY}
 	end
 
 	-- =====================================
+	-- Sauvegarde les infos du livre (crée la ligne
+	-- =====================================
+	save : STRING is
+	local
+		stringsave : STRING
+		i : INTEGER
+	do
+		stringsave := "Livre ; "
+      	if(not titre.is_equal(""))
+      	then
+      		stringsave.append_string("Titre<")
+      		stringsave.append_string(titre)
+      		stringsave.append_string(">")
+      	end
+		if(not auteurs.count.is_equal(0))
+      	then
+     		from
+				i := auteurs.lower
+			until
+				i > auteurs.upper
+			loop
+				stringsave.append_string(" ; Auteur<")
+	      		stringsave.append_string(auteurs.item(i))
+	      		stringsave.append_string(">")
+				i := i + 1
+			end
+      	end
+      	stringsave.append_string(" ; Nombre<")
+      	stringsave.append_string(get_nombre_possedes.to_string)
+      	stringsave.append_string(">")
+      	stringsave.append_string(" ; Disponible<")
+      	stringsave.append_string(get_nombre_disponible.to_string)
+      	stringsave.append_string(">")
+
+      	Result := stringsave
+	end
+
+	-- =====================================
 	-- Ajoute un auteur dans la liste des auteurs
 	-- =====================================
 	add_auteur(auteur : STRING) is
@@ -106,4 +144,5 @@ feature{ANY}
 	do
 		type := itype
 	end
+
 end

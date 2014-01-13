@@ -51,6 +51,38 @@ feature {ANY}
 	end
 
 	-- =====================================
+	-- Renvoie le nombre dispo du media courant
+	-- =====================================
+	get_nombre_disponible : INTEGER is
+	do
+		Result := nombre_disponible
+	end
+
+	-- =====================================
+	-- Modifie le nombre dispo du media courant
+	-- =====================================
+	set_nombre_disponible(new_nombre_disponible : INTEGER) is
+	do
+		nombre_disponible := new_nombre_disponible
+	end
+
+	-- =====================================
+	-- Renvoie le nombre possedes du media courant
+	-- =====================================
+	get_nombre_possedes : INTEGER is
+	do
+		Result := nombre_possedes
+	end
+
+	-- =====================================
+	-- Modifie le nombre posessed du media courant
+	-- =====================================
+	set_nombre_possedes(new_nombre_possedes : INTEGER) is
+	do
+		nombre_possedes := new_nombre_possedes
+	end
+
+	-- =====================================
 	-- Renvoie l'annÃ©e d'Ã©dition du mÃ©dia
 	-- =====================================
 	get_annee : INTEGER is
@@ -70,6 +102,11 @@ feature {ANY}
 	-- Affiche le média
 	-- =====================================
 	afficher is deferred end
+
+	-- =====================================
+	-- Retourne la string sauvegarde du média
+	-- =====================================
+	save: STRING is deferred end
 
 invariant
 	nb_exemplaires: nombre_disponible >= 0

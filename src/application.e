@@ -33,6 +33,7 @@ feature {ANY}
 		io.put_string("Initialisation::Medias charges.%N")
 		create user_manager.init_user_manager
 		io.put_string("Initialisation::Utilisateurs charges.%N")
+		media_manager.save_to_file
 		display_ecran_login
 		io.put_string("Initialisation::Fin.%N")
 	end
@@ -239,9 +240,9 @@ feature {ANY}
 	-- =====================================
 	display_menu_emprunts is
 	do
-		
+
 	end
-	
+
 	-- =====================================
 	-- Affichage du menu des emprunts
 	-- =====================================
@@ -253,7 +254,7 @@ feature {ANY}
 		io.put_string("1- Recherche par nom")
 		io.put_string("2- Recherche par identifiant")
 		io.put_string("0- Retour")
-		
+
 		from
 			io.read_line
 		until
@@ -263,7 +264,7 @@ feature {ANY}
 			io.read_line
 		end
 	end
-	
+
 	-- =====================================
 	-- Recherche d'un utilisateur depuis son nom
 	-- =====================================
@@ -292,7 +293,7 @@ feature {ANY}
 		end
 		display_menu_utilisateurs
 	end
-	
+
 	-- =====================================
 	-- Recherche d'un utilisateur depuis son identifiant
 	-- =====================================

@@ -75,7 +75,7 @@ feature{ANY}
 				from
 				until index = 0
 				loop
-					
+
 
 					index := contenu_ligne.index_of (';', index)
 					index2 := contenu_ligne.index_of (';', index+1)
@@ -122,7 +122,7 @@ feature{ANY}
 					create acteurs.with_capacity(20,1)
 					create realisateurs.with_capacity(20,1)
 				end
-				
+
 				-- Réinitialisation des propriétés communes
 				create titre.make_empty
 				create type.make_empty
@@ -135,6 +135,35 @@ feature{ANY}
 			i := i +1
 		end
 	end
+	-- =====================================
+	-- Sauvegarde les medias
+	-- =====================================
+	save_to_file is
+    local
+      output : TEXT_FILE_WRITE
+      stringsave : STRING
+      j : INTEGER
+    do
+      create output.connect_to("test.txt")
+
+      from j := liste_medias.lower
+      until j > liste_medias.upper
+      loop
+      	if(liste_medias.item(j).generating_type.is_equal("LIVRE"))
+      	then
+      		stringsave := liste_medias.item(j).save
+      		output.put_string(stringsave)
+      	else
+      		stringsave := liste_medias.item(j).save
+      		output.put_string(stringsave)
+      	end
+        output.put_new_line
+        j := j + 1
+      end
+      output.disconnect
+
+      io.put_string("Sauvegarde.")
+      end
 
 	-- =====================================
 	-- affiche les livres
@@ -175,7 +204,7 @@ feature{ANY}
 			i := i + 1
 		end
 	end
-	
+
 	-- =====================================
 	-- Recherche un média depuis son titre (recherche de la chaîne demandée dans le titre)
 	-- =====================================
