@@ -18,6 +18,12 @@ feature {ANY}
 	-- Initialisation d'un utilisateur
 	-- =====================================
 	init(inom, iprenom, iadresse, iidentifiant,ipassword : STRING; iage : INTEGER) is
+	require
+		nom_ok : inom.count > 0
+		prenom_ok : iprenom.count > 0
+		adresse_ok : iadresse.count > 0
+		identifiant_ok : iidentifiant.count > 0
+		age_ok : iage > 0
 	do
 		nom := inom
 		prenom := iprenom
@@ -39,6 +45,8 @@ feature {ANY}
 	-- Set l'identifiant de l'utilisateur
 	-- =====================================
 	set_identifiant(input_identifiant : STRING) is
+	require
+		input_identifiant.count > 0
 	do
 		identifiant := input_identifiant
 	end
@@ -63,6 +71,8 @@ feature {ANY}
 	-- Modifie le prénom
 	-- =====================================
 	set_prenom(iprenom : STRING) is
+	require
+		prenom_ok : iprenom.count > 0
 	do
 		prenom := iprenom
 	end
@@ -87,6 +97,8 @@ feature {ANY}
 	-- Modifie le nom
 	-- =====================================
 	set_nom(inom : STRING) is
+	require
+		inom.count > 0
 	do
 		nom := inom
 	end

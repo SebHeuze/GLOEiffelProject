@@ -1,6 +1,6 @@
 -- ImplÃ©mentation de la classe IMedia reprÃ©sentant un Livre
 indexing
-	description:"ImplÃ©mentation de IMedia pour un Livre"
+	description:"Classe de gestion des mÃ©dias"
 
 class MEDIAMANAGER
 
@@ -32,12 +32,12 @@ feature{ANY}
 		index2 : INTEGER;
 		contenu_fichier : ARRAY[STRING];
 	do
-		--Initialisation des variables nécessaires à l'ouverture du fichier
+		--Initialisation des variables nÃ©cessaires Ã  l'ouverture du fichier
 		path_media := "medias.txt"
 		create text_file_read.connect_to(path_media)
 		create contenu_fichier.with_capacity(56,1)
 
-		--Initialisation des listes de médias
+		--Initialisation des listes de mÃ©dias
 		create liste_medias.with_capacity(60,1)
 
 		--Initialisation des variables temporaires
@@ -69,7 +69,7 @@ feature{ANY}
 			i > contenu_fichier.upper
 		loop
 			if contenu_fichier.item(i) /= Void then
-				--On récupère le contenu de la ligne
+				--On rÃ©cupÃ¨re le contenu de la ligne
 				contenu_ligne := contenu_fichier.item(i)
 				index := 1;
 				from
@@ -122,8 +122,13 @@ feature{ANY}
 					create acteurs.with_capacity(20,1)
 					create realisateurs.with_capacity(20,1)
 				end
+<<<<<<< HEAD
 
 				-- Réinitialisation des propriétés communes
+=======
+				
+				-- RÃ©initialisation des propriÃ©tÃ©s communes
+>>>>>>> 58ad921fd96b3fe51d4cd43f8c5f85e0ea6baed4
 				create titre.make_empty
 				create type.make_empty
 				nombre := 0
@@ -206,9 +211,11 @@ feature{ANY}
 	end
 
 	-- =====================================
-	-- Recherche un média depuis son titre (recherche de la chaîne demandée dans le titre)
+	-- Recherche un mÃ©dia depuis son titre (recherche de la chaÃ®ne demandÃ©e dans le titre)
 	-- =====================================
 	rechercher_media_depuis_titre(titre : STRING) : ARRAY[IMEDIA] is
+	require
+		titre.count > 0
 	local
 		i : INTEGER
 		resultats : ARRAY[IMEDIA]

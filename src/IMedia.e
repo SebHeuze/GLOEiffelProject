@@ -30,6 +30,7 @@ feature {ANY}
 	emprunter(nb_exemplaires : INTEGER) is
 	require
 		nb_exemplaires_suffisant: nb_exemplaires <= nombre_disponible
+		nb_emprunts_positif : nb_exemplaires > 0
 	do
 		nombre_disponible := nombre_disponible - 1
 	end
@@ -46,6 +47,8 @@ feature {ANY}
 	-- Modifie le titre du mÃ©dia courant
 	-- =====================================
 	set_titre(new_titre : STRING) is
+	require
+		titre_ok : new_titre.count > 0
 	do
 		titre := new_titre
 	end
@@ -94,6 +97,8 @@ feature {ANY}
 	-- Modifie l'annÃ©e d'Ã©dition du mÃ©dia
 	-- =====================================
 	set_annee(iannee : INTEGER) is
+	require
+		annee_ok : iannee > 0
 	do
 		annee := iannee
 	end

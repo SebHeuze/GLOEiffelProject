@@ -1,6 +1,6 @@
 -- ImplÃ©mentation de la classe IMedia reprÃ©sentant un Livre
 indexing
-	description:"ImplÃ©mentation de IMedia pour un Livre"
+	description:"Classe de gestion des utilisateurs"
 
 class USERMANAGER
 
@@ -31,12 +31,12 @@ feature{ANY}
 		index2 : INTEGER;
 		contenu_fichier : ARRAY[STRING];
 	do
-		--Initialisation des variables nécessaires à l'ouverture du fichier
+		--Initialisation des variables nÃ©cessaires Ã  l'ouverture du fichier
 		path_utilisateurs := "utilisateurs.txt"
 		create text_file_read.connect_to(path_utilisateurs)
 		create contenu_fichier.with_capacity(56,1)
 
-		--Initialisation des listes de médias
+		--Initialisation des listes de mÃ©dias
 		create liste_utilisateurs.with_capacity(60,1)
 
 		--Ouverture du fichier
@@ -63,7 +63,7 @@ feature{ANY}
 			i > contenu_fichier.upper
 		loop
 			if contenu_fichier.item(i) /= Void then
-				--On récupère le contenu de la ligne
+				--On rÃ©cupÃ¨re le contenu de la ligne
 				contenu_ligne := contenu_fichier.item(i)
 				index := 1;
 				from
@@ -126,12 +126,13 @@ feature{ANY}
 		utilisateurlogin : ADHERENT
 		adminlogin : DOCUMENTALISTE
 		index_user: INTEGER
+		
 	do
 		if(admin) then
-			create adminlogin.documentaliste("", "", "", identifiant,password, 0)
+			create adminlogin.documentaliste("osef", "osef", "osef", identifiant,password, 10)
 			index_user := liste_utilisateurs.index_of(adminlogin, 1)
 		else
-			create utilisateurlogin.adherent("", "", "", identifiant,password, 0)
+			create utilisateurlogin.adherent("osef", "osef", "osef", identifiant,password, 10)
 			index_user := liste_utilisateurs.index_of(utilisateurlogin, 1)
 		end
 		if(index_user/= 0 and index_user<=liste_utilisateurs.upper)
@@ -144,7 +145,7 @@ feature{ANY}
 	end
 
 	-- =====================================
-	-- Récupérer l'utilisateur connecté
+	-- RÃ©cupÃ©rer l'utilisateur connectÃ©
 	-- =====================================
 	get_connected_user:IUTILISATEUR is
 	do
@@ -183,29 +184,28 @@ feature{ANY}
 	-- =====================================
 	-- Recherche un utilisateur depuis son identifiant
 	-- =====================================
-	rechercher_utilisateur_depuis_identifiant(identifiant : STRING) : ARRAY[IUTILISATEUR] is
+	rechercher_utilisateur_depuis_identifiant(identifiant : STRING) : IUTILISATEUR is
 	require
 		identifiant.count > 0
 	local
 		i : INTEGER
-		resultats : ARRAY[IUTILISATEUR]
 		id_courant_to_upper : STRING
+		trouve : BOOLEAN
 	do
-		create resultats.with_capacity(40,1)
+		trouve := False
 		from
 			i:= liste_utilisateurs.lower
 		until
-			i > liste_utilisateurs.upper
+			i > liste_utilisateurs.upper or trouve = True
 		loop
 			create id_courant_to_upper.copy(liste_utilisateurs.item(i).get_identifiant)
 			id_courant_to_upper.to_upper
 			identifiant.to_upper
 			if id_courant_to_upper.has_substring(identifiant)
 			then
-				resultats.add_last(liste_utilisateurs.item(i))
+				Result := liste_utilisateurs.item(i)
 			end
 			i := i + 1
 		end
-		Result := resultats
 	end
 end
