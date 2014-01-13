@@ -3,7 +3,7 @@ class ADHERENT inherit IUTILISATEUR
 creation{ANY}
 	adherent
 feature {}
-	liste_emprunts : ARRAY[IMEDIA]
+	liste_emprunts : ARRAY[EMPRUNT]
 
 feature{ANY}
 	adherent(input_nom, input_prenom, input_adresse, input_identifiant, input_pass : STRING; input_age : INTEGER) is

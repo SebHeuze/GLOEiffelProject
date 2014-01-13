@@ -6,7 +6,7 @@ class DVD
 
 inherit IMEDIA
 	redefine
-            afficher
+		afficher
     end
 creation {ANY}
 	dvd
@@ -62,7 +62,7 @@ feature {ANY}
 	end
 
 	-- =====================================
-	-- Récupère un realisateur dans la liste des realisateurs
+	-- RÃ©cupÃšre un realisateur dans la liste des realisateurs
 	-- =====================================
 	get_realisateur(rang : INTEGER) : STRING is
 	require
@@ -72,7 +72,7 @@ feature {ANY}
 	end
 
 	-- =====================================
-	-- Renvoie la liste des r�alisateurs
+	-- Renvoie la liste des réalisateurs
 	-- =====================================
 	get_realisateurs : ARRAY[STRING] is
 	do
@@ -89,7 +89,7 @@ feature {ANY}
 	end
 
 	-- =====================================
-	-- Récupère un acteur dans la liste des acteurs
+	-- RÃ©cupÃšre un acteur dans la liste des acteurs
 	-- =====================================
 	get_acteur(rang : INTEGER) : STRING is
 	require
