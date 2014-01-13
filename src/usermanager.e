@@ -121,13 +121,19 @@ feature{ANY}
 	-- =====================================
 	-- se loguer
 	-- =====================================
-	login(identifiant,password:STRING):BOOLEAN is
+	login(identifiant,password:STRING; admin : BOOLEAN):BOOLEAN is
 	local
 		utilisateurlogin : ADHERENT
+		adminlogin : DOCUMENTALISTE
 		index_user: INTEGER
 	do
-		create utilisateurlogin.adherent("", "", "", identifiant,password, 0)
-		index_user := liste_utilisateurs.index_of(utilisateurlogin, 1)
+		if(admin) then
+			create adminlogin.documentaliste("", "", "", identifiant,password, 0)
+			index_user := liste_utilisateurs.index_of(adminlogin, 1)
+		else
+			create utilisateurlogin.adherent("", "", "", identifiant,password, 0)
+			index_user := liste_utilisateurs.index_of(utilisateurlogin, 1)
+		end
 		if(index_user/= 0 and index_user<=liste_utilisateurs.upper)
 		then
 			connected_user := liste_utilisateurs.item(index_user)

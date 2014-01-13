@@ -9,6 +9,8 @@ class APPLICATION
 --
 -- To compile an optimized version type : se c hello_world -boost -O2
 --
+inherit
+    ARGUMENTS
 
 creation {ANY}
 	main
@@ -42,6 +44,7 @@ feature {ANY}
 	display_ecran_login is
 	local
 		identifiant, password: STRING;
+		admin : BOOLEAN;
 	do
 		io.put_string("%N")
 		io.put_string("*************************************%N")
@@ -49,13 +52,23 @@ feature {ANY}
 		io.put_string("*************************************%N")
 		io.put_string("L'acces a cette application est protége par un login%N")
 		io.put_string("Identifiant :%N")
+		identifiant :=""
+		password :=""
 		io.read_line
-		identifiant := io.last_string
+		identifiant.copy (io.last_string)
 		io.put_string("Mot de passe :%N")
 		io.read_line
-		password := io.last_string
+		password.copy (io.last_string)
 
-		if(user_manager.login(identifiant, password))
+		if(argument_count > 0) then
+			if(argument(1).is_equal("admin"))
+			then
+				admin := True
+			else
+				admin := False
+			end
+		end
+		if(user_manager.login(identifiant, password, admin))
 		then
 			io.put_string("Bienvenue " + user_manager.get_connected_user.get_nom +" "+ user_manager.get_connected_user.get_prenom)
 			display_menu_principal
@@ -221,14 +234,14 @@ feature {ANY}
 		end
 		display_menu_utilisateurs
 	end
-	
+
 	-- =====================================
 	-- Affichage du menu des emprunts
 	-- =====================================
 	display_menu_emprunts is
 	do
 	end
-	
+
 	-- =====================================
 	-- Recherche d'une oeuvre par titre
 	-- =====================================

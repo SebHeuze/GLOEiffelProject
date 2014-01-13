@@ -96,7 +96,7 @@ feature {ANY}
 	-- =====================================
 	is_equal(utilisateur2: like Current):BOOLEAN is
 	do
-		Result := identifiant.is_equal(utilisateur2.identifiant) and password.is_equal(utilisateur2.password)
+		Result := identifiant.is_equal(utilisateur2.identifiant) and password.is_equal(utilisateur2.password) and utilisateur2.generating_type.is_equal(generating_type)
 	end
 
 	infix "<" (utilisateur2: like Current): BOOLEAN is
