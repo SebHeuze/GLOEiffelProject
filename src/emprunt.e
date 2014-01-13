@@ -1,6 +1,8 @@
 -- =====================================
 -- Représentation d'un emprunt
 -- =====================================
+indexing
+	description:"Emprunt représenté par un emprunteur, un média emprunté, une date et une durée"
 class EMPRUNT
 
 creation{ANY}
@@ -15,20 +17,14 @@ feature {}
 feature{ANY}
 
 	emprunt(new_emprunteur : ADHERENT; new_media : IMEDIA; new_date_emprunt, new_duree_emprunt : TIME) is
+	require
+		new_duree_emprunt.to_microsecond_time.microsecond > 0
 	do
 		emprunteur := new_emprunteur
 		media := new_media
 		date_emprunt := new_date_emprunt
 		duree_emprunt := new_date_emprunt
 	end
-
-	-- =====================================
-	-- compare deux utilisateurs
-	-- =====================================
-	--is_equal(utilisateur2 : ADHERENT):BOOLEAN is
-	--do
-	--	Result := (identifiant.is_equal(utilisateur2.identifiant) and password.is_equal(utilisateur2.password))
-	--end
 	
 	-- =====================================
 	-- Retourne true si emprunt en retard

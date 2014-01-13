@@ -44,8 +44,8 @@ feature {ANY}
 		identifiant, password: STRING;
 	do
 		io.put_string("%N***********************************%N")
-		io.put_string("*******    MediaTek'           *****%N")
-		io.put_string("***********************************%N")
+		io.put_string("*******       MediaTek'         *****%N")
+		io.put_string("*************************************%N")
 		io.put_string("L'acces a cette application est protége par un login%N")
 		io.put_string("Identifiant :%N")
 		io.read_line
@@ -71,8 +71,8 @@ feature {ANY}
 	display_menu_principal is
 	do
 		io.put_string("%N***********************************%N")
-		io.put_string("*******    Menu Principal     *****%N")
-		io.put_string("***********************************%N")
+		io.put_string("*******     Menu Principal      *****%N")
+		io.put_string("*************************************%N")
 		io.put_string("1 - Menu livres%N")
 		io.put_string("2 - Menu DVD%N")
 		io.put_string("3 - Menu Utilisateurs%N")
@@ -111,8 +111,8 @@ feature {ANY}
 	display_menu_dvd is
 	do
 		io.put_string("%N***********************************%N")
-		io.put_string("**********    Menu DVD     ********%N")
-		io.put_string("***********************************%N")
+		io.put_string("**********     Menu DVD      ********%N")
+		io.put_string("*************************************%N")
 		io.put_string("1 - Afficher DVDs%N")
 		io.put_string("2 - Rechercher un DVD depuis son titre%N")
 		io.put_string("3 - Modifier un DVD%N")
@@ -148,8 +148,8 @@ feature {ANY}
 	display_menu_livres is
 	do
 		io.put_string("%N***********************************%N")
-		io.put_string("********    Menu livres     *******%N")
-		io.put_string("***********************************%N")
+		io.put_string("********     Menu livres      *******%N")
+		io.put_string("*************************************%N")
 		io.put_string("1 - Afficher livres%N")
 		io.put_string("2 - Rechercher livres%N")
 		io.put_string("3 - Modifier livre%N")
@@ -184,7 +184,7 @@ feature {ANY}
 		io.put_string("%N***********************************%N")
 		io.put_string("**********Menu Utilisateurs ********%N")
 		io.put_string("***********************************%N")
-		io.put_string("1 - Afficher Utilisateurs%N")
+		io.put_string("1 - Afficher un utilisateur%N")
 		io.put_string("2 - Rechercher un Utilisateur%N")
 		io.put_string("3 - Modifier un Utilisateur%N")
 		io.put_string("4 - Supprimer un Utilisateur%N")
@@ -212,6 +212,7 @@ feature {ANY}
 		end
 		display_menu_utilisateurs
 	end
+	
 	-- =====================================
 	-- Recherche d'une oeuvre par titre
 	-- =====================================

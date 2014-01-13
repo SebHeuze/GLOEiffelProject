@@ -1,4 +1,4 @@
--- Classe abstraite représentant un média.
+-- Classe abstraite représentant un mÃ©dia.
 -- La classe qui implémentera devra à priori utiliser le mot clé effective, Cf tutoriel eiffel sur madoc
 indexing
 	description:"Classe abstraite représentant un média"
@@ -8,13 +8,13 @@ deferred class IMEDIA
 feature {}
 	titre: STRING
 	annee: INTEGER
-	nombre_disponible: INTEGER -- Représente le nombre d'exemplaires encore disponibles à l'emprunt
-	nombre_possedes: INTEGER -- Représente le nombre d'exemplaires total (nbreDispos + nbreEmpruntés)
+	nombre_disponible: INTEGER -- Represente le nombre d'exemplaires encore disponibles a l'emprunt
+	nombre_possedes: INTEGER -- Represente le nombre d'exemplaires total (nbreDispos + nbreEmpruntes)
 
 feature {ANY}
 
 	-- =====================================
-	-- Initialisation d'un media depuis les paramètres fournis
+	-- Initialisation d'un media depuis les paramÃštres fournis
 	-- =====================================
 	init (ititre : STRING; iannee, inombre_disponible, inombre_possedes : INTEGER) is
 	do
@@ -25,7 +25,7 @@ feature {ANY}
 	end
 
 	-- =====================================
-	-- Matérialise l'emprunt d'un média, ie diminution du nombre d'exemplaires disponibles
+	-- MatÃ©rialise l'emprunt d'un mÃ©dia, ie diminution du nombre d'exemplaires disponibles
 	-- =====================================
 	emprunter(nb_exemplaires : INTEGER) is
 	require
@@ -35,7 +35,7 @@ feature {ANY}
 	end
 
 	-- =====================================
-	-- Renvoie le titre du média courant
+	-- Renvoie le titre du mÃ©dia courant
 	-- =====================================
 	get_titre : STRING is
 	do
@@ -43,7 +43,7 @@ feature {ANY}
 	end
 
 	-- =====================================
-	-- Modifie le titre du média courant
+	-- Modifie le titre du mÃ©dia courant
 	-- =====================================
 	set_titre(new_titre : STRING) is
 	do
@@ -51,7 +51,7 @@ feature {ANY}
 	end
 
 	-- =====================================
-	-- Renvoie l'année d'édition du média
+	-- Renvoie l'annÃ©e d'Ã©dition du mÃ©dia
 	-- =====================================
 	get_annee : INTEGER is
 	do
@@ -59,7 +59,7 @@ feature {ANY}
 	end
 
 	-- =====================================
-	-- Modifie l'année d'édition du média
+	-- Modifie l'annÃ©e d'Ã©dition du mÃ©dia
 	-- =====================================
 	set_annee(iannee : INTEGER) is
 	do
@@ -67,7 +67,7 @@ feature {ANY}
 	end
 
 	-- =====================================
-	-- Affiche le m�dia
+	-- Affiche le média
 	-- =====================================
 	afficher is
 	do
