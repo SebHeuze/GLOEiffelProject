@@ -70,7 +70,7 @@ feature {ANY}
       	then
       		stringsave.append_string("Annee<")
       		stringsave.append_string(annee.to_string)
-      		stringsave.append_string(">")
+      		stringsave.append_string(">") 
       	end
 		if(not realisateurs.count.is_equal(0))
       	then

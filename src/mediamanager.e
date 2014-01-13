@@ -122,13 +122,7 @@ feature{ANY}
 					create acteurs.with_capacity(20,1)
 					create realisateurs.with_capacity(20,1)
 				end
-<<<<<<< HEAD
-
-				-- Réinitialisation des propriétés communes
-=======
-				
-				-- RÃ©initialisation des propriÃ©tÃ©s communes
->>>>>>> 58ad921fd96b3fe51d4cd43f8c5f85e0ea6baed4
+				-- Reinitialisation des proprietes communes
 				create titre.make_empty
 				create type.make_empty
 				nombre := 0
