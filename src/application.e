@@ -16,6 +16,7 @@ creation {ANY}
 feature {}
 	media_manager : MEDIAMANAGER
 	user_manager : USERMANAGER
+	emprunt_manager : EMPRUNTMANAGER
 
 feature {ANY}
 	main is
@@ -37,7 +38,7 @@ feature {ANY}
 
 
 	-- =====================================
-	-- Affiche l'écran login
+	-- Affiche l'Ã©cran login
 	-- =====================================
 	display_ecran_login is
 	local
@@ -47,7 +48,7 @@ feature {ANY}
 		io.put_string("*************************************%N")
 		io.put_string("*******       MediaTek'         *****%N")
 		io.put_string("*************************************%N")
-		io.put_string("L'acces a cette application est protége par un login%N")
+		io.put_string("L'acces a cette application est protÃ©ge par un login%N")
 		io.put_string("Identifiant :%N")
 		io.read_line
 		identifiant := io.last_string
@@ -85,7 +86,7 @@ feature {ANY}
 		from
 			io.read_line
 		until
-			io.last_string.is_equal("1") or io.last_string.is_equal("2") or io.last_string.is_equal("3") or io.last_string.is_equal("0")
+			io.last_string.is_equal("1") or io.last_string.is_equal("2") or io.last_string.is_equal("3") or io.last_string.is_equal("4") or io.last_string.is_equal("0")
 		loop
 			io.put_string("Votre choix ? ")
 			io.read_line
@@ -218,7 +219,6 @@ feature {ANY}
 		then
 			display_menu_principal
 		end
-		display_menu_utilisateurs
 	end
 	
 	-- =====================================
@@ -226,20 +226,57 @@ feature {ANY}
 	-- =====================================
 	display_menu_emprunts is
 	do
+		io.put_string("%N")
+		io.put_string("************************************%N")
+		io.put_string("*********   Menu emprunts   ********%N")
+		io.put_string("************************************%N")
+		io.put_string("1 - Afficher un emprunt%N")
+		io.put_string("2 - Rechercher un emprunt%N")
+		io.put_string("3 - CrÃ©er un emprunt%N")
+		io.put_string("4 - ClÃ´turer un emprunt%N")
+		io.put_string("0 - Retour%N")
+		io.put_string("Votre choix ? ")
 		
+		from
+			io.read_line
+		until
+			io.last_string.is_equal("1") or io.last_string.is_equal("2") or io.last_string.is_equal("3") or io.last_string.is_equal("4") or io.last_string.is_equal("0")
+		loop
+			io.put_string("Votre choix ? ")
+			io.read_line
+		end
+		
+		if(io.last_string.is_equal("1"))
+		then
+			
+		elseif(io.last_string.is_equal("2"))
+		then
+			
+		elseif(io.last_string.is_equal("3"))
+		then
+			display_menu_utilisateurs
+		elseif(io.last_string.is_equal("4"))
+		then
+			
+		elseif(io.last_string.is_equal("0"))
+		then
+			display_menu_principal
+		end
 	end
 	
 	-- =====================================
-	-- Affichage du menu des emprunts
+	-- Affichage du menu des utilisateurs
 	-- =====================================
 	display_menu_recherche_utilisateur is
 	do
 		io.put_string("%N")
 		io.put_string("************************************%N")
 		io.put_string("***** Recherche d'utilisateur ******%N")
-		io.put_string("1- Recherche par nom")
-		io.put_string("2- Recherche par identifiant")
-		io.put_string("0- Retour")
+		io.put_string("************************************%N")
+		io.put_string("1- Recherche par nom%N")
+		io.put_string("2- Recherche par identifiant%N")
+		io.put_string("0- Retour%N")
+		io.put_string("Votre choix ? ")
 		
 		from
 			io.read_line
@@ -249,6 +286,18 @@ feature {ANY}
 			io.put_string("Votre choix ? ")
 			io.read_line
 		end
+		
+		if(io.last_string.is_equal("1"))
+		then
+			display_recherche_utilisateur_par_nom
+		elseif(io.last_string.is_equal("2"))
+		then
+			display_recherche_utilisateur_par_identifiant
+		elseif(io.last_string.is_equal("0"))
+		then
+			display_menu_utilisateurs
+		end
+			
 	end
 	
 	-- =====================================
@@ -285,26 +334,17 @@ feature {ANY}
 	-- =====================================
 	display_recherche_utilisateur_par_identifiant is
 	local
-		i : INTEGER
-		resultats_recherche : ARRAY[IUTILISATEUR]
+		resultat_recherche : IUTILISATEUR
 	do
 		io.put_string("********    Recherche par identifiant    *******%N")
 		io.put_string("Veuillez saisir tout ou une partie de l'identifiant :%N")
 		io.read_line
-		resultats_recherche := user_manager.rechercher_utilisateur_depuis_identifiant(io.last_string)
-		if resultats_recherche.is_empty
+		resultat_recherche := user_manager.rechercher_utilisateur_depuis_identifiant(io.last_string)
+		if resultat_recherche = Void
 		then
 			io.put_string("Aucun utilisateur correspondant n'a ete trouve.%N")
 		else
-			from
-				i := resultats_recherche.lower
-			until
-				i > resultats_recherche.upper
-			loop
-				io.put_string("%NResultat "+i.to_string+" :")
-				resultats_recherche.item(i).afficher
-				i := i + 1
-			end
+			resultat_recherche.afficher
 		end
 		display_menu_utilisateurs
 	end
@@ -324,7 +364,7 @@ feature {ANY}
 
 		if resultats_recherche.is_empty
 		then
-			io.put_string("Aucun média correspondant n'a ete trouve.%N")
+			io.put_string("Aucun mÃ©dia correspondant n'a ete trouve.%N")
 		else
 			from
 				i := resultats_recherche.lower
