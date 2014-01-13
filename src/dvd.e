@@ -5,9 +5,7 @@ indexing
 class DVD
 
 inherit IMEDIA
-	redefine
-		afficher
-    end
+
 creation {ANY}
 	dvd
 

@@ -1,5 +1,6 @@
 -- Classe représentant une documentaliste
 class DOCUMENTALISTE inherit IUTILISATEUR
+
 creation{ANY}
 	documentaliste
 feature {}
@@ -9,14 +10,17 @@ feature{ANY}
 	do
 		init(input_nom, input_prenom, input_adresse, input_identifiant, input_pass, input_age)
 	end
-
+	
 	-- =====================================
-	-- compare deux utilisateurs
+	-- Affiche les infos de l'utilisateur
 	-- =====================================
-	--is_equal(utilisateur2 : DOCUMENTALISTE):BOOLEAN is
-	--do
-	--	Result := (identifiant.is_equal(utilisateur2.identifiant) and password.is_equal(utilisateur2.password))
-	--end
-
+	afficher is
+	do
+		io.put_string("%N************** Documentaliste ******************%N")
+		io.put_string("Identifiant : "+ identifiant +"%N")
+		io.put_string("Nom : "+ nom + "%N")
+		io.put_string("Prenom : "+ prenom +"%N")
+		io.put_string("Adresse : "+ adresse +"%N")
+		io.put_string("Age : "+ age.to_string +"%N")
+	end
 end
-

@@ -191,10 +191,10 @@ feature {ANY}
 	do
 		io.put_string("%N")
 		io.put_string("************************************%N")
-		io.put_string("**********Menu Utilisateurs ********%N")
+		io.put_string("*******   Menu Utilisateurs   ******%N")
 		io.put_string("************************************%N")
 		io.put_string("1 - Afficher un utilisateur%N")
-		io.put_string("2 - Rechercher un Utilisateur%N")
+		io.put_string("2 - Rechercher un utilisateur%N")
 		io.put_string("3 - Modifier un Utilisateur%N")
 		io.put_string("4 - Supprimer un Utilisateur%N")
 		io.put_string("0 - Retour%N")
@@ -211,10 +211,9 @@ feature {ANY}
 
 		if(io.last_string.is_equal("1"))
 		then
-			--user_manager.afficher_dvd
 		elseif(io.last_string.is_equal("2"))
 		then
-			--display_recherche_par_titre
+			display_menu_recherche_utilisateur
 		elseif(io.last_string.is_equal("0"))
 		then
 			display_menu_principal
@@ -227,6 +226,87 @@ feature {ANY}
 	-- =====================================
 	display_menu_emprunts is
 	do
+		
+	end
+	
+	-- =====================================
+	-- Affichage du menu des emprunts
+	-- =====================================
+	display_menu_recherche_utilisateur is
+	do
+		io.put_string("%N")
+		io.put_string("************************************%N")
+		io.put_string("***** Recherche d'utilisateur ******%N")
+		io.put_string("1- Recherche par nom")
+		io.put_string("2- Recherche par identifiant")
+		io.put_string("0- Retour")
+		
+		from
+			io.read_line
+		until
+			io.last_string.is_equal("1") or io.last_string.is_equal("2") or io.last_string.is_equal("0")
+		loop
+			io.put_string("Votre choix ? ")
+			io.read_line
+		end
+	end
+	
+	-- =====================================
+	-- Recherche d'un utilisateur depuis son nom
+	-- =====================================
+	display_recherche_utilisateur_par_nom is
+	local
+		i : INTEGER
+		resultats_recherche : ARRAY[IUTILISATEUR]
+	do
+		io.put_string("********    Recherche par nom     *******%N")
+		io.put_string("Veuillez saisir tout ou une partie du nom :%N")
+		io.read_line
+		resultats_recherche := user_manager.rechercher_utilisateur_depuis_nom(io.last_string)
+		if resultats_recherche.is_empty
+		then
+			io.put_string("Aucun utilisateur correspondant n'a ete trouve.%N")
+		else
+			from
+				i := resultats_recherche.lower
+			until
+				i > resultats_recherche.upper
+			loop
+				io.put_string("%NResultat "+i.to_string+" :")
+				resultats_recherche.item(i).afficher
+				i := i + 1
+			end
+		end
+		display_menu_utilisateurs
+	end
+	
+	-- =====================================
+	-- Recherche d'un utilisateur depuis son identifiant
+	-- =====================================
+	display_recherche_utilisateur_par_identifiant is
+	local
+		i : INTEGER
+		resultats_recherche : ARRAY[IUTILISATEUR]
+	do
+		io.put_string("********    Recherche par identifiant    *******%N")
+		io.put_string("Veuillez saisir tout ou une partie de l'identifiant :%N")
+		io.read_line
+		resultats_recherche := user_manager.rechercher_utilisateur_depuis_identifiant(io.last_string)
+		if resultats_recherche.is_empty
+		then
+			io.put_string("Aucun utilisateur correspondant n'a ete trouve.%N")
+		else
+			from
+				i := resultats_recherche.lower
+			until
+				i > resultats_recherche.upper
+			loop
+				io.put_string("%NResultat "+i.to_string+" :")
+				resultats_recherche.item(i).afficher
+				i := i + 1
+			end
+		end
+		display_menu_utilisateurs
 	end
 	
 	-- =====================================
