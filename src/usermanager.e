@@ -151,5 +151,61 @@ feature{ANY}
 		Result := connected_user
 	end
 
+	-- =====================================
+	-- Recherche un utilisateur depuis son nom
+	-- =====================================
+	rechercher_utilisateur_depuis_nom(nom : STRING) : ARRAY[IUTILISATEUR] is
+	require
+		nom.count > 0
+	local
+		i : INTEGER
+		resultats : ARRAY[IUTILISATEUR]
+		nom_courant_to_upper : STRING
+	do
+		create resultats.with_capacity(40,1)
+		from
+			i:= liste_utilisateurs.lower
+		until
+			i > liste_utilisateurs.upper
+		loop
+			create nom_courant_to_upper.copy(liste_utilisateurs.item(i).get_nom)
+			nom_courant_to_upper.to_upper
+			nom.to_upper
+			if nom_courant_to_upper.has_substring(nom)
+			then
+				resultats.add_last(liste_utilisateurs.item(i))
+			end
+			i := i + 1
+		end
+		Result := resultats
+	end
 
+	-- =====================================
+	-- Recherche un utilisateur depuis son identifiant
+	-- =====================================
+	rechercher_utilisateur_depuis_identifiant(identifiant : STRING) : ARRAY[IUTILISATEUR] is
+	require
+		identifiant.count > 0
+	local
+		i : INTEGER
+		resultats : ARRAY[IUTILISATEUR]
+		id_courant_to_upper : STRING
+	do
+		create resultats.with_capacity(40,1)
+		from
+			i:= liste_utilisateurs.lower
+		until
+			i > liste_utilisateurs.upper
+		loop
+			create id_courant_to_upper.copy(liste_utilisateurs.item(i).get_identifiant)
+			id_courant_to_upper.to_upper
+			identifiant.to_upper
+			if id_courant_to_upper.has_substring(identifiant)
+			then
+				resultats.add_last(liste_utilisateurs.item(i))
+			end
+			i := i + 1
+		end
+		Result := resultats
+	end
 end

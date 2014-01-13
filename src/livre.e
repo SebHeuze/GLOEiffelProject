@@ -4,9 +4,6 @@ indexing
 
 class LIVRE
 inherit IMEDIA
-redefine
-		afficher
-  end
 
 creation {ANY}
 	livre

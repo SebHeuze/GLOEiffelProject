@@ -69,9 +69,7 @@ feature {ANY}
 	-- =====================================
 	-- Affiche le média
 	-- =====================================
-	afficher is
-	do
-	end
+	afficher is deferred end
 
 invariant
 	nb_exemplaires: nombre_disponible >= 0

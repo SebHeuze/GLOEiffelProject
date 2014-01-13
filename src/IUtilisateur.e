@@ -103,4 +103,9 @@ feature {ANY}
     do
       Result := identifiant < utilisateur2.identifiant
     end
+    
+    -- =====================================
+	-- Affichage du média
+	-- =====================================
+	afficher is deferred end
 end
