@@ -5,7 +5,7 @@ indexing
 deferred class IUTILISATEUR
 	inherit COMPARABLE
 	redefine
-            is_equal
+		is_equal
   	end
 feature{IUTILISATEUR}
 	nom, prenom, adresse, password : STRING
@@ -63,6 +63,8 @@ feature {ANY}
 	-- Modifie l'adresse
 	-- =====================================
 	set_adresse(iadresse : STRING) is
+	require
+		iadresse_ok : iadresse.count > 0
 	do
 		adresse := iadresse
 	end
@@ -84,7 +86,23 @@ feature {ANY}
 	do
 		Result := prenom
 	end
-
+	
+	-- =====================================
+	-- Modifie l'âge
+	-- =====================================
+	set_age(iage : INTEGER) is
+	do
+		age := iage
+	end
+	
+	-- =====================================
+	-- Retourne l'âge
+	-- =====================================
+	get_age : INTEGER is
+	do
+		Result := age
+	end
+	
 	-- =====================================
 	-- Retourne le nom
 	-- =====================================

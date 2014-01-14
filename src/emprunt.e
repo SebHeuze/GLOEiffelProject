@@ -13,10 +13,11 @@ feature {}
 	media : IMEDIA
 	date_emprunt : TIME
 	duree_emprunt : TIME
+	nombre_exemplaires : INTEGER
 
 feature{ANY}
 
-	emprunt(new_emprunteur : ADHERENT; new_media : IMEDIA; new_date_emprunt, new_duree_emprunt : TIME) is
+	emprunt(new_emprunteur : ADHERENT; new_media : IMEDIA; new_date_emprunt, new_duree_emprunt : TIME; new_nombre_exemplaire : INTEGER) is
 	require
 		new_duree_emprunt.to_microsecond_time.microsecond > 0
 	do
@@ -24,6 +25,7 @@ feature{ANY}
 		media := new_media
 		date_emprunt := new_date_emprunt
 		duree_emprunt := new_date_emprunt
+		nombre_exemplaires := new_nombre_exemplaire
 	end
 	
 	-- =====================================

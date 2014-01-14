@@ -203,7 +203,7 @@ feature{ANY}
 			i := i + 1
 		end
 	end
-
+	
 	-- =====================================
 	-- Recherche un média depuis son titre (recherche de la chaîne demandée dans le titre)
 	-- =====================================
@@ -231,5 +231,15 @@ feature{ANY}
 			i := i + 1
 		end
 		Result := resultats
+	end
+	
+	-- =====================================
+	-- Création d'un dvd et ajout dans la collection
+	-- =====================================
+	ajouter_dvd(new_realisateurs : ARRAY[STRING]; new_acteurs : ARRAY[STRING]; new_type : STRING; new_titre : STRING; new_annee, new_nombre_disponible, new_nombre_possede : INTEGER) : DVD is
+	require
+		
+	local
+	do
 	end
 end

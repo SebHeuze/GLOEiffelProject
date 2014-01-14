@@ -28,15 +28,38 @@ feature {ANY}
 		end
 
 	initialisation is
+	local
+		utilisateurs_charges, medias_charges, utilisateurs_erreur, medias_erreur : BOOLEAN
 	do
 		io.put_string("Initialisation::Debut.%N")
-		create media_manager.init_media_manager
-		io.put_string("Initialisation::Medias charges.%N")
-		create user_manager.init_user_manager
-		io.put_string("Initialisation::Utilisateurs charges.%N")
+		if(medias_erreur = False)
+		then
+			create media_manager.init_media_manager
+			utilisateurs_charges := True
+			io.put_string("Initialisation::Médias chargés.%N")
+		end
+		if(utilisateurs_erreur = False)
+		then
+			create user_manager.init_user_manager
+			medias_charges := True
+			io.put_string("Initialisation::Utilisateurs chargés.%N")
+		end
+		
 		media_manager.save_to_file
 		display_ecran_login
 		io.put_string("Initialisation::Fin.%N")
+	--rescue
+		-- Exception sur le chargement des utilisateurs
+		--if(utilisateurs_charges = False and medias_charges = False)
+		--then
+		--	io.put_string("Impossible de charger les médias !%N")
+		--	medias_erreur := True
+		--elseif(utilisateurs_charges = True and medias_charges = False)
+		--then
+		--	io.put_string("Impossible de charger les utilisateurs !%N")
+		--	utilisateurs_erreur := True
+		--end
+		--retry
 	end
 
 
@@ -226,9 +249,13 @@ feature {ANY}
 
 		if(io.last_string.is_equal("1"))
 		then
+			display_menu_recherche_utilisateur
 		elseif(io.last_string.is_equal("2"))
 		then
 			display_menu_recherche_utilisateur
+		elseif(io.last_string.is_equal("3"))
+		then
+			display_modification_utilisateur
 		elseif(io.last_string.is_equal("0"))
 		then
 			display_menu_principal
@@ -271,7 +298,6 @@ feature {ANY}
 			display_menu_utilisateurs
 		elseif(io.last_string.is_equal("4"))
 		then
-			
 		elseif(io.last_string.is_equal("0"))
 		then
 			display_menu_principal
@@ -282,6 +308,8 @@ feature {ANY}
 	-- Affichage du menu des utilisateurs
 	-- =====================================
 	display_menu_recherche_utilisateur is
+	local
+		trash : IUTILISATEUR
 	do
 		io.put_string("%N")
 		io.put_string("************************************%N")
@@ -305,7 +333,7 @@ feature {ANY}
 			display_recherche_utilisateur_par_nom
 		elseif(io.last_string.is_equal("2"))
 		then
-			display_recherche_utilisateur_par_identifiant
+			trash := display_recherche_utilisateur_par_identifiant
 		elseif(io.last_string.is_equal("0"))
 		then
 			display_menu_utilisateurs
@@ -345,7 +373,7 @@ feature {ANY}
 	-- =====================================
 	-- Recherche d'un utilisateur depuis son identifiant
 	-- =====================================
-	display_recherche_utilisateur_par_identifiant is
+	display_recherche_utilisateur_par_identifiant : IUTILISATEUR is
 	local
 		resultat_recherche : IUTILISATEUR
 	do
@@ -356,10 +384,11 @@ feature {ANY}
 		if resultat_recherche = Void
 		then
 			io.put_string("Aucun utilisateur correspondant n'a ete trouve.%N")
+			Result := Void
 		else
 			resultat_recherche.afficher
+			Result := resultat_recherche
 		end
-		display_menu_utilisateurs
 	end
 
 	-- =====================================
@@ -390,5 +419,53 @@ feature {ANY}
 			end
 		end
 		display_menu_dvd
+	end
+	
+	-- =====================================
+	-- Modification d'un adhérent
+	-- =====================================
+	display_modification_utilisateur is
+	local
+		nom, prenom, adresse, age : STRING -- Variable de débug
+		utilisateur_recherche : IUTILISATEUR -- Utilisateur récupéré par la recherche
+	do
+		create nom.make_empty
+		create prenom.make_empty
+		create adresse.make_empty
+		create age.make_empty
+		
+		io.put_string("%N")
+		io.put_string("************************************%N")
+		io.put_string("**** Modification d'utilisateur ****%N")
+		io.put_string("************************************%N")
+		
+		-- Recherche d'un utilisateur depuis son login, garantissant l'unicité
+		utilisateur_recherche := display_recherche_utilisateur_par_identifiant
+		
+		-- Gestion des droits de modification
+		if((utilisateur_recherche.get_identifiant = user_manager.get_connected_user.get_identifiant and user_manager.get_connected_user.generating_type = "ADHERENT") or user_manager.get_connected_user.generating_type = "DOCUMENTALISTE")
+		then
+			io.put_string("Nouveau nom :%N")
+			io.read_line
+			nom.copy(io.last_string)
+			utilisateur_recherche.set_nom(nom)
+		
+			io.put_string("Nouveau prénom :%N")
+			io.read_line
+			prenom.copy(io.last_string)
+			utilisateur_recherche.set_prenom(prenom)
+		
+			io.put_string("Nouvel âge :%N")
+			io.read_line
+			age.copy(io.last_string)
+			utilisateur_recherche.set_age(age.to_integer)
+		
+			io.put_string("Nouvelle adresse :%N")
+			io.read_line
+			adresse.copy(io.last_string)
+			utilisateur_recherche.set_adresse(adresse)
+		
+			io.put_string("=============== Modification prise en compte ===============%N")
+		end
 	end
 end -- class HELLO_WORLD
