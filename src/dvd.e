@@ -11,15 +11,15 @@ creation {ANY}
 
 
 feature {}
-	realisateurs : ARRAY[STRING]
+	realisateur : STRING
 	acteurs : ARRAY[STRING]
 	type : STRING
 
 feature {ANY}
 
-	dvd(new_realisateurs : ARRAY[STRING]; new_acteurs : ARRAY[STRING]; new_type : STRING; new_titre : STRING; new_annee, new_nombre_disponible, new_nombre_possede : INTEGER) is
+	dvd(new_realisateur : STRING; new_acteurs : ARRAY[STRING]; new_type : STRING; new_titre : STRING; new_annee, new_nombre_disponible, new_nombre_possede : INTEGER) is
 	do
-		realisateurs := new_realisateurs
+		realisateur := new_realisateur
 		acteurs := new_acteurs
 		type := new_type
 		init(new_titre, new_annee, new_nombre_disponible, new_nombre_possede)
@@ -35,6 +35,7 @@ feature {ANY}
 		io.put_string("%N************** DVD ******************%N")
 		io.put_string("Titre : "+titre + "%N")
 		io.put_string("Type : "+type+"%N")
+		io.put_string("Réalisateur : "+realisateur+"%N")
 		io.put_string("Acteurs : ")
 		from
 			i := acteurs.lower
@@ -72,19 +73,9 @@ feature {ANY}
       		stringsave.append_string(annee.to_string)
       		stringsave.append_string(">") 
       	end
-		if(not realisateurs.count.is_equal(0))
-      	then
-     		from
-				i := realisateurs.lower
-			until
-				i > realisateurs.upper
-			loop
-				stringsave.append_string(" ; Realisateur<")
-	      		stringsave.append_string(realisateurs.item(i))
-	      		stringsave.append_string(">")
-				i := i + 1
-			end
-      	end
+		stringsave.append_string(" ; Realisateur<")
+  		stringsave.append_string(realisateur)
+  		stringsave.append_string(">")
       	if(not acteurs.count.is_equal(0))
       	then
      		from
@@ -116,29 +107,18 @@ feature {ANY}
 	-- =====================================
 	-- Ajoute un realisateur dans la liste des realisateurs
 	-- =====================================
-	add_realisateur(realisateur : STRING) is
+	add_realisateur(irealisateur : STRING) is
 	do
-		realisateurs.put(realisateur, realisateurs.count)
+		realisateur := irealisateur
 	end
 
 	-- =====================================
 	-- RÃ©cupÃšre un realisateur dans la liste des realisateurs
 	-- =====================================
-	get_realisateur(rang : INTEGER) : STRING is
-	require
-		rang >= 0
+	get_realisateur : STRING is
 	do
-		Result := realisateurs @ rang
+		Result := realisateur
 	end
-
-	-- =====================================
-	-- Renvoie la liste des réalisateurs
-	-- =====================================
-	get_realisateurs : ARRAY[STRING] is
-	do
-		Result := realisateurs
-	end
-
 
 	-- =====================================
 	-- Ajoute un acteur dans la liste des acteurs

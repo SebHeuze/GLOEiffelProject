@@ -50,5 +50,21 @@ feature{ANY}
 			Result := False
 		end
 	end
+	
+	-- =====================================
+	-- Retourne l'adhérent de l'emprunt
+	-- =====================================
+	get_adherent : ADHERENT is
+	do
+		Result := emprunteur
+	end
+	
+	-- =====================================
+	-- Retourne le média de l'emprunt
+	-- =====================================
+	get_media : IMEDIA is
+	do
+		Result := media
+	end
 end
 

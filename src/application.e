@@ -153,6 +153,8 @@ feature {ANY}
 	-- Affiche le menu des dvd
 	-- =====================================
 	display_menu_dvd is
+	local
+		trash : IMEDIA
 	do
 		io.put_string("%N")
 		io.put_string("*************************************%N")
@@ -179,7 +181,7 @@ feature {ANY}
 			media_manager.afficher_dvd
 		elseif(io.last_string.is_equal("2"))
 		then
-			display_recherche_par_titre
+			trash := display_recherche_par_titre_et_auteur
 		elseif(io.last_string.is_equal("0"))
 		then
 			display_menu_principal
@@ -394,29 +396,27 @@ feature {ANY}
 	-- =====================================
 	-- Recherche d'une oeuvre par titre
 	-- =====================================
-	display_recherche_par_titre is
+	display_recherche_par_titre_et_auteur : IMEDIA is
 	local
-		i : INTEGER
-		resultats_recherche : ARRAY[IMEDIA]
+		resultat_recherche : IMEDIA
+		titre, auteur : STRING
 	do
 		io.put_string("********    Recherche par titre     *******%N")
 		io.put_string("Veuillez saisir tout ou une partie du titre :%N")
 		io.read_line
-		resultats_recherche := media_manager.rechercher_media_depuis_titre(io.last_string)
+		titre.copy(io.last_string)
+		
+		
+		io.put_string("Veuillez saisir l'auteur / réalisateur :%N")
+		io.read_line
+		auteur.copy(io.last_string)
+		resultat_recherche := media_manager.rechercher_media_depuis_titre_et_auteur(titre, auteur)
 
-		if resultats_recherche.is_empty
+		if resultat_recherche = Void
 		then
 			io.put_string("Aucun média correspondant n'a ete trouve.%N")
 		else
-			from
-				i := resultats_recherche.lower
-			until
-				i > resultats_recherche.upper
-			loop
-				io.put_string("%NResultat "+i.to_string+" :")
-				resultats_recherche.item(i).afficher
-				i := i + 1
-			end
+			resultat_recherche.afficher
 		end
 		display_menu_dvd
 	end

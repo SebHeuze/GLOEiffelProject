@@ -1,6 +1,6 @@
--- Implémentation de la classe IMedia représentant un Livre
+-- ImplÃ©mentation de la classe IMedia reprÃ©sentant un Livre
 indexing
-	description:"Implémentation de IMedia pour un Livre"
+	description:"ImplÃ©mentation de IMedia pour un Livre"
 
 class LIVRE
 inherit IMEDIA
@@ -9,14 +9,14 @@ creation {ANY}
 	livre
 
 feature {}
-	auteurs : ARRAY[STRING]
+	auteur : STRING
 	editeur : STRING
 	type : STRING
 
 feature{ANY}
-	livre(iauteurs : ARRAY[STRING]; iediteur, itype, ititre : STRING; iannee, inombre_disponible, inombre_possede : INTEGER) is
+	livre(iauteur : STRING; iediteur, itype, ititre : STRING; iannee, inombre_disponible, inombre_possede : INTEGER) is
 	do
-		auteurs := iauteurs
+		auteur := iauteur
 		editeur := iediteur
 		type := itype
 		init(ititre, iannee, inombre_disponible, inombre_possede)
@@ -27,34 +27,21 @@ feature{ANY}
 	-- =====================================
 	afficher is
 	local
-		i : INTEGER
 	do
 		io.put_string("%N************** LIVRE ******************%N")
-			io.put_string("Titre : "+titre + "%N")
-			io.put_string("Type : "+type+"%N")
-			io.put_string("Auteurs : ")
-			from
-				i := auteurs.lower
-			until
-				i > auteurs.upper
-			loop
-				if(i = auteurs.upper)
-				then
-					io.put_string(auteurs.item(i) + "%N")
-				else
-					io.put_string(auteurs.item(i) + ", ")
-				end
-				i := i + 1
-			end
+		io.put_string("Titre : "+titre + "%N")
+		io.put_string("Type : "+type+"%N")
+		io.put_string("Auteur : "+auteur+"%N")
+		io.put_string("Année : "+annee.to_string+"%N")
+		io.put_string("Disponibles : "+nombre_disponible.to_string+"%N")
 	end
 
 	-- =====================================
-	-- Sauvegarde les infos du livre (cr�e la ligne
+	-- Sauvegarde les infos du livre (crée la ligne
 	-- =====================================
 	save : STRING is
 	local
 		stringsave : STRING
-		i : INTEGER
 	do
 		stringsave := "Livre ; "
       	if(not titre.is_equal(""))
@@ -63,19 +50,9 @@ feature{ANY}
       		stringsave.append_string(titre)
       		stringsave.append_string(">")
       	end
-		if(not auteurs.count.is_equal(0))
-      	then
-     		from
-				i := auteurs.lower
-			until
-				i > auteurs.upper
-			loop
-				stringsave.append_string(" ; Auteur<")
-	      		stringsave.append_string(auteurs.item(i))
-	      		stringsave.append_string(">")
-				i := i + 1
-			end
-      	end
+		stringsave.append_string(" ; Auteur<")
+  		stringsave.append_string(auteur)
+  		stringsave.append_string(">")
       	stringsave.append_string(" ; Nombre<")
       	stringsave.append_string(get_nombre_possedes.to_string)
       	stringsave.append_string(">")
@@ -89,32 +66,22 @@ feature{ANY}
 	-- =====================================
 	-- Ajoute un auteur dans la liste des auteurs
 	-- =====================================
-	add_auteur(auteur : STRING) is
+	set_auteur(iauteur : STRING) is
 	do
-		auteurs.put(auteur, auteurs.count)
-	end
-
-	-- =====================================
-	-- Récupère un auteur dans la liste des auteurs
-	-- =====================================
-	get_auteur(rang : INTEGER) : STRING is
-	require
-		rang >= 0
-	do
-		Result := auteurs @ rang
+		auteur := iauteur
 	end
 
 	-- =====================================
 	-- Renvoie la liste des auteurs
 	-- =====================================
-	get_auteurs : ARRAY[STRING] is
+	get_auteur : STRING is
 	do
-		Result := auteurs
+		Result := auteur
 	end
 
 
 	-- =====================================
-	-- Modifie l'éditeur du livre courant
+	-- Modifie l'Ã©diteur du livre courant
 	-- =====================================
 	set_editeur(iediteur : STRING) is
 	do
@@ -122,7 +89,7 @@ feature{ANY}
 	end
 
 	-- =====================================
-	-- Retourne l'éditeur du livre courant
+	-- Retourne l'Ã©diteur du livre courant
 	-- =====================================
 	get_editeur : STRING is
 	do

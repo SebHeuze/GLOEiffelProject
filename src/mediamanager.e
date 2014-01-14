@@ -23,9 +23,9 @@ feature{ANY}
 		titre: STRING;
 		type: STRING;
 		dispo: INTEGER;
-		auteurs : ARRAY[STRING];
+		auteur : STRING;
 		acteurs : ARRAY[STRING];
-		realisateurs : ARRAY[STRING];
+		realisateur : STRING;
 		nombre : INTEGER;
 		annee : INTEGER;
 		index : INTEGER;
@@ -41,9 +41,7 @@ feature{ANY}
 		create liste_medias.with_capacity(60,1)
 
 		--Initialisation des variables temporaires
-		create auteurs.with_capacity(20,1)
 		create acteurs.with_capacity(20,1)
-		create realisateurs.with_capacity(20,1)
 
 		--Ouverture du fichier
 		if text_file_read.is_connected then
@@ -91,7 +89,7 @@ feature{ANY}
 						if string_tmp.has_substring ("Titre") then
 							titre := string_data
 						elseif string_tmp.has_substring ("Auteur") then
-							auteurs.add_last(string_data)
+							auteur := string_data
 						elseif string_tmp.has_substring ("Nombre") then
 							nombre := string_data.to_integer
 						elseif string_tmp.has_substring ("Titre") then
@@ -101,7 +99,7 @@ feature{ANY}
 						elseif string_tmp.has_substring ("Acteur") then
 							acteurs.add_last(string_data)
 						elseif string_tmp.has_substring ("Realisateur") then
-							realisateurs.add_last(string_data)
+							realisateur := string_data
 						elseif string_tmp.has_substring ("Nombre") then
 							nombre := string_data.to_integer
 						elseif string_tmp.has_substring ("Type") then
@@ -112,15 +110,13 @@ feature{ANY}
 				end
 
 				if contenu_ligne.has_substring ("Livre ; ") then
-					create a_livre.livre(auteurs, "", "", titre, 0, nombre, dispo)
+					create a_livre.livre(auteur, "", "", titre, 0, nombre, dispo)
 					liste_medias.add_last(a_livre)
-					create auteurs.with_capacity(20,1)
 				end
 				if contenu_ligne.has_substring ("DVD ; ") then
-					create a_dvd.dvd(realisateurs, acteurs, type, titre, annee, nombre, dispo)
+					create a_dvd.dvd(realisateur, acteurs, type, titre, annee, nombre, dispo)
 					liste_medias.add_last(a_dvd)
 					create acteurs.with_capacity(20,1)
-					create realisateurs.with_capacity(20,1)
 				end
 				-- Reinitialisation des proprietes communes
 				create titre.make_empty
@@ -207,15 +203,17 @@ feature{ANY}
 	-- =====================================
 	-- Recherche un média depuis son titre (recherche de la chaîne demandée dans le titre)
 	-- =====================================
-	rechercher_media_depuis_titre(titre : STRING) : ARRAY[IMEDIA] is
+	rechercher_media_depuis_titre_et_auteur(titre, auteur : STRING) : IMEDIA is
 	require
 		titre.count > 0
+		auteur.count > 0
 	local
 		i : INTEGER
-		resultats : ARRAY[IMEDIA]
-		titre_courant_to_upper : STRING
+		auteur_courant_to_upper, titre_courant_to_upper : STRING
+		media_courant : IMEDIA
+		livre_courant : LIVRE
+		dvd_courant : DVD
 	do
-		create resultats.with_capacity(40,1)
 		from
 			i:= liste_medias.lower
 		until
@@ -223,14 +221,32 @@ feature{ANY}
 		loop
 			create titre_courant_to_upper.copy(liste_medias.item(i).get_titre)
 			titre_courant_to_upper.to_upper
+			auteur_courant_to_upper.to_upper
 			titre.to_upper
+			auteur.to_upper
 			if titre_courant_to_upper.has_substring(titre)
 			then
-				resultats.add_last(liste_medias.item(i))
+				media_courant := liste_medias.item(i)
+				--v ?= e
+				if(liste_medias.item(i).generating_type.is_equal("DVD"))
+				then
+					dvd_courant ?= media_courant
+					create auteur_courant_to_upper.copy(dvd_courant.get_realisateur)
+					if auteur_courant_to_upper.has_substring(auteur)
+					then
+					end
+				elseif(liste_medias.item(i).generating_type.is_equal("LIVRE"))
+				then
+					livre_courant ?= media_courant
+					create auteur_courant_to_upper.copy(livre_courant.get_auteur)
+					if auteur_courant_to_upper.has_substring(auteur)
+					then
+					end
+				end
+				Result := liste_medias.item(i)
 			end
 			i := i + 1
 		end
-		Result := resultats
 	end
 	
 	-- =====================================

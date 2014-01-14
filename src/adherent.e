@@ -49,4 +49,26 @@ feature{ANY}
 	do
 		liste_emprunts.remove(liste_emprunts.first_index_of(emprunt));
 	end
+	
+	-- =====================================
+	-- Retourne vrai si l'utilisateur a un emprunt en retard
+	-- =====================================
+	possede_emprunt_retard : BOOLEAN is
+	local
+		i : INTEGER -- Variable de parcours
+		ret : BOOLEAN -- Variable de retour
+	do
+		from
+			i:= liste_emprunts.lower
+		until
+			i > liste_emprunts.upper
+		loop
+			if(liste_emprunts.item(i).estenretard)
+			then
+				ret := True
+			end
+			i := i + 1
+		end
+		Result := ret
+	end
 end

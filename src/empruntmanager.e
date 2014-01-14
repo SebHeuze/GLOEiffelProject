@@ -29,7 +29,7 @@ feature{ANY}
 	-- =====================================
 	init_emprunt_manager_empty is
 	do
-		--Initialisation des listes de médias
+		--Initialisation des listes de emprunts
 		create liste_emprunts.with_capacity(60,1)
 	end
 	
@@ -50,6 +50,16 @@ feature{ANY}
 	end
 	
 	-- =====================================
+	-- Suppression d'un emprunt
+	-- =====================================
+	supprimer_emprunt(input_adherent : ADHERENT; input_media : IMEDIA) is
+	require
+		adherent_non_null : input_adherent /= Void
+		media_non_null : input_media /= Void
+	do
+	end
+	
+	-- =====================================
 	-- Récupération des emprunts d'un adhérent
 	-- =====================================
 	get_emprunts_adherent(identifiant : STRING) : ARRAY[EMPRUNT] is
@@ -58,7 +68,20 @@ feature{ANY}
 		identifiant_non_vide : identifiant.count > 0
 	local
 		retour : ARRAY[EMPRUNT]
+		i : INTEGER
 	do
-		
+		--Initialisation des listes de médias
+		create retour.with_capacity(60,1)
+		from
+			i:= liste_emprunts.lower
+		until
+			i > liste_emprunts.upper
+		loop
+			if(liste_emprunts.item(i).get_adherent.get_identifiant = identifiant)
+			then
+				retour.add_last(liste_emprunts.item(i))
+			end
+			i := i + 1
+		end
 	end
 end
