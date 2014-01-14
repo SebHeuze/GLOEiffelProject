@@ -402,19 +402,23 @@ feature {ANY}
 		titre, auteur : STRING
 	do
 		io.put_string("********    Recherche par titre     *******%N")
+		
 		io.put_string("Veuillez saisir tout ou une partie du titre :%N")
 		io.read_line
+		create titre.make_empty
 		titre.copy(io.last_string)
 		
 		
 		io.put_string("Veuillez saisir l'auteur / réalisateur :%N")
 		io.read_line
+		create auteur.make_empty
 		auteur.copy(io.last_string)
+		
 		resultat_recherche := media_manager.rechercher_media_depuis_titre_et_auteur(titre, auteur)
 
 		if resultat_recherche = Void
 		then
-			io.put_string("Aucun média correspondant n'a ete trouve.%N")
+			io.put_string("Aucun média correspondant n'a été trouvé.%N")
 		else
 			resultat_recherche.afficher
 		end

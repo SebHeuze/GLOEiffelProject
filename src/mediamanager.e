@@ -205,6 +205,8 @@ feature{ANY}
 	-- =====================================
 	rechercher_media_depuis_titre_et_auteur(titre, auteur : STRING) : IMEDIA is
 	require
+		titre /= Void
+		auteur /= Void
 		titre.count > 0
 		auteur.count > 0
 	local
@@ -221,29 +223,35 @@ feature{ANY}
 		loop
 			create titre_courant_to_upper.copy(liste_medias.item(i).get_titre)
 			titre_courant_to_upper.to_upper
-			auteur_courant_to_upper.to_upper
 			titre.to_upper
-			auteur.to_upper
 			if titre_courant_to_upper.has_substring(titre)
 			then
+			
+				-- Récupération du média courant (on ne sait pas encore de quel type il est)
 				media_courant := liste_medias.item(i)
-				--v ?= e
+				
+				-- En fonction de son type, on ne va pas appeler la même méthode pour l'auteur / réalisateur
 				if(liste_medias.item(i).generating_type.is_equal("DVD"))
 				then
 					dvd_courant ?= media_courant
 					create auteur_courant_to_upper.copy(dvd_courant.get_realisateur)
+					auteur_courant_to_upper.to_upper
+					auteur.to_upper
 					if auteur_courant_to_upper.has_substring(auteur)
 					then
+						Result := liste_medias.item(i)
 					end
 				elseif(liste_medias.item(i).generating_type.is_equal("LIVRE"))
 				then
 					livre_courant ?= media_courant
 					create auteur_courant_to_upper.copy(livre_courant.get_auteur)
+					auteur_courant_to_upper.to_upper
+					auteur.to_upper
 					if auteur_courant_to_upper.has_substring(auteur)
 					then
+						Result := liste_medias.item(i)
 					end
 				end
-				Result := liste_medias.item(i)
 			end
 			i := i + 1
 		end
