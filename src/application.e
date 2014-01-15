@@ -278,7 +278,7 @@ feature {ANY}
 		io.put_string("2 - Afficher livre%N")
 		io.put_string("3 - Modifier livre%N")
 		io.put_string("4 - Supprimer media%N")
-		io.put_string("5 - Supprimer livre%N")
+		io.put_string("5 - Créer un livre%N")
 		io.put_string("0 - Retour%N")
 		io.put_string("Votre choix ? ")
 
