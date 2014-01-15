@@ -33,7 +33,8 @@ feature{ANY}
 		io.put_string("Type : "+type+"%N")
 		io.put_string("Auteur : "+auteur+"%N")
 		io.put_string("Année : "+annee.to_string+"%N")
-		io.put_string("Disponibles : "+nombre_disponible.to_string+"%N")
+		io.put_string("Nombre possédé : "+nombre_possedes.to_string+"%N")
+		io.put_string("Nombre disponible : "+nombre_disponible.to_string+"%N")
 	end
 
 	-- =====================================

@@ -208,4 +208,20 @@ feature{ANY}
 			i := i + 1
 		end
 	end
+	
+	-- =====================================
+	-- Recherche un utilisateur depuis son identifiant
+	-- =====================================
+	ajouter_utilisateur(utilisateur : IUTILISATEUR) is
+	do
+		liste_utilisateurs.add_last(utilisateur)
+	end
+	
+	-- =====================================
+	-- Recherche un utilisateur depuis son identifiant
+	-- =====================================
+	supprimer_utilisateur(utilisateur : IUTILISATEUR) is
+	do
+		liste_utilisateurs.remove(liste_utilisateurs.first_index_of(utilisateur))
+	end
 end

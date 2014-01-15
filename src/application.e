@@ -238,7 +238,7 @@ feature {ANY}
 		io.put_string("*******   Menu Utilisateurs   ******%N")
 		io.put_string("************************************%N")
 		io.put_string("1 - Afficher un utilisateur%N")
-		io.put_string("2 - Rechercher un utilisateur%N")
+		io.put_string("2 - Créer un utilisateur%N")
 		io.put_string("3 - Modifier un Utilisateur%N")
 		io.put_string("4 - Supprimer un Utilisateur%N")
 		io.put_string("0 - Retour%N")
@@ -258,10 +258,13 @@ feature {ANY}
 			display_menu_recherche_utilisateur
 		elseif(io.last_string.is_equal("2"))
 		then
-			display_menu_recherche_utilisateur
+			display_creation_utilisateur
 		elseif(io.last_string.is_equal("3"))
 		then
 			display_modification_utilisateur
+		elseif(io.last_string.is_equal("4"))
+		then
+			display_suppression_utilisateur
 		elseif(io.last_string.is_equal("0"))
 		then
 			display_menu_principal
@@ -393,6 +396,90 @@ feature {ANY}
 	end
 	
 	-- =====================================
+	-- Création d'un adhérent
+	-- =====================================
+	display_suppression_utilisateur is
+	local
+		user : IUTILISATEUR
+	do
+		user := display_recherche_utilisateur_par_identifiant
+		
+		
+	end
+	
+	-- =====================================
+	-- Création d'un adhérent
+	-- =====================================
+	display_creation_utilisateur is
+	local
+		nom, prenom, adresse, age, identifiant, temp : STRING -- Variable de débug
+		adherent : ADHERENT
+		documentaliste : DOCUMENTALISTE
+	do
+		create nom.make_empty
+		create prenom.make_empty
+		create adresse.make_empty
+		create age.make_empty
+		create identifiant.make_empty
+		create temp.make_empty
+		
+		io.put_string("%N")
+		io.put_string("************************************%N")
+		io.put_string("****** Création d'utilisateur ******%N")
+		io.put_string("************************************%N")
+
+		-- Gestion des droits de modification
+		if(user_manager.get_connected_user.generating_type = "DOCUMENTALISTE")
+		then
+			io.put_string("Nouveau nom :%N")
+			io.read_line
+			nom.copy(io.last_string)
+		
+			io.put_string("Nouveau prénom :%N")
+			io.read_line
+			prenom.copy(io.last_string)
+			
+			io.put_string("Nouvel identifiant :%N")
+			io.read_line
+			identifiant.copy(io.last_string)
+		
+			io.put_string("Nouvel âge :%N")
+			io.read_line
+			age.copy(io.last_string)
+		
+			io.put_string("Nouvelle adresse :%N")
+			io.read_line
+			adresse.copy(io.last_string)
+			
+			io.put_string("Documentaliste ou Adhérent ? (D/A) %N")
+			
+			from
+				io.read_line
+			until
+				io.last_string.is_equal("A") or io.last_string.is_equal("D")
+			loop
+				io.put_string("Documentaliste ou Adhérent ? (D/A) %N")
+				io.read_line
+			end
+			
+			temp.copy(io.last_string)
+			if(temp.is_equal("A"))
+			then
+				create adherent.adherent(nom, prenom, adresse, identifiant, identifiant, age.to_integer)
+				user_manager.ajouter_utilisateur(adherent)
+			else
+				create documentaliste.documentaliste(nom, prenom, adresse, identifiant, identifiant, age.to_integer)
+				user_manager.ajouter_utilisateur(documentaliste)
+			end
+			
+		
+			io.put_string("=============== Modification prise en compte ===============%N")
+		else
+			io.put_string("%N!!! Vous n'avez pas les droits suffisants !!!%N")
+		end
+	end
+	
+	-- =====================================
 	-- Modification d'un adhérent
 	-- =====================================
 	display_modification_utilisateur is
@@ -468,6 +555,7 @@ feature {ANY}
 		
 		if(io.last_string.is_equal("1"))
 		then
+			emprunt_manager.afficher_emprunts
 		elseif(io.last_string.is_equal("2"))
 		then
 			display_menu_creation_emprunt
@@ -529,9 +617,10 @@ feature {ANY}
 	local
 		duree, date_courante : TIME
 		duree_entier : INTEGER
+		trash : BOOLEAN
 	do
 		-- Vérification que l'utilisateur donné n'a pas d'emprunt en retard, auquel cas on refuse l'emprunt
-		if(not adherent.possede_emprunt_retard)
+		if(not adherent.possede_emprunt_retard and media.get_nombre_disponible > 0)
 		then
 			-- Demande de validation par l'utilisateur en lui présentant les informations recherchées
 			io.put_string("%NConfirmez-vous l'emprunt de l'oeuvre " + media.get_titre + " par " + adherent.get_prenom + " " + adherent.get_nom + " (" + adherent.get_identifiant + ") ? (O/N)%N")
@@ -551,21 +640,25 @@ feature {ANY}
 			then
 				
 				-- Demande de la durée en jours
-				io.put_string("Veuillez saisir la durée de l'emprunt en jours :")
+				io.put_string("Veuillez saisir la durée de l'emprunt en jours :%N")
 				io.read_line
 				duree_entier := io.last_string.to_integer
 				
 				create duree
 				create date_courante
 				
-				duree.add_day(duree_entier)
+				trash := duree.set(duree.year, duree.month, duree_entier, duree.hour, duree.minute, duree.second)
 				date_courante.update
 				
 				-- Ajout dans le manager d'emprunts
-				--emprunt_manager.ajouter_emprunt(adherent, media, date_courante, duree, 1)
+				emprunt_manager.ajouter_emprunt(adherent, media, date_courante, duree, 1)
 			end
-		else -- Cas d'un retard actuellement dans les emprunts de l'utilisateur
+		elseif adherent.possede_emprunt_retard
+		then-- Cas d'un retard actuellement dans les emprunts de l'utilisateur
 			io.put_string("%N" + "!!!" + adherent.get_prenom + " " + adherent.get_nom + " (" + adherent.get_identifiant + ") possède déjà un emprunt en retard !!!")
+		elseif media.get_nombre_disponible = 0
+		then
+			io.put_string("%NAucun exemplaire disponible à l'emprunt !%N")
 		end
 	end
 	

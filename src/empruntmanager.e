@@ -38,8 +38,8 @@ feature{ANY}
 	-- =====================================
 	ajouter_emprunt(input_adherent : ADHERENT; input_media : IMEDIA; input_date_emprunt, input_duree : TIME; input_nombre_exemplaires : INTEGER) is
 	require
-		adherent_ok : input_adherent /= Void and input_adherent.get_nom.count > 0 and input_adherent.get_identifiant.count > 0
-		media_ok : input_media /= Void and input_media.get_titre.count > 0 and input_media.get_nombre_disponible > 0
+		adherent_emprunt_ok : input_adherent /= Void and input_adherent.get_nom.count > 0 and input_adherent.get_identifiant.count > 0
+		media_emprunt_ok : input_media /= Void and input_media.get_titre.count > 0 and input_media.get_nombre_disponible > 0
 		nbre_emprunts_ok : input_media.get_nombre_disponible >= input_nombre_exemplaires
 	local
 		emprunt : EMPRUNT
@@ -82,6 +82,23 @@ feature{ANY}
 			then
 				retour.add_last(liste_emprunts.item(i))
 			end
+			i := i + 1
+		end
+	end
+	
+	-- =====================================
+	-- Affiche les emprunts
+	-- =====================================
+	afficher_emprunts is
+	local
+		i : INTEGER
+	do
+		from
+			i := liste_emprunts.lower
+		until
+			i > liste_emprunts.upper
+		loop
+			liste_emprunts.item(i).afficher
 			i := i + 1
 		end
 	end

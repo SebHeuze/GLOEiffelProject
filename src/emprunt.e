@@ -18,8 +18,6 @@ feature {}
 feature{ANY}
 
 	emprunt(new_emprunteur : ADHERENT; new_media : IMEDIA; new_date_emprunt, new_duree_emprunt : TIME; new_nombre_exemplaire : INTEGER) is
-	require
-		new_duree_emprunt.to_microsecond_time.microsecond > 0
 	do
 		emprunteur := new_emprunteur
 		media := new_media
@@ -38,16 +36,15 @@ feature{ANY}
 		duree_emprunt_micro : MICROSECOND_TIME
 	do
 		-- Récupération des temps
-		create current_time
 		date_emprunt_micro := date_emprunt.to_microsecond_time
 		duree_emprunt_micro := duree_emprunt.to_microsecond_time
 		
 		-- Ajout de la durée d'emprunt à la date d'emprunt
 		duree_emprunt_micro.add_microsecond(date_emprunt_micro.microsecond)
-		if(duree_emprunt_micro > current_time) then
+		
+		-- Si la date courante est supérieure à la date d'emprunt + la durée d'emprunt c'est un retard
+		if(duree_emprunt_micro.compare(current_time) = -1) then
 			Result := True
-		else
-			Result := False
 		end
 	end
 	
@@ -66,5 +63,20 @@ feature{ANY}
 	do
 		Result := media
 	end
+	
+	-- =====================================
+	-- Retourne le média de l'emprunt
+	-- =====================================
+	afficher is
+	local
+		mois, annee : INTEGER
+	do
+		mois := date_emprunt.month - duree_emprunt.month
+		annee := duree_emprunt.year - duree_emprunt.year
+		io.put_string("%N************** EMPRUNT ******************%N")
+		emprunteur.afficher
+		media.afficher
+		io.put_string("****** Date emprunt ******%N"+date_emprunt.day.to_string+"/"+date_emprunt.month.to_string+"/"+date_emprunt.year.to_string+"%N")
+		io.put_string("***** Durée emprunt ******%N"+duree_emprunt.day.to_string+" jours, "+mois.to_string+" mois, "+annee.to_string+" années%N")
+	end
 end
-
