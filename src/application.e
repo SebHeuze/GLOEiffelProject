@@ -436,7 +436,7 @@ feature {ANY}
 		io.put_string("************************************%N")
 
 		-- Gestion des droits de modification
-		if(user_manager.get_connected_user.generating_type = "DOCUMENTALISTE")
+		if(user_manager.get_connected_user.generating_type.is_equal("DOCUMENTALISTE"))
 		then
 			io.put_string("Nouveau nom :%N")
 			io.read_line
@@ -508,7 +508,7 @@ feature {ANY}
 		utilisateur_recherche := display_recherche_utilisateur_par_identifiant
 
 		-- Gestion des droits de modification
-		if((utilisateur_recherche.get_identifiant = user_manager.get_connected_user.get_identifiant and user_manager.get_connected_user.generating_type = "ADHERENT") or user_manager.get_connected_user.generating_type = "DOCUMENTALISTE")
+		if((utilisateur_recherche.get_identifiant = user_manager.get_connected_user.get_identifiant and user_manager.get_connected_user.generating_type.is_equal("ADHERENT")) or user_manager.get_connected_user.generating_type.is_equal("DOCUMENTALISTE"))
 		then
 			io.put_string("Nouveau nom :%N")
 			io.read_line
