@@ -18,8 +18,6 @@ feature {}
 feature{ANY}
 
 	emprunt(new_emprunteur : ADHERENT; new_media : IMEDIA; new_date_emprunt, new_duree_emprunt : TIME; new_nombre_exemplaire : INTEGER) is
-	require
-		new_duree_emprunt_ok : new_duree_emprunt.day = 5
 	do
 		emprunteur := new_emprunteur
 		media := new_media
@@ -73,12 +71,13 @@ feature{ANY}
 	local
 		mois, annee : INTEGER
 	do
-		mois := date_emprunt.month - duree_emprunt.month
+		mois := duree_emprunt.month- date_emprunt.month
 		annee := duree_emprunt.year - duree_emprunt.year
 		io.put_string("%N************** EMPRUNT ******************%N")
 		emprunteur.afficher
 		media.afficher
 		io.put_string("%N****** Date emprunt ******%N"+date_emprunt.day.to_string+"/"+date_emprunt.month.to_string+"/"+date_emprunt.year.to_string+"%N")
 		io.put_string("%N***** Durée emprunt ******%N"+duree_emprunt.day.to_string+" jours, "+mois.to_string+" mois, "+annee.to_string+" années%N")
+		io.put_string("%N***** Retard ******%N"+estenretard.to_string)
 	end
 end

@@ -167,11 +167,42 @@ feature{ANY}
 	-- =====================================
 	-- Suppression d'un emprunt
 	-- =====================================
-	supprimer_emprunt(input_adherent : ADHERENT; input_media : IMEDIA) is
+	supprimer_emprunt(input_adherent : IUTILISATEUR; input_media : IMEDIA) is
 	require
 		adherent_non_null : input_adherent /= Void
 		media_non_null : input_media /= Void
+	local
+		i : INTEGER
 	do
+		from
+			i:= liste_emprunts.lower
+		until
+			i > liste_emprunts.upper
+		loop
+			
+			-- En fonction de son type, on ne va pas appeler la même méthode pour l'auteur / réalisateur
+			if(liste_emprunts.item(i).get_media.generating_type.is_equal("DVD") and input_media.generating_type.is_equal("DVD"))
+			then
+				
+				if liste_emprunts.item(i).get_media.get_titre.is_equal(input_media.get_titre) and liste_emprunts.item(i).get_adherent.get_identifiant.is_equal(input_adherent.get_identifiant)
+				then
+					liste_emprunts.remove(i)
+					liste_emprunts.item(i).get_media.set_nombre_disponible(input_media.get_nombre_disponible + 1)
+				end
+				
+				
+			elseif(liste_emprunts.item(i).get_media.generating_type.is_equal("LIVRE") and input_media.generating_type.is_equal("LIVRE"))
+			then
+
+				if liste_emprunts.item(i).get_media.get_titre.is_equal(input_media.get_titre) and liste_emprunts.item(i).get_adherent.get_identifiant.is_equal(input_adherent.get_identifiant)
+				then
+					liste_emprunts.remove(i)
+					liste_emprunts.item(i).get_media.set_nombre_disponible(input_media.get_nombre_disponible + 1)
+				end
+				
+			end
+			i := i + 1
+		end
 	end
 
 	-- =====================================

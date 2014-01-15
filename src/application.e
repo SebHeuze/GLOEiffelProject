@@ -44,7 +44,7 @@ feature {ANY}
 			medias_charges := True
 			io.put_string("Initialisation::Utilisateurs chargés.%N")
 		end
-		--create emprunt_manager.init_emprunt_manager(media_manager, user_manager)
+		create emprunt_manager.emprunt_manager_empty
 		io.put_string("Initialisation::Emprunts chargés.%N")
 		media_manager.save_to_file
 		display_ecran_login
@@ -567,8 +567,7 @@ feature {ANY}
 			display_menu_creation_emprunt
 		elseif(io.last_string.is_equal("3"))
 		then
-		elseif(io.last_string.is_equal("4"))
-		then
+			display_menu_suppression_emprunt
 		elseif(io.last_string.is_equal("0"))
 		then
 			display_menu_principal
@@ -576,6 +575,36 @@ feature {ANY}
 		display_menu_emprunts
 	end
 
+	-- =====================================
+	-- Création d'un emprunt
+	-- =====================================
+	display_menu_suppression_emprunt is
+	local
+		media_recherche : IMEDIA
+		utilisateur_recherche : IUTILISATEUR
+	do
+		-- Recherche d'un utilisateur depuis son login, garantissant l'unicité
+		utilisateur_recherche := display_recherche_utilisateur_par_identifiant
+
+		-- Recherche d'un média depuis son titre et son auteur, clé unique
+		media_recherche := display_recherche_par_titre_et_auteur
+		
+		if(utilisateur_recherche /= Void and media_recherche /= Void)
+		then
+			lancer_processus_suppression_emprunt(utilisateur_recherche, media_recherche)
+			io.put_string("%NL'emprunt a bien été supprimé :)%N")
+		elseif media_recherche = Void and utilisateur_recherche = Void
+		then
+			io.put_string("%N !!! Impossible de trouver l'adhérent et l'oeuvre, procédure arrêtée !!!")
+		elseif media_recherche = Void
+		then
+			io.put_string("%N !!! Impossible de trouver l'oeuvre, procédure arrêtée !!!")
+		elseif utilisateur_recherche = Void
+		then
+			io.put_string("%N !!! Impossible de trouver l'adhérent, procédure arrêtée !!!")
+		end
+	end
+	
 	-- =====================================
 	-- Création d'un emprunt
 	-- =====================================
@@ -628,6 +657,17 @@ feature {ANY}
 	-- =====================================
 	-- Processus d'emprunt pour un adhérent
 	-- =====================================
+	lancer_processus_suppression_emprunt(adherent : IUTILISATEUR; media : IMEDIA) is
+	require
+		adherent /= Void
+		media /= Void
+	do
+		emprunt_manager.supprimer_emprunt(adherent, media)
+	end
+	
+	-- =====================================
+	-- Processus d'emprunt pour un adhérent
+	-- =====================================
 	lancer_processus_emprunt_adherent(adherent : ADHERENT; media : IMEDIA) is
 	require
 		adherent /= Void
@@ -635,7 +675,7 @@ feature {ANY}
 	local
 		duree, date_courante : TIME
 		duree_entier : INTEGER
-		trash : BOOLEAN
+		--trash : BOOLEAN
 	do
 		-- Vérification que l'utilisateur donné n'a pas d'emprunt en retard, auquel cas on refuse l'emprunt
 		if(not adherent.possede_emprunt_retard and media.get_nombre_disponible > 0)
@@ -664,7 +704,8 @@ feature {ANY}
 
 				create duree
 				create date_courante
-				trash := duree.set(duree.year, duree.month, duree_entier, duree.hour, duree.minute, duree.second)
+				--trash := duree.set(duree.year, duree.month, duree_entier, duree.hour, duree.minute, duree.second)
+				duree.add_day(duree_entier)
 				date_courante.update
 
 				-- Ajout dans le manager d'emprunts
