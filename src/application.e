@@ -278,7 +278,7 @@ feature {ANY}
 		io.put_string("2 - Afficher livre%N")
 		io.put_string("3 - Modifier livre%N")
 		io.put_string("4 - Supprimer media%N")
-		io.put_string("5 - Cr�er un livre%N")
+		io.put_string("5 - Créer un livre%N")
 		io.put_string("0 - Retour%N")
 		io.put_string("Votre choix ? ")
 
@@ -470,13 +470,13 @@ feature {ANY}
 
 		if(user_manager.get_connected_user.generating_type.is_equal("DOCUMENTALISTE"))
 			then
-			io.put_string("Veuillez saisir tout ou une partie du titre du media \E0 supprimer:%N")
+			io.put_string("Veuillez saisir tout ou une partie du titre du media à supprimer:%N")
 			io.read_line
 			create titre.make_empty
 			titre.copy(io.last_string)
 
 
-			io.put_string("Veuillez saisir l'auteur / réalisateur du media \E0 supprimer:%N")
+			io.put_string("Veuillez saisir l'auteur / réalisateur du media à supprimer:%N")
 			io.read_line
 			create auteur.make_empty
 			auteur.copy(io.last_string)
