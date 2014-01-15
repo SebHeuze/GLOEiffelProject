@@ -404,10 +404,10 @@ feature {ANY}
 		user : IUTILISATEUR
 	do
 		user := display_recherche_utilisateur_par_identifiant
-		
-		
+
+
 	end
-	
+
 	-- =====================================
 	-- Création d'un adhérent
 	-- =====================================
@@ -423,7 +423,7 @@ feature {ANY}
 		create age.make_empty
 		create identifiant.make_empty
 		create temp.make_empty
-		
+
 		io.put_string("%N")
 		io.put_string("************************************%N")
 		io.put_string("****** Création d'utilisateur ******%N")
@@ -435,25 +435,25 @@ feature {ANY}
 			io.put_string("Nouveau nom :%N")
 			io.read_line
 			nom.copy(io.last_string)
-		
+
 			io.put_string("Nouveau prénom :%N")
 			io.read_line
 			prenom.copy(io.last_string)
-			
+
 			io.put_string("Nouvel identifiant :%N")
 			io.read_line
 			identifiant.copy(io.last_string)
-		
+
 			io.put_string("Nouvel âge :%N")
 			io.read_line
 			age.copy(io.last_string)
-		
+
 			io.put_string("Nouvelle adresse :%N")
 			io.read_line
 			adresse.copy(io.last_string)
-			
+
 			io.put_string("Documentaliste ou Adhérent ? (D/A) %N")
-			
+
 			from
 				io.read_line
 			until
@@ -462,7 +462,7 @@ feature {ANY}
 				io.put_string("Documentaliste ou Adhérent ? (D/A) %N")
 				io.read_line
 			end
-			
+
 			temp.copy(io.last_string)
 			if(temp.is_equal("A"))
 			then
@@ -472,14 +472,98 @@ feature {ANY}
 				create documentaliste.documentaliste(nom, prenom, adresse, identifiant, identifiant, age.to_integer)
 				user_manager.ajouter_utilisateur(documentaliste)
 			end
-			
-		
+
+
 			io.put_string("=============== Modification prise en compte ===============%N")
 		else
 			io.put_string("%N!!! Vous n'avez pas les droits suffisants !!!%N")
 		end
 	end
-	
+
+	-- =====================================
+	-- Création d'un adhérent
+	-- =====================================
+	display_suppression_utilisateur is
+	local
+		user : IUTILISATEUR
+	do
+		user := display_recherche_utilisateur_par_identifiant
+
+
+	end
+
+	-- =====================================
+	-- Création d'un adhérent
+	-- =====================================
+	display_creation_utilisateur is
+	local
+		nom, prenom, adresse, age, identifiant, temp : STRING -- Variable de débug
+		adherent : ADHERENT
+		documentaliste : DOCUMENTALISTE
+	do
+		create nom.make_empty
+		create prenom.make_empty
+		create adresse.make_empty
+		create age.make_empty
+		create identifiant.make_empty
+		create temp.make_empty
+
+		io.put_string("%N")
+		io.put_string("************************************%N")
+		io.put_string("****** Création d'utilisateur ******%N")
+		io.put_string("************************************%N")
+
+		-- Gestion des droits de modification
+		if(user_manager.get_connected_user.generating_type = "DOCUMENTALISTE")
+		then
+			io.put_string("Nouveau nom :%N")
+			io.read_line
+			nom.copy(io.last_string)
+
+			io.put_string("Nouveau prénom :%N")
+			io.read_line
+			prenom.copy(io.last_string)
+
+			io.put_string("Nouvel identifiant :%N")
+			io.read_line
+			identifiant.copy(io.last_string)
+
+			io.put_string("Nouvel âge :%N")
+			io.read_line
+			age.copy(io.last_string)
+
+			io.put_string("Nouvelle adresse :%N")
+			io.read_line
+			adresse.copy(io.last_string)
+
+			io.put_string("Documentaliste ou Adhérent ? (D/A) %N")
+
+			from
+				io.read_line
+			until
+				io.last_string.is_equal("A") or io.last_string.is_equal("D")
+			loop
+				io.put_string("Documentaliste ou Adhérent ? (D/A) %N")
+				io.read_line
+			end
+
+			temp.copy(io.last_string)
+			if(temp.is_equal("A"))
+			then
+				create adherent.adherent(nom, prenom, adresse, identifiant, identifiant, age.to_integer)
+				user_manager.ajouter_utilisateur(adherent)
+			else
+				create documentaliste.documentaliste(nom, prenom, adresse, identifiant, identifiant, age.to_integer)
+				user_manager.ajouter_utilisateur(documentaliste)
+			end
+
+
+			io.put_string("=============== Modification prise en compte ===============%N")
+		else
+			io.put_string("%N!!! Vous n'avez pas les droits suffisants !!!%N")
+		end
+	end
+
 	-- =====================================
 	-- Modification d'un adhérent
 	-- =====================================
@@ -647,13 +731,7 @@ feature {ANY}
 
 				create duree
 				create date_courante
-<<<<<<< HEAD
-
-				duree.add_day(duree_entier)
-=======
-				
 				trash := duree.set(duree.year, duree.month, duree_entier, duree.hour, duree.minute, duree.second)
->>>>>>> eb1d38005a369c2b93adff96f93e1354f5d2cd39
 				date_courante.update
 
 				-- Ajout dans le manager d'emprunts
