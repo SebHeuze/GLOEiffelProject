@@ -1,0 +1,6 @@
+Emprunt ; MediaTitre<Cinq semaines en ballon> ; MediaAuteur<Jules Verne> ; Emprunteur<anabol> ; DureeEmprunt<5> ; DateEmprunt<13897> ; NombreExemplaires<1>
+Emprunt ; MediaTitre<L'ile mysterieuse> ; MediaAuteur<Jules Verne> ; Emprunteur<anabol> ; DureeEmprunt<5> ; DateEmprunt<13897> ; NombreExemplaires<1>
+Emprunt ; MediaTitre<The wheel of time> ; MediaAuteur<Robert Jordan> ; Emprunteur<anabol> ; DureeEmprunt<5> ; DateEmprunt<13897> ; NombreExemplaires<1>
+Emprunt ; MediaTitre<The lord of the rings> ; MediaAuteur<J.R.R. Tolkien> ; Emprunteur<anabol> ; DureeEmprunt<5> ; DateEmprunt<13897> ; NombreExemplaires<1>
+Emprunt ; MediaTitre<Star Wars I-III> ; MediaAuteur<George Lucas> ; Emprunteur<anabol> ; DureeEmprunt<5> ; DateEmprunt<13897> ; NombreExemplaires<2>
+Emprunt ; MediaTitre<Indiana Jones 1-3> ; MediaAuteur<Steven Spielberg> ; Emprunteur<anabol> ; DureeEmprunt<5> ; DateEmprunt<13897> ; NombreExemplaires<1>
