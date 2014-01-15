@@ -189,7 +189,7 @@ feature {ANY}
 			display_afficher_resultat_recherche
 		elseif(io.last_string.is_equal("3"))
 		then
-			io.put_string("Cette fonctionnalite n'est pas implementee, je vous suggere de supprimer le dvd concerne et de le recreer%N")
+			io.put_string("Cette fonctionnalité n'est pas implementée, je vous suggère de supprimer le DVD concerné et de le recréer :)%N")
 		elseif(io.last_string.is_equal("5"))
 		then
 			display_creation_dvd
@@ -365,7 +365,7 @@ feature {ANY}
 			display_afficher_resultat_recherche
 		elseif(io.last_string.is_equal("3"))
 		then
-			io.put_string("Cette fonctionnalite n'est pas implementee, je vous suggere de supprimer le livre concerne et de le recreer%N")
+			io.put_string("Cette fonctionnalité n'est pas implementée, je vous suggère de supprimer le livre concerné et de le recréer :)%N")
 		elseif(io.last_string.is_equal("0"))
 		then
 			display_menu_principal
