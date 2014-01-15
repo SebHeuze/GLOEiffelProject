@@ -208,44 +208,44 @@ feature {ANY}
 		realisateur, type, titre, sortir, acteur_tmp : STRING
 		annee, nombre_disponible, nombre_possede : INTEGER
 		acteurs : ARRAY[STRING];
-		
+
 	do
 		create realisateur.make_empty
 		create type.make_empty
 		create titre.make_empty
 		create sortir.make_empty
 		create acteur_tmp.make_empty
-		
+
 		io.put_string("%N")
 		io.put_string("*************************************%N")
 		io.put_string("*******     Création DVD      *******%N")
 		io.put_string("*************************************%N")
-		
+
 		io.put_string("%NRéalisateur :%N")
 		io.read_line
 		realisateur.copy(io.last_string)
-		
+
 		io.put_string("%NTitre :%N")
 		io.read_line
 		titre.copy(io.last_string)
-		
+
 		io.put_string("%NType :%N")
 		io.read_line
 		type.copy(io.last_string)
-		
+
 		io.put_string("%NAnnée :%N")
 		io.read_line
 		annee := io.last_string.to_integer
-		
+
 		io.put_string("%NNombre possédés (ie nombre disponible) :%N")
 		io.read_line
 		nombre_disponible := io.last_string.to_integer
 		nombre_possede := io.last_string.to_integer
-		
+
 		--Initialisation des listes de médias
 		create acteurs.with_capacity(60,1)
 		create sortir.make_empty
-		
+
 		from
 		until
 			acteur_tmp.is_equal("sortir")
@@ -254,17 +254,66 @@ feature {ANY}
 			io.put_string("%NActeur :%N")
 			io.read_line
 			acteur_tmp.copy(io.last_string)
-			
+
 			if not acteur_tmp.is_equal("sortir")
 			then
 				acteurs.add_last(acteur_tmp)
 			end
 		end
-		
+
 		media_manager.ajouter_dvd(realisateur, acteurs, type, titre, annee, nombre_disponible, nombre_possede)
-		
+
 	end
-	
+
+	-- =====================================
+	-- Créer un livre
+	-- =====================================
+	display_creation_livre is
+	local
+		titre, auteur, editeur, type : STRING
+		annee : INTEGER
+		nombre_disponible, nombre_possede : INTEGER
+
+	do
+		create auteur.make_empty
+		create type.make_empty
+		create editeur.make_empty
+		create titre.make_empty
+
+		io.put_string("%N")
+		io.put_string("*************************************%N")
+		io.put_string("*******     Création Livre      *******%N")
+		io.put_string("*************************************%N")
+
+		io.put_string("%NAuteur :%N")
+		io.read_line
+		auteur.copy(io.last_string)
+
+		io.put_string("%NTitre :%N")
+		io.read_line
+		titre.copy(io.last_string)
+
+		io.put_string("%NAnnee :%N")
+		io.read_line
+		annee := io.last_string.to_integer
+
+		io.put_string("%NType :%N")
+		io.read_line
+		type.copy(io.last_string)
+
+		io.put_string("%Nediteur :%N")
+		io.read_line
+		editeur.copy(io.last_string)
+
+		io.put_string("%NNombre possédés (ie nombre disponible) :%N")
+		io.read_line
+		nombre_disponible := io.last_string.to_integer
+		nombre_possede := io.last_string.to_integer
+
+		media_manager.ajouter_livre(auteur, editeur, type, titre,annee,  nombre_disponible, nombre_possede)
+
+	end
+
 	-- =====================================
 	-- Affiche le menu des livres
 	-- =====================================
@@ -297,6 +346,9 @@ feature {ANY}
 		elseif(io.last_string.is_equal("4"))
 		then
 			display_supprimer_media
+		elseif(io.last_string.is_equal("5"))
+		then
+			display_creation_livre
 		elseif(io.last_string.is_equal("2"))
 		then
 			display_afficher_resultat_recherche

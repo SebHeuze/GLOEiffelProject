@@ -282,6 +282,17 @@ feature{ANY}
 		create media.dvd(new_realisateur, new_acteurs, new_type, new_titre, new_annee, new_nombre_disponible, new_nombre_possede)
 		liste_medias.add_last(media)
 	end
-	
-	
+
+	-- =====================================
+	-- Création d'un dvd et ajout dans la collection
+	-- =====================================
+	ajouter_livre(auteur, editeur, type, titre : STRING ;annee,  nombre_disponible, nombre_possede : INTEGER) is
+	local
+		media : LIVRE
+	do
+		create media.livre(auteur, editeur, type, titre, annee, nombre_disponible, nombre_possede)
+		liste_medias.add_last(media)
+	end
+
+
 end
