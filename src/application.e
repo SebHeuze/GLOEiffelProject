@@ -158,24 +158,23 @@ feature {ANY}
 	-- Affiche le menu des dvd
 	-- =====================================
 	display_menu_dvd is
-	local
-		trash : IMEDIA
 	do
 		io.put_string("%N")
 		io.put_string("*************************************%N")
 		io.put_string("**********     Menu DVD      ********%N")
 		io.put_string("*************************************%N")
 		io.put_string("1 - Afficher DVDs%N")
-		io.put_string("2 - Rechercher un DVD depuis son titre%N")
+		io.put_string("2 - Recherche un DVD%N")
 		io.put_string("3 - Modifier un DVD%N")
 		io.put_string("4 - Supprimer un DVD%N")
+		io.put_string("5 - Créer un DVD%N")
 		io.put_string("0 - Retour%N")
 		io.put_string("Votre choix ? ")
 
 		from
 			io.read_line
 		until
-			io.last_string.is_equal("1") or io.last_string.is_equal("2") or io.last_string.is_equal("3") or io.last_string.is_equal("4") or io.last_string.is_equal("0")
+			io.last_string.is_equal("1") or io.last_string.is_equal("2") or io.last_string.is_equal("3") or io.last_string.is_equal("4") or io.last_string.is_equal("5") or io.last_string.is_equal("0")
 		loop
 			io.put_string("Votre choix ? ")
 			io.read_line
@@ -186,7 +185,10 @@ feature {ANY}
 			media_manager.afficher_dvd
 		elseif(io.last_string.is_equal("2"))
 		then
-			trash := display_recherche_par_titre_et_auteur
+			display_afficher_resultat_recherche
+		elseif(io.last_string.is_equal("5"))
+		then
+			display_creation_dvd
 		elseif(io.last_string.is_equal("0"))
 		then
 			display_menu_principal
@@ -194,6 +196,71 @@ feature {ANY}
 		display_menu_dvd
 	end
 
+	-- =====================================
+	-- Créer un DVD
+	-- =====================================
+	display_creation_dvd is
+	local
+		realisateur, type, titre, sortir, acteur_tmp : STRING
+		annee, nombre_disponible, nombre_possede : INTEGER
+		acteurs : ARRAY[STRING];
+		
+	do
+		create realisateur.make_empty
+		create type.make_empty
+		create titre.make_empty
+		create sortir.make_empty
+		create acteur_tmp.make_empty
+		
+		io.put_string("%N")
+		io.put_string("*************************************%N")
+		io.put_string("*******     Création DVD      *******%N")
+		io.put_string("*************************************%N")
+		
+		io.put_string("%NRéalisateur :%N")
+		io.read_line
+		realisateur.copy(io.last_string)
+		
+		io.put_string("%NTitre :%N")
+		io.read_line
+		titre.copy(io.last_string)
+		
+		io.put_string("%NType :%N")
+		io.read_line
+		type.copy(io.last_string)
+		
+		io.put_string("%NAnnée :%N")
+		io.read_line
+		annee := io.last_string.to_integer
+		
+		io.put_string("%NNombre possédés (ie nombre disponible) :%N")
+		io.read_line
+		nombre_disponible := io.last_string.to_integer
+		nombre_possede := io.last_string.to_integer
+		
+		--Initialisation des listes de médias
+		create acteurs.with_capacity(60,1)
+		create sortir.make_empty
+		
+		from
+		until
+			acteur_tmp.is_equal("sortir")
+		loop
+			create acteur_tmp.make_empty
+			io.put_string("%NActeur :%N")
+			io.read_line
+			acteur_tmp.copy(io.last_string)
+			
+			if not acteur_tmp.is_equal("sortir")
+			then
+				acteurs.add_last(acteur_tmp)
+			end
+		end
+		
+		media_manager.ajouter_dvd(realisateur, acteurs, type, titre, annee, nombre_disponible, nombre_possede)
+		
+	end
+	
 	-- =====================================
 	-- Affiche le menu des livres
 	-- =====================================
@@ -204,7 +271,7 @@ feature {ANY}
 		io.put_string("********     Menu livres      *******%N")
 		io.put_string("*************************************%N")
 		io.put_string("1 - Afficher livres%N")
-		io.put_string("2 - Rechercher livres%N")
+		io.put_string("2 - Afficher livre%N")
 		io.put_string("3 - Modifier livre%N")
 		io.put_string("4 - Créer livre%N")
 		io.put_string("5 - Supprimer livre%N")

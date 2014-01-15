@@ -265,10 +265,13 @@ feature{ANY}
 	-- =====================================
 	-- Création d'un dvd et ajout dans la collection
 	-- =====================================
-	ajouter_dvd(new_realisateurs : ARRAY[STRING]; new_acteurs : ARRAY[STRING]; new_type : STRING; new_titre : STRING; new_annee, new_nombre_disponible, new_nombre_possede : INTEGER) : DVD is
-	require
-
+	ajouter_dvd(new_realisateur : STRING; new_acteurs : ARRAY[STRING]; new_type : STRING; new_titre : STRING; new_annee, new_nombre_disponible, new_nombre_possede : INTEGER) is
 	local
+		media : DVD
 	do
+		create media.dvd(new_realisateur, new_acteurs, new_type, new_titre, new_annee, new_nombre_disponible, new_nombre_possede)
+		liste_medias.add_last(media)
 	end
+	
+	
 end

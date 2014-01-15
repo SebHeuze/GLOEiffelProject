@@ -36,6 +36,7 @@ feature {ANY}
 		io.put_string("Titre : "+titre + "%N")
 		io.put_string("Type : "+type+"%N")
 		io.put_string("Réalisateur : "+realisateur+"%N")
+		io.put_string("Année : "+annee.to_string+"%N")
 		io.put_string("Acteurs : ")
 		from
 			i := acteurs.lower
