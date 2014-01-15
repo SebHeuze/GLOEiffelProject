@@ -44,7 +44,7 @@ feature {ANY}
 			medias_charges := True
 			io.put_string("Initialisation::Utilisateurs chargés.%N")
 		end
-		create emprunt_manager.emprunt_manager_empty
+		--create emprunt_manager.init_emprunt_manager(media_manager, user_manager)
 		io.put_string("Initialisation::Emprunts chargés.%N")
 		media_manager.save_to_file
 		display_ecran_login
@@ -295,7 +295,7 @@ feature {ANY}
 			io.put_string("Votre choix ? ")
 			io.read_line
 		end
-		
+
 		if(io.last_string.is_equal("1"))
 		then
 			display_recherche_utilisateur_par_nom
@@ -306,7 +306,7 @@ feature {ANY}
 		then
 			display_menu_utilisateurs
 		end
-			
+
 	end
 
 	-- =====================================
@@ -378,18 +378,18 @@ feature {ANY}
 		titre, auteur : STRING
 	do
 		io.put_string("%N********    Recherche de média par titre / auteur    *******%N")
-		
+
 		io.put_string("Veuillez saisir tout ou une partie du titre :%N")
 		io.read_line
 		create titre.make_empty
 		titre.copy(io.last_string)
-		
-		
+
+
 		io.put_string("Veuillez saisir l'auteur / réalisateur :%N")
 		io.read_line
 		create auteur.make_empty
 		auteur.copy(io.last_string)
-		
+
 		resultat_recherche := media_manager.rechercher_media_depuis_titre_et_auteur(titre, auteur)
 
 		if resultat_recherche = Void
@@ -400,7 +400,7 @@ feature {ANY}
 			Result := resultat_recherche
 		end
 	end
-	
+
 	-- =====================================
 	-- Création d'un adhérent
 	-- =====================================
@@ -412,7 +412,7 @@ feature {ANY}
 		
 		user_manager.supprimer_utilisateur(user)
 	end
-	
+
 	-- =====================================
 	-- Création d'un adhérent
 	-- =====================================
@@ -428,7 +428,7 @@ feature {ANY}
 		create age.make_empty
 		create identifiant.make_empty
 		create temp.make_empty
-		
+
 		io.put_string("%N")
 		io.put_string("************************************%N")
 		io.put_string("****** Création d'utilisateur ******%N")
@@ -440,25 +440,25 @@ feature {ANY}
 			io.put_string("Nouveau nom :%N")
 			io.read_line
 			nom.copy(io.last_string)
-		
+
 			io.put_string("Nouveau prénom :%N")
 			io.read_line
 			prenom.copy(io.last_string)
-			
+
 			io.put_string("Nouvel identifiant :%N")
 			io.read_line
 			identifiant.copy(io.last_string)
-		
+
 			io.put_string("Nouvel âge :%N")
 			io.read_line
 			age.copy(io.last_string)
-		
+
 			io.put_string("Nouvelle adresse :%N")
 			io.read_line
 			adresse.copy(io.last_string)
-			
+
 			io.put_string("Documentaliste ou Adhérent ? (D/A) %N")
-			
+
 			from
 				io.read_line
 			until
@@ -467,7 +467,7 @@ feature {ANY}
 				io.put_string("Documentaliste ou Adhérent ? (D/A) %N")
 				io.read_line
 			end
-			
+
 			temp.copy(io.last_string)
 			if(temp.is_equal("A"))
 			then
@@ -477,14 +477,14 @@ feature {ANY}
 				create documentaliste.documentaliste(nom, prenom, adresse, identifiant, identifiant, age.to_integer)
 				user_manager.ajouter_utilisateur(documentaliste)
 			end
-			
-		
+
+
 			io.put_string("=============== Modification prise en compte ===============%N")
 		else
 			io.put_string("%N!!! Vous n'avez pas les droits suffisants !!!%N")
 		end
 	end
-	
+
 	-- =====================================
 	-- Modification d'un adhérent
 	-- =====================================
@@ -497,15 +497,15 @@ feature {ANY}
 		create prenom.make_empty
 		create adresse.make_empty
 		create age.make_empty
-		
+
 		io.put_string("%N")
 		io.put_string("************************************%N")
 		io.put_string("**** Modification d'utilisateur ****%N")
 		io.put_string("************************************%N")
-		
+
 		-- Recherche d'un utilisateur depuis son login, garantissant l'unicité
 		utilisateur_recherche := display_recherche_utilisateur_par_identifiant
-		
+
 		-- Gestion des droits de modification
 		if((utilisateur_recherche.get_identifiant = user_manager.get_connected_user.get_identifiant and user_manager.get_connected_user.generating_type = "ADHERENT") or user_manager.get_connected_user.generating_type = "DOCUMENTALISTE")
 		then
@@ -513,28 +513,28 @@ feature {ANY}
 			io.read_line
 			nom.copy(io.last_string)
 			utilisateur_recherche.set_nom(nom)
-		
+
 			io.put_string("Nouveau prénom :%N")
 			io.read_line
 			prenom.copy(io.last_string)
 			utilisateur_recherche.set_prenom(prenom)
-		
+
 			io.put_string("Nouvel âge :%N")
 			io.read_line
 			age.copy(io.last_string)
 			utilisateur_recherche.set_age(age.to_integer)
-		
+
 			io.put_string("Nouvelle adresse :%N")
 			io.read_line
 			adresse.copy(io.last_string)
 			utilisateur_recherche.set_adresse(adresse)
-		
+
 			io.put_string("=============== Modification prise en compte ===============%N")
 		else
 			io.put_string("%N!!! Vous n'avez pas les droits suffisants !!!%N")
 		end
 	end
-	
+
 	-- =====================================
 	-- Affichage du menu des emprunts
 	-- =====================================
@@ -549,7 +549,7 @@ feature {ANY}
 		io.put_string("3 - Clôturer un emprunt%N")
 		io.put_string("0 - Retour%N")
 		io.put_string("Votre choix ? ")
-		
+
 		from
 			io.read_line
 		until
@@ -558,7 +558,7 @@ feature {ANY}
 			io.put_string("Votre choix ? ")
 			io.read_line
 		end
-		
+
 		if(io.last_string.is_equal("1"))
 		then
 			emprunt_manager.afficher_emprunts
@@ -575,7 +575,7 @@ feature {ANY}
 		end
 		display_menu_emprunts
 	end
-	
+
 	-- =====================================
 	-- Création d'un emprunt
 	-- =====================================
@@ -590,10 +590,10 @@ feature {ANY}
 		io.put_string("************************************%N")
 		io.put_string("*******   Création emprunt   *******%N")
 		io.put_string("************************************%N")
-		
+
 		-- Recherche d'un utilisateur depuis son login, garantissant l'unicité
 		utilisateur_recherche := display_recherche_utilisateur_par_identifiant
-		
+
 		-- Recherche d'un média depuis son titre et son auteur, clé unique
 		media_recherche := display_recherche_par_titre_et_auteur
 		
@@ -624,7 +624,7 @@ feature {ANY}
 			io.put_string("%N !!! Impossible de trouver l'adhérent, procédure arrêtée !!!")
 		end
 	end
-	
+
 	-- =====================================
 	-- Processus d'emprunt pour un adhérent
 	-- =====================================
@@ -642,7 +642,7 @@ feature {ANY}
 		then
 			-- Demande de validation par l'utilisateur en lui présentant les informations recherchées
 			io.put_string("%NConfirmez-vous l'emprunt de l'oeuvre " + media.get_titre + " par " + adherent.get_prenom + " " + adherent.get_nom + " (" + adherent.get_identifiant + ") ? (O/N)%N")
-		
+
 			-- On boucle tant qu'on n'a pas obtenu une réponse qui va bien
 			from
 				io.read_line
@@ -652,22 +652,21 @@ feature {ANY}
 				io.put_string("%NConfirmez-vous l'emprunt de l'oeuvre " + media.get_titre + " par " + adherent.get_prenom + " " + adherent.get_nom + " (" + adherent.get_identifiant + ") ? (O/N)%N")
 				io.read_line
 			end
-		
+
 			-- Si validé, on demande la durée d'emprunt en jours
 			if(io.last_string.is_equal("O"))
 			then
-				
+
 				-- Demande de la durée en jours
 				io.put_string("Veuillez saisir la durée de l'emprunt en jours :%N")
 				io.read_line
 				duree_entier := io.last_string.to_integer
-				
+
 				create duree
 				create date_courante
-				
 				trash := duree.set(duree.year, duree.month, duree_entier, duree.hour, duree.minute, duree.second)
 				date_courante.update
-				
+
 				-- Ajout dans le manager d'emprunts
 				emprunt_manager.ajouter_emprunt(adherent, media, date_courante, duree, 1)
 			end
@@ -679,7 +678,7 @@ feature {ANY}
 			io.put_string("%NAucun exemplaire disponible à l'emprunt !%N")
 		end
 	end
-	
+
 	lancer_processus_emprunt_documentaliste(adherent : DOCUMENTALISTE; media : IMEDIA) is
 	do
 	end

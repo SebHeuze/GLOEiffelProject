@@ -6,6 +6,7 @@ indexing
 class EMPRUNTMANAGER
 
 creation {ANY}
+	init_emprunt_manager,
 	emprunt_manager,
 	emprunt_manager_empty
 
@@ -13,6 +14,119 @@ feature {}
 	liste_emprunts : ARRAY[EMPRUNT]
 
 feature{ANY}
+
+
+	-- =====================================
+	-- Construit et charge les emprunts
+	-- =====================================
+	init_emprunt_manager(media_manager_input : MEDIAMANAGER; user_manager_input : USERMANAGER) is
+	local
+		text_file_read: TEXT_FILE_READ;
+		path_emprunts: STRING; i : INTEGER;
+		a_emprunt : EMPRUNT;
+		contenu_ligne: STRING;
+		string_tmp: STRING;
+		string_data: STRING;
+		media_titre : STRING;
+		media_auteur : STRING;
+		identifiant_emprunteur : STRING;
+		emprunteur : ADHERENT
+		media_emprunte : IMEDIA
+		date_emprunt : TIME
+		date_emprunt_micro : MICROSECOND_TIME
+		duree_emprunt : TIME
+		nombre_exemplaires : INTEGER
+		index : INTEGER;
+		index2 : INTEGER;
+		contenu_fichier : ARRAY[STRING];
+	do
+		--Initialisation des variables nécessaires à l'ouverture du fichier
+		path_emprunts := "emprunts.txt"
+		create text_file_read.connect_to(path_emprunts)
+		create contenu_fichier.with_capacity(56,1)
+
+		--Initialisation des listes d'emprunts
+		create liste_emprunts.with_capacity(60,1)
+
+		--Ouverture du fichier
+		if text_file_read.is_connected then
+			from
+				text_file_read.read_line
+			until
+				text_file_read.end_of_input
+			loop
+				contenu_ligne := ""
+				contenu_ligne.copy (text_file_read.last_string)
+				contenu_fichier.add_last(contenu_ligne)
+				text_file_read.read_line
+			end
+			text_file_read.disconnect
+		else
+			io.put_string("Cannot read file %"" + path_emprunts + "%" in the current working directory.%N")
+		end
+
+		--Parcours de chaque ligne du fichier
+		from
+			i := contenu_fichier.lower
+		until
+			i > contenu_fichier.upper
+		loop
+			if contenu_fichier.item(i) /= Void then
+				--On récupère le contenu de la ligne
+				contenu_ligne := contenu_fichier.item(i)
+				index := 1;
+				from
+				until index = 0
+				loop
+
+
+					index := contenu_ligne.index_of (';', index)
+					index2 := contenu_ligne.index_of (';', index+1)
+
+					if index /= 0 then
+						if index2 = 0 then
+							index2 := contenu_ligne.count + 2
+						end
+
+						string_tmp := contenu_ligne.substring (index + 2, index2-2)
+
+						string_data := string_tmp.substring (string_tmp.index_of ('<', 1)+1, string_tmp.index_of ('>', 1)-1);
+						if string_tmp.has_substring ("Date_Emprunt") then
+							create date_emprunt_micro
+							date_emprunt_micro.set_microsecond(string_data.to_integer)
+							date_emprunt := date_emprunt_micro.time
+							date_emprunt.update
+						elseif string_tmp.has_substring ("Duree_Emprunt") then
+							create duree_emprunt
+							duree_emprunt.add_day(string_data.to_integer)
+						elseif string_tmp.has_substring ("NombreExemplaires") then
+							nombre_exemplaires := string_data.to_integer
+						elseif string_tmp.has_substring ("Emprunteur") then
+							identifiant_emprunteur := string_data
+						elseif string_tmp.has_substring ("MediaTitre") then
+							media_titre := string_data
+						elseif string_tmp.has_substring ("MediaAuteur") then
+							media_auteur := string_data
+						end
+						index := index +1
+					end
+				end
+
+				if contenu_ligne.has_substring ("Emprunt ; ") then
+					emprunteur ?= user_manager_input.rechercher_utilisateur_depuis_identifiant(identifiant_emprunteur)
+					media_emprunte := media_manager_input.rechercher_media_depuis_titre_et_auteur(media_titre, media_auteur)
+					create a_emprunt.emprunt(emprunteur, media_emprunte, date_emprunt, duree_emprunt, nombre_exemplaires)
+					liste_emprunts.add_last(a_emprunt)
+				end
+				-- Reinitialisation des proprietes communes
+				nombre_exemplaires := 0
+			else
+				io.put_string ("Chaine vide")
+			end
+			i := i +1
+		end
+	end
+
 
 	-- =====================================
 	-- Constructeur
@@ -23,7 +137,7 @@ feature{ANY}
 	do
 		liste_emprunts := input_liste_emprunts
 	end
-	
+
 	-- =====================================
 	-- Constructeur par défaut
 	-- =====================================
@@ -32,7 +146,7 @@ feature{ANY}
 		--Initialisation des listes de emprunts
 		create liste_emprunts.with_capacity(60,1)
 	end
-	
+
 	-- =====================================
 	-- Création d'un emprunt
 	-- =====================================
@@ -49,7 +163,7 @@ feature{ANY}
 		input_adherent.ajouter_emprunt(emprunt)
 		input_media.set_nombre_disponible(input_media.get_nombre_disponible - input_nombre_exemplaires)
 	end
-	
+
 	-- =====================================
 	-- Suppression d'un emprunt
 	-- =====================================
@@ -59,7 +173,7 @@ feature{ANY}
 		media_non_null : input_media /= Void
 	do
 	end
-	
+
 	-- =====================================
 	-- Récupération des emprunts d'un adhérent
 	-- =====================================
