@@ -206,14 +206,15 @@ feature {ANY}
 		io.put_string("1 - Afficher livres%N")
 		io.put_string("2 - Rechercher livres%N")
 		io.put_string("3 - Modifier livre%N")
-		io.put_string("4 - Supprimer livre%N")
+		io.put_string("4 - Créer livre%N")
+		io.put_string("5 - Supprimer livre%N")
 		io.put_string("0 - Retour%N")
 		io.put_string("Votre choix ? ")
 
 		from
 			io.read_line
 		until
-			io.last_string.is_equal("1") or io.last_string.is_equal("2") or io.last_string.is_equal("3")  or io.last_string.is_equal("4") or io.last_string.is_equal("0")
+			io.last_string.is_equal("1") or io.last_string.is_equal("2") or io.last_string.is_equal("3")  or io.last_string.is_equal("4") or io.last_string.is_equal("5") or io.last_string.is_equal("0")
 		loop
 			io.put_string("Votre choix ? ")
 			io.read_line
@@ -222,13 +223,29 @@ feature {ANY}
 		if(io.last_string.is_equal("1"))
 		then
 			media_manager.afficher_livres
+		elseif(io.last_string.is_equal("2"))
+		then
+			display_afficher_resultat_recherche
+		elseif(io.last_string.is_equal("0"))
+		then
 		elseif(io.last_string.is_equal("0"))
 		then
 			display_menu_principal
 		end
 		display_menu_livres
 	end
-
+	
+	-- =====================================
+	-- Recherche et affiche une oeuvre
+	-- =====================================
+	display_afficher_resultat_recherche is
+	local
+		media_recherche : IMEDIA
+	do
+		-- Recherche d'un média depuis son titre et son auteur, clé unique
+		media_recherche := display_recherche_par_titre_et_auteur
+	end
+	
 	-- =====================================
 	-- Affiche le menu des utilisateurs
 	-- =====================================
@@ -240,8 +257,8 @@ feature {ANY}
 		io.put_string("************************************%N")
 		io.put_string("1 - Afficher un utilisateur%N")
 		io.put_string("2 - Créer un utilisateur%N")
-		io.put_string("3 - Modifier un Utilisateur%N")
-		io.put_string("4 - Supprimer un Utilisateur%N")
+		io.put_string("3 - Modifier un utilisateur%N")
+		io.put_string("4 - Supprimer un utilisateur%N")
 		io.put_string("0 - Retour%N")
 		io.put_string("Votre choix ? ")
 
