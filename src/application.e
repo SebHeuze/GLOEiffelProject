@@ -210,14 +210,19 @@ feature {ANY}
 		io.put_string("1 - Afficher livres%N")
 		io.put_string("2 - Rechercher livres%N")
 		io.put_string("3 - Modifier livre%N")
+<<<<<<< HEAD
 		io.put_string("4 - Supprimer media%N")
+=======
+		io.put_string("4 - Créer livre%N")
+		io.put_string("5 - Supprimer livre%N")
+>>>>>>> c83c426d9d79d35a05a9374ca2713b9b0fad73d4
 		io.put_string("0 - Retour%N")
 		io.put_string("Votre choix ? ")
 
 		from
 			io.read_line
 		until
-			io.last_string.is_equal("1") or io.last_string.is_equal("2") or io.last_string.is_equal("3")  or io.last_string.is_equal("4") or io.last_string.is_equal("0")
+			io.last_string.is_equal("1") or io.last_string.is_equal("2") or io.last_string.is_equal("3")  or io.last_string.is_equal("4") or io.last_string.is_equal("5") or io.last_string.is_equal("0")
 		loop
 			io.put_string("Votre choix ? ")
 			io.read_line
@@ -226,16 +231,35 @@ feature {ANY}
 		if(io.last_string.is_equal("1"))
 		then
 			media_manager.afficher_livres
+<<<<<<< HEAD
 		elseif(io.last_string.is_equal("4"))
 		then
 			display_supprimer_media
+=======
+		elseif(io.last_string.is_equal("2"))
+		then
+			display_afficher_resultat_recherche
+		elseif(io.last_string.is_equal("0"))
+		then
+>>>>>>> c83c426d9d79d35a05a9374ca2713b9b0fad73d4
 		elseif(io.last_string.is_equal("0"))
 		then
 			display_menu_principal
 		end
 		display_menu_livres
 	end
-
+	
+	-- =====================================
+	-- Recherche et affiche une oeuvre
+	-- =====================================
+	display_afficher_resultat_recherche is
+	local
+		media_recherche : IMEDIA
+	do
+		-- Recherche d'un média depuis son titre et son auteur, clé unique
+		media_recherche := display_recherche_par_titre_et_auteur
+	end
+	
 	-- =====================================
 	-- Affiche le menu des utilisateurs
 	-- =====================================
@@ -247,8 +271,8 @@ feature {ANY}
 		io.put_string("************************************%N")
 		io.put_string("1 - Afficher un utilisateur%N")
 		io.put_string("2 - Créer un utilisateur%N")
-		io.put_string("3 - Modifier un Utilisateur%N")
-		io.put_string("4 - Supprimer un Utilisateur%N")
+		io.put_string("3 - Modifier un utilisateur%N")
+		io.put_string("4 - Supprimer un utilisateur%N")
 		io.put_string("0 - Retour%N")
 		io.put_string("Votre choix ? ")
 
@@ -486,7 +510,7 @@ feature {ANY}
 		io.put_string("************************************%N")
 
 		-- Gestion des droits de modification
-		if(user_manager.get_connected_user.generating_type = "DOCUMENTALISTE")
+		if(user_manager.get_connected_user.generating_type.is_equal("DOCUMENTALISTE"))
 		then
 			io.put_string("Nouveau nom :%N")
 			io.read_line
@@ -558,7 +582,7 @@ feature {ANY}
 		utilisateur_recherche := display_recherche_utilisateur_par_identifiant
 
 		-- Gestion des droits de modification
-		if((utilisateur_recherche.get_identifiant = user_manager.get_connected_user.get_identifiant and user_manager.get_connected_user.generating_type = "ADHERENT") or user_manager.get_connected_user.generating_type = "DOCUMENTALISTE")
+		if((utilisateur_recherche.get_identifiant = user_manager.get_connected_user.get_identifiant and user_manager.get_connected_user.generating_type.is_equal("ADHERENT")) or user_manager.get_connected_user.generating_type.is_equal("DOCUMENTALISTE"))
 		then
 			io.put_string("Nouveau nom :%N")
 			io.read_line
@@ -756,7 +780,7 @@ feature {ANY}
 				create duree
 				create date_courante
 				--trash := duree.set(duree.year, duree.month, duree_entier, duree.hour, duree.minute, duree.second)
-				duree.add_day(duree_entier)
+				duree.add_day(duree_entier - 1)
 				date_courante.update
 
 				-- Ajout dans le manager d'emprunts
