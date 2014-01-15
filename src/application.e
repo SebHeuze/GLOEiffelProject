@@ -187,6 +187,9 @@ feature {ANY}
 		elseif(io.last_string.is_equal("2"))
 		then
 			display_afficher_resultat_recherche
+		elseif(io.last_string.is_equal("3"))
+		then
+			io.put_string("Cette fonctionnalite n'est pas implementee, je vous suggere de supprimer le dvd concerne et de le recreer%N")
 		elseif(io.last_string.is_equal("5"))
 		then
 			display_creation_dvd
@@ -360,6 +363,9 @@ feature {ANY}
 		elseif(io.last_string.is_equal("2"))
 		then
 			display_afficher_resultat_recherche
+		elseif(io.last_string.is_equal("3"))
+		then
+			io.put_string("Cette fonctionnalite n'est pas implementee, je vous suggere de supprimer le livre concerne et de le recreer%N")
 		elseif(io.last_string.is_equal("0"))
 		then
 			display_menu_principal
