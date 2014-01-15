@@ -132,6 +132,16 @@ feature{ANY}
 	end
 
 	-- =====================================
+	-- Suppression d'un media
+	-- =====================================
+	supprimer_media(media : IMEDIA) is
+	require
+		media_non_null : media /= Void
+	do
+		liste_medias.remove(liste_medias.first_index_of(media))
+	end
+
+	-- =====================================
 	-- Sauvegarde les medias
 	-- =====================================
 	save_to_file is

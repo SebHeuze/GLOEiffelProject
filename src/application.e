@@ -46,7 +46,7 @@ feature {ANY}
 		end
 		create emprunt_manager.emprunt_manager_empty
 		io.put_string("Initialisation::Emprunts chargés.%N")
-		media_manager.save_to_file
+
 		--emprunt_manager.save_to_file
 		display_ecran_login
 		io.put_string("Initialisation::Fin.%N")
@@ -148,6 +148,7 @@ feature {ANY}
 			display_menu_emprunts
 		elseif(io.last_string.is_equal("0"))
 		then
+			media_manager.save_to_file
 			die_with_code(0)
 		end
 
@@ -189,6 +190,9 @@ feature {ANY}
 		elseif(io.last_string.is_equal("5"))
 		then
 			display_creation_dvd
+		elseif(io.last_string.is_equal("4"))
+		then
+			display_supprimer_media
 		elseif(io.last_string.is_equal("0"))
 		then
 			display_menu_principal
@@ -273,7 +277,7 @@ feature {ANY}
 		io.put_string("1 - Afficher livres%N")
 		io.put_string("2 - Afficher livre%N")
 		io.put_string("3 - Modifier livre%N")
-		io.put_string("4 - Créer livre%N")
+		io.put_string("4 - Supprimer media%N")
 		io.put_string("5 - Supprimer livre%N")
 		io.put_string("0 - Retour%N")
 		io.put_string("Votre choix ? ")
@@ -290,18 +294,19 @@ feature {ANY}
 		if(io.last_string.is_equal("1"))
 		then
 			media_manager.afficher_livres
+		elseif(io.last_string.is_equal("4"))
+		then
+			display_supprimer_media
 		elseif(io.last_string.is_equal("2"))
 		then
 			display_afficher_resultat_recherche
-		elseif(io.last_string.is_equal("0"))
-		then
 		elseif(io.last_string.is_equal("0"))
 		then
 			display_menu_principal
 		end
 		display_menu_livres
 	end
-	
+
 	-- =====================================
 	-- Recherche et affiche une oeuvre
 	-- =====================================
@@ -312,7 +317,7 @@ feature {ANY}
 		-- Recherche d'un média depuis son titre et son auteur, clé unique
 		media_recherche := display_recherche_par_titre_et_auteur
 	end
-	
+
 	-- =====================================
 	-- Affiche le menu des utilisateurs
 	-- =====================================
@@ -453,6 +458,49 @@ feature {ANY}
 			end
 		end
 	end
+	-- =====================================
+	-- Suppression d'un media
+	-- =====================================
+	display_supprimer_media is
+	local
+		media_tmp : IMEDIA
+		titre, auteur : STRING
+	do
+		io.put_string("%N********    Suppression de media par titre / auteur    *******%N")
+
+		if(user_manager.get_connected_user.generating_type.is_equal("DOCUMENTALISTE"))
+			then
+			io.put_string("Veuillez saisir tout ou une partie du titre du media \E0 supprimer:%N")
+			io.read_line
+			create titre.make_empty
+			titre.copy(io.last_string)
+
+
+			io.put_string("Veuillez saisir l'auteur / réalisateur du media \E0 supprimer:%N")
+			io.read_line
+			create auteur.make_empty
+			auteur.copy(io.last_string)
+
+			media_tmp := media_manager.rechercher_media_depuis_titre_et_auteur(titre, auteur)
+
+			if media_tmp = Void
+			then
+				io.put_string("Aucun média correspondant n'a été trouvé.%N")
+			else
+				media_tmp.afficher
+				io.put_string("Confirmer la suppression (oui/non)?.%N")
+				io.read_line
+				if io.last_string.is_equal("oui") then
+					media_manager.supprimer_media(media_tmp)
+				else
+					io.put_string("Annulation de la suppression.%N")
+				end
+			end
+		else
+			io.put_string("!!! Vous n'avez pas les droits suffisants !!!%N")
+		end
+	end
+
 
 	-- =====================================
 	-- Recherche d'une oeuvre par titre
@@ -673,7 +721,7 @@ feature {ANY}
 
 		-- Recherche d'un média depuis son titre et son auteur, clé unique
 		media_recherche := display_recherche_par_titre_et_auteur
-		
+
 		if(utilisateur_recherche /= Void and media_recherche /= Void)
 		then
 			lancer_processus_suppression_emprunt(utilisateur_recherche, media_recherche)
@@ -689,7 +737,7 @@ feature {ANY}
 			io.put_string("%N !!! Impossible de trouver l'adhérent, procédure arrêtée !!!")
 		end
 	end
-	
+
 	-- =====================================
 	-- Création d'un emprunt
 	-- =====================================
@@ -749,7 +797,7 @@ feature {ANY}
 	do
 		emprunt_manager.supprimer_emprunt(adherent, media)
 	end
-	
+
 	-- =====================================
 	-- Processus d'emprunt pour un adhérent
 	-- =====================================
