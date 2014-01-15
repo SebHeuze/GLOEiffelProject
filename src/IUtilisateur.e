@@ -19,10 +19,14 @@ feature {ANY}
 	-- =====================================
 	init(inom, iprenom, iadresse, iidentifiant,ipassword : STRING; iage : INTEGER) is
 	require
-		nom_ok : inom.count > 0
-		prenom_ok : iprenom.count > 0
-		adresse_ok : iadresse.count > 0
-		identifiant_ok : iidentifiant.count > 0
+		nom_ok : inom /= Void
+		nom_non_vide : inom.count > 0
+		prenom_ok : iprenom /= Void
+		prenom_non_vide : iprenom.count > 0
+		adresse_ok : iadresse /= Void
+		adresse_non_vide : iadresse.count > 0
+		identifiant_ok : iidentifiant /= Void
+		identifiant_non_vide : iidentifiant.count > 0
 		age_ok : iage > 0
 	do
 		nom := inom

@@ -166,9 +166,12 @@ feature {ANY}
 		io.put_string("*************************************%N")
 		io.put_string("1 - Afficher DVDs%N")
 		io.put_string("2 - Recherche un DVD%N")
-		io.put_string("3 - Modifier un DVD%N")
-		io.put_string("4 - Supprimer un DVD%N")
-		io.put_string("5 - Créer un DVD%N")
+		if(user_manager.get_connected_user.generating_type.is_equal("DOCUMENTALISTE"))
+		then
+			io.put_string("3 - Modifier un DVD%N")
+			io.put_string("4 - Supprimer un DVD%N")
+			io.put_string("5 - Créer un DVD%N")
+		end
 		io.put_string("0 - Retour%N")
 		io.put_string("Votre choix ? ")
 
@@ -336,9 +339,12 @@ feature {ANY}
 		io.put_string("*************************************%N")
 		io.put_string("1 - Afficher livres%N")
 		io.put_string("2 - Afficher livre%N")
-		io.put_string("3 - Modifier livre%N")
-		io.put_string("4 - Supprimer media%N")
-		io.put_string("5 - Créer un livre%N")
+		if(user_manager.get_connected_user.generating_type.is_equal("DOCUMENTALISTE"))
+		then
+			io.put_string("3 - Modifier livre%N")
+			io.put_string("4 - Supprimer media%N")
+			io.put_string("5 - Créer un livre%N")
+		end
 		io.put_string("0 - Retour%N")
 		io.put_string("Votre choix ? ")
 
@@ -394,9 +400,12 @@ feature {ANY}
 		io.put_string("*******   Menu Utilisateurs   ******%N")
 		io.put_string("************************************%N")
 		io.put_string("1 - Afficher un utilisateur%N")
-		io.put_string("2 - Créer un utilisateur%N")
-		io.put_string("3 - Modifier un utilisateur%N")
-		io.put_string("4 - Supprimer un utilisateur%N")
+		if(user_manager.get_connected_user.generating_type.is_equal("DOCUMENTALISTE"))
+		then
+			io.put_string("2 - Créer un utilisateur%N")
+			io.put_string("3 - Modifier un utilisateur%N")
+			io.put_string("4 - Supprimer un utilisateur%N")
+		end
 		io.put_string("0 - Retour%N")
 		io.put_string("Votre choix ? ")
 
