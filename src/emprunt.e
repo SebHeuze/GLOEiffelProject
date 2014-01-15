@@ -27,6 +27,26 @@ feature{ANY}
 	end
 
 	-- =====================================
+	-- Sauvegarde les infos de l'emprunt
+	-- =====================================
+	save : STRING is
+	local
+		stringsave : STRING
+	do
+		stringsave := "Emprunt ; "
+      	stringsave.append_string("MediaTitre<")
+      	stringsave.append_string(media.get_titre)
+      	stringsave.append_string(">")
+		stringsave.append_string(" ; MediaAuteur<")
+  		--stringsave.append_string(media.get_auteur)
+  		stringsave.append_string(">")
+      	stringsave.append_string(" ; Emprunteur<")
+      	stringsave.append_string(emprunteur.get_identifiant)
+      	stringsave.append_string(">")
+      	Result := stringsave
+	end
+
+	-- =====================================
 	-- Retourne true si emprunt en retard
 	-- =====================================
 	estenretard : BOOLEAN is
@@ -41,7 +61,7 @@ feature{ANY}
 
 		-- Ajout de la durée d'emprunt à la date d'emprunt
 		duree_emprunt_micro.add_microsecond(date_emprunt_micro.microsecond)
-		
+
 		-- Si la date courante est supérieure à la date d'emprunt + la durée d'emprunt c'est un retard
 		if(duree_emprunt_micro.compare(current_time) = -1) then
 			Result := True
@@ -63,7 +83,7 @@ feature{ANY}
 	do
 		Result := media
 	end
-	
+
 	-- =====================================
 	-- Retourne le média de l'emprunt
 	-- =====================================

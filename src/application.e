@@ -47,6 +47,7 @@ feature {ANY}
 		create emprunt_manager.emprunt_manager_empty
 		io.put_string("Initialisation::Emprunts chargés.%N")
 		media_manager.save_to_file
+		--emprunt_manager.save_to_file
 		display_ecran_login
 		io.put_string("Initialisation::Fin.%N")
 	--rescue
