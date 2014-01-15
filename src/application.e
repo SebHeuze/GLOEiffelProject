@@ -44,7 +44,7 @@ feature {ANY}
 			medias_charges := True
 			io.put_string("Initialisation::Utilisateurs chargés.%N")
 		end
-		--create emprunt_manager.init_emprunt_manager(media_manager, user_manager)
+		create emprunt_manager.init_emprunt_manager(media_manager, user_manager)
 		io.put_string("Initialisation::Emprunts chargés.%N")
 		media_manager.save_to_file
 		display_ecran_login
@@ -359,7 +359,7 @@ feature {ANY}
 		else
 			if((resultat_recherche.get_identifiant.is_equal(user_manager.get_connected_user.get_identifiant) and user_manager.get_connected_user.generating_type.is_equal("ADHERENT")) or (user_manager.get_connected_user.generating_type.is_equal("DOCUMENTALISTE")))
 			then
-		
+
 				resultat_recherche.afficher
 				Result := resultat_recherche
 
@@ -409,7 +409,7 @@ feature {ANY}
 		user : IUTILISATEUR
 	do
 		user := display_recherche_utilisateur_par_identifiant
-		
+
 		user_manager.supprimer_utilisateur(user)
 	end
 
@@ -596,7 +596,7 @@ feature {ANY}
 
 		-- Recherche d'un média depuis son titre et son auteur, clé unique
 		media_recherche := display_recherche_par_titre_et_auteur
-		
+
 		if(utilisateur_recherche /= Void and media_recherche /= Void)
 		then
 			if(utilisateur_recherche.generating_type.is_equal("ADHERENT"))
@@ -604,14 +604,14 @@ feature {ANY}
 				-- Tiens voilà du boudin, voilà du boudin !
 				adherent ?= utilisateur_recherche
 				lancer_processus_emprunt_adherent(adherent, media_recherche)
-			
+
 			elseif(utilisateur_recherche.generating_type.is_equal("DOCUMENTALISTE"))
 			then
-		
+
 				-- Tiens voilà des riettes, voilà des riettes !
 				documentaliste ?= utilisateur_recherche
 				lancer_processus_emprunt_documentaliste(documentaliste, media_recherche)
-			
+
 			end
 		elseif media_recherche = Void and utilisateur_recherche = Void
 		then

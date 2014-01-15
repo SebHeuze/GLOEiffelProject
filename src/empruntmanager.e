@@ -38,6 +38,7 @@ feature{ANY}
 		nombre_exemplaires : INTEGER
 		index : INTEGER;
 		index2 : INTEGER;
+		trash : BOOLEAN;
 		contenu_fichier : ARRAY[STRING];
 	do
 		--Initialisation des variables nécessaires à l'ouverture du fichier
@@ -91,14 +92,12 @@ feature{ANY}
 						string_tmp := contenu_ligne.substring (index + 2, index2-2)
 
 						string_data := string_tmp.substring (string_tmp.index_of ('<', 1)+1, string_tmp.index_of ('>', 1)-1);
-						if string_tmp.has_substring ("Date_Emprunt") then
-							create date_emprunt_micro
+						if string_tmp.has_substring ("DateEmprunt") then
 							date_emprunt_micro.set_microsecond(string_data.to_integer)
 							date_emprunt := date_emprunt_micro.time
 							date_emprunt.update
-						elseif string_tmp.has_substring ("Duree_Emprunt") then
-							create duree_emprunt
-							duree_emprunt.add_day(string_data.to_integer)
+						elseif string_tmp.has_substring ("DureeEmprunt") then
+							trash := duree_emprunt.set(duree_emprunt.year, duree_emprunt.month,string_data.to_integer, duree_emprunt.hour, duree_emprunt.minute, duree_emprunt.second)
 						elseif string_tmp.has_substring ("NombreExemplaires") then
 							nombre_exemplaires := string_data.to_integer
 						elseif string_tmp.has_substring ("Emprunteur") then
@@ -111,7 +110,6 @@ feature{ANY}
 						index := index +1
 					end
 				end
-
 				if contenu_ligne.has_substring ("Emprunt ; ") then
 					emprunteur ?= user_manager_input.rechercher_utilisateur_depuis_identifiant(identifiant_emprunteur)
 					media_emprunte := media_manager_input.rechercher_media_depuis_titre_et_auteur(media_titre, media_auteur)
@@ -199,7 +197,7 @@ feature{ANY}
 			i := i + 1
 		end
 	end
-	
+
 	-- =====================================
 	-- Affiche les emprunts
 	-- =====================================
