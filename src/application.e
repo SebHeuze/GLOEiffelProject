@@ -269,6 +269,7 @@ feature {ANY}
 		then
 			display_menu_principal
 		end
+		display_menu_utilisateurs
 	end
 
 	-- =====================================
@@ -329,8 +330,11 @@ feature {ANY}
 			until
 				i > resultats_recherche.upper
 			loop
-				io.put_string("%NResultat "+i.to_string+" :")
-				resultats_recherche.item(i).afficher
+				if((resultats_recherche.item(i).get_identifiant.is_equal(user_manager.get_connected_user.get_identifiant) and user_manager.get_connected_user.generating_type.is_equal("ADHERENT")) or (user_manager.get_connected_user.generating_type.is_equal("DOCUMENTALISTE")))
+				then
+					io.put_string("%NResultat "+i.to_string+" :")
+					resultats_recherche.item(i).afficher
+				end
 				i := i + 1
 			end
 		end
@@ -348,18 +352,20 @@ feature {ANY}
 		io.put_string("Veuillez saisir tout ou une partie de l'identifiant :%N")
 		io.read_line
 		resultat_recherche := user_manager.rechercher_utilisateur_depuis_identifiant(io.last_string)
-		if((resultat_recherche.get_identifiant.is_equal(user_manager.get_connected_user.get_identifiant) and user_manager.get_connected_user.generating_type.is_equal("ADHERENT")) or (user_manager.get_connected_user.generating_type.is_equal("DOCUMENTALISTE")))
+		if resultat_recherche = Void
 		then
-			if resultat_recherche = Void
+			io.put_string("Aucun utilisateur correspondant n'a été trouvé.%N")
+			Result := Void
+		else
+			if((resultat_recherche.get_identifiant.is_equal(user_manager.get_connected_user.get_identifiant) and user_manager.get_connected_user.generating_type.is_equal("ADHERENT")) or (user_manager.get_connected_user.generating_type.is_equal("DOCUMENTALISTE")))
 			then
-				io.put_string("Aucun utilisateur correspondant n'a été trouvé.%N")
-				Result := Void
-			else
+		
 				resultat_recherche.afficher
 				Result := resultat_recherche
+
+			else
+				io.put_string("!!! Vous n'avez pas les droits suffisants !!!%N")
 			end
-		else
-			io.put_string("!!! Vous n'avez pas les droits suffisants !!!%N")
 		end
 	end
 
@@ -404,7 +410,7 @@ feature {ANY}
 	do
 		user := display_recherche_utilisateur_par_identifiant
 		
-		
+		user_manager.supprimer_utilisateur(user)
 	end
 	
 	-- =====================================
@@ -591,19 +597,31 @@ feature {ANY}
 		-- Recherche d'un média depuis son titre et son auteur, clé unique
 		media_recherche := display_recherche_par_titre_et_auteur
 		
-		if(utilisateur_recherche.generating_type.is_equal("ADHERENT"))
+		if(utilisateur_recherche /= Void and media_recherche /= Void)
 		then
-			-- Tiens voilà du boudin, voilà du boudin !
-			adherent ?= utilisateur_recherche
-			lancer_processus_emprunt_adherent(adherent, media_recherche)
+			if(utilisateur_recherche.generating_type.is_equal("ADHERENT"))
+			then
+				-- Tiens voilà du boudin, voilà du boudin !
+				adherent ?= utilisateur_recherche
+				lancer_processus_emprunt_adherent(adherent, media_recherche)
 			
-		elseif(utilisateur_recherche.generating_type.is_equal("DOCUMENTALISTE"))
-		then
+			elseif(utilisateur_recherche.generating_type.is_equal("DOCUMENTALISTE"))
+			then
 		
-			-- Tiens voilà des riettes, voilà des riettes !
-			documentaliste ?= utilisateur_recherche
-			lancer_processus_emprunt_documentaliste(documentaliste, media_recherche)
+				-- Tiens voilà des riettes, voilà des riettes !
+				documentaliste ?= utilisateur_recherche
+				lancer_processus_emprunt_documentaliste(documentaliste, media_recherche)
 			
+			end
+		elseif media_recherche = Void and utilisateur_recherche = Void
+		then
+			io.put_string("%N !!! Impossible de trouver l'adhérent et l'oeuvre, procédure arrêtée !!!")
+		elseif media_recherche = Void
+		then
+			io.put_string("%N !!! Impossible de trouver l'oeuvre, procédure arrêtée !!!")
+		elseif utilisateur_recherche = Void
+		then
+			io.put_string("%N !!! Impossible de trouver l'adhérent, procédure arrêtée !!!")
 		end
 	end
 	
