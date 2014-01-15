@@ -69,9 +69,9 @@ feature {ANY}
       	end
       	if(not annee.is_equal(0))
       	then
-      		stringsave.append_string("Annee<")
+      		stringsave.append_string(" ; Annee<")
       		stringsave.append_string(annee.to_string)
-      		stringsave.append_string(">") 
+      		stringsave.append_string(">")
       	end
 		stringsave.append_string(" ; Realisateur<")
   		stringsave.append_string(realisateur)

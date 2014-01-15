@@ -100,8 +100,8 @@ feature{ANY}
 							acteurs.add_last(string_data)
 						elseif string_tmp.has_substring ("Realisateur") then
 							realisateur := string_data
-						elseif string_tmp.has_substring ("Nombre") then
-							nombre := string_data.to_integer
+						elseif string_tmp.has_substring ("Disponible") then
+							dispo := string_data.to_integer
 						elseif string_tmp.has_substring ("Type") then
 							type := string_data
 						end
@@ -110,11 +110,11 @@ feature{ANY}
 				end
 
 				if contenu_ligne.has_substring ("Livre ; ") then
-					create a_livre.livre(auteur, "", "", titre, 0, nombre, dispo)
+					create a_livre.livre(auteur, "", "", titre, 0, dispo,nombre)
 					liste_medias.add_last(a_livre)
 				end
 				if contenu_ligne.has_substring ("DVD ; ") then
-					create a_dvd.dvd(realisateur, acteurs, type, titre, annee, nombre, dispo)
+					create a_dvd.dvd(realisateur, acteurs, type, titre, annee,dispo, nombre)
 					liste_medias.add_last(a_dvd)
 					create acteurs.with_capacity(20,1)
 				end
@@ -130,7 +130,7 @@ feature{ANY}
 			i := i +1
 		end
 	end
-	
+
 	-- =====================================
 	-- Sauvegarde les medias
 	-- =====================================
@@ -140,7 +140,7 @@ feature{ANY}
       stringsave : STRING
       j : INTEGER
     do
-      create output.connect_to("test.txt")
+      create output.connect_to("medias.txt")
 
       from j := liste_medias.lower
       until j > liste_medias.upper
@@ -200,7 +200,7 @@ feature{ANY}
 			i := i + 1
 		end
 	end
-	
+
 	-- =====================================
 	-- Recherche un média depuis son titre et son auteur (clé unique)
 	-- =====================================
@@ -227,14 +227,14 @@ feature{ANY}
 			titre.to_upper
 			if titre_courant_to_upper.has_substring(titre)
 			then
-			
+
 				-- Récupération du média courant (on ne sait pas encore de quel type il est)
 				media_courant := liste_medias.item(i)
-				
+
 				-- En fonction de son type, on ne va pas appeler la même méthode pour l'auteur / réalisateur
 				if(liste_medias.item(i).generating_type.is_equal("DVD"))
 				then
-				
+
 					-- Le magnifique down cast Eiffel
 					dvd_courant ?= media_courant
 					create auteur_courant_to_upper.copy(dvd_courant.get_realisateur)
@@ -246,7 +246,7 @@ feature{ANY}
 					end
 				elseif(liste_medias.item(i).generating_type.is_equal("LIVRE"))
 				then
-					
+
 					-- S'il est pas beau mon poisson !!
 					livre_courant ?= media_courant
 					create auteur_courant_to_upper.copy(livre_courant.get_auteur)
@@ -261,13 +261,13 @@ feature{ANY}
 			i := i + 1
 		end
 	end
-	
+
 	-- =====================================
 	-- Création d'un dvd et ajout dans la collection
 	-- =====================================
 	ajouter_dvd(new_realisateurs : ARRAY[STRING]; new_acteurs : ARRAY[STRING]; new_type : STRING; new_titre : STRING; new_annee, new_nombre_disponible, new_nombre_possede : INTEGER) : DVD is
 	require
-		
+
 	local
 	do
 	end
