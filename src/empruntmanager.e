@@ -125,6 +125,29 @@ feature{ANY}
 		end
 	end
 
+	-- =====================================
+	-- Sauvegarde les emprunts
+	-- =====================================
+	save_to_file is
+    local
+      output : TEXT_FILE_WRITE
+      stringsave : STRING
+      j : INTEGER
+    do
+      create output.connect_to("testemprunts.txt")
+
+      from j := liste_emprunts.lower
+      until j > liste_emprunts.upper
+      loop
+      	stringsave := liste_emprunts.item(j).save
+      	output.put_string(stringsave)
+        output.put_new_line
+        j := j + 1
+      end
+      output.disconnect
+
+      io.put_string("Sauvegarde Emprunts.")
+    end
 
 	-- =====================================
 	-- Constructeur

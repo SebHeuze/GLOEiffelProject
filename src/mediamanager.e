@@ -158,7 +158,7 @@ feature{ANY}
       end
       output.disconnect
 
-      io.put_string("Sauvegarde.")
+      io.put_string("Sauvegarde Medias.")
       end
 
 	-- =====================================
