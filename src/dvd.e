@@ -50,6 +50,8 @@ feature {ANY}
 			end
 			i := i + 1
 		end
+		io.put_string("Nombre possédé : "+nombre_possedes.to_string+"%N")
+		io.put_string("Nombre disponible : "+nombre_disponible.to_string+"%N")
 	end
 
 	-- =====================================

@@ -1,5 +1,4 @@
 # Beginning of parallelizable section
-lcc application4.c
 lcc application3.c
 lcc application2.c
 lcc application1.c
