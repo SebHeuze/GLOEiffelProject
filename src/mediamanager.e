@@ -130,6 +130,7 @@ feature{ANY}
 			i := i +1
 		end
 	end
+	
 	-- =====================================
 	-- Sauvegarde les medias
 	-- =====================================
@@ -201,7 +202,7 @@ feature{ANY}
 	end
 	
 	-- =====================================
-	-- Recherche un média depuis son titre (recherche de la chaîne demandée dans le titre)
+	-- Recherche un média depuis son titre et son auteur (clé unique)
 	-- =====================================
 	rechercher_media_depuis_titre_et_auteur(titre, auteur : STRING) : IMEDIA is
 	require
@@ -233,6 +234,8 @@ feature{ANY}
 				-- En fonction de son type, on ne va pas appeler la même méthode pour l'auteur / réalisateur
 				if(liste_medias.item(i).generating_type.is_equal("DVD"))
 				then
+				
+					-- Le magnifique down cast Eiffel
 					dvd_courant ?= media_courant
 					create auteur_courant_to_upper.copy(dvd_courant.get_realisateur)
 					auteur_courant_to_upper.to_upper
@@ -243,6 +246,8 @@ feature{ANY}
 					end
 				elseif(liste_medias.item(i).generating_type.is_equal("LIVRE"))
 				then
+					
+					-- S'il est pas beau mon poisson !!
 					livre_courant ?= media_courant
 					create auteur_courant_to_upper.copy(livre_courant.get_auteur)
 					auteur_courant_to_upper.to_upper

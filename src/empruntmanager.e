@@ -6,8 +6,8 @@ indexing
 class EMPRUNTMANAGER
 
 creation {ANY}
-	init_emprunt_manager,
-	init_emprunt_manager_empty
+	emprunt_manager,
+	emprunt_manager_empty
 
 feature {}
 	liste_emprunts : ARRAY[EMPRUNT]
@@ -17,7 +17,7 @@ feature{ANY}
 	-- =====================================
 	-- Constructeur
 	-- =====================================
-	init_emprunt_manager(input_liste_emprunts : ARRAY[EMPRUNT]) is
+	emprunt_manager(input_liste_emprunts : ARRAY[EMPRUNT]) is
 	require
 		liste_non_vide : input_liste_emprunts.count > 0
 	do
@@ -27,7 +27,7 @@ feature{ANY}
 	-- =====================================
 	-- Constructeur par défaut
 	-- =====================================
-	init_emprunt_manager_empty is
+	emprunt_manager_empty is
 	do
 		--Initialisation des listes de emprunts
 		create liste_emprunts.with_capacity(60,1)
@@ -47,6 +47,7 @@ feature{ANY}
 		create emprunt.emprunt(input_adherent, input_media, input_date_emprunt, input_duree, input_nombre_exemplaires)
 		liste_emprunts.add_last(emprunt)
 		input_adherent.ajouter_emprunt(emprunt)
+		input_media.set_nombre_disponible(input_media.get_nombre_disponible - input_nombre_exemplaires)
 	end
 	
 	-- =====================================

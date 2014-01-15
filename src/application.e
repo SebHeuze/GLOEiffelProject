@@ -44,7 +44,8 @@ feature {ANY}
 			medias_charges := True
 			io.put_string("Initialisation::Utilisateurs chargés.%N")
 		end
-		
+		create emprunt_manager.emprunt_manager_empty
+		io.put_string("Initialisation::Emprunts chargés.%N")
 		media_manager.save_to_file
 		display_ecran_login
 		io.put_string("Initialisation::Fin.%N")
@@ -116,7 +117,10 @@ feature {ANY}
 		io.put_string("1 - Menu livres%N")
 		io.put_string("2 - Menu DVD%N")
 		io.put_string("3 - Menu Utilisateurs%N")
-		io.put_string("4 - Menu emprunts%N")
+		if(user_manager.get_connected_user.generating_type.is_equal("DOCUMENTALISTE"))
+		then
+			io.put_string("4 - Menu emprunts%N")
+		end
 		io.put_string("0 - Quitter%N")
 		io.put_string("Votre choix ? ")
 
@@ -265,48 +269,6 @@ feature {ANY}
 	end
 
 	-- =====================================
-	-- Affichage du menu des emprunts
-	-- =====================================
-	display_menu_emprunts is
-	do
-		io.put_string("%N")
-		io.put_string("************************************%N")
-		io.put_string("*********   Menu emprunts   ********%N")
-		io.put_string("************************************%N")
-		io.put_string("1 - Afficher un emprunt%N")
-		io.put_string("2 - Rechercher un emprunt%N")
-		io.put_string("3 - Créer un emprunt%N")
-		io.put_string("4 - Clôturer un emprunt%N")
-		io.put_string("0 - Retour%N")
-		io.put_string("Votre choix ? ")
-		
-		from
-			io.read_line
-		until
-			io.last_string.is_equal("1") or io.last_string.is_equal("2") or io.last_string.is_equal("3") or io.last_string.is_equal("4") or io.last_string.is_equal("0")
-		loop
-			io.put_string("Votre choix ? ")
-			io.read_line
-		end
-		
-		if(io.last_string.is_equal("1"))
-		then
-			
-		elseif(io.last_string.is_equal("2"))
-		then
-			
-		elseif(io.last_string.is_equal("3"))
-		then
-			display_menu_utilisateurs
-		elseif(io.last_string.is_equal("4"))
-		then
-		elseif(io.last_string.is_equal("0"))
-		then
-			display_menu_principal
-		end
-	end
-
-	-- =====================================
 	-- Affichage du menu des utilisateurs
 	-- =====================================
 	display_menu_recherche_utilisateur is
@@ -379,17 +341,22 @@ feature {ANY}
 	local
 		resultat_recherche : IUTILISATEUR
 	do
-		io.put_string("********    Recherche par identifiant    *******%N")
+		io.put_string("%N********    Recherche d'utilisateur par identifiant    *******%N")
 		io.put_string("Veuillez saisir tout ou une partie de l'identifiant :%N")
 		io.read_line
 		resultat_recherche := user_manager.rechercher_utilisateur_depuis_identifiant(io.last_string)
-		if resultat_recherche = Void
+		if((resultat_recherche.get_identifiant.is_equal(user_manager.get_connected_user.get_identifiant) and user_manager.get_connected_user.generating_type.is_equal("ADHERENT")) or (user_manager.get_connected_user.generating_type.is_equal("DOCUMENTALISTE")))
 		then
-			io.put_string("Aucun utilisateur correspondant n'a ete trouve.%N")
-			Result := Void
+			if resultat_recherche = Void
+			then
+				io.put_string("Aucun utilisateur correspondant n'a été trouvé.%N")
+				Result := Void
+			else
+				resultat_recherche.afficher
+				Result := resultat_recherche
+			end
 		else
-			resultat_recherche.afficher
-			Result := resultat_recherche
+			io.put_string("!!! Vous n'avez pas les droits suffisants !!!%N")
 		end
 	end
 
@@ -401,7 +368,7 @@ feature {ANY}
 		resultat_recherche : IMEDIA
 		titre, auteur : STRING
 	do
-		io.put_string("********    Recherche par titre     *******%N")
+		io.put_string("%N********    Recherche de média par titre / auteur    *******%N")
 		
 		io.put_string("Veuillez saisir tout ou une partie du titre :%N")
 		io.read_line
@@ -421,8 +388,8 @@ feature {ANY}
 			io.put_string("Aucun média correspondant n'a été trouvé.%N")
 		else
 			resultat_recherche.afficher
+			Result := resultat_recherche
 		end
-		display_menu_dvd
 	end
 	
 	-- =====================================
@@ -470,6 +437,139 @@ feature {ANY}
 			utilisateur_recherche.set_adresse(adresse)
 		
 			io.put_string("=============== Modification prise en compte ===============%N")
+		else
+			io.put_string("%N!!! Vous n'avez pas les droits suffisants !!!%N")
 		end
 	end
-end -- class HELLO_WORLD
+	
+	-- =====================================
+	-- Affichage du menu des emprunts
+	-- =====================================
+	display_menu_emprunts is
+	do
+		io.put_string("%N")
+		io.put_string("************************************%N")
+		io.put_string("*********   Menu emprunts   ********%N")
+		io.put_string("************************************%N")
+		io.put_string("1 - Afficher un emprunt%N")
+		io.put_string("2 - Créer un emprunt%N")
+		io.put_string("3 - Clôturer un emprunt%N")
+		io.put_string("0 - Retour%N")
+		io.put_string("Votre choix ? ")
+		
+		from
+			io.read_line
+		until
+			io.last_string.is_equal("1") or io.last_string.is_equal("2") or io.last_string.is_equal("3") or io.last_string.is_equal("0")
+		loop
+			io.put_string("Votre choix ? ")
+			io.read_line
+		end
+		
+		if(io.last_string.is_equal("1"))
+		then
+		elseif(io.last_string.is_equal("2"))
+		then
+			display_menu_creation_emprunt
+		elseif(io.last_string.is_equal("3"))
+		then
+		elseif(io.last_string.is_equal("4"))
+		then
+		elseif(io.last_string.is_equal("0"))
+		then
+			display_menu_principal
+		end
+		display_menu_emprunts
+	end
+	
+	-- =====================================
+	-- Création d'un emprunt
+	-- =====================================
+	display_menu_creation_emprunt is
+	local
+		media_recherche : IMEDIA
+		utilisateur_recherche : IUTILISATEUR
+		adherent : ADHERENT
+		documentaliste : DOCUMENTALISTE
+	do
+		io.put_string("%N")
+		io.put_string("************************************%N")
+		io.put_string("*******   Création emprunt   *******%N")
+		io.put_string("************************************%N")
+		
+		-- Recherche d'un utilisateur depuis son login, garantissant l'unicité
+		utilisateur_recherche := display_recherche_utilisateur_par_identifiant
+		
+		-- Recherche d'un média depuis son titre et son auteur, clé unique
+		media_recherche := display_recherche_par_titre_et_auteur
+		
+		if(utilisateur_recherche.generating_type.is_equal("ADHERENT"))
+		then
+			-- Tiens voilà du boudin, voilà du boudin !
+			adherent ?= utilisateur_recherche
+			lancer_processus_emprunt_adherent(adherent, media_recherche)
+			
+		elseif(utilisateur_recherche.generating_type.is_equal("DOCUMENTALISTE"))
+		then
+		
+			-- Tiens voilà des riettes, voilà des riettes !
+			documentaliste ?= utilisateur_recherche
+			lancer_processus_emprunt_documentaliste(documentaliste, media_recherche)
+			
+		end
+	end
+	
+	-- =====================================
+	-- Processus d'emprunt pour un adhérent
+	-- =====================================
+	lancer_processus_emprunt_adherent(adherent : ADHERENT; media : IMEDIA) is
+	require
+		adherent /= Void
+		media /= Void
+	local
+		duree, date_courante : TIME
+		duree_entier : INTEGER
+	do
+		-- Vérification que l'utilisateur donné n'a pas d'emprunt en retard, auquel cas on refuse l'emprunt
+		if(not adherent.possede_emprunt_retard)
+		then
+			-- Demande de validation par l'utilisateur en lui présentant les informations recherchées
+			io.put_string("%NConfirmez-vous l'emprunt de l'oeuvre " + media.get_titre + " par " + adherent.get_prenom + " " + adherent.get_nom + " (" + adherent.get_identifiant + ") ? (O/N)%N")
+		
+			-- On boucle tant qu'on n'a pas obtenu une réponse qui va bien
+			from
+				io.read_line
+			until
+				io.last_string.is_equal("O") or io.last_string.is_equal("N")
+			loop
+				io.put_string("%NConfirmez-vous l'emprunt de l'oeuvre " + media.get_titre + " par " + adherent.get_prenom + " " + adherent.get_nom + " (" + adherent.get_identifiant + ") ? (O/N)%N")
+				io.read_line
+			end
+		
+			-- Si validé, on demande la durée d'emprunt en jours
+			if(io.last_string.is_equal("O"))
+			then
+				
+				-- Demande de la durée en jours
+				io.put_string("Veuillez saisir la durée de l'emprunt en jours :")
+				io.read_line
+				duree_entier := io.last_string.to_integer
+				
+				create duree
+				create date_courante
+				
+				duree.add_day(duree_entier)
+				date_courante.update
+				
+				-- Ajout dans le manager d'emprunts
+				--emprunt_manager.ajouter_emprunt(adherent, media, date_courante, duree, 1)
+			end
+		else -- Cas d'un retard actuellement dans les emprunts de l'utilisateur
+			io.put_string("%N" + "!!!" + adherent.get_prenom + " " + adherent.get_nom + " (" + adherent.get_identifiant + ") possède déjà un emprunt en retard !!!")
+		end
+	end
+	
+	lancer_processus_emprunt_documentaliste(adherent : DOCUMENTALISTE; media : IMEDIA) is
+	do
+	end
+end
