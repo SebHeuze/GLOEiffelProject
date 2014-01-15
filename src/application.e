@@ -706,7 +706,7 @@ feature {ANY}
 				create duree
 				create date_courante
 				--trash := duree.set(duree.year, duree.month, duree_entier, duree.hour, duree.minute, duree.second)
-				duree.add_day(duree_entier)
+				duree.add_day(duree_entier - 1)
 				date_courante.update
 
 				-- Ajout dans le manager d'emprunts

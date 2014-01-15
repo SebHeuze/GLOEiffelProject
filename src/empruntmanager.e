@@ -207,8 +207,8 @@ feature{ANY}
 				
 				if liste_emprunts.item(i).get_media.get_titre.is_equal(input_media.get_titre) and liste_emprunts.item(i).get_adherent.get_identifiant.is_equal(input_adherent.get_identifiant)
 				then
-					liste_emprunts.remove(i)
 					liste_emprunts.item(i).get_media.set_nombre_disponible(input_media.get_nombre_disponible + 1)
+					liste_emprunts.remove(i)
 				end
 				
 				
@@ -217,8 +217,8 @@ feature{ANY}
 
 				if liste_emprunts.item(i).get_media.get_titre.is_equal(input_media.get_titre) and liste_emprunts.item(i).get_adherent.get_identifiant.is_equal(input_adherent.get_identifiant)
 				then
-					liste_emprunts.remove(i)
 					liste_emprunts.item(i).get_media.set_nombre_disponible(input_media.get_nombre_disponible + 1)
+					liste_emprunts.remove(i)
 				end
 				
 			end
