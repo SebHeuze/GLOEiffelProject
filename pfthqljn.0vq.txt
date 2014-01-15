@@ -1,0 +1,21 @@
+﻿
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# rebase in progress; onto c83c426
+# You are currently rebasing branch 'master' on 'c83c426'.
+#   (all conflicts fixed: run "git rebase --continue")
+#
+# Changes to be committed:
+#   (use "git reset HEAD <file>..." to unstage)
+#
+#	modified:   src/application.e
+#	modified:   src/mediamanager.e
+#	modified:   src/medias.txt
+#
+# Untracked files:
+#   (use "git add <file>..." to include in what will be committed)
+#
+#	EIFGENs/gloeiffelproject/ec.lock
+#	zugnuaa3.2oh.txt
+
+Commit merge

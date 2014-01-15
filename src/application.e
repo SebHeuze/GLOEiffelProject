@@ -210,12 +210,8 @@ feature {ANY}
 		io.put_string("1 - Afficher livres%N")
 		io.put_string("2 - Rechercher livres%N")
 		io.put_string("3 - Modifier livre%N")
-<<<<<<< HEAD
 		io.put_string("4 - Supprimer media%N")
-=======
-		io.put_string("4 - Créer livre%N")
 		io.put_string("5 - Supprimer livre%N")
->>>>>>> c83c426d9d79d35a05a9374ca2713b9b0fad73d4
 		io.put_string("0 - Retour%N")
 		io.put_string("Votre choix ? ")
 
@@ -231,24 +227,19 @@ feature {ANY}
 		if(io.last_string.is_equal("1"))
 		then
 			media_manager.afficher_livres
-<<<<<<< HEAD
 		elseif(io.last_string.is_equal("4"))
 		then
 			display_supprimer_media
-=======
 		elseif(io.last_string.is_equal("2"))
 		then
 			display_afficher_resultat_recherche
-		elseif(io.last_string.is_equal("0"))
-		then
->>>>>>> c83c426d9d79d35a05a9374ca2713b9b0fad73d4
 		elseif(io.last_string.is_equal("0"))
 		then
 			display_menu_principal
 		end
 		display_menu_livres
 	end
-	
+
 	-- =====================================
 	-- Recherche et affiche une oeuvre
 	-- =====================================
@@ -259,7 +250,7 @@ feature {ANY}
 		-- Recherche d'un média depuis son titre et son auteur, clé unique
 		media_recherche := display_recherche_par_titre_et_auteur
 	end
-	
+
 	-- =====================================
 	-- Affiche le menu des utilisateurs
 	-- =====================================
